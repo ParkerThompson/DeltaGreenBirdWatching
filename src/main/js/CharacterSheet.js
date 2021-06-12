@@ -1,6 +1,6 @@
 // inputSkills = ["art", "craft", "military-science", "pilot", "science", "foreign-language"];
 const inputSkills = new Map([
-    ["art" ["Acting", "Creative Writing", "Dance", "Flute", "Forgery", "Guitar", "Painting", "Poetry", "Scriptwriting", "Sculpture", "Singing", "Violin"]],
+    ["art", ["Acting", "Creative Writing", "Dance", "Flute", "Forgery", "Guitar", "Painting", "Poetry", "Scriptwriting", "Sculpture", "Singing", "Violin"]],
     ["craft", ["Architect", "Carpenter", "Electrician", "Gunsmith", "Locksmith", "Mechanic", "Microelectronics", "Plumber"]],
     ["military-science", ["Land", "Air", "Sea"]],
     ["pilot", ["Airplane", "Drone", "Helicopter", "Small Boat", "Ship"]],
