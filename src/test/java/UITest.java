@@ -140,6 +140,9 @@ public class UITest {
 
     private void checkAllSkillValues(Map<String, String> skillMap) {
         List<WebElement> skills = driver.findElements(By.className("skill"));
+        for(String skillKey: skillMap.keySet()) {
+            driver.findElement(By.id(skillKey));
+        }
         for (WebElement skill : skills) {
             if (!skillMap.containsKey(skill.getAttribute("id"))) {
                 assertThat(skill.getAttribute("base")).as(skill.getAttribute("id")).isEqualTo(skill.getAttribute("value"));
@@ -897,7 +900,6 @@ public class UITest {
                 .put(ALERTNESS, "50")
                 .put(CRIMINOLOGY, "60")
                 .put(DEMOLITIONS, "40")
-                .put(CRAFT, "40")
                 .put(DODGE, "40")
                 .put(DRIVE, "50")
                 .put(FIREARMS, "40")
@@ -954,7 +956,6 @@ public class UITest {
                 .put(ALERTNESS, "50")
                 .put(CRIMINOLOGY, "60")
                 .put(DISGUISE, "50")
-                .put(FOREIGN_LANGUAGE, "40")
                 .put(DODGE, "40")
                 .put(DRIVE, "50")
                 .put(FIREARMS, "40")
@@ -2507,18 +2508,14 @@ public class UITest {
                 assertThat(skills.size()).isEqualTo(expectedSize);
                 break;
             case "Special Operator":
-//                assertThat(skills.contains("alertness")).isTrue();
-//                assertThat(skills.contains("athletics")).isTrue();
-//                assertThat(skills.contains("demolitions")).isTrue();
-//                assertThat(skills.contains("firearms")).isTrue();
-//                assertThat(skills.contains("heavy-weapons")).isTrue();
-//                assertThat(skills.contains("melee-weapons")).isTrue();
-//                assertThat(skills.contains("military-science (land)")).isTrue();
-//                assertThat(skills.contains("navigate")).isTrue();
-//                assertThat(skills.contains("stealth")).isTrue();
-//                assertThat(skills.contains("survival")).isTrue();
-//                assertThat(skills.contains("swim")).isTrue();
-//                assertThat(skills.contains("unarmed-combat")).isTrue();
+                defaultSkills = Arrays.asList(ALERTNESS, ATHLETICS, DEMOLITIONS, FIREARMS, HEAVY_WEAPONS,
+                        MELEE_WEAPONS, NAVIGATE, STEALTH, SURVIVAL, SWIM, UNARMED_COMBAT, MILITARY_SCIENCE + " 60%:\n(Land) ");
+                expectedSize = 12;
+                noSkills = new ArrayList<>(ALL_SKILLS);
+                noSkills.removeAll(defaultSkills);
+                assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                assertThat(skills.size()).isEqualTo(expectedSize);
                 break;
             case "Physician":
                 break;
