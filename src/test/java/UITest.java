@@ -2457,14 +2457,15 @@ public class UITest {
 
 
 //                    ["anthropologist", 'optional_skills': 2}],
-        switch (profession) {
+            assertThat(skills).doesNotHaveDuplicates();
+            switch (profession) {
             case "Anthropologist":
                 List<String> noSkills = new ArrayList<>(ALL_SKILLS);
                 noSkills.removeAll(Arrays.asList(HISTORY, OCCULT, PERSUADE, ANTHROPOLOGY, ARCHEOLOGY, HUMINT, NAVIGATE, RIDE, SEARCH, SURVIVAL));
                 assertThat(skills).containsOnlyOnce(HISTORY, OCCULT, PERSUADE);
                 assertThat(skills).containsAnyOf(ANTHROPOLOGY, ARCHEOLOGY);
                 assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-//                assertThat(skills.size()).isEqualTo(7);
+                assertThat(skills.size()).isEqualTo(7);
                 List<String> otherSkills = new ArrayList<>();
                 otherSkills.add(WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)");
                 assertThat(listContainsOtherSkills(otherSkills, skills)).isTrue();
@@ -2478,15 +2479,22 @@ Navigate 50%
 Ride 50%
 Search 60%
 Survival 50%
+//accounting,bureaucracy,craft,foreign-language,heavy-machinery,law,science
              */
 
             case "Engineer":
-//                assertThat(skills.contains("computer-science")).isTrue();
-//                assertThat(skills.contains("craft (electrician)")).isTrue();
-//                assertThat(skills.contains("craft (mechanic)")).isTrue();
-//                assertThat(skills.contains("craft (microelectronics)")).isTrue();
-//                assertThat(skills.contains("science (mathematics)")).isTrue();
-//                assertThat(skills.contains("sigint")).isTrue();
+                noSkills = new ArrayList<>(ALL_SKILLS);
+                noSkills.removeAll(Arrays.asList(COMPUTER_SCIENCE, CRAFT, SCIENCE, SIGINT, ACCOUNTING, BUREAUCRACY, FOREIGN_LANGUAGE, HEAVY_MACHINERY, LAW, SCIENCE));
+                assertThat(skills).containsOnlyOnce(COMPUTER_SCIENCE, CRAFT, SCIENCE, SIGINT);
+                assertThat(skills).containsAnyOf(ANTHROPOLOGY, ARCHEOLOGY);
+                assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                assertThat(skills.size()).isEqualTo(10);
+                otherSkills = new ArrayList<>();
+                otherSkills.add("Craft (Electrician)");
+                otherSkills.add("Craft (Mechanic)");
+                otherSkills.add("Craft (Microelectronics)");
+                otherSkills.add("Science (Mathematics)");
+                assertThat(listContainsOtherSkills(otherSkills, skills)).isTrue();
                 break;
             case "Federal Agent":
 //                assertThat(skills.contains("alertness")).isTrue();

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Delta Green Character Creator</title>
-    <link rel="stylesheet" href="../css/characterSheet.css"/>
+    <link rel="stylesheet" href="css/characterSheet.css"/>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
 
     <script type="text/javascript" src="https://unpkg.com/html2canvas@1.0.0-rc.7/dist/html2canvas.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script type="text/javascript" src="../js/CharacterSheet.js"></script>
+    <script type="text/javascript" src="js/CharacterSheet.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             createProfessionWrappers();
@@ -45,7 +45,7 @@
     <input type="button" value="Randomize" id="btnRandom" class="dont-print btn"/>
     <div id="dvContainer" class="pad">
         <div id="top-banner" class="banner">
-            <img class="banner-img" src="../resources/dglogo.png" alt="Delta Green" width="1290" height="84">
+            <img class="banner-img" src="resources/dglogo.png" alt="Delta Green" width="1290" height="84">
         </div>
         <div id="personal-data" class="label top fill">
             <div class="label-background">
@@ -64,7 +64,7 @@
                     </tr>
                     <tr>
                         <td class="right bottom half"><input class="ninety" type="text" id="name" value=""/>
-                            <img alt="randomize-name" id="random-name" class="random" src="../resources/random.png"/>
+                            <img alt="randomize-name" id="random-name" class="random" src="resources/random.png"/>
                         </td>
                         <td class="bottom fill right">
                             <span class="fill dont-print">
@@ -407,12 +407,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="accounting" class="skill" base="10" prof-base="10"
                                                value="10"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -424,12 +424,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="history" class="skill" base="10" prof-base="10"
                                                value="10"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -450,12 +450,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="alertness" class="skill" base="20" prof-base="20"
                                                value="20"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -469,12 +469,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="humint" class="skill" base="10" prof-base="10"
                                                value="10"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -495,12 +495,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="anthropology" class="skill" base="0" prof-base="0"
                                                value="0"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -514,11 +514,11 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="law" class="skill" base="0" prof-base="0" value="0"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -532,13 +532,13 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child">
-                                        <img alt="minus" class="minus dont-print" src="../resources/minus.png">
+                                        <img alt="minus" class="minus dont-print" src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input class="other-skill" type="text"value=""/>
                                     </td>
                                     <td class="skill-td-child">
-                                        <img alt="plus" class="plus dont-print" src="../resources/plus.png">
+                                        <img alt="plus" class="plus dont-print" src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -556,12 +556,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="archeology" class="skill" base="0" prof-base="0"
                                                value="0"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -575,12 +575,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="medicine" class="skill" base="0" prof-base="0"
                                                value="0"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -597,12 +597,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="artillery" class="skill" base="0" prof-base="0"
                                                value="0"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -616,12 +616,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="melee-weapons" class="skill" base="30" prof-base="30"
                                                value="30"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -643,12 +643,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="athletics" class="skill" base="30" prof-base="30"
                                                value="30"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -662,12 +662,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="navigate" class="skill" base="10" prof-base="10"
                                                value="10"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -684,12 +684,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="bureaucracy" class="skill" base="10" prof-base="10"
                                                value="10"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -703,12 +703,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="occult" class="skill" base="10" prof-base="10"
                                                value="10"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -731,12 +731,12 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="computer-science" class="skill" base="0" prof-base="0"
                                                value="0"/>
                                     </td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -750,11 +750,11 @@
                             <table class="skill-table fill">
                                 <tbody>
                                 <tr class="skill-tr">
-                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="persuade" class="skill" base="20" prof-base="20"
                                                value="20"/></td>
-                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -772,13 +772,13 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png"></td>
+                                                                    src="resources/minus.png"></td>
                                     <td class="skill-td-child">
                                         <input type="text" id="criminology" class="skill" base="10"
                                                prof-base="10" value="10"/>
                                     </td>
                                     <td class="skill-td-child">
-                                        <img alt="plus" class="plus dont-print" src="../resources/plus.png">
+                                        <img alt="plus" class="plus dont-print" src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -794,14 +794,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child">
-                                        <img alt="minus" class="minus dont-print" src="../resources/minus.png">
+                                        <img alt="minus" class="minus dont-print" src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="pharmacy" class="skill" base="0"
                                                prof-base="0" value="0"/>
                                     </td>
                                     <td class="skill-td-child">
-                                        <img alt="plus" class="plus dont-print" src="../resources/plus.png">
+                                        <img alt="plus" class="plus dont-print" src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -826,14 +826,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="demolitions" class="skill"
                                                base="0" prof-base="0" value="0"/>
                                     </td>
                                     <td class="skill-td-child">
-                                        <img alt="plus" class="plus dont-print" src="../resources/plus.png">
+                                        <img alt="plus" class="plus dont-print" src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -850,14 +850,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="psychotherapy" class="skill"
                                                base="10" prof-base="10" value="10"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -877,14 +877,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="disguise" class="skill" base="10"
                                                prof-base="10" value="10"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -901,14 +901,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="ride" class="skill" base="10"
                                                prof-base="10" value="10"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -935,14 +935,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child">
-                                        <img alt="minus" class="minus dont-print" src="../resources/minus.png">
+                                        <img alt="minus" class="minus dont-print" src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="dodge" class="skill" base="30"
                                                prof-base="30" value="30"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -959,14 +959,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="search" class="skill" base="20"
                                                prof-base="20" value="20"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -985,14 +985,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="drive" class="skill" base="10"
                                                prof-base="10" value="10"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1009,14 +1009,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="sigint" class="skill" base="0"
                                                prof-base="0" value="0"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1043,14 +1043,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="firearms" class="skill" base="20"
                                                prof-base="20" value="20"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1067,14 +1067,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="stealth" class="skill" base="10"
                                                prof-base="10" value="10"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1093,14 +1093,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="first-aid" class="skill"
                                                base="10" prof-base="10" value="10"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1117,14 +1117,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="surgery" class="skill" base="0"
                                                prof-base="0" value="0"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1151,14 +1151,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="forensics" class="skill" base="0"
                                                prof-base="0" value="0"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1175,14 +1175,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="survival" class="skill" base="10"
                                                prof-base="10" value="10"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1202,14 +1202,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="heavy-machinery" class="skill"
                                                base="10" prof-base="10" value="10"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1226,14 +1226,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="swim" class="skill" base="20"
                                                prof-base="20" value="20"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1259,14 +1259,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="heavy-weapons" class="skill"
                                                base="0" prof-base="0" value="0"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1283,14 +1283,14 @@
                                 <tbody>
                                 <tr class="skill-tr">
                                     <td class="skill-td-child"><img alt="minus" class="minus dont-print"
-                                                                    src="../resources/minus.png">
+                                                                    src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
                                         <input type="text" id="unarmed" class="skill" base="40"
                                                prof-base="40" value="40"/>
                                     </td>
                                     <td class="skill-td-child"><img alt="plus" class="plus dont-print"
-                                                                    src="../resources/plus.png">
+                                                                    src="resources/plus.png">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -1616,7 +1616,7 @@
             </tbody>
         </table>
         <div id="bottom-banner" class="bottom-banner">
-            <img src="../resources/char-sheet-bottom.png" alt="Delta Green" width="1290" height="84">
+            <img src="resources/char-sheet-bottom.png" alt="Delta Green" width="1290" height="84">
         </div>
     </div>
 </form>

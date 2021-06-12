@@ -626,25 +626,25 @@ function createProfessionWrappers() {
 
 function parseMaleNames() {
     const wrappers = [];
-    const data = readFile("../resources/male-names.txt");
+    const data = readFile("resources/male-names.txt");
     male_names = data.split(",");
 }
 
 function parseFemaleNames() {
     const wrappers = [];
-    const data = readFile("../resources/female-names.txt");
+    const data = readFile("resources/female-names.txt");
     female_names = data.split(",");
 }
 
 function parseLastNames() {
     const wrappers = [];
-    const data = readFile("../resources/last-names.txt");
+    const data = readFile("resources/last-names.txt");
     last_names = data.split(",");
 }
 
 function parseProfessions() {
     const wrappers = [];
-    const data = readFile("../resources/professions.txt");
+    const data = readFile("resources/professions.txt");
     let allProfsArr = (data.split("\n"));
     for (let y = 0; y < allProfsArr.length; y++) {
         if(allProfsArr[y] !== "") {
@@ -1190,10 +1190,10 @@ function randomSkills() {
     let radio_skills = [].slice.call(document.getElementsByClassName(profession + " skill-radio"));
     let skills = new Map();
     console.log(profession);
-        for(let i = 0; i < radio_skills.length; i++) {
-            let radio = radio_skills.random();
-            skills.set(radio.getAttribute("value"), radio.getAttribute("base"));
-        }
+    if(radio_skills.length > 0) {
+        let radio = radio_skills.random();
+        skills.set(radio.getAttribute("value"), radio.getAttribute("base"));
+    }
     for(let i = 0; i < default_skills.length; i++) {
         skills.set(default_skills[i].getAttribute("name"), default_skills[i].getAttribute("base"))
     }
@@ -1207,11 +1207,27 @@ function randomSkills() {
     }
     console.log((default_skills.length + default_input_skills.length + (radio_skills.length)-1) + " default skills");
     console.log((profession_details.get(profession).optional_skills) + " optional skills");
+    console.log("Radio skills");
+    for(let i = 0; i < radio_skills.length; i ++) {
+        console.log(radio_skills[i].getAttribute("value"))
+    }
+    console.log("Default skills Without radio");
+    for(let i = 0; i < default_skills.length; i ++) {
+        console.log(default_skills[i].getAttribute("name"))
+    }
+    console.log("Default skills");
+        skills.forEach((value, key) => {
+            console.log(key)
+        });
     for(let i = 0; i < profession_details.get(profession).optional_skills; i++) {
-        let skill = skill_checks.splice(skill_checks.indexOf(Math.floor(Math.random()*skill_checks.length)), 1)[0];
+        let rand = Math.floor(Math.random()*skill_checks.length)
+        console.log(rand)
+        console.log(skill_checks[rand])
+        let skill = skill_checks.splice(rand, 1)[0];
         let skillName = skill.getAttribute("name");
         while(skills.has(skillName)) {
-            skill = skill_checks.splice(skill_checks.indexOf(Math.floor(Math.random()*skill_checks.length)), 1)[0];
+            console.log("Skills has " + skillName)
+            skill = skill_checks.splice((Math.floor(Math.random()*skill_checks.length)), 1)[0];
             skillName = skill.getAttribute("name");
         }
         console.log("Skill name: " + skillName)
