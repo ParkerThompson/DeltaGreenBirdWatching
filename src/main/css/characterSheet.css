@@ -1,0 +1,320 @@
+.banner-img {
+    background-color:black;
+    width: 294px;
+    height: 82px;
+    border-bottom: 5px solid white;
+
+}
+
+body {
+    font-family: Garamond, serif;
+    background-image : url(../resources/background.png);
+    font-size: 13px;
+}
+
+input {
+    border: none;
+    padding: 2px 0px;
+    background:none;
+    }
+
+table {
+    border-spacing:0;
+    position: relative;
+    }
+
+textarea {
+    border: none;
+    background:none;
+    width: 100%;
+    height: auto;
+}
+
+span {
+    min-width: 15px;
+}
+
+#motivations {
+    min-height: 365px;
+}
+
+
+#stat-div {
+    padding-right: 5px;
+}
+
+.pad-right {
+    padding-right: 20px;
+}
+
+.big-font {
+font-size: 18px;
+}
+
+.btn {
+    border-radius: 8px;
+    background-color: black;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+}
+
+.skillModalConfirm {
+    border-radius: 8px;
+    background-color: black;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+}
+
+.center {
+    text-align: center;
+    }
+
+.banner {
+     width: 100%;
+     background-color:black;
+     height: 82px;
+     text-align: center;
+     border-bottom: 5px solid white;
+     !important;
+ }
+
+ .bottom-banner {
+     width: 100%;
+     text-align: center;
+     border-bottom: 5px solid white;
+     !important;
+ }
+
+#form1 {
+    padding: 100px 100px
+    }
+
+.border {
+    border: 2px solid black;
+    }
+
+.fill {
+    width: 100%
+    }
+
+.fill-height {
+    height: 100%;
+    }
+
+.left.td {
+    width: 50%
+    }
+
+.top {
+    border-top: 2px solid black;
+    }
+
+.bottom {
+    border-bottom: 2px solid black;
+    }
+
+.bottom-children td {
+    border-bottom: 2px solid black;
+    }
+
+.left {
+    border-left: 2px solid black;
+    }
+
+.right {
+    border-right: 2px solid black;
+    }
+
+.right-children td {
+    border-right: 2px solid black;
+    }
+
+tr.row td:first-child {
+    border-left: 2px solid black;
+    }
+
+tr.row td:last-child {
+    border-left: 2px solid black;
+    }
+
+.bottom-row {
+    border-right: 2px solid black;
+    }
+
+ .quarter {
+    width: 25%
+ }
+
+.third {
+    width: 33%;
+    }
+
+.half {
+    width: 50%;
+    }
+
+.three-fourths {
+    width: 75%;
+    }
+
+.two-thirds {
+    width: 66%;
+    }
+
+ * {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+ }
+
+ .label {
+   display: grid;
+   grid-template-columns: 1fr 19fr;
+   border-spacing:0;
+ }
+
+ .label-text {
+   grid-area: label;
+   transform: rotate(-90deg);
+   display: block;
+   flex: 0 0 auto;
+ }
+
+ .label-background {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: black;
+   color: white;
+ }
+
+ .pad {
+    padding-top: 5px;
+ }
+
+ .double-pad {
+    padding-top: 5px;
+    }
+
+
+ tbody {
+   grid-area: table;
+ }
+
+ .dont-print {
+ }
+
+ .skill {
+    text-align:center;
+    width: 30%;
+ }
+
+  .align-top {
+     vertical-align: text-top;
+  }
+
+
+ .other-skill{
+    text-align:center
+}
+
+/* The Modal (background) */
+.modal {
+ /* display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.red {
+    color: red;
+}
+
+.plus {
+  width: 20px;
+  height: 20px;
+}
+
+.minus {
+width: 20px;
+  height: 20px;
+}
+
+.random {
+    width: 20px;
+    height: 20px;
+}
+
+.skill-td {
+width:15%;
+}
+
+.skill-table {
+table-layout:auto;
+}
+
+.skill-td-child {
+width: 33%;
+}
+
+.large-font {
+    font-size: 18px;
+}
+
+.weapon-input {
+    text-align:center;
+    overflow-wrap: break-word;
+}
+
+.weapon-select-row {
+    width: 100%;
+}
+
+.weapon-select {
+    width: 100%;
+}
+
+.ninety {
+    width: 90%;
+}

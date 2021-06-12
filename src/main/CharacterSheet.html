@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delta Green Character Creator</title>
+    <link rel="stylesheet" href="../css/characterSheet.css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+
+    <script type="text/javascript" src="https://unpkg.com/html2canvas@1.0.0-rc.7/dist/html2canvas.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script type="text/javascript" src="../js/CharacterSheet.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            createProfessionWrappers();
+            setScoreListeners();
+            setHPListener();
+            setPowListener();
+            createPrintButton();
+            setModalListener();
+            updateSkillIncreaseButtons();
+            setSkillListeners();
+            setPlusListeners();
+            setMinusListeners();
+            createWeaponSelect();
+            createNameListener();
+            parseMaleNames();
+            parseFemaleNames();
+            parseLastNames();
+            setRandomListener();
+        });
+    </script>
+</head>
+<body>
+<!-- The Modal -->
+<div id="myModal" class="modal" style="display:none;">
+
+    <!-- Modal content -->
+    <div id="modal-content" class="modal-content big-font">
+        <span class="close" id="close">&times;</span>
+    </div>
+</div>
+<form id="form1">
+    <input type="button" value="Download PDF"id="btnPrint" class="dont-print btn"/>
+    <input type="button" value="Randomize" id="btnRandom" class="dont-print btn"/>
+    <div id="dvContainer" class="pad">
+        <div id="top-banner" class="banner">
+            <img class="banner-img" src="../resources/dglogo.png" alt="Delta Green" width="1290" height="84">
+        </div>
+        <div id="personal-data" class="label top fill">
+            <div class="label-background">
+                <p class="label-text">Personal Data</p>
+            </div>
+            <div class="table">
+                <table class="GeneratedTable fill">
+                    <tbody>
+                    <tr>
+                        <td class="right">
+                            <div>1. LAST NAME, FIRST NAME (AND ALIAS OR CODENAME IF APPLICABLE)</div>
+                        </td>
+                        <td class="half right fill">
+                            <div>2. PROFESSION (RANK IF APPLICABLE)</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom half"><input class="ninety" type="text" id="name" value=""/>
+                            <img alt="randomize-name" id="random-name" class="random" src="../resources/random.png"/>
+                        </td>
+                        <td class="bottom fill right">
+                            <span class="fill dont-print">
+                                <select name="professions" id="professions">
+                                <optgroup label="Typical Professions">
+                                    <option value="anthropologist">Anthropologist or Historian</option>
+                                    <option value="engineer">Computer Scientist or Engineer</option>
+                                    <option value="federal-agent">Federal Agent</option>
+                                    <option value="special-operator">Special Operator</option>
+                                    <option value="physician">Physician</option>
+                                    <option value="scientist">Scientist</option>
+                                </optgroup>
+                                <optgroup label="Less Typical Professions">
+                                    <option value="firefighter">Firefighter</option>
+                                    <option value="foreign-service-officer">Foreign Service Officer</option>
+                                    <option value="intelligence-analyst">Intelligence Analyst</option>
+                                    <option value="intelligence-officer">Intelligence Case Officer</option>
+                                    <option value="lawyer">Lawyer or Business Executive</option>
+                                    <option value="media-specialist">Media Specialist</option>
+                                    <option value="nurse">Nurse or Paramedic</option>
+                                    <option value="pilot">Pilot or Sailor</option>
+                                    <option value="police-officer">Police Officer</option>
+                                    <option value="program-manager">Program Manager</option>
+                                    <option value="soldier">Soldier or Marine</option>
+                                </optgroup>
+                            </select>
+                            </span>
+                                <span>
+                            <input type="text" class="print" id="profession"/>
+                                    </span>
+                    </tr>
+                    <tr>
+                        <td class="right half">
+                            <div>3. EMPLOYER</div>
+                        </td>
+                        <td class="right half">
+                            <div>4. NATIONALITY</div>
+                        </td>
+                    </tr>
+                    <tr class="first_row">
+                        <td class="right bottom half"><input class="fill" type="text" id="employer" value=""/></td>
+                        <td class="bottom right"><input class="fill" type="text" id="nationality" value=""/></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="bottom fill">
+                    <tbody>
+                    <tr>
+                        <td class="third">
+                            <div>5. SEX</div>
+                        </td>
+                        <td class="third left">
+                            <div>6. AGE AND D.O.B.</div>
+                        </td>
+                        <td class="third left right">
+                            <div>7. EDUCATION AND OCCUPATIONAL HISTORY</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="third">
+                            <input type="checkbox" id="sex1" name="sex" value="F"><label for="sex1">F</label>
+                            <input type="checkbox" id="sex2" name="sex" value="M"><label for="sex2">M</label>
+                            <input type="checkbox" id="sex3Check" name="sex"><input class="bottom three-fourths"
+                                                                                    type="text" id="sex3" name="sex">
+                        </td>
+                        <td class="third left"><input class="fill" type="text" id="age" value=""/></td>
+                        <td class="third left right"><input class="fill" type="text" id="education" value=""/></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <table id="psyc-and-stats" class="pad">
+            <tbody>
+            <tr>
+                <td>
+                    <div id="stat-div" class="label fill">
+                        <div class="label-background">
+                            <p class="label-text">Statistical Data</p>
+                        </div>
+                        <div class="table fill">
+                            <table id="statistical-data" class="GeneratedTable top fill">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table class="fill">
+                                            <tbody>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div>8. STATISTICS</div>
+                                                </td>
+                                                <td class="right bottom center">
+                                                    <div>SCORE</div>
+                                                </td>
+                                                <td class="right bottom center">
+                                                    <div class="pad-right">×5</div>
+                                                </td>
+                                                <td class="right bottom center">
+                                                    <div>DISTINGUISHING FEATURES</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div>Strength (STR)</div>
+                                                </td>
+                                                <td class="right bottom"><input type="text" id="str-score" value=""/>
+                                                </td>
+                                                <td class="right bottom"><span id="str-x5"></span></td>
+                                                <td class="right bottom"><input type="text" id="str-feature" value=""/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div>Constitution (CON)</div>
+                                                </td>
+                                                <td class="right bottom"><input type="text" id="con-score" value=""/>
+                                                </td>
+                                                <td class="right bottom"><span id="con-x5"></span></td>
+                                                <td class="right bottom"><input type="text" id="con-feature" value=""/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div>Dexterity (DEX)</div>
+                                                </td>
+                                                <td class="right bottom"><input type="text" id="dex-score" value=""/>
+                                                </td>
+                                                <td class="right bottom"><span id="dex-x5"></span></td>
+                                                <td class="right bottom"><input type="text" id="dex-feature" value=""/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div>Intelligence (INT)</div>
+                                                </td>
+                                                <td class="right bottom"><input type="text" id="int-score" value=""/>
+                                                </td>
+                                                <td class="right bottom"><span id="int-x5"></span></td>
+                                                <td class="right bottom"><input type="text" id="int-feature" value=""/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div>Power (POW)</div>
+                                                </td>
+                                                <td class="right bottom"><input type="text" id="pow-score" value=""/>
+                                                </td>
+                                                <td class="right bottom"><span id="pow-x5"></span></td>
+                                                <td class="right bottom"><input type="text" id="pow-feature" value=""/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div>Charisma (CHA)</div>
+                                                </td>
+                                                <td class="right bottom"><input type="text" id="cha-score" value=""/>
+                                                </td>
+                                                <td class="right bottom"><span id="cha-x5"></span></td>
+                                                <td class="right bottom"><input type="text" id="cha-feature" value=""/>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="fill">
+                                            <tbody>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div>9. DERIVED ATTRIBUTES</div>
+                                                </td>
+                                                <td class="right bottom center">
+                                                    <div>MAXIMUM</div>
+                                                </td>
+                                                <td class="right bottom center">
+                                                    <div>CURRENT</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div id="hp">Hit Points (HP)</div>
+                                                </td>
+                                                <td class="right bottom"><span id="hp-max"></span></td>
+                                                <td class="right bottom"><input type="text" id="hp-curr" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div id="wp">Willpower Points (WP)</div>
+                                                </td>
+                                                <td class="right bottom"><span id="wp-max"></span></td>
+                                                <td class="right bottom"><input type="text" id="wp-curr" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div id="san">Sanity Points (SAN)</div>
+                                                </td>
+                                                <td class="right bottom"><span id="san-max">99</span></td>
+                                                <td class="right bottom"><input type="text" id="san-curr" value=""/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom">
+                                                    <div id="bp">Breaking Point (BP)</div>
+                                                </td>
+                                                <td class="right bottom"><span id="bp-max"></span></td>
+                                                <td class="right bottom"><input type="text" id="bp-curr" value=""/></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="fill right bottom">
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div>10. PHYSICAL DESCRIPTION</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><textarea id="description" class="description" name="description"
+                                                              rows="18" cols="50"></textarea></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="label fill">
+                        <div class="label-background">
+                            <p class="label-text">Psychological Data</p>
+                        </div>
+                        <div class="table top right bottom">
+                            <table id="psychological-data" class="GeneratedTable fill">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table id="bonds" class="GeneratedTable fill">
+                                            <tbody>
+                                            <tr>
+                                            <tr>
+                                                <td class="right bottom" style="width: 325%;">
+                                                    <div>11. BONDS</div>
+                                                </td>
+                                                <td class="bottom" style="width: 25%">
+                                                    <div>SCORE</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom"><input class="fill bond" type="text" id="bond-1"
+                                                                                value=""/></td>
+                                                <td class="bottom"><input type="text" class="bond-score" id="bond-1-score" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom"><input class="fill bond" type="text" id="bond-2"
+                                                                                value=""/></td>
+                                                <td class="bottom"><input type="text" class="bond-score" id="bond-2-score" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom"><input class="fill bond" type="text" id="bond-3"
+                                                                                value=""/></td>
+                                                <td class="bottom"><input type="text" class="bond-score" id="bond-3-score" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom"><input class="fill bond" type="text" id="bond-4"
+                                                                                value=""/></td>
+                                                <td class="bottom"><input type="text" class="bond-score" id="bond-4-score" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom"><input class="fillbond " type="text" id="bond-5"
+                                                                                value=""/></td>
+                                                <td class="bottom"><input type="text" class="bond-score" id="bond-5-score" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right bottom"><input class="fill bond" type="text" id="bond-6"
+                                                                                value=""/></td>
+                                                <td class="bottom"><input type="text" class="bond-score" id="bond-6-score" value=""/></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table id="disorders" class="bottom fill">
+                                            <tbody>
+                                            <tr>
+                                                <td class="bottom">
+                                                    <div>12. MOTIVATIONS AND MENTAL DISORDERS</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><textarea id="motivations" name="motivations" rows="22" cols="75"
+                                                              class="fill"></textarea></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table id="san-loss" class="fill">
+                                            <tbody>
+                                            <tr>
+                                                <td class="bottom fill">
+                                                    <div>13. INCIDENTS OF SAN LOSS WITHOUT GOING INSANE</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>Violence</span>
+                                                    <input type="checkbox" id="violence-1" name="violence-1">
+                                                    <input type="checkbox" id="violence-2" name="violence-2">
+                                                    <input type="checkbox" id="violence-3" name="violence-3">
+                                                    <span style="visibility: hidden;">adapted</span>
+                                                    <span>Helplessness</span>
+                                                    <input type="checkbox" id="helplessness-1" name="helplessness-1">
+                                                    <input type="checkbox" id="helplessness-2" name="helplessness-2">
+                                                    <input type="checkbox" id="helplessness-3" name="helplessness-3">
+                                                    <span style="visibility: hidden;">adapted</span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="skills" class="label double-pad">
+            <div class="label-background">
+                <p class="label-text">Applicable Skill Sets</p>
+            </div>
+            <div class="table fill">
+                <table class="skill-table top fill">
+                    <tbody>
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="accounting-check" name="accounting-check"></td>
+                        <td class="right bottom">
+                            <div>Accounting (10%)</div>
+                        </td>
+                        <td class="skill-td right bottom">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="accounting" class="skill" base="10" prof-base="10"
+                                               value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        <td class="bottom"><input type="checkbox" id="history-check" name="history"></td>
+                        <td class="right bottom">
+                            <div>History (10%)</div>
+                        </td>
+                        <td class="skill-td right bottom">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="history" class="skill" base="10" prof-base="10"
+                                               value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td colspan="2" class="right bottom">
+                            <div>Unnatural (0%)</div>
+                        </td>
+                        <td class="skill-td right bottom"><input type="text" class="skill" base="0" prof-base="0"
+                                                                 value="0"/></td>
+                    </tr>
+                    <tr>
+                        <td class="block bottom"><input type="checkbox" id="alertness-check" name="alertness"></td>
+                        <td class="block right bottom">
+                            <div>Alertness (20%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="alertness" class="skill" base="20" prof-base="20"
+                                               value="20"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="block bottom"><input type="checkbox" id="humint-check" name="humint"></td>
+                        <td class="block right bottom">
+                            <div>HUMINT (10%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="humint" class="skill" base="10" prof-base="10"
+                                               value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td colspan="3" class="right bottom">
+                            <div>Foreign Languages and Other Skills:</div>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td class="block bottom"><input type="checkbox" id="anthropology-check" name="anthropology">
+                        </td>
+                        <td class="block right bottom">
+                            <div>Anthropology (0%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="anthropology" class="skill" base="0" prof-base="0"
+                                               value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="block bottom"><input type="checkbox" id="law-check" name="law"></td>
+                        <td class="block right bottom">
+                            <div>Law (0%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="law" class="skill" base="0" prof-base="0" value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="block bottom" rowspan="2"><input type="checkbox"></td>
+                        <td class="block right bottom" rowspan="2"><textarea rows="2"
+                                                                             class="other-skill-name"></textarea></td>
+                        <td class="block right bottom skill-td" rowspan="2">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child">
+                                        <img alt="minus" class="minus dont-print" src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input class="other-skill" type="text"value=""/>
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <img alt="plus" class="plus dont-print" src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td class="block bottom"><input type="checkbox" id="archeology-check" name="archeology"></td>
+                        <td class="block right bottom">
+                            <div>Archeology (0%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="archeology" class="skill" base="0" prof-base="0"
+                                               value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="block bottom"><input type="checkbox" id="medicine-check" name="medicine"></td>
+                        <td class="block right bottom">
+                            <div>Medicine (0%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="medicine" class="skill" base="0" prof-base="0"
+                                               value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td class="block bottom"><input type="checkbox" id="artillery-check" name="artillery"></td>
+                        <td class="block right bottom">
+                            <div>Artillery (0%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="artillery" class="skill" base="0" prof-base="0"
+                                               value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="block bottom"><input type="checkbox" id="melee-weapons-check" name="accounting"></td>
+                        <td class="block right bottom">
+                            <div>Melee Weapons (30%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="melee-weapons" class="skill" base="30" prof-base="30"
+                                               value="30"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="block bottom" rowspan="2"><input type="checkbox"></td>
+                        <td class="block right bottom" rowspan="2"><textarea rows="2"
+                                                                             class="other-skill-name"></textarea></td>
+                        <td class="block right bottom skill-td" rowspan="2"><input class="other-skill" type="text"
+                                                                                   value=""/></td>
+                    </tr>
+
+                    <tr>
+                        <td class="block bottom"><input type="checkbox" id="athletics-check" name="athletics"></td>
+                        <td class="block right bottom">
+                            <div>Athletics (30%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="athletics" class="skill" base="30" prof-base="30"
+                                               value="30"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="block bottom"><input type="checkbox" id="navigate-check" name="pharmacy"></td>
+                        <td class="block right bottom">
+                            <div>Navigate (10%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="navigate" class="skill" base="10" prof-base="10"
+                                               value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td class="block bottom"><input type="checkbox" id="bureaucracy-check" name="accounting"></td>
+                        <td class="block right bottom">
+                            <div>Bureaucracy (10%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="bureaucracy" class="skill" base="10" prof-base="10"
+                                               value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="block bottom"><input type="checkbox" id="occult-check" name="psychotherapy"></td>
+                        <td class="block right bottom">
+                            <div>Occult (10%)</div>
+                        </td>
+                        <td class="block right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="occult" class="skill" base="10" prof-base="10"
+                                               value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="block bottom" rowspan="2"><input type="checkbox"></td>
+                        <td class="block right bottom" rowspan="2"><textarea rows="2"
+                                                                             class="other-skill-name"></textarea></td>
+                        <td class="block right bottom skill-td" rowspan="2"><input class="other-skill" type="text"
+                                                                                   value=""/></td>
+
+                    </tr>
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="computer-science-check" name="computer-science">
+                        </td>
+                        <td class="right bottom">
+                            <div>Computer Science (0%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="computer-science" class="skill" base="0" prof-base="0"
+                                               value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="persuade-check" name="persuade"></td>
+                        <td class="right bottom">
+                            <div>Persuade (20%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="persuade" class="skill" base="20" prof-base="20"
+                                               value="20"/></td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="../resources/plus.png"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td class="bottom"><input type="checkbox" id="criminology-check" name="criminology">
+                        </td>
+                        <td class="right bottom">
+                            <div>Criminology (10%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png"></td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="criminology" class="skill" base="10"
+                                               prof-base="10" value="10"/>
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <img alt="plus" class="plus dont-print" src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="pharmacy-check" name="pharmacy"></td>
+                        <td class="right bottom">
+                            <div>Pharmacy (0%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child">
+                                        <img alt="minus" class="minus dont-print" src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="pharmacy" class="skill" base="0"
+                                               prof-base="0" value="0"/>
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <img alt="plus" class="plus dont-print" src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        <td class="bottom" rowspan="2"><input type="checkbox"></td>
+                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                                                                       class="other-skill-name"></textarea>
+                        </td>
+                        <td class="right bottom skill-td" rowspan="2"><input class="other-skill"
+                                                                             type="text"
+                                                                             value=""/></td>
+                    </tr>
+                    <tr>
+
+                        <td class="bottom"><input type="checkbox" id="demolitions-check"
+                                                  name="demolitions"></td>
+                        <td class="right bottom">
+                            <div>Demolitions (0%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="demolitions" class="skill"
+                                               base="0" prof-base="0" value="0"/>
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <img alt="plus" class="plus dont-print" src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="psychotherapy-check"
+                                                  name="psychotherapy"></td>
+                        <td class="right bottom">
+                            <div>Psychotherapy (10%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="psychotherapy" class="skill"
+                                               base="10" prof-base="10" value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="disguise-check"
+                                                  name="disguise"></td>
+                        <td class="right bottom">
+                            <div>Disguise (10%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="disguise" class="skill" base="10"
+                                               prof-base="10" value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="ride-check" name="ride">
+                        </td>
+                        <td class="right bottom">
+                            <div>Ride (10%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="ride" class="skill" base="10"
+                                               prof-base="10" value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom" rowspan="2"><input type="checkbox"></td>
+                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                                                                       class="other-skill-name"></textarea>
+                        </td>
+                        <td class="right bottom skill-td" rowspan="2"><input class="other-skill"
+                                                                             type="text"
+                                                                             value=""/></td>
+
+                    </tr>
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="dodge-check" name="dodge">
+                        </td>
+                        <td class="right bottom" base="30" prof-base="30">
+                            <div>Dodge (30%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child">
+                                        <img alt="minus" class="minus dont-print" src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="dodge" class="skill" base="30"
+                                               prof-base="30" value="30"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="search-check"
+                                                  name="search"></td>
+                        <td class="right bottom">
+                            <div>Search (20%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="search" class="skill" base="20"
+                                               prof-base="20" value="20"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="drive-check" name="drive">
+                        </td>
+                        <td class="right bottom">
+                            <div>Drive (10%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="drive" class="skill" base="10"
+                                               prof-base="10" value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="sigint-check"
+                                                  name="sigint"></td>
+                        <td class="right bottom">
+                            <div>SIGINT (0%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="sigint" class="skill" base="0"
+                                               prof-base="0" value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom" rowspan="2"><input type="checkbox"></td>
+                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                                                                       class="other-skill-name"></textarea>
+                        </td>
+                        <td class="right bottom skill-td" rowspan="2"><input class="other-skill"
+                                                                             type="text"
+                                                                             value=""/></td>
+
+                    </tr>
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="firearms-check"
+                                                  name="firearms"></td>
+                        <td class="right bottom">
+                            <div>Firearms (20%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="firearms" class="skill" base="20"
+                                               prof-base="20" value="20"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="stealth-check"
+                                                  name="accounting"></td>
+                        <td class="right bottom">
+                            <div>Stealth (10%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="stealth" class="skill" base="10"
+                                               prof-base="10" value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="first-aid-check"
+                                                  name="first-aid"></td>
+                        <td class="right bottom">
+                            <div>First Aid (10%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="first-aid" class="skill"
+                                               base="10" prof-base="10" value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="surgery-check"
+                                                  name="surgery"></td>
+                        <td class="right bottom">
+                            <div>Surgery (0%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="surgery" class="skill" base="0"
+                                               prof-base="0" value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom" rowspan="2"><input type="checkbox"></td>
+                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                                                                       class="other-skill-name"></textarea>
+                        </td>
+                        <td class="right bottom skill-td" rowspan="2"><textarea rows="2"
+                                                                                class="other-skill"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="forensics-check"
+                                                  name="forensics"></td>
+                        <td class="right bottom">
+                            <div>Forensics (0%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="forensics" class="skill" base="0"
+                                               prof-base="0" value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="survival-check"
+                                                  name="accounting"></td>
+                        <td class="right bottom">
+                            <div>Survival (10%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="survival" class="skill" base="10"
+                                               prof-base="10" value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="heavy-machinery-check"
+                                                  name="heavy-machinery"></td>
+                        <td class="right bottom">
+                            <div>Heavy Machinery (10%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="heavy-machinery" class="skill"
+                                               base="10" prof-base="10" value="10"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="swim-check"
+                                                  name="accounting"></td>
+                        <td class="right bottom">
+                            <div>Swim (20%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="swim" class="skill" base="20"
+                                               prof-base="20" value="20"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom" rowspan="2"><input type="checkbox"></td>
+                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                                                                       class="other-skill-name"></textarea>
+                        </td>
+                        <td class="right bottom skill-td" rowspan="2"><input class="other-skill"
+                                                                             type="text"
+                                                                             value=""/></td>
+                    </tr>
+                    <tr>
+                        <td class="bottom"><input type="checkbox" id="heavy-weapons-check"
+                                                  name="heavy-weapons"></td>
+                        <td class="right bottom">
+                            <div>Heavy Weapons (0%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="heavy-weapons" class="skill"
+                                               base="0" prof-base="0" value="0"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="bottom"><input type="checkbox" id="unarmed-check"
+                                                  name="unarmed"></td>
+                        <td class="right bottom">
+                            <div>Unarmed Combat (40%)</div>
+                        </td>
+                        <td class="right bottom skill-td">
+                            <table class="skill-table fill">
+                                <tbody>
+                                <tr class="skill-tr">
+                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"
+                                                                    src="../resources/minus.png">
+                                    </td>
+                                    <td class="skill-td-child">
+                                        <input type="text" id="unarmed" class="skill" base="40"
+                                               prof-base="40" value="40"/>
+                                    </td>
+                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"
+                                                                    src="../resources/plus.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="large-font dont-print red"><span id="numIncrease">8</span> skill increases remaining</div>
+        <div>Check a box when you attempt to use a skill and fail. After the session, add 1D4−1 to each checked skill
+            and erase all checks.
+        </div>
+        <div id="injuries" class="label pad">
+            <div class="label-background">
+                <p class="label-text">Injuries</p>
+            </div>
+            <div class="table">
+                <table class="GeneratedTable top right fill">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div>14. WOUNDS AND AILMENTS</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <textarea id="wounds" name="wounds" rows="5" cols="50">
+                                            </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="top">
+                            <span>Has First Aid been attempted since the last injury?</span>
+                            <input type="checkbox">
+                            <span>yes: only Medicine, Surgery, or long-term rest can help further</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="equipment" class="label top pad">
+            <div class="label-background">
+                <p class="label-text">Equipment</p>
+            </div>
+            <div class="table">
+                <table class="GeneratedTable top fill">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <table class="fill right">
+                                <tbody>
+                                <tr>
+                                    <td class="fill">
+                                        <div>15. ARMOR AND GEAR</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fill"><textarea class="fill" id="gear" name="gear" rows="20"
+                                                               cols="50"></textarea></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="top bottom right">Body armor reduces the damage of all attacks except Called
+                                Shots and successful Lethality rolls.
+                            </div>
+                        </td>
+                    <tr>
+                        <td>
+                            <table class="fill">
+                                <tbody class="bottom-children right-children">
+                                <tr>
+                                    <td>
+                                        <div>16.</div>
+                                    </td>
+                                    <td>
+                                        <div>WEAPONS</div>
+                                    </td>
+                                    <td>
+                                        <div>SKILL %</div>
+                                    </td>
+                                    <td>
+                                        <div>BASE RANGE</div>
+                                    </td>
+                                    <td>
+                                        <div>DAMAGE</div>
+                                    </td>
+                                    <td>
+                                        <div>ARMOR PIERCING</div>
+                                    </td>
+                                    <td>
+                                        <div>LETHALITY %</div>
+                                    </td>
+                                    <td>
+                                        <div>KILL RADIUS</div>
+                                    </td>
+                                    <td>
+                                        <div>AMMO</div>
+                                    </td>
+                                </tr>
+                                <tr id="weapon-row-a" class="weapon-row">
+                                    <td class="weapon-select-row">
+                                        <div>(a)<select class="weapon-select dont-print" name="weapon-select" id="weapon-a"></select></div>
+                                    </td>
+                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                </tr>
+                                <tr id="weapon-row-b" class="weapon-row">
+                                    <td class="weapon-select-row">
+                                        <div>(b)<select class="weapon-select dont-print" name="weapon-select" id="weapon-b"></select></div>
+                                    </td>
+                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                </tr>
+                                <tr id="weapon-row-c" class="weapon-row">
+                                    <td class="weapon-select-row">
+                                        <div>(c)<select class="weapon-select dont-print" name="weapon-select" id="weapon-c"></select></div>
+                                    </td>
+                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                </tr>
+                                <tr id="weapon-row-d" class="weapon-row">
+                                    <td class="weapon-select-row">
+                                        <div>(d)<select class="weapon-select dont-print" name="weapon-select" id="weapon-d"></select></div>
+                                    </td>
+                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                </tr>
+                                <tr id="weapon-row-e" class="weapon-row">
+                                    <td class="weapon-select-row">
+                                        <div>(e)<select class="weapon-select dont-print" name="weapon-select" id="weapon-e"></select></div>
+                                    </td>
+                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                </tr>
+                                <tr id="weapon-row-f" class="weapon-row">
+                                    <td class="weapon-select-row">
+                                        <div>(f)<select class="weapon-select dont-print" name="weapon-select" id="weapon-f"></select></div>
+                                    </td>
+                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                </tr>
+                                <tr id="weapon-row-g" class="weapon-row">
+                                    <td class="weapon-select-row">
+                                        <div>(g)<select class="weapon-select dont-print" name="weapon-select" id="weapon-g"></select></div>
+                                    </td>
+                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="remarks" class="label pad">
+            <div class="label-background">
+                <p class="label-text">Remarks</p>
+            </div>
+            <div class="table">
+                <table class="GeneratedTable fill top">
+                    <tbody>
+                    <tr>
+                        <td class="half right">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div>17. PERSONAL DETAILS AND NOTES</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea id="notes" name="notes" rows="23" cols="75"></textarea>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td class="fill-height right" id="home-and-special-training">
+                            <table class="fill-height fill">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table class="fill">
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div>18. DEVELOPMENTS WHICH AFFECT HOME AND FAMILY</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><textarea id="home" name="home" rows="15" cols="75"></textarea></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fill">
+                                        <table class="fill top">
+                                            <tbody>
+                                            <tr>
+                                                <td class="right">
+                                                    <div>19. SPECIAL TRAINING</div>
+                                                </td>
+                                                <td>
+                                                    <div>SKILL OR STAT USED</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="half right bottom top"><input class="fill" type="text"
+                                                                                         value=""/></td>
+                                                <td class="half bottom top"><input class="fill" type="text" value=""/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="half right bottom"><input class="fill" type="text" value=""/>
+                                                </td>
+                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="half right bottom"><input class="fill" type="text" value=""/>
+                                                </td>
+                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="half right bottom"><input class="fill" type="text" value=""/>
+                                                </td>
+                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="half right bottom"><input class="fill" type="text" value=""/>
+                                                </td>
+                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="half right"><input class="fill" type="text" value=""/></td>
+                                                <td class="half"><input class="fill" type="text" value=""/></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="fill">
+                        <td colspan="2" class="fill top bottom right">
+                            <div class="fill">Please indicate why this agent was recruited and why the agent agreed to
+                                be recruited.
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <table class="fill pad">
+            <tbody>
+            <tr>
+                <td class="top right left half">
+                    <div>20. AUTHORIZING OFFICER</div>
+                </td>
+                <td class="top right half">
+                    <div>21. AGENT SIGNATURE</div>
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td class="top right left bottom half fill"><input class="fill" type="text" value=""/></td>
+                <td class="top right bottom half fill"><input class="fill" type="text" value=""/></td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="bottom-banner" class="bottom-banner">
+            <img src="../resources/char-sheet-bottom.png" alt="Delta Green" width="1290" height="84">
+        </div>
+    </div>
+</form>
+</body>
+</html>
