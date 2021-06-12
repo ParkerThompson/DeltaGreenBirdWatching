@@ -252,7 +252,7 @@ function setScoreListener(score) {
 
 function updateScore(scoreName, score) {
     const fivex = document.querySelector("#" + scoreName + "-x5");
-    fivex.innerText = score.value * 5
+    fivex.innerText = parseInt(score) * 5
 }
 
 function setPowListener() {
