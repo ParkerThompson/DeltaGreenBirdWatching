@@ -64,11 +64,10 @@ span {
 }
 
 .professionBtn {
-    border-radius: 8px;
     background-color: black;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 2px 1px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
