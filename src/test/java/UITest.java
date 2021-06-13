@@ -2607,7 +2607,9 @@ public class UITest {
                     defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, CRIMINOLOGY, DISGUISE, DRIVE, FIREARMS,
                             HUMINT, PERSUADE, SIGINT, STEALTH, UNARMED_COMBAT
                     );
-
+//                    ALERTNESS, BUREAUCRACY, CRIMINOLOGY, DISGUISE, DRIVE, FIREARMS, HUMINT, PERSUADE, SIGINT, STEALTH, UNARMED COMBAT
+//                    intelligencecase-officer;
+//                    alertness 50,bureaucracy 40,criminology 50,disguise 50,drive 40,firearms 40,foreign-language 50,foreign-language 40,humint 60,persuade 60,sigint 40,stealth 50,unarmed-combat 50;50
                     inputSkills = Arrays.asList(
                             WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)",
                             WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)"
@@ -2707,6 +2709,18 @@ public class UITest {
                     );
                     optionalSkills = Arrays.asList(DRIVE, FORENSICS, NAVIGATE, PSYCHOTHERAPY, SEARCH);
                     expectedSize = 10;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                case "Lawyer":
+                    defaultSkills = Arrays.asList(ACCOUNTING, BUREAUCRACY, HUMINT, PERSUADE
+                    );
+                    optionalSkills = Arrays.asList(COMPUTER_SCIENCE, CRIMINOLOGY, LAW, PHARMACY);
+                    expectedSize = 8;
                     noSkills = new ArrayList<>(ALL_SKILLS);
                     noSkills.removeAll(defaultSkills);
                     noSkills.removeAll(optionalSkills);

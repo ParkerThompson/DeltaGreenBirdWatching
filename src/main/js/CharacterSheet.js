@@ -379,7 +379,7 @@ function setModalListener() {
     for (i = 0; i < confirmButtons.length; i++) {
         confirmButtons[i].onclick = function (event) {
             document.getElementById("professions").value = event.target.getAttribute("name");
-            document.getElementById("profession").value = event.target.getAttribute("name").toTitleCase();
+            document.getElementById("profession").value = event.target.getAttribute("name").replaceAll("-", " ").toTitleCase();
             modal.style.display = "none";
             let skillMap = getAllModalSkills(event.srcElement.getAttribute("name"));
             skillMap.forEach(setSkill);
