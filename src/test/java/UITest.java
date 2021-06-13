@@ -2561,6 +2561,8 @@ public class UITest {
                             WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)",
                             WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)"
                     );
+//                    ccounting 40%»Anthropology 40%»Bureaucracy 60%»Foreign Language (choose one) 50%»Foreign Language (choose one) 50%»Foreign Language (choose one) 40%»
+//                    History 40%»HUMINT 50%»Law 40%»Persuade 50
                     expectedSize = 10;
                     noSkills = new ArrayList<>(ALL_SKILLS);
                     noSkills.removeAll(defaultSkills);
@@ -2603,7 +2605,7 @@ public class UITest {
                     assertThat(skills.size()).isEqualTo(expectedSize);
                     assertThat(listContainsOtherSkillsByRegex(new ArrayList<>(inputSkills), skills)).isTrue();
                     break;
-                case "Intelligence Officer":
+                case "Intelligence Case Officer":
                     defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, CRIMINOLOGY, DISGUISE, DRIVE, FIREARMS,
                             HUMINT, PERSUADE, SIGINT, STEALTH, UNARMED_COMBAT
                     );
@@ -2615,7 +2617,7 @@ public class UITest {
                             WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)"
                     );
 
-                    expectedSize = 11;
+                    expectedSize = 13;
                     noSkills = new ArrayList<>(ALL_SKILLS);
                     noSkills.removeAll(defaultSkills);
                     assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
@@ -2627,7 +2629,7 @@ public class UITest {
                 case "Media Specialist":
                     defaultSkills = Arrays.asList(HISTORY, HUMINT, PERSUADE
                     );
-                    optionalSkills = Arrays.asList(LAW, ARCHEOLOGY, BUREAUCRACY, COMPUTER_SCIENCE);
+                    optionalSkills = Arrays.asList(ANTHROPOLOGY, CRIMINOLOGY, OCCULT, LAW, ARCHEOLOGY, BUREAUCRACY, COMPUTER_SCIENCE);
                     inputSkills = Collections.singletonList(
                             WordUtils.capitalizeFully(ART.replaceAll("-", " ")) + " \\(\\w*\\)"
                     );
@@ -2660,14 +2662,15 @@ public class UITest {
                     defaultSkills = Arrays.asList(ACCOUNTING, BUREAUCRACY, COMPUTER_SCIENCE, CRIMINOLOGY, HISTORY,
                             LAW, PERSUADE
                             );
+                    optionalSkills = Arrays.asList(ANTHROPOLOGY);
                     inputSkills = Collections.singletonList(
                             WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)"
                     );
                     expectedSize = 9;
                     noSkills = new ArrayList<>(ALL_SKILLS);
                     noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
                     assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
-//                    "anthropology"]
                     assertThat(skills).doesNotContainAnyElementsOf(noSkills);
                     assertThat(skills.size()).isEqualTo(expectedSize);
                     assertThat(listContainsOtherSkillsByRegex(new ArrayList<>(inputSkills), skills)).isTrue();

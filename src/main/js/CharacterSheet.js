@@ -5,11 +5,11 @@ const inputSkills = new Map([
     ["military-science", ["Land", "Air", "Sea"]],
     ["pilot", ["Airplane", "Drone", "Helicopter", "Small Boat", "Ship"]],
     ["science", ["Astronomy", "Biology", "Botany", "Chemistry", "Engineering", "Genetics", "Geology", "Mathematics",
-    "Meteorology", "Physics", "Planetology", "Zoology"]],
+        "Meteorology", "Physics", "Planetology", "Zoology"]],
     ["foreign-language", ["Spanish", "German", "Japanese", "Hindi", "Arabic", "Cantonese", "Mandarin", "Bengali",
-    "Portuguese","Vietnamese", "Urdu", "Korean", "Turkish", "Russian", "French", "Italian"]]
+        "Portuguese","Vietnamese", "Urdu", "Korean", "Turkish", "Russian", "French", "Italian"]]
 
-    ]);
+]);
 let male_names = [];
 let female_names = [];
 let last_names = [];
@@ -74,66 +74,66 @@ Array.prototype.random = function () {
 
 weapons = new Map([
     ['Hand-to-Hand Weapons', new Map([
-            ['unarmed', {weapon_name: 'Unarmed Attack', skill: 'unarmed', damage: '1D4-1', armor_piercing: 'N/A', expense: "None"}],
-            ['brass_knuckles', {weapon_name: 'Brass knuckles, heavy flashlight, or steel-toe boots', skill: 'unarmed', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['garotte', {weapon_name: 'Garotte', skill: 'unarmed', damage: 'special', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['knife', {weapon_name: 'Knife', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['hatchet', {weapon_name: 'Hatchet', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['combat_dagger', {weapon_name: 'Large knife or combat dagger', skill: 'melee-weapons', damage: '1D6', armor_piercing: '3', expense: "Incidental"}],
-            ['club', {weapon_name: 'Club, nightstick, baton,  or collapsible baton', skill: 'melee-weapons', damage: '1D6', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['sword', {weapon_name: 'Machete, tomahawk, or sword', skill: 'melee-weapons', damage: '1D8', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['bat', {weapon_name: 'Baseball bat or rifle butt', skill: 'melee-weapons', damage: '1D8', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['spear', {weapon_name: 'Spear or fixed bayonet', skill: 'melee-weapons', damage: '1D8', armor_piercing: '3', expense: "Incidental"}],
-            ['axe', {weapon_name: 'Wood axe', skill: 'melee-weapons', damage: '1D10', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['large_sword', {weapon_name: 'Large sword', skill: 'melee-weapons', damage: '1D10', armor_piercing: 'N/A', expense: "Standard"}],
-            ['two_handed_sword', {weapon_name: 'Two-handed sword', skill: 'melee-weapons', damage: '1D12', armor_piercing: 'N/A', expense: "Standard"}]])
-        ],
-        ['Non Lethal Weapons',new Map([
-            ['pepper_spray_keychain', {weapon_name: 'Tear Gas and Pepper Spray', skill: 'dex', range: '1m', uses: '1', radius: '1 target', damage: '-20% penalty', expense: "Incidental"}],
-            ['pepper_spray_can', {weapon_name: 'Tear Gas and Pepper Spray', skill: 'dex', range: '3m', uses: '12', radius: '2 targets', damage: '-20% penalty', expense: "Incidental"}],
-            ['tear_gas', {weapon_name: 'Tear gas grenade (Thrown/Launched)', skill: 'athletics/heavy-weapons', range: '20m/50m', uses: '1', radius: '10 m', damage: '-40% penalty', expense: "Incidental"}],
-            ['stun_grenade', {weapon_name: 'Stun Grenade (Thrown/Launched)', skill: 'athletics/heavy-weapons', range: '20m/50m', uses: '1', radius: '10 m', damage: '-40% penalty', expense: "Incidental"}],
-            ['stun_gun', {weapon_name: 'Stun gun', skill: 'dex', range: '1m', uses: '10', damage: '-20% penalty', expense: "Incidental"}],
-            ['shock_baton', {weapon_name: 'Shock baton', skill: 'dex', range: '1m', uses: '200', damage: '-20% penalty', expense: "Incidental"}],
-            ['ced_pistol', {weapon_name: 'CED pistol', skill: 'firearms', range: '4m', uses: '4', damage: '-20% penalty', expense: "Standard"}]])
-        ],
-        ['Firearms',new Map([
-            ['light_pistol', {weapon_name: 'Light pistol', skill: 'firearms', range: '10m', damage: '1D8', lethality: 'N/A', ammo_capacity: '7', armor_piercing: 'N/A', expense: "Standard"}],
-            ['medium_pistol', {weapon_name: 'Medium pistol', skill: 'firearms', range: '15m', damage: '1D10', lethality: 'N/A', ammo_capacity: '15', armor_piercing: 'N/A', expense: "Standard"}],
-            ['heavy_pistol', {weapon_name: 'Heavy pistol', skill: 'firearms', range: '20m', damage: '1D12', lethality: 'N/A', ammo_capacity: '10', armor_piercing: 'N/A', expense: "Standard"}],
-            ['shotgun', {weapon_name: 'Shotgun (slug/shot/nonlethal)', skill: 'firearms', range: '75m/50m/10m', damage: '2D6/2D10/1D6 and stunned', lethality: 'N/A', ammo_capacity: '5', armor_piercing: 'N/A', expense: "Standard"}],
-            ['light_rifle', {weapon_name: 'Light Rifle or Carbine', skill: 'firearms', range: '100m', damage: '1D12', lethality: '10%', ammo_capacity: '10 or 30', armor_piercing: '3', expense: "Standard"}],
-            ['smg', {weapon_name: 'Submachine gun (SMG)', skill: 'firearms', range: '50m', damage: '1D10', lethality: '10%', ammo_capacity: '30', armor_piercing: 'N/A', expense: "Unusual"}],
-            ['heavy_rifle', {weapon_name: 'Heavy Rifle', skill: 'firearms', range: '150m', damage: '1D12+2', lethality: '10%', ammo_capacity: '10 or 20', armor_piercing: '5', expense: "Unusual"}],
-            ['very_heavy_rifle', {weapon_name: 'Very Heavy Rifle', skill: 'firearms', range: '250m', damage: 'N/A', lethality: '20%', ammo_capacity: '10', armor_piercing: '5', expense: "Major"}]])
-        ],
-        ['Heavy Weapons',new Map([
-            ['hand_grenade', {weapon_name: 'Hand Grenade', skill: 'athletics', range: '20m', lethality: '15%', kill_radius: '10m', ammo_capacity: 'N/A', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['rpg', {weapon_name: 'Rocket-propelled grenade launcher (RPG)', skill: 'heavy-weapons', range: '10m', lethality: '30%', kill_radius: '10m', ammo_capacity: '1', armor_piercing: '20', expense: "Standard"}],
-            ['flamethrower', {weapon_name: 'Handheld flamethrower', skill: 'heavy-weapons', range: '5m', lethality: '10%', kill_radius: '1m', ammo_capacity: '20', armor_piercing: 'N/A', expense: "Unusual"}],
-            ['military_flamethrower', {weapon_name: 'Military flamethrower', skill: 'heavy-weapons', range: '10m', lethality: '10%', kill_radius: '2m', ammo_capacity: '5', armor_piercing: 'N/A', expense: "Unusual"}],
-            ['machine_gun', {weapon_name: 'General-purpose machine gun (GPMP)', skill: 'heavy-weapons', range: '300m', lethality: '15%', kill_radius: 'per burst', ammo_capacity: '100', armor_piercing: 'N/A', expense: "Major"}],
-            ['grenade_launcher', {weapon_name: 'Grenade launcher (GL)', skill: 'heavy-weapons', range: '150m', lethality: '15%', kill_radius: '10m', ammo_capacity: '1', armor_piercing: 'N/A', expense: "Major"}],
-            ['grenade_machine_gun', {weapon_name: 'Grenade machine gun (GMG)', skill: 'heavy-weapons', range: '300m', lethality: '15%', kill_radius: '10m', ammo_capacity: '30', armor_piercing: 'N/A', expense: "Major"}],
-            ['heavy_machine_gun', {weapon_name: 'Heavy machine gun (HMG)', skill: 'heavy-weapons', range: '400m', lethality: '20%', kill_radius: 'per burst', ammo_capacity: '100', armor_piercing: '5', expense: "Major"}],
-            ['light_machine_gun', {weapon_name: 'Light machine gun (LMG)', skill: 'heavy-weapons', range: '200m', lethality: '10%', kill_radius: 'per burst', ammo_capacity: '100 or 200', armor_piercing: '3', expense: "Major"}],
-            ['autocannon', {weapon_name: 'Autocannon', skill: 'heavy-weapons', range: '400m', lethality: '30%', kill_radius: '3m', ammo_capacity: '100', armor_piercing: '5', expense: "Extreme"}],
-            ['minigun', {weapon_name: 'Minigun', skill: 'heavy-weapons', range: '300m', lethality: '20%', kill_radius: '3m (long spray only)', ammo_capacity: '4000', armor_piercing: '5', expense: "Extreme"}]])
-        ],
-        ['Demolitions',new Map([
-            ['anfo_explosive', {weapon_name: 'ANFO explosive', skill: 'demolitions', lethality: '30%', kill_radius: '20m', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['c4', {weapon_name: 'C4 plastic explosive block', skill: 'demolitions', lethality: '30%', kill_radius: '2m', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['ied', {weapon_name: 'Improvised explosive device (IED)', skill: 'demolitions', lethality: '15%', kill_radius: '10m', armor_piercing: 'N/A', expense: "Incidental"}],
-            ['large_ied', {weapon_name: 'Large IED', skill: 'demolitions', lethality: '60%', kill_radius: '75m', armor_piercing: 'N/A', expense: "Standard"}],
-            ['mine', {weapon_name: 'Explosively-formed penetrator mine', skill: 'demolitions', lethality: '25%', kill_radius: '10m', armor_piercing: '20', expense: "Standard"}]])
-        ],
-        ['Artillery', new Map([
-            ['bomb', {weapon_name: 'General-purpose bomb', skill: 'artillery', range: 'Air-dropped', lethality: '70%', kill_radius: '100m', ammo_capacity: 'N/A', armor_piercing: '10', expense: "Unusual"}],
-            ['heavy_mortar', {weapon_name: 'Heavy mortar', skill: 'artillery', range: '4km', lethality: '35%', kill_radius: '50m', ammo_capacity: '1', armor_piercing: '5', expense: "Major"}],
-            ['light_mortar', {weapon_name: 'Light mortar', skill: 'artillery', range: '2km', lethality: '20%', kill_radius: '25m', ammo_capacity: '1', armor_piercing: '10', expense: "Major"}],
-            ['anti_tank_missle', {weapon_name: 'Anti-tank guided missile (ATGM)', range: '4km', skill: 'artillery', lethality: '35%', kill_radius: '50m', ammo_capacity: 'N/A', armor_piercing: '25', expense: "Unusual"}],
-            ['artillery', {weapon_name: 'Artillery', skill: 'artillery', range: '5km', lethality: '50%', kill_radius: '100m', ammo_capacity: '1', armor_piercing: '10', expense: "Extreme"}],
-            ['cruise_missile', {weapon_name: 'Cruise Missile', skill: 'artillery', range: '100km', lethality: '80%', kill_radius: '150m', ammo_capacity: 'N/A', armor_piercing: '15', expense: "Extreme"}]])
+        ['unarmed', {weapon_name: 'Unarmed Attack', skill: 'unarmed', damage: '1D4-1', armor_piercing: 'N/A', expense: "None"}],
+        ['brass_knuckles', {weapon_name: 'Brass knuckles, heavy flashlight, or steel-toe boots', skill: 'unarmed', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['garotte', {weapon_name: 'Garotte', skill: 'unarmed', damage: 'special', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['knife', {weapon_name: 'Knife', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['hatchet', {weapon_name: 'Hatchet', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['combat_dagger', {weapon_name: 'Large knife or combat dagger', skill: 'melee-weapons', damage: '1D6', armor_piercing: '3', expense: "Incidental"}],
+        ['club', {weapon_name: 'Club, nightstick, baton,  or collapsible baton', skill: 'melee-weapons', damage: '1D6', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['sword', {weapon_name: 'Machete, tomahawk, or sword', skill: 'melee-weapons', damage: '1D8', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['bat', {weapon_name: 'Baseball bat or rifle butt', skill: 'melee-weapons', damage: '1D8', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['spear', {weapon_name: 'Spear or fixed bayonet', skill: 'melee-weapons', damage: '1D8', armor_piercing: '3', expense: "Incidental"}],
+        ['axe', {weapon_name: 'Wood axe', skill: 'melee-weapons', damage: '1D10', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['large_sword', {weapon_name: 'Large sword', skill: 'melee-weapons', damage: '1D10', armor_piercing: 'N/A', expense: "Standard"}],
+        ['two_handed_sword', {weapon_name: 'Two-handed sword', skill: 'melee-weapons', damage: '1D12', armor_piercing: 'N/A', expense: "Standard"}]])
+    ],
+    ['Non Lethal Weapons',new Map([
+        ['pepper_spray_keychain', {weapon_name: 'Tear Gas and Pepper Spray', skill: 'dex', range: '1m', uses: '1', radius: '1 target', damage: '-20% penalty', expense: "Incidental"}],
+        ['pepper_spray_can', {weapon_name: 'Tear Gas and Pepper Spray', skill: 'dex', range: '3m', uses: '12', radius: '2 targets', damage: '-20% penalty', expense: "Incidental"}],
+        ['tear_gas', {weapon_name: 'Tear gas grenade (Thrown/Launched)', skill: 'athletics/heavy-weapons', range: '20m/50m', uses: '1', radius: '10 m', damage: '-40% penalty', expense: "Incidental"}],
+        ['stun_grenade', {weapon_name: 'Stun Grenade (Thrown/Launched)', skill: 'athletics/heavy-weapons', range: '20m/50m', uses: '1', radius: '10 m', damage: '-40% penalty', expense: "Incidental"}],
+        ['stun_gun', {weapon_name: 'Stun gun', skill: 'dex', range: '1m', uses: '10', damage: '-20% penalty', expense: "Incidental"}],
+        ['shock_baton', {weapon_name: 'Shock baton', skill: 'dex', range: '1m', uses: '200', damage: '-20% penalty', expense: "Incidental"}],
+        ['ced_pistol', {weapon_name: 'CED pistol', skill: 'firearms', range: '4m', uses: '4', damage: '-20% penalty', expense: "Standard"}]])
+    ],
+    ['Firearms',new Map([
+        ['light_pistol', {weapon_name: 'Light pistol', skill: 'firearms', range: '10m', damage: '1D8', lethality: 'N/A', ammo_capacity: '7', armor_piercing: 'N/A', expense: "Standard"}],
+        ['medium_pistol', {weapon_name: 'Medium pistol', skill: 'firearms', range: '15m', damage: '1D10', lethality: 'N/A', ammo_capacity: '15', armor_piercing: 'N/A', expense: "Standard"}],
+        ['heavy_pistol', {weapon_name: 'Heavy pistol', skill: 'firearms', range: '20m', damage: '1D12', lethality: 'N/A', ammo_capacity: '10', armor_piercing: 'N/A', expense: "Standard"}],
+        ['shotgun', {weapon_name: 'Shotgun (slug/shot/nonlethal)', skill: 'firearms', range: '75m/50m/10m', damage: '2D6/2D10/1D6 and stunned', lethality: 'N/A', ammo_capacity: '5', armor_piercing: 'N/A', expense: "Standard"}],
+        ['light_rifle', {weapon_name: 'Light Rifle or Carbine', skill: 'firearms', range: '100m', damage: '1D12', lethality: '10%', ammo_capacity: '10 or 30', armor_piercing: '3', expense: "Standard"}],
+        ['smg', {weapon_name: 'Submachine gun (SMG)', skill: 'firearms', range: '50m', damage: '1D10', lethality: '10%', ammo_capacity: '30', armor_piercing: 'N/A', expense: "Unusual"}],
+        ['heavy_rifle', {weapon_name: 'Heavy Rifle', skill: 'firearms', range: '150m', damage: '1D12+2', lethality: '10%', ammo_capacity: '10 or 20', armor_piercing: '5', expense: "Unusual"}],
+        ['very_heavy_rifle', {weapon_name: 'Very Heavy Rifle', skill: 'firearms', range: '250m', damage: 'N/A', lethality: '20%', ammo_capacity: '10', armor_piercing: '5', expense: "Major"}]])
+    ],
+    ['Heavy Weapons',new Map([
+        ['hand_grenade', {weapon_name: 'Hand Grenade', skill: 'athletics', range: '20m', lethality: '15%', kill_radius: '10m', ammo_capacity: 'N/A', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['rpg', {weapon_name: 'Rocket-propelled grenade launcher (RPG)', skill: 'heavy-weapons', range: '10m', lethality: '30%', kill_radius: '10m', ammo_capacity: '1', armor_piercing: '20', expense: "Standard"}],
+        ['flamethrower', {weapon_name: 'Handheld flamethrower', skill: 'heavy-weapons', range: '5m', lethality: '10%', kill_radius: '1m', ammo_capacity: '20', armor_piercing: 'N/A', expense: "Unusual"}],
+        ['military_flamethrower', {weapon_name: 'Military flamethrower', skill: 'heavy-weapons', range: '10m', lethality: '10%', kill_radius: '2m', ammo_capacity: '5', armor_piercing: 'N/A', expense: "Unusual"}],
+        ['machine_gun', {weapon_name: 'General-purpose machine gun (GPMP)', skill: 'heavy-weapons', range: '300m', lethality: '15%', kill_radius: 'per burst', ammo_capacity: '100', armor_piercing: 'N/A', expense: "Major"}],
+        ['grenade_launcher', {weapon_name: 'Grenade launcher (GL)', skill: 'heavy-weapons', range: '150m', lethality: '15%', kill_radius: '10m', ammo_capacity: '1', armor_piercing: 'N/A', expense: "Major"}],
+        ['grenade_machine_gun', {weapon_name: 'Grenade machine gun (GMG)', skill: 'heavy-weapons', range: '300m', lethality: '15%', kill_radius: '10m', ammo_capacity: '30', armor_piercing: 'N/A', expense: "Major"}],
+        ['heavy_machine_gun', {weapon_name: 'Heavy machine gun (HMG)', skill: 'heavy-weapons', range: '400m', lethality: '20%', kill_radius: 'per burst', ammo_capacity: '100', armor_piercing: '5', expense: "Major"}],
+        ['light_machine_gun', {weapon_name: 'Light machine gun (LMG)', skill: 'heavy-weapons', range: '200m', lethality: '10%', kill_radius: 'per burst', ammo_capacity: '100 or 200', armor_piercing: '3', expense: "Major"}],
+        ['autocannon', {weapon_name: 'Autocannon', skill: 'heavy-weapons', range: '400m', lethality: '30%', kill_radius: '3m', ammo_capacity: '100', armor_piercing: '5', expense: "Extreme"}],
+        ['minigun', {weapon_name: 'Minigun', skill: 'heavy-weapons', range: '300m', lethality: '20%', kill_radius: '3m (long spray only)', ammo_capacity: '4000', armor_piercing: '5', expense: "Extreme"}]])
+    ],
+    ['Demolitions',new Map([
+        ['anfo_explosive', {weapon_name: 'ANFO explosive', skill: 'demolitions', lethality: '30%', kill_radius: '20m', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['c4', {weapon_name: 'C4 plastic explosive block', skill: 'demolitions', lethality: '30%', kill_radius: '2m', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['ied', {weapon_name: 'Improvised explosive device (IED)', skill: 'demolitions', lethality: '15%', kill_radius: '10m', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['large_ied', {weapon_name: 'Large IED', skill: 'demolitions', lethality: '60%', kill_radius: '75m', armor_piercing: 'N/A', expense: "Standard"}],
+        ['mine', {weapon_name: 'Explosively-formed penetrator mine', skill: 'demolitions', lethality: '25%', kill_radius: '10m', armor_piercing: '20', expense: "Standard"}]])
+    ],
+    ['Artillery', new Map([
+        ['bomb', {weapon_name: 'General-purpose bomb', skill: 'artillery', range: 'Air-dropped', lethality: '70%', kill_radius: '100m', ammo_capacity: 'N/A', armor_piercing: '10', expense: "Unusual"}],
+        ['heavy_mortar', {weapon_name: 'Heavy mortar', skill: 'artillery', range: '4km', lethality: '35%', kill_radius: '50m', ammo_capacity: '1', armor_piercing: '5', expense: "Major"}],
+        ['light_mortar', {weapon_name: 'Light mortar', skill: 'artillery', range: '2km', lethality: '20%', kill_radius: '25m', ammo_capacity: '1', armor_piercing: '10', expense: "Major"}],
+        ['anti_tank_missle', {weapon_name: 'Anti-tank guided missile (ATGM)', range: '4km', skill: 'artillery', lethality: '35%', kill_radius: '50m', ammo_capacity: 'N/A', armor_piercing: '25', expense: "Unusual"}],
+        ['artillery', {weapon_name: 'Artillery', skill: 'artillery', range: '5km', lethality: '50%', kill_radius: '100m', ammo_capacity: '1', armor_piercing: '10', expense: "Extreme"}],
+        ['cruise_missile', {weapon_name: 'Cruise Missile', skill: 'artillery', range: '100km', lethality: '80%', kill_radius: '150m', ammo_capacity: 'N/A', armor_piercing: '15', expense: "Extreme"}]])
     ]]);
 let nationalities = ["American", "Chinese", "Irish", "Indian", "British", "Japenese", "Russian", "Turkish", "German", "Brazian",
     "Canadian",  "Arab", "Korean", "Indonesian", "Spanish", "Thai", "Australian", "French", "Mexican", "Malaysian",
@@ -177,7 +177,7 @@ function weaponSelectListener(option) {
     row.getElementsByClassName("weapon-lethality")[0].value = "";
     row.getElementsByClassName("weapon-kill-radius")[0].value = "";
     row.getElementsByClassName("weapon-ammo")[0].value = "";
-    weapons.forEach((value, key) => {
+    weapons.forEach((value) => {
         if(value.has(option.value)) {
             let weapon = value.get(option.value);
             row.getElementsByClassName("weapon-name")[0].value = weapon.weapon_name !== undefined ? weapon.weapon_name: "";
@@ -190,8 +190,8 @@ function weaponSelectListener(option) {
                 row.getElementsByClassName("weapon-skill")[0].value = skill;
             } else {
                 let skill = document.getElementById(weapon.skill);
-                let skillValue = skill === null ? document.getElementById(weapon.skill + "-x5").innerText : skill.value;
-                row.getElementsByClassName("weapon-skill")[0].value = skillValue
+                row.getElementsByClassName("weapon-skill")[0].value = skill === null
+                    ? document.getElementById(weapon.skill + "-x5").innerText : skill.value
             }
             row.getElementsByClassName("weapon-range")[0].value = weapon.range !== undefined ? weapon.range: "";
             row.getElementsByClassName("weapon-damage")[0].value = weapon.damage !== undefined ? weapon.damage: "";
@@ -246,7 +246,6 @@ function setScoreListeners() {
 
 function setScoreListener(score) {
     const input = document.querySelector("#" + score + "-score");
-    const fivex = document.querySelector("#" + score + "-x5");
     input.addEventListener("change", function (event) {
         updateScore(event.target.id.split("-")[0], input.value)
     });
@@ -259,9 +258,6 @@ function updateScore(scoreName, score) {
 
 function setPowListener() {
     const pow = document.querySelector("#pow-score");
-    const wp = document.querySelector("#wp-max");
-    const san = document.querySelector("#san-curr");
-    const bp = document.querySelector("#bp-max");
     pow.addEventListener("change", updatePow);
 }
 
@@ -344,7 +340,7 @@ function addOtherSkill(skillName, skillValue) {
     const skillNames = document.getElementsByClassName("other-skill-name");
     const skills = document.getElementsByClassName("other-skill");
     for (i = 0; i < skillNames.length; i++) {
-        if (skillNames[i].value == "") {
+        if (skillNames[i].value === "") {
             skillNames[i].value = skillName.toTitleCase();
             skills[i].value = skillValue;
             skills[i].setAttribute("prof-base", skillValue);
@@ -396,10 +392,8 @@ function setModalListener() {
     for (i = 0; i < professionSelect.length; i++) {
         professionSelect[i].addEventListener("change", function (selChange) {
             setClassVisibility("skill-wrapper", "none");
-            const wrapper = document.getElementById(selChange.srcElement.value + "-wrapper");
+            const wrapper = document.getElementById(selChange.target.value + "-wrapper");
             wrapper.style.display = "block";
-
-            const modalProfSelect = document.querySelector("#" + selChange.srcElement.value + "-professions").value = selChange.srcElement.value;
 
             const skillChecks = document.getElementsByClassName("skill-check");
             for (i = 0; i < skillChecks.length; i++) {
@@ -407,7 +401,7 @@ function setModalListener() {
             }
             disableOrEnableUnchecked(false);
             const profSelect = document.querySelector("#professions");
-            profSelect.value = selChange.srcElement.value
+            profSelect.value = selChange.target.value
         });
     }
 
@@ -627,19 +621,16 @@ function createProfessionWrappers() {
 }
 
 function parseMaleNames() {
-    const wrappers = [];
     const data = readFile("resources/male-names.txt");
     male_names = data.split(",");
 }
 
 function parseFemaleNames() {
-    const wrappers = [];
     const data = readFile("resources/female-names.txt");
     female_names = data.split(",");
 }
 
 function parseLastNames() {
-    const wrappers = [];
     const data = readFile("resources/last-names.txt");
     last_names = data.split(",");
 }
@@ -670,7 +661,7 @@ function parseProfessions() {
             }
             const optionalSkills = wrapper.getElementsByClassName("optional-skills")[0];
             for (let n = 0; n < optSkillList.length; n++) {
-                if(optSkillList[n] != "") {
+                if(optSkillList[n] !== "") {
                     optionalSkills.appendChild(getSkillChild(optSkillList[n], true, name, wrapper))
                 }
             }
@@ -1026,7 +1017,7 @@ function addToSkill(skill, change) {
 }
 
 function createNameListener() {
-    document.getElementById("random-name").addEventListener("click", event => {
+    document.getElementById("random-name").addEventListener("click", function() {
         randomName();
     })
 }
@@ -1203,7 +1194,9 @@ function randomSkills() {
         let skillName = default_input_skills[i].getAttribute("name")
             .replace(/\s\d{1,2}%:/, "").toLowerCase().replace(" ", "-");
         if(inputSkills.has(skillName)) {
-            skillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
+            while(inputSkills.has(skillName) || skills.has(skillName)) {
+                skillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
+            }
             skills.set(skillName, default_input_skills[i].getAttribute("base"));
         }
     }
@@ -1218,23 +1211,23 @@ function randomSkills() {
         console.log(default_skills[i].getAttribute("name"))
     }
     console.log("Default skills");
-        skills.forEach((value, key) => {
-            console.log(key)
-        });
+    skills.forEach((value, key) => {
+        console.log(key)
+    });
     for(let i = 0; i < profession_details.get(profession).optional_skills; i++) {
-        let rand = Math.floor(Math.random()*skill_checks.length)
-        console.log(rand)
-        console.log(skill_checks[rand])
+        let rand = Math.floor(Math.random()*skill_checks.length);
+        console.log(rand);
+        console.log(skill_checks[rand]);
         let skill = skill_checks.splice(rand, 1)[0];
         let skillName = skill.getAttribute("name");
         while(skills.has(skillName)) {
-            console.log("Skills has " + skillName)
+            console.log("Skills has " + skillName);
             skill = skill_checks.splice((Math.floor(Math.random()*skill_checks.length)), 1)[0];
             skillName = skill.getAttribute("name");
         }
-        console.log("Skill name: " + skillName)
+        console.log("Skill name: " + skillName);
         if(inputSkills.has(skillName)) {
-            console.log("Input skill before: " + skillName)
+            console.log("Input skill before: " + skillName);
             skillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
             console.log("Input skill after: " + skillName)
         }
