@@ -2611,10 +2611,10 @@ public class UITest {
                     assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).isTrue();
                     break;
                 case "Criminal":
-                    defaultSkills = Arrays.asList(ALERTNESS, ATHLETICS, CRIMINOLOGY, DODGE, DRIVE,
+                    defaultSkills = Arrays.asList(ALERTNESS, CRIMINOLOGY, DODGE, DRIVE,
                             FIREARMS, LAW, MELEE_WEAPONS, PERSUADE, STEALTH, UNARMED_COMBAT);
                     optionalSkills = Arrays.asList(DEMOLITIONS, DISGUISE, FORENSICS, HUMINT, NAVIGATE, OCCULT, PHARMACY);
-                    expectedSize = 13;
+                    expectedSize = 12;
                     noSkills = new ArrayList<>(ALL_SKILLS);
                     noSkills.removeAll(defaultSkills);
                     noSkills.removeAll(optionalSkills);
@@ -2623,6 +2623,8 @@ public class UITest {
                     assertThat(skills.size()).isEqualTo(expectedSize);
                     break;
                     /*
+                    Alertness 50%»Criminology 60%»Dodge 40%»Drive 50%»Firearms 40%»Law 40%»Melee Weapons 40%»Persuade 50%»Stealth 50%»Unarmed Combat 50%C
+                    hoose two from:»Craft (Locksmithing) 40%»Demolitions 40%»Disguise 50%»Foreign Language (choose one) 40%»Forensics 40%»HUMINT 50%»Navigate 50%»Occult 50%»Pharmacy 40%
                     Anthropology 40%»Bureaucracy 50%»Computer Science 40%»Criminology 40%»Foreign Language (choose one)
                     50%»Foreign Language (choose one) 50%»Foreign Language (choose one) 40%»History 40%»HUMINT 50%»SIGINT 40%
                      */

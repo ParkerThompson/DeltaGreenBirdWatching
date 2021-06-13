@@ -1228,11 +1228,13 @@ function randomSkills() {
             skillName = skill.getAttribute("name");
         }
         console.log("Skill name: " + skillName);
-        if(inputSkills.has(skillName)) {
+        let fullSkillName = skillName
+        while(skills.has(fullSkillName)) {
             console.log("Input skill before: " + skillName);
-            skillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
+            fullSkillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
             console.log("Input skill after: " + skillName)
         }
+        skillName = fullSkillName
         skills.set(skillName, skill.getAttribute("base"));
 
     }
