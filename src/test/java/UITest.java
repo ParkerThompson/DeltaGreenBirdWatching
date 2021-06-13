@@ -2576,7 +2576,7 @@ public class UITest {
                     System.out.println(skills);
                     assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
                     assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    assertThat(skills.size()).as(skills.toString()).isEqualTo(expectedSize);
                     otherSkills = new ArrayList<>(inputSkills);
                     assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).isTrue();
                     break;
@@ -2620,7 +2620,7 @@ public class UITest {
                     noSkills.removeAll(optionalSkills);
                     assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
                     assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    assertThat(skills.size()).as(skills.toString()).isEqualTo(expectedSize);
                     break;
                     /*
                     Alertness 50%»Criminology 60%»Dodge 40%»Drive 50%»Firearms 40%»Law 40%»Melee Weapons 40%»Persuade 50%»Stealth 50%»Unarmed Combat 50%C
@@ -2679,7 +2679,7 @@ public class UITest {
                     noSkills.removeAll(optionalSkills);
                     assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
                     assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    assertThat(skills.size()).as(skills.toString()).isEqualTo(expectedSize);
                     otherSkills = new ArrayList<>(inputSkills);
                     assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).as(skills.toString()).isTrue();
                     break;
@@ -2769,7 +2769,7 @@ public class UITest {
                     noSkills.removeAll(optionalSkills);
                     assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
                     assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    assertThat(skills.size()).as(skills.toString()).isEqualTo(expectedSize);
                     break;
                 default:
                     System.out.println(profession);
