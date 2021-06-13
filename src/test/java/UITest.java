@@ -2443,7 +2443,7 @@ public class UITest {
                 .put(WordUtils.capitalizeFully(PROGRAM_MANAGER.replaceAll("-"," ")), 0)
                 .put(WordUtils.capitalizeFully(SOLDIER.replaceAll("-"," ")), 0)
                 .build());
-        for(int i = 0; i < 100; i ++) {
+        for(int i = 0; i < 200; i ++) {
             click("btnRandom");
             String profession = driver.findElement(By.id("profession")).getAttribute("value");
             System.out.println(profession);
@@ -2679,7 +2679,7 @@ public class UITest {
                     assertThat(skills).doesNotContainAnyElementsOf(noSkills);
                     assertThat(skills.size()).isEqualTo(expectedSize);
                     otherSkills = new ArrayList<>(inputSkills);
-                    assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).isTrue();
+                    assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).as(skills.toString()).isTrue();
                     break;
                 case "Police Officer":
                     defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, CRIMINOLOGY, DRIVE, FIREARMS, FIRST_AID,
@@ -2740,7 +2740,7 @@ public class UITest {
                     noSkills.removeAll(optionalSkills);
                     assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
                     assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    assertThat(skills.size()).as(skills.toString()).isEqualTo(expectedSize);
                     break;
                 //            ALERTNESS, BUREAUCRACY, FIRST AID, HUMINT, MEDICINE, PERSUADE, PHARMACY, SCIENCE (BIOLOGY) 40%
                 //            CHOOSE TWO FROM:»DRIVE, FORENSICS, NAVIGATE, PSYCHOTHERAPY, SEARCH 60%
