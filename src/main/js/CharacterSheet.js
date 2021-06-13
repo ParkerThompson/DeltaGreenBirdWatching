@@ -38,27 +38,56 @@ let top_companies = ["Walmart", "Amazon", "Apple", "CVS Health", "UnitedHealth G
 let armed_forces = ["US Marines", "US Army", "US Airforce", "US Navy"];
 
 let profession_details = new Map([
-    ["anthropologist", {'employer': [universities, history_museums], 'education': ["Masters in Anthropology", "PHD in Anthropology"], 'stats': ["INT"], 'bonds': 4, 'optional_skills': 2}],
+    ["anthropologist", {'employer': [universities, history_museums],
+        'education': ["Masters in Anthropology", "PHD in Anthropology"], 'stats': ["INT"], 'bonds': 4,
+        'optional_skills': 2, 'weapons': [["pepper_spray_can", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'Laptop']}],
     ["engineer", {'employer': [tech_companies, federal_agencies], 'education': ["Bachelors in Computer Science",
-            "Masters in Computer Science", "PHD in Computer Science"], 'stats': ["INT"], 'bonds': 3, 'optional_skills': 4}],
-    ["federal-agent", {'employer': [federal_agencies], 'education': ["Bachelors in Criminal Justice"], 'stats': ["CON","POW","CHA"], 'bonds': 3, 'optional_skills': 1}],
-    ["special-operator", {'employer': [special_operator], 'education': ["High School Diploma"], 'stats': ["STR","CON","POW"], 'bonds':2, 'optional_skills': 0}],
-    ["physician", {'employer': [hospitals], 'education': ["MD"], 'stats': ["INT","POW","DEX"], 'bonds':3, 'optional_skills': 2}],
-    ["scientist", {'employer': [science], 'education': ["PHD in Chemistry", "PHD in Biology", "PHD in Physics"], 'stats': ["INT"], 'bonds':4, 'optional_skills': 3}],
-    ["firefighter", {'employer': [cities], 'education': ["High School Diploma"], 'stats': ["STR","DEX","CON"], 'bonds':3, 'optional_skills': 0}],
+            "Masters in Computer Science", "PHD in Computer Science"], 'stats': ["INT"], 'bonds': 3,
+        'optional_skills': 4, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["federal-agent", {'employer': [federal_agencies], 'education': ["Bachelors in Criminal Justice"],
+        'stats': ["CON","POW","CHA"], 'bonds': 3, 'optional_skills': 1,
+        'weapons': [["medium_pistol", "Glock 17"]], 'other_gear': ['Ear piece communicator', 'Smartphone', 'Laptop',
+            'Flexible Cuffs', "Tactical Light"]}],
+    ["special-operator", {'employer': [special_operator], 'education': ["High School Diploma"],
+        'stats': ["STR","CON","POW"], 'bonds':2, 'optional_skills': 0,
+        'weapons': [["medium_pistol", "Colt M1911"], ["combat_dagger", "KBAR Knife"]], 'other_gear': ['Smartphone', 'Ear piece communicator',
+            "Tactical Light", "Night Vision Goggles (Civilian)", "Sound Suppressor"]}],
+    ["physician", {'employer': [hospitals], 'education': ["MD"], 'stats': ["INT","POW","DEX"], 'bonds':3,
+        'optional_skills': 2, 'weapons': [["pepper_spray_can", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'First Aid Kit']}],
+    ["scientist", {'employer': [science], 'education': ["PHD in Chemistry", "PHD in Biology", "PHD in Physics"],
+        'stats': ["INT"], 'bonds':4, 'optional_skills': 3, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["firefighter", {'employer': [cities], 'education': ["High School Diploma"], 'stats': ["STR","DEX","CON"],
+        'bonds':3, 'optional_skills': 0, 'weapons': [["knife", "Knife"]], 'other_gear': ['Smartphone',
+            'First Responder Medical Kit', "Large Flashlight"]}],
     ["foreign-service-officer", {'employer': [foriegn_service], 'education': ["PHD in Foreign Affairs", "PHD in International Relations"],
-        'stats': ["INT","CHA"], 'bonds':3, 'optional_skills': 0}],
-    ["criminal", {'employer': [criminal_orgs], 'education': ["High School Diploma"], 'stats': ["STR","DEX"], 'bonds':4, 'optional_skills': 2}],
+        'stats': ["INT","CHA"], 'bonds':3, 'optional_skills': 0,
+        'weapons': [["pepper_spray_can", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["criminal", {'employer': [criminal_orgs], 'education': ["High School Diploma"], 'stats': ["STR","DEX"],
+        'bonds':4, 'optional_skills': 2, 'weapons': [["light_pistol", ".38 Special"], ["knife", "Knife"]], 'other_gear': ['Burner Phone', 'Lockpick Kit']}],
     ["intelligence-analyst", {'employer': [intelligence_analysts], 'education': ["Masters in Political Science", "Masters in International Relations"],
-        'stats': ["INT"], 'bonds': 3, 'optional_skills': 0}],
-    ["intelligence-case-officer", {'employer': [intelligence_agencies], 'education': ["Bachelors in Political Science"], stats: ["INT","POW","CHA"], 'bonds': 2, 'optional_skills': 0}],
-    ["lawyer", {'employer': [law_firms, cities], 'education': ["JD"], 'stats': ["INT","POW","CHA"], 'bonds':2, 'optional_skills': 4}],
-    ["media-specialist", {'employer': [tv_news, newspapers, blogs, cities], 'education': ["Bachelors in Media Studies"], 'stats': ["INT","CHA"], 'bonds': 4, 'optional_skills': 5}],
-    ["nurse", {'employer': [hospitals], 'education': ["Bachelors in Nursing", "Masters in Nursing"], 'stats': ["INT","POW","CHA"], 'bonds': 4, 'optional_skills': 2}],
-    ["pilot", {'employer': [pilot], 'education': ["High School Diploma", "Bachelors in Mechanical Engineering"], 'stats': ["DEX","INT"], 'bonds': 3, 'optional_skills': 2}],
-    ["police-officer", {'employer': [cities], 'education': ["High School Diploma", "Associates in Criminal Justice"], 'stats': ["STR","CON","POW"], 'bonds': 3, 'optional_skills': 1}],
-    ["program-manager", {'employer': [top_companies], 'education': ["Masters in Business Administration"], 'stats': ["INT","CHA"], 'bonds': 4, 'optional_skills': 1}],
-    ["soldier", {'employer': [armed_forces], 'education': ["High School Diploma"], 'stats': ["STR", "CON"], 'bonds': 4, 'optional_skills': 3}],
+        'stats': ["INT"], 'bonds': 3, 'optional_skills': 0, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["intelligence-case-officer", {'employer': [intelligence_agencies],
+        'education': ["Bachelors in Political Science"], stats: ["INT","POW","CHA"],
+        'bonds': 2, 'optional_skills': 0, 'weapons': [["medium_pistol", "Glock 17"]], 'other_gear': ['Smartphone', 'Laptop', 'Ear piece communicator']}],
+    ["lawyer", {'employer': [law_firms, cities], 'education': ["JD"], 'stats': ["INT","POW","CHA"],
+        'bonds':2, 'optional_skills': 4, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["media-specialist", {'employer': [tv_news, newspapers, blogs, cities],
+        'education': ["Bachelors in Media Studies"], 'stats': ["INT","CHA"],
+        'bonds': 4, 'optional_skills': 5,  'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop', 'Voice-activated recorder']}],
+    ["nurse", {'employer': [hospitals], 'education': ["Bachelors in Nursing", "Masters in Nursing"],
+        'stats': ["INT","POW","CHA"], 'bonds': 4, 'optional_skills': 2,
+        'weapons': [["pepper_spray", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'First Aid Kit']}],
+    ["pilot", {'employer': [pilot], 'education': ["High School Diploma", "Bachelors in Mechanical Engineering"],
+        'stats': ["DEX","INT"], 'bonds': 3, 'optional_skills': 2,
+        'weapons': [["pepper_spray", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["police-officer", {'employer': [cities], 'education': ["High School Diploma", "Associates in Criminal Justice"],
+        'stats': ["STR","CON","POW"], 'bonds': 3, 'optional_skills': 1,
+         'weapons': [["heavy_pistol", ".44 Magnum"]], 'other_gear': ['Smartphone', 'Laptop', "Handcuffs", "Large Flashlight"]}],
+    ["program-manager", {'employer': [top_companies], 'education': ["Masters in Business Administration"],
+        'stats': ["INT","CHA"], 'bonds': 4, 'optional_skills': 1, 'weapons': [["pepper_spray", "Pepper Spray Can"]],
+        'other_gear': ['Smartphone', 'Laptop']}],
+    ["soldier", {'employer': [armed_forces], 'education': ["High School Diploma"], 'stats': ["STR", "CON"], 'bonds': 4, 'optional_skills': 3,
+        'weapons': [["medium_pistol", "Beretta M9"], ["combat_dagger", "KBAR Knife"]], 'other_gear': ['Smartphone', "Tactical Light"]}]
 ]);
 
 maxChecked = new Map();
@@ -143,28 +172,55 @@ let nationalities = ["American", "Chinese", "Irish", "Indian", "British", "Japen
 
 let bonds = [["Mother", "F"], ["Father", "M"], ["Coworker", "FM"], ["Friend", "FM"], ["Sister", "F"], ["Brother", "M"], ["Mentor", "FM"], ["Boyfriend", "M"], ["Girlfriend", "F"], ["Husband", "M"], ["Wife", "F"], ["Uncle", "M"], ["Aunt", "F"]];
 
+const description = {
+    eye_description: ["exquisite", "iridescent", "luminous", "magnetic", "radiant", "angry", "anxious",
+        "appealing", "blank", "brooding", "candid", "cold", "commanding", "compassionate", "confused", "cruel",
+        "curious", "dazed", "dead", "discerning", "disdainful", "dull", "emotionless", "fearful", "fiery",
+        "genuine", "grave", "hollow", "honest", "hopeful", "imploring", "innocent", "intelligent", "intense",
+        "irritated", "jovial", "judgmental", "keen", "knowing", "melancholy", "mischievous", "mocking", "playful",
+        "reflective","restless", "resigned", "resolute", "sad", "sorrowful", "stern", "sympathetic", "thoughtful",
+        "trusting", "unreadable", "weary"],
+    eye_color: ["green", "blue", "brown", "grey", "black"],
+    hair_texture: ["frizzy", "balding", "thin", "thick", "long", "short", "messy", "straight", "curly", "greasy",
+        "slick", "fluffy", "luxurious", "silky", "wavy", "lush", "stringy", "flowing", "close cropped"],
+    hair_color: ["blond", "black", "grey", "white", "red", "brown"],
+    beards: ["bristly beard", "bristly moustache", "bushy beard", "bushy moustache", "clean-shaven", "close-trimmed beard",
+        "coarse beard", "curly moustache", "full beard", "scraggly beard", "scratchy beard", "short beard", "long beard",
+        "neat beard", "neatly trimmed beard", "pencil-thin moustache", "stubbly beard", "stylish beard", "thick beard",
+        "thick moustache", "thin beard", "thin moustache", "unkempt beard", "well-groomed beard", "wild beard"],
+    glasses: ["old-fashioned looking", "rectangular", "rimless", "oversized", "horn-rimmed", "big rimmed", "thick", "trendy", "thin"],
+    clothing: ["expensive looking", "casual looking", "stiff looking", "colorful", "ragged", "neat looking", "cheap looking",
+        "tattered looking", "gaudy looking", "rumpled", "dowdy looking", "loose", "ill-fitting"],
+    speech: ["articulate", "chatty", "conversational", "crisp", "eloquent", "flowery", "formal", "inarticulate",
+        "incoherent", "informal", "lyrical", "ponderous", "rambling", "succinct", "verbose", "wordy"],
+    demeanor: ["cool", "grave", "modest", "courteous", "mild-mannered", "quiet", "serious", "dainty", "icy", "lofty",
+        "somber", "indifferent", "solemn", "frantic", "furtive", "businesslike", "stern", "reckless", "courteous", "calm",
+        "intense", "casual", "frigid", "polite", "modest", "affable", "unpolished", "passive", "joyous", "humble", "severe",
+        "fierce", "professional", "uptight", "aloof"]
+};
+
 function createWeaponSelect(){
     document.getElementsByName("weapon-select").forEach(select => {
-        for (let key of weapons.keys()) {
-            let optgroup = document.createElement("optgroup");
-            optgroup.label = key;
-            weapons.get(key).forEach((value, innerKey) => {
-                let option = document.createElement("option");
-                option.value = innerKey;
-                option.innerText = value.weapon_name;
-                optgroup.appendChild(option);
-            });
-            select.appendChild(optgroup)
-        }
-        let option = document.createElement("option");
-        option.value = "other";
-        option.innerText = "Other";
-        select.appendChild(option);
-        select.value = "other";
-        select.addEventListener("change", function (event) {
-            weaponSelectListener(event.target);
+    for (let key of weapons.keys()) {
+        let optgroup = document.createElement("optgroup");
+        optgroup.label = key;
+        weapons.get(key).forEach((value, innerKey) => {
+            let option = document.createElement("option");
+            option.value = innerKey;
+            option.innerText = value.weapon_name;
+            optgroup.appendChild(option);
         });
-    })
+        select.appendChild(optgroup)
+    }
+    let option = document.createElement("option");
+    option.value = "other";
+    option.innerText = "Other";
+    select.appendChild(option);
+    select.value = "other";
+    select.addEventListener("change", function (event) {
+        weaponSelectListener(event.target);
+    });
+});
 }
 
 function weaponSelectListener(option) {
@@ -190,8 +246,8 @@ function weaponSelectListener(option) {
                 row.getElementsByClassName("weapon-skill")[0].value = skill;
             } else {
                 let skill = document.getElementById(weapon.skill);
-                console.log(weapon.skill)
-                console.log(skill)
+                console.log(weapon.skill);
+                console.log(skill);
                 row.getElementsByClassName("weapon-skill")[0].value = skill === null
                     ? document.getElementById(weapon.skill + "-x5").innerText : skill.value
             }
@@ -329,7 +385,7 @@ function resetSkills() {
 }
 
 function setSkill(key, value) {
-    console.log(value + ": " + key)
+    console.log(value + ": " + key);
     if (value.includes(" ")) {
         addOtherSkill(value.replaceAll(": ", "\n"), key)
     } else {
@@ -1009,8 +1065,11 @@ function setPlusAndMinusButtons(skillTr) {
 }
 
 function addToSkill(skill, change) {
+    console.log("Add to skill " + skill);
     let parent = skill.parentElement.parentElement;
     let skillInputs = parent.getElementsByClassName("skill");
+    console.log(parent);
+    console.log(skillInputs);
     let skillInput;
     if(skillInputs.length > 0) {
         skillInput = skillInputs[0]
@@ -1018,6 +1077,7 @@ function addToSkill(skill, change) {
     else {
         skillInput = parent.getElementsByClassName("other-skill")[0]
     }
+    console.log(skillInput);
     skillInput.value = parseInt(skillInput.value) + change;
 }
 
@@ -1057,6 +1117,10 @@ function random() {
     randomStats();
     randomBonds();
     randomSkills();
+    randomDescription();
+    randomSkillImprovements();
+    randomGear();
+    randomWeapons();
 }
 
 function randomEmployer() {
@@ -1174,7 +1238,7 @@ function randomBonds() {
 }
 
 function pickRandomInput(skillName) {
-    console.log("Picking random input for " + skillName)
+    console.log("Picking random input for " + skillName);
     return inputSkills.get(skillName).random();
 }
 
@@ -1199,11 +1263,11 @@ function randomSkills() {
         let skillName = default_input_skills[i].getAttribute("name")
             .replace(/\s\d{1,2}%:/, "").toLowerCase().replace(" ", "-");
         if(inputSkills.has(skillName)) {
-            let fullSkillName = skillName
+            let fullSkillName = skillName;
             while(inputSkills.has(fullSkillName) || skills.has(fullSkillName)) {
                 fullSkillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
             }
-            skillName = fullSkillName
+            skillName = fullSkillName;
             skills.set(skillName, default_input_skills[i].getAttribute("base"));
         }
     }
@@ -1236,13 +1300,13 @@ function randomSkills() {
         let fullSkillName;
         if(inputSkills.has(skillName)) {
             fullSkillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
-            console.log("Full skill name " + fullSkillName)
+            console.log("Full skill name " + fullSkillName);
             while(skills.has(fullSkillName)) {
                 console.log("Input skill before: " + skillName);
                 fullSkillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
                 console.log("Input skill after: " + skillName)
             }
-                    skillName = fullSkillName
+            skillName = fullSkillName
         }
         skills.set(skillName, skill.getAttribute("base"));
 
@@ -1253,3 +1317,80 @@ function randomSkills() {
         setSkill(value, key)
     })
 }
+
+function randomDescription() {
+    let descriptionText = "";
+    descriptionText += description.eye_description.random() + " " + description.eye_color.random() + " eyes, "
+        + description.hair_texture.random() + " " + description.hair_color.random() + " hair,";
+    console.log(document.getElementById("sex2").checked);
+    if(document.getElementById("sex2").checked && (Math.floor(Math.random()*2) === 1)) {
+        descriptionText += " " + description.beards.random() + ","
+    }
+    console.log(Math.floor(Math.random()*3));
+    if((Math.floor(Math.random()*4) === 1)) {
+        descriptionText += " " + description.glasses.random() + " glasses,";
+    }
+    descriptionText += " " + description.clothing.random() + " clothing, " + description.speech.random() + " speech, " +
+        description.demeanor.random() + " demeanor";
+
+    document.getElementById("description").value = descriptionText;
+}
+
+function randomSkillImprovements() {
+    let pluses = removeInvisiblePluses(document.getElementsByClassName("plus"));
+    while(pluses.length > 0) {
+        addToSkill(pluses.random(), 20);
+        updateSkillIncreaseButtons();
+        pluses = removeInvisiblePluses(document.getElementsByClassName("plus"));
+    }
+}
+
+function removeInvisiblePluses(pluses) {
+    let visiblePluses = [];
+    for(let i = 0; i < pluses.length; i ++) {
+        console.log("Plus " + pluses[i]);
+        if(pluses[i].style.display === "none") {
+            console.log("Remove plus");
+        }
+        else {
+            visiblePluses.push(pluses[i]);
+        }
+    }
+    console.log("Visible pluses " + visiblePluses.length);
+    return visiblePluses;
+}
+
+function randomGear() {
+    let profession = document.getElementById("professions").value;
+    let gear = "";
+    profession_details.get(profession).other_gear.forEach(value => {
+        gear += value + "\n";
+    });
+    document.getElementById("gear").value = gear;
+}
+function randomWeapons() {
+    let weaponRows = document.getElementsByClassName("weapon-row");
+    for(let i = 0; i < weaponRows.length; i++) {
+        weaponRows[i].getElementsByClassName("weapon-select")[0].value = "other";
+        weaponRows[i].getElementsByClassName("weapon-name")[0].value = "";
+        weaponRows[i].getElementsByClassName("weapon-skill")[0].value = "";
+        weaponRows[i].getElementsByClassName("weapon-range")[0].value = "";
+        weaponRows[i].getElementsByClassName("weapon-damage")[0].value = "";
+        weaponRows[i].getElementsByClassName("weapon-piercing")[0].value = "";
+        weaponRows[i].getElementsByClassName("weapon-lethality")[0].value = "";
+        weaponRows[i].getElementsByClassName("weapon-kill-radius")[0].value = "";
+        weaponRows[i].getElementsByClassName("weapon-ammo")[0].value = "";
+    }
+
+    let profession = document.getElementById("professions").value;
+    let weaponSelects = document.getElementsByName("weapon-select");
+    let weaponNames = document.getElementsByClassName("weapon-name");
+    let weapons = profession_details.get(profession).weapons;
+    for(let j = 0; j < weapons.length; j ++) {
+        console.log(weaponSelects[j])
+        weaponSelects[j].value = weapons[j][0];
+        weaponSelectListener(weaponSelects[j]);
+        weaponNames[j].value = weapons[j][1];
+    }
+}
+
