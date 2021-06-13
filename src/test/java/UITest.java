@@ -2671,7 +2671,7 @@ public class UITest {
                     );
                     optionalSkills = Arrays.asList(ANTHROPOLOGY, CRIMINOLOGY, OCCULT, LAW, ARCHEOLOGY, BUREAUCRACY, COMPUTER_SCIENCE);
                     inputSkills = Collections.singletonList(
-                            WordUtils.capitalizeFully(ART.replaceAll("-", " ")) + " \\(\\w*\\)"
+                            WordUtils.capitalizeFully(ART.replaceAll("-", " ")) + " \\(.*\\)"
                     );
                     expectedSize = 9;
                     noSkills = new ArrayList<>(ALL_SKILLS);

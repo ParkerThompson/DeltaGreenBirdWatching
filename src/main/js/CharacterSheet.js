@@ -252,6 +252,8 @@ function setScoreListener(score) {
 }
 
 function updateScore(scoreName, score) {
+    console.log("scoreName " + scoreName);
+    console.log("score " + score);
     const fivex = document.querySelector("#" + scoreName + "-x5");
     fivex.innerText = parseInt(score) * 5
 }
@@ -1130,12 +1132,12 @@ function randomStats() {
         let stat = (stat_names.splice(stat_names.indexOf(stat_names.random()), 1))[0].toLowerCase() + "-score";
         document.getElementById(stat).value = focus.pop();
     }
-    updateScore("str", document.querySelector("#str-score"));
-    updateScore("dex", document.querySelector("#dex-score"));
-    updateScore("con", document.querySelector("#con-score"));
-    updateScore("int", document.querySelector("#int-score"));
-    updateScore("pow", document.querySelector("#pow-score"));
-    updateScore("cha", document.querySelector("#cha-score"));
+    updateScore("str", document.querySelector("#str-score").value);
+    updateScore("dex", document.querySelector("#dex-score").value);
+    updateScore("con", document.querySelector("#con-score").value);
+    updateScore("int", document.querySelector("#int-score").value);
+    updateScore("pow", document.querySelector("#pow-score").value);
+    updateScore("cha", document.querySelector("#cha-score").value);
     hPListener();
     updatePow();
 }
