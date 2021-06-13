@@ -435,7 +435,7 @@ function setModalListener() {
     const confirmButtons = document.getElementsByClassName("skillModalConfirm");
     for (i = 0; i < confirmButtons.length; i++) {
         confirmButtons[i].onclick = function (event) {
-            document.getElementById("professions").value = event.target.getAttribute("name");
+            document.getElementById("professions").setAttribute("name", event.target.getAttribute("name"));
             document.getElementById("profession").value = event.target.getAttribute("name").replaceAll("-", " ").toTitleCase();
             modal.style.display = "none";
             let skillMap = getAllModalSkills(event.srcElement.getAttribute("name"));
@@ -462,7 +462,7 @@ function setModalListener() {
             }
             disableOrEnableUnchecked(false);
             const profSelect = document.querySelector("#professions");
-            profSelect.value = selChange.target.value
+            profSelect.setAttribute("name" ,selChange.target.value);
         });
     }
 
@@ -483,7 +483,7 @@ function setModalListener() {
         resetSkills();
         modal.style.display = "block";
         const profSelect = document.querySelector("#professions");
-        document.querySelector("#" + profSelect.value + "-wrapper").style = "visible"
+        document.querySelector("#" + profSelect.getAttribute("name") + "-wrapper").style = "visible"
     });
 
     var skillChecks = document.getElementsByClassName("skill-check");
@@ -1124,7 +1124,7 @@ function random() {
 }
 
 function randomEmployer() {
-    let profession = document.getElementById("professions").value;
+    let profession = document.getElementById("professions").getAttribute("name");
     let employer = (profession_details.get(profession).employer.random().random());
     if(cities.includes(employer)) {
         if(profession === "firefighter") {
@@ -1164,16 +1164,16 @@ function randomAge() {
 function randomProfession() {
     let profList = [];
     let professions = document.getElementById("professions");
-    let options = professions.getElementsByTagName("option");
+    let options = document.getElementsByClassName("profession-select")[0].getElementsByTagName("option");
     for(let i = 0; i < options.length; i ++) {
         profList.push(options[i].value)
     }
-    professions.value = profList.random();
-    document.getElementById("profession").value = professions.value.replaceAll("-", " ").toTitleCase();
+    professions.setAttribute("name", profList.random());
+    document.getElementById("profession").value = professions.getAttribute("name").replaceAll("-", " ").toTitleCase();
 }
 
 function randomEducation() {
-    let profession = document.getElementById("professions").value;
+    let profession = document.getElementById("professions").getAttribute("name");
     let education = profession_details.get(profession).education.random();
     if(education !== 'High School Diploma') {
         education += " from " + universities.random();
@@ -1182,7 +1182,7 @@ function randomEducation() {
 }
 
 function randomStats() {
-    let profession = document.getElementById("professions").value;
+    let profession = document.getElementById("professions").getAttribute("name");
     let stats = [...profession_details.get(profession).stats];
     let stat_names = ["STR", "DEX", "CON", "INT", "POW", "CHA"];
     let focuses = [["14", "12", "10", "10", "9", "17"], ["12", "12", "11", "11", "13", "13"], ["11", "10", "10", "12", "14", "15"]];
@@ -1211,7 +1211,7 @@ function randomStats() {
 function randomBonds() {
     let bondNames = document.getElementsByClassName("bond");
     let bondScores = document.getElementsByClassName("bond-score");
-    let profession = profession_details.get(document.getElementById("professions").value);
+    let profession = profession_details.get(document.getElementById("professions").getAttribute("name"));
     let chaScore = document.getElementById("cha-score").value;
     let chosenBonds = [];
     for(let i = 0; i < bondNames.length; i ++) {
@@ -1245,7 +1245,7 @@ function pickRandomInput(skillName) {
 function randomSkills() {
     resetSkills();
     resetOtherSkills();
-    let profession = document.getElementById("professions").value;
+    let profession = document.getElementById("professions").getAttribute("name");
     let default_skills = document.getElementsByClassName(profession + " skill-default");
     let default_input_skills = document.getElementsByClassName(profession + " skill-modal-input");
     let skill_checks =  [].slice.call(document.getElementsByClassName(profession + " skill-check"));
@@ -1361,7 +1361,7 @@ function removeInvisiblePluses(pluses) {
 }
 
 function randomGear() {
-    let profession = document.getElementById("professions").value;
+    let profession = document.getElementById("professions").getAttribute("name");
     let gear = "";
     profession_details.get(profession).other_gear.forEach(value => {
         gear += value + "\n";
@@ -1382,7 +1382,7 @@ function randomWeapons() {
         weaponRows[i].getElementsByClassName("weapon-ammo")[0].value = "";
     }
 
-    let profession = document.getElementById("professions").value;
+    let profession = document.getElementById("professions").getAttribute("name");
     let weaponSelects = document.getElementsByName("weapon-select");
     let weaponNames = document.getElementsByClassName("weapon-name");
     let weapons = profession_details.get(profession).weapons;
