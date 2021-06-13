@@ -74,9 +74,9 @@ Array.prototype.random = function () {
 
 weapons = new Map([
     ['Hand-to-Hand Weapons', new Map([
-        ['unarmed', {weapon_name: 'Unarmed Attack', skill: 'unarmed', damage: '1D4-1', armor_piercing: 'N/A', expense: "None"}],
-        ['brass_knuckles', {weapon_name: 'Brass knuckles, heavy flashlight, or steel-toe boots', skill: 'unarmed', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
-        ['garotte', {weapon_name: 'Garotte', skill: 'unarmed', damage: 'special', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['unarmed', {weapon_name: 'Unarmed Attack', skill: 'unarmed-combat', damage: '1D4-1', armor_piercing: 'N/A', expense: "None"}],
+        ['brass_knuckles', {weapon_name: 'Brass knuckles, heavy flashlight, or steel-toe boots', skill: 'unarmed-combat', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['garotte', {weapon_name: 'Garotte', skill: 'unarmed-combat', damage: 'special', armor_piercing: 'N/A', expense: "Incidental"}],
         ['knife', {weapon_name: 'Knife', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
         ['hatchet', {weapon_name: 'Hatchet', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
         ['combat_dagger', {weapon_name: 'Large knife or combat dagger', skill: 'melee-weapons', damage: '1D6', armor_piercing: '3', expense: "Incidental"}],
@@ -190,6 +190,8 @@ function weaponSelectListener(option) {
                 row.getElementsByClassName("weapon-skill")[0].value = skill;
             } else {
                 let skill = document.getElementById(weapon.skill);
+                console.log(weapon.skill)
+                console.log(skill)
                 row.getElementsByClassName("weapon-skill")[0].value = skill === null
                     ? document.getElementById(weapon.skill + "-x5").innerText : skill.value
             }
