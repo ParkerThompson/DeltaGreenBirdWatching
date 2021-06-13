@@ -6,7 +6,9 @@ const inputSkills = new Map([
     ["pilot", ["Airplane", "Drone", "Helicopter", "Small Boat", "Ship"]],
     ["science", ["Astronomy", "Biology", "Botany", "Chemistry", "Engineering", "Genetics", "Geology", "Mathematics",
     "Meteorology", "Physics", "Planetology", "Zoology"]],
-    ["foreign-language", ["Spanish", "German", "Japanese", "Hindi", "Arabic", "Cantonese", "French", "Italian"]]
+    ["foreign-language", ["Spanish", "German", "Japanese", "Hindi", "Arabic", "Cantonese", "Mandarin", "Bengali",
+    "Portuguese","Vietnamese", "Urdu", "Korean", "Turkish", "Russian", "French", "Italian"]]
+
     ]);
 let male_names = [];
 let female_names = [];

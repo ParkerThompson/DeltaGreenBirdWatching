@@ -99,10 +99,7 @@ public class UITest {
     private static final String FOREIGN_LANGUAGE = "foreign-language";
     private static final String FOREIGN_LANGUAGE_CHECK = "foreign-language-check";
 
-    private static final List<String> ALL_SKILLS = Arrays.asList( ANTHROPOLOGIST, ENGINEER, FEDERAL_AGENT,
-            SPECIAL_OPERATOR, PHYSICIAN, SCIENTIST, CRIMINAL, FIREFIGHTER, FOREIGN_SERVICE_OFFICER,
-            INTELLIGENCE_ANALYST, INTELLIGENCE_OFFICER, LAWYER, MEDIA_SPECIALIST, NURSE, PILOT,
-            POLICE_OFFICER, PROGRAM_MANAGER, SOLDIER, ACCOUNTING, HISTORY, UNNATURAL, ALERTNESS, HUMINT,
+    private static final List<String> ALL_SKILLS = Arrays.asList(ACCOUNTING, HISTORY, UNNATURAL, ALERTNESS, HUMINT,
             ANTHROPOLOGY, LAW, ARCHEOLOGY, MEDICINE, ARTILLERY, MELEE_WEAPONS, ATHLETICS, NAVIGATE, BUREAUCRACY,
             OCCULT, COMPUTER_SCIENCE, PERSUADE, CRIMINOLOGY, PHARMACY, DEMOLITIONS, PSYCHOTHERAPY, DISGUISE, RIDE,
             DODGE, SEARCH, DRIVE, SIGINT, FIREARMS, STEALTH, FIRST_AID, SURGERY, FORENSICS, SURVIVAL, HEAVY_MACHINERY,
@@ -2427,22 +2424,22 @@ public class UITest {
     @Test
     public void testRandom(){
         for(int i = 0; i < 100; i ++) {
-        click("btnRandom");
-        String profession = driver.findElement(By.id("profession")).getAttribute("value");
-        List<String> skills = new ArrayList<>();
-        List<WebElement> skillElements = driver.findElements(By.className("skill"));
-        for (WebElement skill : skillElements) {
-            if(!skill.getAttribute("base").equals(skill.getAttribute("prof-base"))) {
-                skills.add(skill.getAttribute("id"));
+            click("btnRandom");
+            String profession = driver.findElement(By.id("profession")).getAttribute("value");
+            List<String> skills = new ArrayList<>();
+            List<WebElement> skillElements = driver.findElements(By.className("skill"));
+            for (WebElement skill : skillElements) {
+                if(!skill.getAttribute("base").equals(skill.getAttribute("prof-base"))) {
+                    skills.add(skill.getAttribute("id"));
+                }
             }
-        }
-        for(int j = 0; j < driver.findElements(By.className("other-skill-name")).size(); j ++) {
-            if(!driver.findElements(By.className("other-skill-name")).get(j).getAttribute("value").equals("")) {
-                skills.add(driver.findElements(By.className("other-skill-name")).get(j).getAttribute("value"));
-            }
+            for(int j = 0; j < driver.findElements(By.className("other-skill-name")).size(); j ++) {
+                if(!driver.findElements(By.className("other-skill-name")).get(j).getAttribute("value").equals("")) {
+                    skills.add(driver.findElements(By.className("other-skill-name")).get(j).getAttribute("value"));
+                }
 //            assertEquals(driver.findElements(By.className("other-skill")).get(position).getAttribute("value"), value);
-        }
-        
+            }
+
 
 //    ["federal-agent",  'optional_skills': 1}],
 //    ["special-operator",  'optional_skills': 0}],
@@ -2467,168 +2464,263 @@ public class UITest {
 //                    ["anthropologist", 'optional_skills': 2}],
             assertThat(skills).doesNotHaveDuplicates();
             switch (profession) {
-            case "Anthropologist":
-                List<String> defaultSkills = Arrays.asList(HISTORY, OCCULT, PERSUADE);
-                List<String> optionalSkills = Arrays.asList(ANTHROPOLOGY, ARCHEOLOGY, HUMINT, NAVIGATE, RIDE, SEARCH, SURVIVAL);
-                List<String> inputSkills = Collections.singletonList(WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)");
-                int expectedSize = 7;
-                List<String> noSkills = new ArrayList<>(ALL_SKILLS);
-                noSkills.removeAll(defaultSkills);
-                noSkills.removeAll(optionalSkills);
-                assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
-                assertThat(skills).containsAnyOf(ANTHROPOLOGY, ARCHEOLOGY);
-                assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-                assertThat(skills.size()).isEqualTo(expectedSize);
-                List<String> otherSkills = new ArrayList<>(inputSkills);
-                assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).isTrue();
-                break;
-            case "Engineer":
-                defaultSkills = Arrays.asList(COMPUTER_SCIENCE, SIGINT);
-                optionalSkills = Arrays.asList(ACCOUNTING, BUREAUCRACY, HEAVY_MACHINERY, LAW);
-                inputSkills = Arrays.asList("Craft 30%:\n(Electrician) ", "Craft 30%:\n(Mechanic) ", "Craft 40%:\n(Microelectronics) ", "Science 40%:\n(Mathematics) ");
-                expectedSize = 10;
-                noSkills = new ArrayList<>(ALL_SKILLS);
-                noSkills.removeAll(defaultSkills);
-                noSkills.removeAll(optionalSkills);
-                assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
-                assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-                assertThat(skills.size()).isEqualTo(expectedSize);
-                otherSkills = new ArrayList<>(inputSkills);
-                assertThat(listContainsOtherSkills(otherSkills, skills)).isTrue();
-                break;
-            case "Federal Agent":
-                defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, CRIMINOLOGY, DRIVE, FIREARMS, FORENSICS, HUMINT, LAW, PERSUADE, SEARCH, UNARMED_COMBAT);
-                optionalSkills = Arrays.asList(ACCOUNTING, COMPUTER_SCIENCE, HEAVY_WEAPONS, PHARMACY);
-                expectedSize = 12;
-                noSkills = new ArrayList<>(ALL_SKILLS);
-                noSkills.removeAll(defaultSkills);
-                noSkills.removeAll(optionalSkills);
-                assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
-                assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-                assertThat(skills.size()).isEqualTo(expectedSize);
-                break;
-            case "Special Operator":
-                defaultSkills = Arrays.asList(ALERTNESS, ATHLETICS, DEMOLITIONS, FIREARMS, HEAVY_WEAPONS,
-                        MELEE_WEAPONS, NAVIGATE, STEALTH, SURVIVAL, SWIM, UNARMED_COMBAT, MILITARY_SCIENCE + " 60%:\n(Land) ");
-                expectedSize = 12;
-                noSkills = new ArrayList<>(ALL_SKILLS);
-                noSkills.removeAll(defaultSkills);
-                assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
-                assertThat(skills).doesNotContainAnyElementsOf(noSkills);
-                assertThat(skills.size()).isEqualTo(expectedSize);
-                break;
-            case "Physician":
-                break;
-            case "Scientist":
-//                assertThat(skills.contains("bureaucracy")).isTrue();
-//                assertThat(skills.contains("first-aid")).isTrue();
-//                assertThat(skills.contains("medicine")).isTrue();
-//                assertThat(skills.contains("persuade")).isTrue();
-//                assertThat(skills.contains("pharmacy")).isTrue();
-//                assertThat(skills.contains("science (biology)")).isTrue();
-//                assertThat(skills.contains("search")).isTrue();
-                break;
-            case "Firefighter":
+                case "Anthropologist":
+                    List<String> defaultSkills = Arrays.asList(HISTORY, OCCULT, PERSUADE);
+                    List<String> optionalSkills = Arrays.asList(ANTHROPOLOGY, ARCHEOLOGY, HUMINT, NAVIGATE, RIDE, SEARCH, SURVIVAL);
+                    List<String> inputSkills = Collections.singletonList(WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)");
+                    int expectedSize = 7;
+                    List<String> noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).containsAnyOf(ANTHROPOLOGY, ARCHEOLOGY);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    List<String> otherSkills = new ArrayList<>(inputSkills);
+                    assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).isTrue();
+                    break;
+                case "Engineer":
+                    defaultSkills = Arrays.asList(COMPUTER_SCIENCE, SIGINT);
+                    optionalSkills = Arrays.asList(ACCOUNTING, BUREAUCRACY, HEAVY_MACHINERY, LAW,
+                            "Craft 30%:\n(Electrician) ", "Craft 30%:\n(Mechanic) ", "Craft 40%:\n(Microelectronics) ",
+                            "Science 40%:\n(Mathematics) ");
+                    expectedSize = 10;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                case "Federal Agent":
+                    defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, CRIMINOLOGY, DRIVE, FIREARMS, FORENSICS, HUMINT, LAW, PERSUADE, SEARCH, UNARMED_COMBAT);
+                    optionalSkills = Arrays.asList(ACCOUNTING, COMPUTER_SCIENCE, HEAVY_WEAPONS, PHARMACY);
+                    expectedSize = 12;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                case "Special Operator":
+                    defaultSkills = Arrays.asList(ALERTNESS, ATHLETICS, DEMOLITIONS, FIREARMS, HEAVY_WEAPONS,
+                            MELEE_WEAPONS, NAVIGATE, STEALTH, SURVIVAL, SWIM, UNARMED_COMBAT, "Military Science 60%:\n(Land) ");
+                    expectedSize = 12;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                case "Physician":
+                    defaultSkills = Arrays.asList(BUREAUCRACY, FIRST_AID, MEDICINE, PERSUADE, PHARMACY,
+                            SEARCH, "Science 60%:\n(Biology) ");
+                    optionalSkills = Arrays.asList(FORENSICS, PSYCHOTHERAPY, SURGERY);
+                    expectedSize = 9;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                case "Scientist":
+                    defaultSkills = Arrays.asList(BUREAUCRACY, COMPUTER_SCIENCE);
+                    optionalSkills = Arrays.asList(ACCOUNTING, FORENSICS, LAW, PHARMACY);
+                    inputSkills = Arrays.asList(
+                            WordUtils.capitalizeFully(SCIENCE.replaceAll("-", " ")) + " \\(\\w*\\)",
+                            WordUtils.capitalizeFully(SCIENCE.replaceAll("-", " ")) + " \\(\\w*\\)",
+                            WordUtils.capitalizeFully(SCIENCE.replaceAll("-", " ")) + " \\(\\w*\\)"
+                    );
+                    expectedSize = 8;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    otherSkills = new ArrayList<>(inputSkills);
+                    assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).isTrue();
+                    break;
+                case "Firefighter":
+                    defaultSkills = Arrays.asList(ATHLETICS, ALERTNESS, DEMOLITIONS, DRIVE, FIRST_AID,
+                            FORENSICS, HEAVY_MACHINERY, NAVIGATE, SEARCH, "Craft 40%:\n(Electrician) ", "Craft 40%:\n(Mechanic) ");
+                    expectedSize = 11;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                case "Foreign Service Officer":
+                    defaultSkills = Arrays.asList(ACCOUNTING, ANTHROPOLOGY, BUREAUCRACY, HISTORY, HUMINT,
+                            LAW, PERSUADE);
+                    inputSkills = Arrays.asList(
+                            WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)",
+                            WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)",
+                            WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)"
+                    );
+                    expectedSize = 10;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    otherSkills = new ArrayList<>(inputSkills);
+                    assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).isTrue();
+                    break;
+                case "Criminal":
+                    defaultSkills = Arrays.asList(ALERTNESS, ATHLETICS, CRIMINOLOGY, DODGE, DRIVE,
+                            FIREARMS, LAW, MELEE_WEAPONS, PERSUADE, STEALTH, UNARMED_COMBAT);
+                    optionalSkills = Arrays.asList(DEMOLITIONS, DISGUISE, FORENSICS, HUMINT, NAVIGATE, OCCULT, PHARMACY);
+                    expectedSize = 13;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                    /*
+                    Anthropology 40%»Bureaucracy 50%»Computer Science 40%»Criminology 40%»Foreign Language (choose one)
+                    50%»Foreign Language (choose one) 50%»Foreign Language (choose one) 40%»History 40%»HUMINT 50%»SIGINT 40%
+                     */
+                case "Intelligence Analyst":
+                    defaultSkills = Arrays.asList(ANTHROPOLOGY, BUREAUCRACY, COMPUTER_SCIENCE, CRIMINOLOGY, HUMINT, HISTORY, SIGINT
+                    );
+                    inputSkills = Arrays.asList(
+                            WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)",
+                            WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)",
+                            WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)"
+                    );
 
-//                assertThat(skills.contains("bureaucracy")).isTrue();
-//                assertThat(skills.contains("computer-science")).isTrue();
-//                assertThat(skills.contains("science")).isTrue();
-//                assertThat(skills.contains("science")).isTrue();
-//                assertThat(skills.contains("science")).isTrue();
-                break;
-            case "Foreign Service Officer":
+                    expectedSize = 10;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    assertThat(listContainsOtherSkillsByRegex(new ArrayList<>(inputSkills), skills)).isTrue();
+                    break;
+                case "Intelligence Officer":
+                    defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, CRIMINOLOGY, DISGUISE, DRIVE, FIREARMS,
+                            HUMINT, PERSUADE, SIGINT, STEALTH, UNARMED_COMBAT
+                    );
 
-//                assertThat(skills.contains("alertness")).isTrue();
-//                assertThat(skills.contains("athletics")).isTrue();
-//                assertThat(skills.contains("craft (electrician)")).isTrue();
-//                assertThat(skills.contains("craft (mechanic)")).isTrue();
-//                assertThat(skills.contains("demolitions")).isTrue();
-//                assertThat(skills.contains("drive")).isTrue();
-//                assertThat(skills.contains("first-aid")).isTrue();
-//                assertThat(skills.contains("forensics")).isTrue();
-//                assertThat(skills.contains("heavy-machinery")).isTrue();
-//                assertThat(skills.contains("navigate")).isTrue();
-//                assertThat(skills.contains("search")).isTrue();
-                break;
-            case "Criminal":
+                    inputSkills = Arrays.asList(
+                            WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)",
+                            WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)"
+                    );
 
-//                assertThat(skills.contains("accounting")).isTrue();
-//                assertThat(skills.contains("anthropology")).isTrue();
-//                assertThat(skills.contains("bureaucracy")).isTrue();
-//                assertThat(skills.contains("foreign-language")).isTrue();
-//                assertThat(skills.contains("foreign-language")).isTrue();
-//                assertThat(skills.contains("foreign-language")).isTrue();
-//                assertThat(skills.contains("history")).isTrue();
-//                assertThat(skills.contains("humint")).isTrue();
-//                assertThat(skills.contains("law")).isTrue();
-//                assertThat(skills.contains("persuade")).isTrue();
-                break;
-            case "Intelligence Analyst":
-//
-//                assertThat(skills.contains("alertness")).isTrue();
-//                assertThat(skills.contains("criminology")).isTrue();
-//                assertThat(skills.contains("dodge")).isTrue();
-//                assertThat(skills.contains("drive")).isTrue();
-//                assertThat(skills.contains("firearms")).isTrue();
-//                assertThat(skills.contains("law")).isTrue();
-//                assertThat(skills.contains("melee-weapons")).isTrue();
-//                assertThat(skills.contains("persuade")).isTrue();
-//                assertThat(skills.contains("stealth")).isTrue();
-//                assertThat(skills.contains("unarmed-combat")).isTrue();
-                break;
-            case "Intelligence Case Officer":
+                    expectedSize = 11;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    assertThat(listContainsOtherSkillsByRegex(new ArrayList<>(inputSkills), skills)).isTrue();
+                    break;
 
-//                assertThat(skills.contains("anthropology")).isTrue();
-//                assertThat(skills.contains("bureaucracy")).isTrue();
-//                assertThat(skills.contains("computer-science")).isTrue();
-//                assertThat(skills.contains("criminology")).isTrue();
-//                assertThat(skills.contains("foreign-language")).isTrue();
-//                assertThat(skills.contains("foreign-language")).isTrue();
-//                assertThat(skills.contains("foreign-language")).isTrue();
-//                assertThat(skills.contains("history")).isTrue();
-//                assertThat(skills.contains("humint")).isTrue();
-//                assertThat(skills.contains("sigint")).isTrue();
-                break;
-            case "Lawyer":
-//                assertThat(skills.contains("alertness")).isTrue();
-//                assertThat(skills.contains("bureaucracy")).isTrue();
-//                assertThat(skills.contains("criminology")).isTrue();
-//                assertThat(skills.contains("disguise")).isTrue();
-//                assertThat(skills.contains("drive")).isTrue();
-//                assertThat(skills.contains("firearms")).isTrue();
-//                assertThat(skills.contains("foreign-language")).isTrue();
-//                assertThat(skills.contains("foreign-language")).isTrue();
-//                assertThat(skills.contains("humint")).isTrue();
-//                assertThat(skills.contains("persuade")).isTrue();
-//                assertThat(skills.contains("sigint")).isTrue();
-//                assertThat(skills.contains("stealth")).isTrue();
-//                assertThat(skills.contains("unarmed-combat ")).isTrue();
-                break;
-            case "Media Specialist":
-//                assertThat(skills.contains("accounting")).isTrue();
-//                assertThat(skills.contains("bureaucracy")).isTrue();
-//                assertThat(skills.contains("humint")).isTrue();
-//                assertThat(skills.contains("persuade")).isTrue();
-                break;
-            case "Police Officer":
-                break;
-            case "Program Manager":
-                break;
-            case "Soldier":
-                break;
-            case "Intelligence Officer":
-                break;
-            case "Foreign Service-officer":
-                break;
-            case "Pilot":
-                break;
-            case "Nurse":
-                break;
-            default:
-                System.out.println(profession);
-                fail(profession);
-        }
-////            art
+                case "Media Specialist":
+                    defaultSkills = Arrays.asList(HISTORY, HUMINT, PERSUADE
+                    );
+                    optionalSkills = Arrays.asList(LAW, ARCHEOLOGY, BUREAUCRACY, COMPUTER_SCIENCE);
+                    inputSkills = Collections.singletonList(
+                            WordUtils.capitalizeFully(ART.replaceAll("-", " ")) + " \\(\\w*\\)"
+                    );
+                    expectedSize = 9;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    otherSkills = new ArrayList<>(inputSkills);
+                    assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).isTrue();
+                    break;
+                case "Police Officer":
+                    defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, CRIMINOLOGY, DRIVE, FIREARMS, FIRST_AID,
+                            HUMINT, LAW, MELEE_WEAPONS, NAVIGATE, PERSUADE, SEARCH, UNARMED_COMBAT
+                    );
+                    optionalSkills = Arrays.asList(FORENSICS, HEAVY_MACHINERY, HEAVY_WEAPONS, RIDE);
+                    expectedSize = 14;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+//                    but some elements were not found:
+//  ["forensics", "heavy-machinery", "ride"]
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                case "Program Manager":
+                    defaultSkills = Arrays.asList(ACCOUNTING, BUREAUCRACY, COMPUTER_SCIENCE, CRIMINOLOGY, HISTORY,
+                            LAW, PERSUADE
+                            );
+                    inputSkills = Collections.singletonList(
+                            WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)"
+                    );
+                    expectedSize = 9;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+//                    "anthropology"]
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    assertThat(listContainsOtherSkillsByRegex(new ArrayList<>(inputSkills), skills)).isTrue();
+                    break;
+                case "Soldier":
+                    defaultSkills = Arrays.asList(ALERTNESS, ATHLETICS, BUREAUCRACY, DRIVE, FIREARMS, FIRST_AID,
+                            "Military Science 40%:\n(Land) ", NAVIGATE, PERSUADE, UNARMED_COMBAT
+                    );
+                    optionalSkills = Arrays.asList(ARTILLERY, COMPUTER_SCIENCE, DEMOLITIONS, HEAVY_MACHINERY,
+                            HEAVY_WEAPONS, SEARCH, SIGINT, SWIM
+                    );
+                    expectedSize = 13;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+
+                case "Pilot":
+                    defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, "Craft 40%:\n(Electrician) ", 
+                            "Craft 40%:\n(Mechanic) ", NAVIGATE, "Science 40%:\n(Meteorology) ", SWIM
+                            );
+                    optionalSkills = Collections.singletonList(HEAVY_WEAPONS);
+                    expectedSize = 10;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                //            ALERTNESS, BUREAUCRACY, FIRST AID, HUMINT, MEDICINE, PERSUADE, PHARMACY, SCIENCE (BIOLOGY) 40%
+                //            CHOOSE TWO FROM:»DRIVE, FORENSICS, NAVIGATE, PSYCHOTHERAPY, SEARCH 60%
+                case "Nurse":
+                    defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, FIRST_AID, HUMINT, MEDICINE, PERSUADE,
+                            PHARMACY, "Science 40%:\n(Biology) "
+                    );
+                    optionalSkills = Arrays.asList(DRIVE, FORENSICS, NAVIGATE, PSYCHOTHERAPY, SEARCH);
+                    expectedSize = 10;
+                    noSkills = new ArrayList<>(ALL_SKILLS);
+                    noSkills.removeAll(defaultSkills);
+                    noSkills.removeAll(optionalSkills);
+                    assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
+                    assertThat(skills).doesNotContainAnyElementsOf(noSkills);
+                    assertThat(skills.size()).isEqualTo(expectedSize);
+                    break;
+                default:
+                    System.out.println(profession);
+                    fail(profession);
+            }
+           /*
+*/
+////____________art
 //history
 //humint
 //persuade
