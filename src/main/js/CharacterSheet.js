@@ -1169,7 +1169,7 @@ function randomBonds() {
 }
 
 function pickRandomInput(skillName) {
-
+    console.log("Picking random input for " + skillName)
     return inputSkills.get(skillName).random();
 }
 
@@ -1194,9 +1194,11 @@ function randomSkills() {
         let skillName = default_input_skills[i].getAttribute("name")
             .replace(/\s\d{1,2}%:/, "").toLowerCase().replace(" ", "-");
         if(inputSkills.has(skillName)) {
-            while(inputSkills.has(skillName) || skills.has(skillName)) {
-                skillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
+            let fullSkillName = skillName
+            while(inputSkills.has(fullSkillName) || skills.has(fullSkillName)) {
+                fullSkillName = skillName.replaceAll("-", " ").toTitleCase() + " (" + pickRandomInput(skillName) +")";
             }
+            skillName = fullSkillName
             skills.set(skillName, default_input_skills[i].getAttribute("base"));
         }
     }

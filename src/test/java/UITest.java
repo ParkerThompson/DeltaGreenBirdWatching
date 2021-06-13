@@ -2423,9 +2423,32 @@ public class UITest {
 
     @Test
     public void testRandom(){
+        Map<String, Integer> professionsSelect = new HashMap<>(ImmutableMap.<String, Integer>builder()
+                .put(WordUtils.capitalizeFully(ANTHROPOLOGIST.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(ENGINEER.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(FEDERAL_AGENT.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(SPECIAL_OPERATOR.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(PHYSICIAN.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(SCIENTIST.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(CRIMINAL.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(FIREFIGHTER.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(FOREIGN_SERVICE_OFFICER.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(INTELLIGENCE_ANALYST.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(INTELLIGENCE_OFFICER.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(LAWYER.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(MEDIA_SPECIALIST.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(NURSE.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(PILOT.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(POLICE_OFFICER.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(PROGRAM_MANAGER.replaceAll("-"," ")), 0)
+                .put(WordUtils.capitalizeFully(SOLDIER.replaceAll("-"," ")), 0)
+                .build());
         for(int i = 0; i < 100; i ++) {
             click("btnRandom");
             String profession = driver.findElement(By.id("profession")).getAttribute("value");
+            System.out.println(profession);
+            System.out.println( professionsSelect.get(profession));
+            professionsSelect.put(profession, professionsSelect.get(profession)+1);
             List<String> skills = new ArrayList<>();
             List<WebElement> skillElements = driver.findElements(By.className("skill"));
             for (WebElement skill : skillElements) {
@@ -2462,6 +2485,19 @@ public class UITest {
 
 
 //                    ["anthropologist", 'optional_skills': 2}],
+
+//            ImmutableMap.<String, Boolean>builder()
+//                    .put(getSkillString(profession, ARTILLERY), Boolean.TRUE)
+//                    .put(getSkillString(profession, COMPUTER_SCIENCE), Boolean.TRUE)
+//                    .put(getSkillString(profession, CRAFT_CHECK), Boolean.TRUE)
+//                    .put(getSkillString(profession, DEMOLITIONS), Boolean.TRUE)
+//                    .put(getSkillString(profession, FOREIGN_LANGUAGE_CHECK), Boolean.TRUE)
+//                    .put(getSkillString(profession, HEAVY_MACHINERY), Boolean.TRUE)
+//                    .put(getSkillString(profession, HEAVY_WEAPONS), Boolean.TRUE)
+//                    .put(getSkillString(profession, SEARCH), Boolean.TRUE)
+//                    .put(getSkillString(profession, SIGINT), Boolean.TRUE)
+//                    .put(getSkillString(profession, SWIM), Boolean.TRUE)
+//                    .build());
             assertThat(skills).doesNotHaveDuplicates();
             switch (profession) {
                 case "Anthropologist":
@@ -2537,6 +2573,7 @@ public class UITest {
                     noSkills = new ArrayList<>(ALL_SKILLS);
                     noSkills.removeAll(defaultSkills);
                     noSkills.removeAll(optionalSkills);
+                    System.out.println(skills);
                     assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
                     assertThat(skills).doesNotContainAnyElementsOf(noSkills);
                     assertThat(skills.size()).isEqualTo(expectedSize);
@@ -2566,6 +2603,7 @@ public class UITest {
                     expectedSize = 10;
                     noSkills = new ArrayList<>(ALL_SKILLS);
                     noSkills.removeAll(defaultSkills);
+                    System.out.println(skills);
                     assertThat(skills).containsOnlyOnceElementsOf(defaultSkills);
                     assertThat(skills).doesNotContainAnyElementsOf(noSkills);
                     assertThat(skills.size()).isEqualTo(expectedSize);
@@ -2800,6 +2838,7 @@ public class UITest {
 //            case "soldier":
 //                break;
         }
+        System.out.println(professionsSelect);
     }
 //    anthropologist anthropology  or archeology,foreign-language,history,occult,persuade 
 //anthropology,archeology,humint,navigate,ride,search,survival 
