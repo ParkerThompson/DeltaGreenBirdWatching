@@ -63,6 +63,10 @@ span {
     font-size: 16px;
 }
 
+.adapted {
+    color: red;
+}
+
 .professionBtn {
     background-color: black;
     border: none;

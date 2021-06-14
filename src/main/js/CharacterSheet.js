@@ -365,6 +365,36 @@ function setPlusListeners() {
     }
 }
 
+function setAdaptedListeners() {
+    let violenceChecks = document.getElementsByClassName("violence-check");
+    for(let i = 0; i < violenceChecks.length; i ++) {
+        violenceChecks[i].addEventListener('click', function() {
+            adaptedListener("violence")
+        });
+    }
+    let helplessnessChecks = document.getElementsByClassName("helplessness-check");
+    for(let i = 0; i < helplessnessChecks.length; i ++) {
+        helplessnessChecks[i].addEventListener('click', function() {
+            adaptedListener("helplessness")
+        });
+    }
+}
+
+function adaptedListener(checkType) {
+    let checks = document.getElementsByClassName(checkType + "-check");
+    let allChecked = true;
+    for(let j = 0; j < checks.length; j ++) {
+        allChecked = allChecked && checks[j].checked;
+    }
+    let adapted = document.getElementById(checkType + "-adapted");
+    if(allChecked) {
+        adapted.style.visibility = "";
+    }
+    else {
+        adapted.style.visibility = "hidden";
+    }
+}
+
 function setMinusListeners() {
     let minuses = document.getElementsByClassName("minus");
     for (i = 0; i < minuses.length; i++) {

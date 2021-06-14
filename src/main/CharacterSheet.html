@@ -16,6 +16,7 @@
             setScoreListeners();
             setHPListener();
             setPowListener();
+            setAdaptedListeners();
             createPrintButton();
             setModalListener();
             updateSkillIncreaseButtons();
@@ -346,15 +347,15 @@
                                             <tr>
                                                 <td>
                                                     <span>Violence</span>
-                                                    <input type="checkbox" id="violence-1" name="violence-1">
-                                                    <input type="checkbox" id="violence-2" name="violence-2">
-                                                    <input type="checkbox" id="violence-3" name="violence-3">
-                                                    <span style="visibility: hidden;">adapted</span>
+                                                    <input type="checkbox" id="violence-1" name="violence-1" class="violence-check">
+                                                    <input type="checkbox" id="violence-2" name="violence-2" class="violence-check">
+                                                    <input type="checkbox" id="violence-3" name="violence-3" class="violence-check">
+                                                    <span id="violence-adapted" class="adapted" style="visibility: hidden;">ADAPTED</span>
                                                     <span>Helplessness</span>
-                                                    <input type="checkbox" id="helplessness-1" name="helplessness-1">
-                                                    <input type="checkbox" id="helplessness-2" name="helplessness-2">
-                                                    <input type="checkbox" id="helplessness-3" name="helplessness-3">
-                                                    <span style="visibility: hidden;">adapted</span>
+                                                    <input type="checkbox" id="helplessness-1" name="helplessness-1" class="helplessness-check">
+                                                    <input type="checkbox" id="helplessness-2" name="helplessness-2" class="helplessness-check">
+                                                    <input type="checkbox" id="helplessness-3" name="helplessness-3" class="helplessness-check">
+                                                    <span id="helplessness-adapted" class="adapted" style="visibility: hidden;">ADAPTED</span>
                                                 </td>
                                             </tr>
                                             </tbody>
