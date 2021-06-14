@@ -13,6 +13,7 @@ const inputSkills = new Map([
 let male_names = [];
 let female_names = [];
 let last_names = [];
+let code_names = [];
 let universities = ["Harvard", "Standford", "MIT", "Brown", "Columbia", "Cornell", "Dartmouth", "University of Pennsylvania", "Princeton", "Yale", "Texas A&M"];
 let history_museums = ["The Smithsonian", "The American Museum of Natural History", "The British Museum"];
 let tech_companies = ["Facebook", "Google", "Apple", "IBM", "Amazon"];
@@ -761,6 +762,12 @@ function parseLastNames() {
     last_names = data.split(",");
 }
 
+function parseCodeNames() {
+    const data = readFile("resources/code-names.txt");
+    code_names = data.split(",");
+}
+
+
 function parseProfessions() {
     const wrappers = [];
     const data = readFile("resources/professions.txt");
@@ -1158,13 +1165,14 @@ function randomName() {
     if((genderRand % 2) === 0) {
         document.getElementById("sex2").checked = true;
         document.getElementById("sex1").checked = false;
-        name = male_names.random() + " " + last_names.random()
+        name = last_names.random() + ", " + male_names.random()
     }
     else {
         document.getElementById("sex1").checked = true;
         document.getElementById("sex2").checked = false;
-        name = female_names.random() + " " + last_names.random()
+        name = last_names.random() + ", " + female_names.random()
     }
+    name += " (" + code_names.random() + ")";
     document.getElementById("name").value = name;
 }
 
