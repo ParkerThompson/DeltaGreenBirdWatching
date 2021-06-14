@@ -171,7 +171,7 @@ let nationalities = ["American", "Chinese", "Irish", "Indian", "British", "Japen
     "Chilean", "Argentinean", "Peruvian", "Portuguese", "Greek", "Finish", "Belgian", "Egyptian", "Ethiopian", "Panamanian",
     "Norwegian", "Swedish", "Polish", "Moroccan"];
 
-let bonds = [["Mother", "F"], ["Father", "M"], ["Coworker", "FM"], ["Friend", "FM"], ["Sister", "F"], ["Brother", "M"], ["Mentor", "FM"], ["Boyfriend", "M"], ["Girlfriend", "F"], ["Husband", "M"], ["Wife", "F"], ["Uncle", "M"], ["Aunt", "F"]];
+let bonds = [["Mother", "F", "Family"], ["Father", "M", "Family"], ["Coworker", "FM", "Non-family"], ["Friend", "FM", "Non-family"], ["Sister", "F", "Family"], ["Brother", "M"], ["Mentor", "FM", "Non-family"], ["Boyfriend", "M", "Non-family"], ["Girlfriend", "F", "Non-family"], ["Husband", "M", "Family"], ["Wife", "F", "Family"], ["Uncle", "M", "Family"], ["Aunt", "F", "Family"]];
 
 const description = {
     eye_description: ["exquisite", "iridescent", "luminous", "magnetic", "radiant", "angry", "anxious",
@@ -1299,11 +1299,18 @@ function randomBonds() {
         chosenBonds.push(bond[0]);
         let name;
         let genderRand = Math.floor(Math.random()*10);
+        let lastName;
+        if(bond[2] === "Family") {
+            lastName = document.getElementById("name").value.split(",")[0];
+        }
+        else {
+            lastName = last_names.random();
+        }
         if(bond[1] === "M" || (bond[1] === "FM" && (genderRand % 2) === 0)) {
-            name = male_names.random() + " " + last_names.random()
+            name = male_names.random() + " " + lastName
         }
         if(bond[1] === "F" || (bond[1] === "FM" && (genderRand % 2) !== 0)) {
-            name = female_names.random() + " " + last_names.random()
+            name = female_names.random() + " " + lastName;
         }
         bondNames[i].value = name + " (" + bond[0] + ")";
         bondScores[i].value = chaScore;
