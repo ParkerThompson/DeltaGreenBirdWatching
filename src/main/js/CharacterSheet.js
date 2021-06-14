@@ -254,7 +254,7 @@ function weaponSelectListener(option) {
             row.getElementsByClassName("weapon-range")[0].value = weapon.range !== undefined ? weapon.range: "";
             let baseDamage = weapon.damage;
             console.log(weapon.skill);
-            if(weapon.skill === "unarmed-combat" || weapon.skill === 'melee-combat') {
+            if((weapon.skill === "unarmed-combat" || weapon.skill === 'melee-combat') && weapon.damage.match(/\d*D.*/)) {
                 let damageBonus = 0;
                 let strBonus = getStrBonusDamage();
                 if(baseDamage.includes("-")) {
