@@ -209,8 +209,10 @@ public class UITest {
         assertThat(getChildElementValue(parent, "weapon-ammo")).isEqualTo(ammo);
         if(damage.size() > 1) {
             for (int i = 1; i < 19; i++) {
+                driver.findElement(By.id("str-score")).clear();
                 driver.findElement(By.id("str-score")).sendKeys(i + "");
-                assertThat(getChildElementValue(parent, "weapon-damage")).isEqualTo(damage.get((int)Math.floor((i-1)/4.0)));
+                driver.findElement(By.id("dex-score")).click();
+                assertThat(getChildElementValue(parent, "weapon-damage")).isEqualTo(damage.get((i-1)/4));
                 //1-4: 0
                 //5-8: 1
                 //9-12: 2
@@ -2387,18 +2389,18 @@ public class UITest {
         driver.findElement(By.id("dex-score")).sendKeys("10");
         for(WebElement selectElement: selects) {
             testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "unarmed"))), "Unarmed Attack", "40", "", Arrays.asList("1D4-3", "1D4-2", "1D4-1", "1D4", "1D4+1"), "N/A", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "brass_knuckles"))), "Brass knuckles, heavy flashlight, or steel-toe boots", "40", "", "1D4", "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "brass_knuckles"))), "Brass knuckles, heavy flashlight, or steel-toe boots", "40", "", Arrays.asList("1D4-2", "1D4-1", "1D4", "1D4+1", "1D4+2"), "N/A", "", "", "");
             testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "garotte"))), "Garotte", "40", "", "special", "N/A", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "knife"))), "Knife", "30", "", "1D4", "N/A", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "hatchet"))), "Hatchet", "30", "", "1D4", "N/A", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "combat_dagger"))), "Large knife or combat dagger", "30", "", "1D6", "3", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "club"))), "Club, nightstick, baton,  or collapsible baton", "30", "", "1D6", "N/A", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "sword"))), "Machete, tomahawk, or sword", "30", "", "1D8", "N/A", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "bat"))), "Baseball bat or rifle butt", "30", "", "1D8", "N/A", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "spear"))), "Spear or fixed bayonet", "30", "", "1D8", "3", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "axe"))), "Wood axe", "30", "", "1D10", "N/A", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "large_sword"))), "Large sword", "30", "", "1D10", "N/A", "", "", "");
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "two_handed_sword"))), "Two-handed sword", "30", "", "1D12", "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "knife"))), "Knife", "30", "", Arrays.asList("1D4-2", "1D4-1", "1D4", "1D4+1", "1D4+2"), "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "hatchet"))), "Hatchet", "30", "", Arrays.asList("1D4-2", "1D4-1", "1D4", "1D4+1", "1D4+2"), "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "combat_dagger"))), "Large knife or combat dagger", "30", "", Arrays.asList("1D6-2", "1D6-1", "1D6", "1D6+1", "1D6+2"), "3", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "club"))), "Club, nightstick, baton,  or collapsible baton", "30", "", Arrays.asList("1D6-2", "1D6-1", "1D6", "1D6+1", "1D6+2"), "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "sword"))), "Machete, tomahawk, or sword", "30", "", Arrays.asList("1D8-2", "1D8-1", "1D8", "1D8+1", "1D8+2"), "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "bat"))), "Baseball bat or rifle butt", "30", "", Arrays.asList("1D8-2", "1D8-1", "1D8", "1D8+1", "1D8+2"), "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "spear"))), "Spear or fixed bayonet", "30", "", Arrays.asList("1D8-2", "1D8-1", "1D8", "1D8+1", "1D8+2"), "3", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "axe"))), "Wood axe", "30", "", Arrays.asList("1D10-2", "1D10-1", "1D10", "1D10+1", "1D10+2"), "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "large_sword"))), "Large sword", "30", "", Arrays.asList("1D10-2", "1D10-1", "1D10", "1D10+1", "1D10+2"), "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "two_handed_sword"))), "Two-handed sword", "30", "", Arrays.asList("1D12-2", "1D12-1", "1D12", "1D12+1", "1D12+2"), "N/A", "", "", "");
             testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "pepper_spray_keychain"))), "Tear Gas and Pepper Spray", "50", "1m", "-20% penalty", "", "", "", "");
             testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "pepper_spray_can"))), "Tear Gas and Pepper Spray", "50", "3m", "-20% penalty", "", "", "", "");
             testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "tear_gas"))), "Tear gas grenade (Thrown/Launched)", "30/0", "20m/50m", "-40% penalty", "", "", "", "");

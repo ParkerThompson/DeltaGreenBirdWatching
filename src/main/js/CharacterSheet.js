@@ -272,6 +272,9 @@ function weaponSelectListener(option) {
                     damageBonus = parseInt(baseDamageParts[1])+strBonus;
                     console.log("damageBonus " + damageBonus)
                 }
+                else {
+                    damageBonus = strBonus
+                }
 
                 if(damageBonus > 0) {
                     damageBonus = "+" + damageBonus;
