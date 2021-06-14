@@ -196,14 +196,32 @@ public class UITest {
     }
 
     private void testWeapon(WebElement parent, String weaponName, String skill, String range, String damage, String piercing, String lethality, String killRadius, String ammo) {
+        testWeapon(parent, weaponName, skill, range, Collections.singletonList(damage), piercing, lethality, killRadius, ammo);
+    }
+
+    private void testWeapon(WebElement parent, String weaponName, String skill, String range, List<String> damage, String piercing, String lethality, String killRadius, String ammo) {
         assertThat(getChildElementValue(parent, "weapon-name")).isEqualTo(weaponName);
         assertThat(getChildElementValue(parent, "weapon-skill")).isEqualTo(skill);
         assertThat(getChildElementValue(parent, "weapon-range")).isEqualTo(range);
-        assertThat(getChildElementValue(parent, "weapon-damage")).isEqualTo(damage);
         assertThat(getChildElementValue(parent, "weapon-piercing")).isEqualTo(piercing);
         assertThat(getChildElementValue(parent, "weapon-lethality")).isEqualTo(lethality);
         assertThat(getChildElementValue(parent, "weapon-kill-radius")).isEqualTo(killRadius);
         assertThat(getChildElementValue(parent, "weapon-ammo")).isEqualTo(ammo);
+        if(damage.size() > 1) {
+            for (int i = 1; i < 19; i++) {
+                driver.findElement(By.id("str-score")).sendKeys(i + "");
+                assertThat(getChildElementValue(parent, "weapon-damage")).isEqualTo(damage.get((int)Math.floor((i-1)/4.0)));
+                //1-4: 0
+                //5-8: 1
+                //9-12: 2
+                //13-16: 3
+                //17-18: 4
+            }
+        }
+        else {
+            assertThat(getChildElementValue(parent, "weapon-damage")).isEqualTo(damage.get(0));
+        }
+
     }
 
     private boolean listContainsOtherSkillsByRegex(List<String> otherSkills, List<String> skills) {
@@ -2368,7 +2386,7 @@ public class UITest {
         List<WebElement> selects = driver.findElements(By.name("weapon-select"));
         driver.findElement(By.id("dex-score")).sendKeys("10");
         for(WebElement selectElement: selects) {
-            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "unarmed"))), "Unarmed Attack", "40", "", "1D4-1", "N/A", "", "", "");
+            testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "unarmed"))), "Unarmed Attack", "40", "", Arrays.asList("1D4-3", "1D4-2", "1D4-1", "1D4", "1D4+1"), "N/A", "", "", "");
             testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "brass_knuckles"))), "Brass knuckles, heavy flashlight, or steel-toe boots", "40", "", "1D4", "N/A", "", "", "");
             testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "garotte"))), "Garotte", "40", "", "special", "N/A", "", "", "");
             testWeapon(driver.findElement(By.id(selectWeapon(selectElement, "knife"))), "Knife", "30", "", "1D4", "N/A", "", "", "");

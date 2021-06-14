@@ -252,7 +252,39 @@ function weaponSelectListener(option) {
                     ? document.getElementById(weapon.skill + "-x5").innerText : skill.value
             }
             row.getElementsByClassName("weapon-range")[0].value = weapon.range !== undefined ? weapon.range: "";
-            row.getElementsByClassName("weapon-damage")[0].value = weapon.damage !== undefined ? weapon.damage: "";
+            let baseDamage = weapon.damage;
+            console.log(weapon.skill);
+            if(weapon.skill === "unarmed-combat" || weapon.skill === 'melee-combat') {
+                let damageBonus = 0;
+                let strBonus = getStrBonusDamage();
+                if(baseDamage.includes("-")) {
+                    let baseDamageParts = baseDamage.split("-");
+                    baseDamage = baseDamageParts[0];
+                    console.log(parseInt(baseDamageParts[1]));
+                    console.log(parseInt(baseDamageParts[1]) * -1);
+                    damageBonus = ((parseInt(baseDamageParts[1])) * -1)+strBonus;
+                    console.log("damageBonus " + damageBonus)
+
+                }
+                else if(baseDamage.includes("+")) {
+                    let baseDamageParts = baseDamage.split("+");
+                    baseDamage = baseDamageParts[0];
+                    damageBonus = parseInt(baseDamageParts[1])+strBonus;
+                    console.log("damageBonus " + damageBonus)
+                }
+
+                if(damageBonus > 0) {
+                    damageBonus = "+" + damageBonus;
+                }
+                else if(damageBonus === 0) {
+                    damageBonus = "";
+                }
+                baseDamage += damageBonus;
+                console.log(damageBonus);
+                console.log(strBonus);
+                console.log(baseDamage);
+            }
+            row.getElementsByClassName("weapon-damage")[0].value = baseDamage !== undefined ? baseDamage: "";
             row.getElementsByClassName("weapon-piercing")[0].value = weapon.armor_piercing !== undefined ? weapon.armor_piercing: "";
             row.getElementsByClassName("weapon-lethality")[0].value = weapon.lethality !== undefined ? weapon.lethality: "";
             row.getElementsByClassName("weapon-kill-radius")[0].value =  weapon.kill_radius !== undefined ? weapon.kill_radius: "";
@@ -343,6 +375,7 @@ function setHPListener() {
     const str = document.querySelector("#str-score");
     const con = document.querySelector("#con-score");
     str.addEventListener("change", hPListener);
+    str.addEventListener("change", recalculateWeapons);
     con.addEventListener("change", hPListener);
 }
 
@@ -1417,10 +1450,36 @@ function randomWeapons() {
     let weaponNames = document.getElementsByClassName("weapon-name");
     let weapons = profession_details.get(profession).weapons;
     for(let j = 0; j < weapons.length; j ++) {
-        console.log(weaponSelects[j])
+        console.log(weaponSelects[j]);
         weaponSelects[j].value = weapons[j][0];
         weaponSelectListener(weaponSelects[j]);
         weaponNames[j].value = weapons[j][1];
+    }
+}
+
+function recalculateWeapons() {
+    let weaponSelects = document.getElementsByName("weapon-select");
+    for(let j = 0; j < weaponSelects.length; j ++) {
+        weaponSelectListener(weaponSelects[j]);
+    }
+}
+
+function getStrBonusDamage() {
+    let str = parseInt(document.getElementById("str-score").value);
+    if(1 <= str && str <=4) {
+        return -2;
+    }
+    else if(5 <= str && str <=8) {
+        return -1;
+    }
+    else if(9 <= str && str <=12) {
+        return 0;
+    }
+    else if(13 <= str && str <=16) {
+        return 1;
+    }
+    else {
+        return 2;
     }
 }
 
