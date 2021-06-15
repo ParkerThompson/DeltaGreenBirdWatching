@@ -189,7 +189,7 @@ let nationalities = ["albanian", "albanian-american", "algerian", "algerian-amer
     "uzbek", "uzbek-american", "vietnamese", "vietnamese-american", "welsh", "welsh-american"];
 
 let bonds = [["Mother", "F", "Family", "Older"], ["Father", "M", "Family", "Older"], ["Coworker", "FM", "Non-family"],
-    ["Friend", "FM", "Non-family"], ["Sister", "F", "Family", "Same"], ["Brother", "M", "Same"],
+    ["Friend", "FM", "Non-family"], ["Sister", "F", "Family", "Same"], ["Brother", "M", "Family", "Same"],
     ["Mentor", "FM", "Non-family"], ["Boyfriend", "M", "Non-family"], ["Girlfriend", "F", "Non-family"],
     ["Husband", "M", "Family", "Same"], ["Wife", "F", "Family", "Same"], ["Uncle", "M", "Family", "Older"],
     ["Aunt", "F", "Family", "Older"], ["Grandmother", "F", "Family", "Older"], ["Grandfather", "M", "Family", "Older"],
@@ -1341,10 +1341,12 @@ function randomBonds() {
         let genderRand = Math.floor(Math.random()*10);
         let lastName;
         let nameList;
+        console.log("BOND: " + bond);
         if(bond[2] === "Family") {
             lastName = document.getElementById("name").value.split(",")[0];
-            if(bond[3] === "Older" || (!nationality.includes("-american") && bond[3] === "Same")) {
-                nameList = setNames(nationality)
+            if(bond[3] === "Older" || (!nationality.includes("-American") && bond[3] === "Same")) {
+                console.log("GENERATING BOND WITH " + nationality.replace("-American", "") + " name list");
+                nameList = setNames(nationality.replace("-American", ""))
             }
             else {
                 nameList = names.get("American");
@@ -1362,6 +1364,7 @@ function randomBonds() {
         }
         bondNames[i].value = name + " (" + bond[0] + ")";
         bondScores[i].value = chaScore;
+        console.log(name + " (" + bond[0] + ")");
     }
 }
 
