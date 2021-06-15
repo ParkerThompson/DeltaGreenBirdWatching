@@ -12,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -2752,7 +2754,7 @@ public class UITest {
                     break;
 
                 case "Pilot":
-                    defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, "Craft 40%:\n(Electrician) ", 
+                    defaultSkills = Arrays.asList(ALERTNESS, BUREAUCRACY, "Craft 40%:\n(Electrician) ",
                             "Craft 40%:\n(Mechanic) ", NAVIGATE, "Science 40%:\n(Meteorology) ", SWIM
                             );
                     optionalSkills = Collections.singletonList(HEAVY_WEAPONS);
@@ -2862,49 +2864,49 @@ public class UITest {
         }
         System.out.println(professionsSelect);
     }
-//    anthropologist anthropology  or archeology,foreign-language,history,occult,persuade 
-//anthropology,archeology,humint,navigate,ride,search,survival 
-//    engineer  
-//accounting,bureaucracy,craft,foreign-language,heavy-machinery,law,science 
-//    federal-agent  
-//accounting,computer-science,foreign-language,heavy-weapons,pharmacy 
-//    special-operator alertness,athletics,demolitions,firearms,heavy-weapons,melee-weapons,military-science (land),navigate,stealth,survival,swim,unarmed-combat 
+//    anthropologist anthropology  or archeology,foreign-language,history,occult,persuade
+//anthropology,archeology,humint,navigate,ride,search,survival
+//    engineer
+//accounting,bureaucracy,craft,foreign-language,heavy-machinery,law,science
+//    federal-agent
+//accounting,computer-science,foreign-language,heavy-weapons,pharmacy
+//    special-operator alertness,athletics,demolitions,firearms,heavy-weapons,melee-weapons,military-science (land),navigate,stealth,survival,swim,unarmed-combat
 //
-//    physician bureaucracy,first-aid,medicine,persuade,pharmacy,science (biology),search 
-//forensics,psychotherapy,science,surgery 
+//    physician bureaucracy,first-aid,medicine,persuade,pharmacy,science (biology),search
+//forensics,psychotherapy,science,surgery
 //
-//    scientist bureaucracy,computer-science,science,science,science 
-//accounting,craft,foreign-language,forensics,law,pharmacy 
+//    scientist bureaucracy,computer-science,science,science,science
+//accounting,craft,foreign-language,forensics,law,pharmacy
 //
-//    firefighter alertness,athletics,craft (electrician),craft (mechanic),demolitions,drive,first-aid,forensics,heavy-machinery,navigate,search 
+//    firefighter alertness,athletics,craft (electrician),craft (mechanic),demolitions,drive,first-aid,forensics,heavy-machinery,navigate,search
 //
-//    foreign-service-officer accounting,anthropology,bureaucracy,foreign-language,foreign-language,foreign-language,history,humint,law,persuade 
+//    foreign-service-officer accounting,anthropology,bureaucracy,foreign-language,foreign-language,foreign-language,history,humint,law,persuade
 //
-//    criminal alertness,criminology,dodge,drive,firearms,law,melee-weapons,persuade,stealth,unarmed-combat 
-//craft (locksmithing),demolitions,disguise,foreign-language,forensics,humint,navigate,occult,pharmacy 
+//    criminal alertness,criminology,dodge,drive,firearms,law,melee-weapons,persuade,stealth,unarmed-combat
+//craft (locksmithing),demolitions,disguise,foreign-language,forensics,humint,navigate,occult,pharmacy
 //
-//    intelligence-analyst anthropology,bureaucracy,computer-science,criminology,foreign-language,foreign-language,foreign-language,history,humint,sigint 
+//    intelligence-analyst anthropology,bureaucracy,computer-science,criminology,foreign-language,foreign-language,foreign-language,history,humint,sigint
 //
-//    intelligence-case-officer alertness,bureaucracy,criminology,disguise,drive,firearms,foreign-language,foreign-language,humint,persuade,sigint,stealth,unarmed-combat 
+//    intelligence-case-officer alertness,bureaucracy,criminology,disguise,drive,firearms,foreign-language,foreign-language,humint,persuade,sigint,stealth,unarmed-combat
 //
-//    lawyer accounting,bureaucracy,humint,persuade 
-//computer-science,criminology,foreign-language,law,pharmacy 
+//    lawyer accounting,bureaucracy,humint,persuade
+//computer-science,criminology,foreign-language,law,pharmacy
 //
-//    media-specialist art,history,humint,persuade 
-//anthropology,archeology,art,bureaucracy,computer-science,criminology,foreign-language,law,military-science,occult,science 
+//    media-specialist art,history,humint,persuade
+//anthropology,archeology,art,bureaucracy,computer-science,criminology,foreign-language,law,military-science,occult,science
 //
-//    police-officer alertness,bureaucracy,criminology,drive,firearms,first-aid,humint,law,melee-weapons,navigate,persuade,search,unarmed-combat 
-//forensics,heavy-machinery,heavy-weapons,ride 
+//    police-officer alertness,bureaucracy,criminology,drive,firearms,first-aid,humint,law,melee-weapons,navigate,persuade,search,unarmed-combat
+//forensics,heavy-machinery,heavy-weapons,ride
 //
-//    program-manager accounting,bureaucracy,computer-science,criminology,foreign-language,history,law,persuade 
-//anthropology,art,craft,science 
+//    program-manager accounting,bureaucracy,computer-science,criminology,foreign-language,history,law,persuade
+//anthropology,art,craft,science
 //
-//    nurse alertness,bureaucracy,first-aid,humint,medicine,persuade,pharmacy,science (biology) 
-//drive,forensics,navigate,psychotherapy,search 
+//    nurse alertness,bureaucracy,first-aid,humint,medicine,persuade,pharmacy,science (biology)
+//drive,forensics,navigate,psychotherapy,search
 //
-//    pilot 
-//foreign-language,pilot,heavy-weapons,military-science 
+//    pilot
+//foreign-language,pilot,heavy-weapons,military-science
 //
 //    soldier
-//artillery,computer-science,craft,demolitions,foreign-language,heavy-machinery,heavy-weapons,search,sigint,swim 
+//artillery,computer-science,craft,demolitions,foreign-language,heavy-machinery,heavy-weapons,search,sigint,swim
 }

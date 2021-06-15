@@ -10,9 +10,7 @@ const inputSkills = new Map([
         "Portuguese","Vietnamese", "Urdu", "Korean", "Turkish", "Russian", "French", "Italian"]]
 
 ]);
-let male_names = [];
-let female_names = [];
-let last_names = [];
+let names = new Map();
 let code_names = [];
 let universities = ["Harvard", "Standford", "MIT", "Brown", "Columbia", "Cornell", "Dartmouth", "University of Pennsylvania", "Princeton", "Yale", "Texas A&M"];
 let history_museums = ["The Smithsonian", "The American Museum of Natural History", "The British Museum"];
@@ -93,8 +91,11 @@ let profession_details = new Map([
 
 maxChecked = new Map();
 String.prototype.toTitleCase = function () {
-    return this.replace(/\w\S*/g, function (txt) {
+    let s = this.replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+    return s.replace(/-\w/g, function (txt) {
+        return "-" + txt.charAt(1).toUpperCase() + txt.substr(2);
     });
 };
 
@@ -165,13 +166,36 @@ weapons = new Map([
         ['artillery', {weapon_name: 'Artillery', skill: 'artillery', range: '5km', lethality: '50%', kill_radius: '100m', ammo_capacity: '1', armor_piercing: '10', expense: "Extreme"}],
         ['cruise_missile', {weapon_name: 'Cruise Missile', skill: 'artillery', range: '100km', lethality: '80%', kill_radius: '150m', ammo_capacity: 'N/A', armor_piercing: '15', expense: "Extreme"}]])
     ]]);
-let nationalities = ["American", "Chinese", "Irish", "Indian", "British", "Japenese", "Russian", "Turkish", "German", "Brazian",
-    "Canadian",  "Arab", "Korean", "Indonesian", "Spanish", "Thai", "Australian", "French", "Mexican", "Malaysian",
-    "Vietnamese", "Philippino", "Austrian", "Dutch", "Hungarian", "Columbian", "Persian", "Swiss", "South African", "Iranian",
-    "Chilean", "Argentinean", "Peruvian", "Portuguese", "Greek", "Finish", "Belgian", "Egyptian", "Ethiopian", "Panamanian",
-    "Norwegian", "Swedish", "Polish", "Moroccan"];
+let nationalities = ["albanian", "albanian-american", "algerian", "algerian-american", "american", "iraqi",
+    "iraqi-american", "argentinian", "argentinian-american", "armenian", "armenian-american",
+    "australian", "australian-american", "austrian", "austrian-american", "belarusian",
+    "belarusian-american", "belgian", "belgian-american", "brazilian", "brazilian-american",
+    "british", "british-american", "bulgarian", "bulgarian-american", "cameroonian", "cameroonian-american",
+    "canadian", "canadian-american", "chinese", "chinese-american", "croatian", "croatian-american",
+    "cypriot", "cypriot-american", "czech", "czech-american", "danish", "danish-american", "dutch",
+    "dutch-american", "egyptian", "egyptian-american", "estonian", "estonian-american", "ethiopian",
+    "ethiopian-american", "filipino", "filipino-american", "finnish", "finnish-american", "french",
+    "french-american", "german", "german-american", "greek", "greek-american", "haitian", "haitian-american",
+    "hungarian", "hungarian-american", "icelandic", "icelandic-american", "indian", "indian-american",
+    "iranian", "iranian-american", "irish", "irish-american", "italian", "italian-american", "jamaican",
+    "jamaican-american", "japanese", "japanese-american", "korean", "korean-american", "laotian",
+    "laotian-american", "latvian", "latvian-american", "lithuanian", "lithuanian-american", "malaysian",
+    "malaysian-american", "moldovan", "moldovan-american", "moroccan", "moroccan-american", "nepalese",
+    "nepalese-american", "norwegian", "norwegian-american", "pakistani", "pakistani-american", "polish",
+    "polish-american", "portuguese", "portuguese-american", "romanian", "romanian-american", "russian",
+    "russian-american", "samoan", "samoan-american", "scottish", "scottish-american", "serbian", "serbian-american",
+    "slovenian", "slovenian-american", "spanish", "spanish-american", "swedish", "swedish-american", "swiss",
+    "swiss-american", "thai", "thai-american", "turkish", "turkish-american", "ukrainian", "ukrainian-american",
+    "uzbek", "uzbek-american", "vietnamese", "vietnamese-american", "welsh", "welsh-american"];
 
-let bonds = [["Mother", "F", "Family"], ["Father", "M", "Family"], ["Coworker", "FM", "Non-family"], ["Friend", "FM", "Non-family"], ["Sister", "F", "Family"], ["Brother", "M"], ["Mentor", "FM", "Non-family"], ["Boyfriend", "M", "Non-family"], ["Girlfriend", "F", "Non-family"], ["Husband", "M", "Family"], ["Wife", "F", "Family"], ["Uncle", "M", "Family"], ["Aunt", "F", "Family"]];
+let bonds = [["Mother", "F", "Family", "Older"], ["Father", "M", "Family", "Older"], ["Coworker", "FM", "Non-family"],
+    ["Friend", "FM", "Non-family"], ["Sister", "F", "Family", "Same"], ["Brother", "M", "Same"],
+    ["Mentor", "FM", "Non-family"], ["Boyfriend", "M", "Non-family"], ["Girlfriend", "F", "Non-family"],
+    ["Husband", "M", "Family", "Same"], ["Wife", "F", "Family", "Same"], ["Uncle", "M", "Family", "Older"],
+    ["Aunt", "F", "Family", "Older"], ["Grandmother", "F", "Family", "Older"], ["Grandfather", "M", "Family", "Older"],
+    ["Ex-wife", "F", "Non-family", "Same"], ["Ex-husband", "M", "Non-family", "Same"],
+    ["Daughter", "F", "Family", "Younger"], ["Son", "M", "Family", "Younger"],
+    ["Ex-boyfriend", "M", "Non-family", "Same"], ["Ex-girlfriend", "F", "Non-family", "Same"]];
 
 const description = {
     eye_description: ["exquisite", "iridescent", "luminous", "magnetic", "radiant", "angry", "anxious",
@@ -747,26 +771,36 @@ function createProfessionWrappers() {
     }
 }
 
-function parseMaleNames() {
-    const data = readFile("resources/male-names.txt");
-    male_names = data.split(",");
-}
-
-function parseFemaleNames() {
-    const data = readFile("resources/female-names.txt");
-    female_names = data.split(",");
-}
-
-function parseLastNames() {
-    const data = readFile("resources/last-names.txt");
-    last_names = data.split(",");
-}
-
-function parseCodeNames() {
-    const data = readFile("resources/code-names.txt");
+function parseNames() {
+    data = readFile("resources/names/code-names.txt");
     code_names = data.split(",");
+    parseNamesForNationality('american');
+    nationalities.forEach(nationality => {
+        parseNamesForNationality(nationality)
+    })
 }
 
+function parseNamesForNationality(nationality) {
+    let male_names;
+    let female_names;
+    let last_names;
+    if(nationality.includes("-american")) {
+        let data = readFile("resources/names/" + nationality.replace("-american", "") + ".txt");
+        let all_names = data.split("\n");
+        male_names = names.get("American").male;
+        female_names = names.get("American").female;
+        last_names = all_names[2].split(",");
+    }
+    else {
+        let data = readFile("resources/names/" + nationality + ".txt");
+        let all_names = data.split("\n");
+        male_names = all_names[0].split(",");
+        female_names = all_names[1].split(",");
+        last_names = all_names[2].split(",");
+    }
+    names.set(nationality.toTitleCase(), {male: male_names, female: female_names, last: last_names});
+
+}
 
 function parseProfessions() {
     const wrappers = [];
@@ -1159,18 +1193,28 @@ function createNameListener() {
     })
 }
 
+function setNames(nationality) {
+    if(names.has(nationality)) {
+        return names.get(nationality)
+    }
+    else {
+        return names.get("American");
+    }
+}
+
 function randomName() {
+    let national_names = setNames(document.getElementById("nationality").value);
     let genderRand = Math.floor(Math.random()*10);
     let name;
     if((genderRand % 2) === 0) {
         document.getElementById("sex2").checked = true;
         document.getElementById("sex1").checked = false;
-        name = last_names.random() + ", " + male_names.random()
+        name = national_names.last.random() + ", " + national_names.female.random()
     }
     else {
         document.getElementById("sex1").checked = true;
         document.getElementById("sex2").checked = false;
-        name = last_names.random() + ", " + female_names.random()
+        name = national_names.last.random() + ", " + national_names.female.random()
     }
     name += " (" + code_names.random() + ")";
     document.getElementById("name").value = name;
@@ -1182,9 +1226,9 @@ function setRandomListener() {
 }
 function random() {
     randomProfession();
-    randomName();
     randomEmployer();
     randomNationality();
+    randomName();
     randomAge();
     randomEducation();
     randomStats();
@@ -1217,12 +1261,7 @@ function randomEmployer() {
 }
 
 function randomNationality() {
-    let nationality = nationalities.random();
-    let addAmerican = Math.floor((Math.random()*2));
-    if(nationality !== "American" && addAmerican !== 1) {
-        nationality += "-American";
-    }
-    document.getElementById("nationality").value = nationality;
+    document.getElementById("nationality").value = nationalities.random().toTitleCase();
 }
 
 function randomAge() {
@@ -1286,6 +1325,7 @@ function randomBonds() {
     let bondScores = document.getElementsByClassName("bond-score");
     let profession = profession_details.get(document.getElementById("professions").getAttribute("name"));
     let chaScore = document.getElementById("cha-score").value;
+    let nationality = document.getElementById("nationality").value;
     let chosenBonds = [];
     for(let i = 0; i < bondNames.length; i ++) {
         bondNames[i].value = "";
@@ -1300,17 +1340,25 @@ function randomBonds() {
         let name;
         let genderRand = Math.floor(Math.random()*10);
         let lastName;
+        let nameList;
         if(bond[2] === "Family") {
             lastName = document.getElementById("name").value.split(",")[0];
+            if(bond[3] === "Older" || (!nationality.includes("-american") && bond[3] === "Same")) {
+                nameList = setNames(nationality)
+            }
+            else {
+                nameList = names.get("American");
+            }
         }
         else {
-            lastName = last_names.random();
+            nameList = names.get("American");
+            lastName = nameList.last.random();
         }
         if(bond[1] === "M" || (bond[1] === "FM" && (genderRand % 2) === 0)) {
-            name = male_names.random() + " " + lastName
+            name = nameList.male.random() + " " + lastName
         }
         if(bond[1] === "F" || (bond[1] === "FM" && (genderRand % 2) !== 0)) {
-            name = female_names.random() + " " + lastName;
+            name = nameList.female.random() + " " + lastName;
         }
         bondNames[i].value = name + " (" + bond[0] + ")";
         bondScores[i].value = chaScore;
@@ -1498,5 +1546,5 @@ function getStrBonusDamage() {
     else {
         return 2;
     }
-}
 
+}
