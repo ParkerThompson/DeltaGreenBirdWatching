@@ -1213,6 +1213,7 @@ function setNames(nationality) {
         return names.get(nationality)
     }
     else {
+        console.log(nationality + " NOT FOUND. USING AMERICAN");
         return names.get("American");
     }
 }
@@ -1248,7 +1249,7 @@ function randomName(gender) {
 function generateRandomName(nationality, gender) {
     console.log(nationality);
     console.log(gender);
-    let national_names = setNames(nationality);
+    let national_names = setNames(nationality.toTitleCase());
     console.log(national_names);
     let name;
     if(gender === "M") {
@@ -1387,12 +1388,24 @@ function randomBonds() {
     let profession = profession_details.get(document.getElementById("professions").getAttribute("name"));
     let chaScore = document.getElementById("cha-score").value;
     let nationality = document.getElementById("nationality").value;
-    let chosenBonds = [];
+
+    let lastName = document.getElementById("name").value.split(",")[0];
     for(let i = 0; i < bondNames.length; i ++) {
         bondNames[i].value = "";
         bondScores[i].value = "";
     }
-    for(let i = 0; i < profession.bonds; i ++) {
+    let bonds = generateRandomBonds(profession.bonds, lastName, nationality);
+    for(let i = 0; i < bonds.length; i ++) {
+        bondNames[i].value = bonds[0] + " (" + bonds[1] + ")";
+        bondScores[i].value = chaScore;
+    }
+}
+
+function generateRandomBonds(numBonds, lastName, nationality) {
+    console.log("numBonds: " + numBonds);
+    let chosenBonds = [];
+    let bondNames = [];
+    for(let i = 0; i < numBonds; i ++) {
         let bond = bonds.random();
         while(chosenBonds.includes(bond)) {
             bond = bonds.random();
@@ -1400,33 +1413,34 @@ function randomBonds() {
         chosenBonds.push(bond[0]);
         let name;
         let genderRand = Math.floor(Math.random()*10);
-        let lastName;
         let nameList;
-        console.log("BOND: " + bond);
+        let bondLastName;
         if(bond[2] === "Family") {
-            lastName = document.getElementById("name").value.split(",")[0];
             if(bond[3] === "Older" || (!nationality.includes("-American") && bond[3] === "Same")) {
-                console.log("GENERATING BOND WITH " + nationality.replace("-American", "") + " name list");
-                nameList = setNames(nationality.replace("-American", ""))
+                nameList = setNames(nationality.toTitleCase().replace("-American", ""))
             }
             else {
                 nameList = names.get("American");
             }
+            bondLastName = lastName;
+            console.log("FAMILY");
+            console.log("LAST NAME " + bondLastName);
         }
         else {
             nameList = names.get("American");
-            lastName = nameList.last.random();
+            bondLastName = nameList.last.random();
+            console.log("NOT FAMILY")
         }
+        console.log("LAST NAME " + bondLastName);
         if(bond[1] === "M" || (bond[1] === "FM" && (genderRand % 2) === 0)) {
-            name = nameList.male.random() + " " + lastName
+            name = nameList.male.random() + " " + bondLastName
         }
         if(bond[1] === "F" || (bond[1] === "FM" && (genderRand % 2) !== 0)) {
-            name = nameList.female.random() + " " + lastName;
+            name = nameList.female.random() + " " + bondLastName;
         }
-        bondNames[i].value = name + " (" + bond[0] + ")";
-        bondScores[i].value = chaScore;
-        console.log(name + " (" + bond[0] + ")");
+        bondNames.push([name, bond[0]]);
     }
+    return bondNames;
 }
 
 function pickRandomInput(skillName) {
@@ -1628,13 +1642,28 @@ function randomNPC() {
     let nationality = nationalities.random().toTitleCase();
     let gender = generateRandomGender();
     let name = generateRandomName(nationality.toLowerCase(), gender);
+    let codeName = name.substring(name.lastIndexOf(" "));
+    name = name.substring(0, name.lastIndexOf(" ")-1);
     let nameParts = name.split(" ");
+    console.log("name: " + name);
+    console.log(nameParts);
+    let lastName = nameParts[0].replace(",", "");
     let profession = generateRandomProfession();
     let employer = generateRandomEmployer(profession);
     let description = generateRandomDescription(gender);
-   return (nameParts[1] + " " + nameParts[0].replace(",", "")
-        + " is " + getAOrAn(nationality) + " " + nationality + " " + profession.replaceAll("-", " ") + " " + employer[1] + " " + employer[0]
-    + " and has " + description);
+    console.log("lastname " + lastName);
+    let bonds = generateRandomBonds(profession_details.get(profession).bonds, lastName, nationality);
+    let out = "";
+    for(let i = 1; i < nameParts.length; i ++) {
+        out += nameParts[i].replace(",", "") + " ";
+    }
+   out += lastName + " is " + getAOrAn(nationality) + " " + nationality + " " + profession.replaceAll("-", " ") + " " + employer[1] + " " + employer[0]
+    + " and has " + description + ". Their most important relationships are with ";
+    for(let i = 0; i < bonds.length-1; i ++) {
+        out += " their " + bonds[i][1].toLowerCase() + " " + bonds[i][0] + ",";
+    }
+    out += " and their " + bonds[bonds.length-1][1].toLowerCase() + " " + bonds[bonds.length-1][0] + ".";
+    return out;
 }
 
 function setGenerateNPCListener() {
