@@ -12,29 +12,43 @@ const inputSkills = new Map([
 ]);
 let names = new Map();
 let code_names = [];
-let universities = ["Harvard", "Standford", "MIT", "Brown", "Columbia", "Cornell", "Dartmouth", "University of Pennsylvania", "Princeton", "Yale", "Texas A&M"];
-let history_museums = ["The Smithsonian", "The American Museum of Natural History", "The British Museum"];
-let tech_companies = ["Facebook", "Google", "Apple", "IBM", "Amazon"];
-let federal_agencies = ["FBI", "DEA", "ATF", "Secret Service", "US Marshals"];
-let hospitals = ["Mayo Clinic", "Cleavland Clinic", "Johns Hopkins", "Massachusetts General", "Cedar Sinai"];
-let science = ["National Institute of Health", "CDC", "FDA", "Los Alamos", "DARPA"];
-let special_operator = ["Hostage Rescue Team", "Army Rangers", "USMC Raiders", "CIA Special Operations Group", "Navy Seals", "Delta Force"];
-let criminal_orgs = ["Self Employed", "Italian Mafia", "Russian Mafia", "Small crew"];
-let cities = ["New York City", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"];
-let foriegn_service = ["US State Department"];
-let intelligence_analysts = ["FBI", "NSA", "CIA", "Mossad", "MI6"];
-let intelligence_agencies = ["CIA", "Mossad", "MI6", "Chinese Ministry of State Security"];
-let law_firms = ["Baker-Mckenzie", "Kirkland & Ellis", "Latham & Watkins", "DLA Piper", "Baker & McKenzie", "Dentons", "US Department of Justice"];
-let tv_news = ["Fox", "NBC", "CNN"];
-let newspapers = ["New York Times", "Washington Post", "Wall Street Journal", "Boston Globe"];
-let newspaper_suffixes = ["Times", "Post", "Times Picayune", "Daily News", "Tribune", "Gazette", "News"];
-let blogs = ["The Huffington Post", "Buzzfeed", "The Daily Beast", "Vice"];
-let pilot = ["American Airlines", "US Airforce", "US Navy", "British Airways", "Fedex", "NetJets", "Delta Airlines"];
-let top_companies = ["Walmart", "Amazon", "Apple", "CVS Health", "UnitedHealth Group", "Berkshire Hathaway",
-    "McKesson", "AmerisourceBergen", "Alphabet", "0Exxon Mobil", "AT&T", "Costco Wholesale", "Cigna",
-    "Cardinal Health", "Microsoft", "Walgreens Boots Alliance", "Kroger", "Home Depot", "JPMorgan Chase",
-    "Verizon Communications"];
-let armed_forces = ["US Marines", "US Army", "US Airforce", "US Navy"];
+let universities = [["Harvard", "at"], ["Standford", "at"], ["MIT", "at"], ["Brown", "at"], ["Columbia", "at"],
+    ["Cornell", "at"], ["Dartmouth", "at"], ["The University of Pennsylvania", "at"], ["Princeton", "at"], ["Yale", "at"],
+    ["Texas A&M", "at"]];
+let history_museums = [["The Smithsonian", "at"], ["The American Museum of Natural History", "at"], ["The British Museum", "at"]];
+let tech_companies = [["Facebook", "at"], ["Google", "at"], ["Apple", "at"], ["IBM", "at"], ["Amazon", "at"]];
+let federal_agencies = [["FBI", "in the"], ["DEA", "in the"], ["ATF", "in the"], ["Secret Service", "in the"],
+    ["US Marshals", "in the"]];
+let hospitals = [["The Mayo Clinic", "at"], ["The Cleavland Clinic", "at"], ["Johns Hopkins", "at"], ["Massachusetts General", "at"],
+    ["Cedar Sinai", "at"]];
+let science = [["The National Institute of Health", "at"], ["CDC", "at the"], ["FDA", "at the"], ["Los Alamos National Laboratory", "at"],
+    ["DARPA", "at"]];
+let special_operator = [["Hostage Rescue Team", "in the"], ["Army Rangers", "in the"], ["USMC Raiders", "in the"],
+    ["CIA Special Operations Group", "in the"], ["Navy Seals", "in the"], ["Delta Force", "in the"]];
+let criminal_orgs = [["self employed", "who is"], ["Italian Mafia", "in the"], ["Russian Mafia", "in the"], ["small crew", "with a"]];
+let cities = ["New York City", "Los Angeles", "Chicago", "Houston",
+    "Phoenix", "Philadelphia", "San Antonio", "San Diego",
+    "Dallas", "San Jose"];
+let foriegn_service = [["US State Department", "at the"]];
+let intelligence_analysts = [["FBI", "in the"], ["NSA", "in the"], ["CIA", "in the"], ["Mossad", "at"], ["MI6", "in"]];
+let intelligence_agencies = [["CIA", "in the"], ["Mossad", "at"], ["MI6", "in"], ["Chinese Ministry of State Security", "in the"]];
+let law_firms = [["Baker-Mckenzie", "at"], ["Kirkland & Ellis", "at"], ["Latham & Watkins", "at"],
+    ["DLA Piper", "at"], ["Baker & McKenzie", "at"], ["Dentons", "at"], ["US Department of Justice", "in the"]];
+let tv_news = [["Fox News", "at"], ["NBC News", "at"], ["CNN News", "at"]];
+let newspapers = [["The New York Times", "at"], ["The Washington Post", "at"], ["The Wall Street Journal", "at"],
+    ["The Boston Globe", "at"]];
+let newspaper_suffixes = [["Times", "at the"], ["Post", "at the"], ["Times-Picayune", "at the"],
+    ["Daily News", "at the"], ["Tribune", "at the"], ["Gazette", "at the"], ["News", "at the"]];
+let blogs = [["The Huffington Post", "at"], ["Buzzfeed", "at"], ["The Daily Beast", "at"], ["Vice", "at"]];
+let pilot = [["American Airlines", "at"], ["US Airforce", "in the"], ["US Navy", "in the"], ["British Airways", "at"],
+    ["Fedex", "at"], ["NetJets", "at"], ["Delta Airlines", "at"]];
+let top_companies = [["Walmart", "at"], ["Amazon", "at"], ["Apple", "at"], ["CVS Health", "at"],
+    ["UnitedHealth Group", "at"], ["Berkshire Hathaway", "at"],
+    ["McKesson", "at"], ["AmerisourceBergen", "at"], ["Alphabet", "at"], ["Exxon Mobil", "at"], ["AT&T", "at"],
+    ["Costco Wholesale", "at"], ["Cigna", "at"],
+    ["Cardinal Health", "at"], ["Microsoft", "at"], ["Walgreens Boots Alliance"], ["Kroger", "at"], ["Home Depot", "at"],
+    ["JPMorgan Chase", "at"], ["Verizon Communications", "at"]];
+let armed_forces = [["The US Marines", "in"], ["The US Army", "in"], ["The US Airforce", "in"], ["The US Navy", "in"]];
 
 let profession_details = new Map([
     ["anthropologist", {'employer': [universities, history_museums],
@@ -209,6 +223,7 @@ const description = {
     hair_texture: ["frizzy", "balding", "thin", "thick", "long", "short", "messy", "straight", "curly", "greasy",
         "slick", "fluffy", "luxurious", "silky", "wavy", "lush", "stringy", "flowing", "close cropped"],
     hair_color: ["blond", "black", "grey", "white", "red", "brown"],
+    skin: ['dark brown', 'brown', 'light brown', 'tan', 'pale white'],
     beards: ["bristly beard", "bristly moustache", "bushy beard", "bushy moustache", "clean-shaven", "close-trimmed beard",
         "coarse beard", "curly moustache", "full beard", "scraggly beard", "scratchy beard", "short beard", "long beard",
         "neat beard", "neatly trimmed beard", "pencil-thin moustache", "stubbly beard", "stylish beard", "thick beard",
@@ -1202,22 +1217,48 @@ function setNames(nationality) {
     }
 }
 
-function randomName() {
-    let national_names = setNames(document.getElementById("nationality").value);
-    let genderRand = Math.floor(Math.random()*10);
-    let name;
-    if((genderRand % 2) === 0) {
+function randomGender() {
+    let gender = generateRandomGender();
+    if(gender === "M") {
         document.getElementById("sex2").checked = true;
         document.getElementById("sex1").checked = false;
-        name = national_names.last.random() + ", " + national_names.female.random()
     }
     else {
         document.getElementById("sex1").checked = true;
         document.getElementById("sex2").checked = false;
+    }
+    return gender;
+}
+
+function generateRandomGender() {
+    let genderRand = Math.floor(Math.random()*10);
+    if((genderRand % 2) === 0) {
+        return  "M";
+    }
+    else {
+        return  "F";
+    }
+}
+
+function randomName(gender) {
+    let nationality = document.getElementById("nationality").value;
+    document.getElementById("name").value = generateRandomName(nationality, gender);
+}
+
+function generateRandomName(nationality, gender) {
+    console.log(nationality);
+    console.log(gender);
+    let national_names = setNames(nationality);
+    console.log(national_names);
+    let name;
+    if(gender === "M") {
+        name = national_names.last.random() + ", " + national_names.female.random()
+    }
+    else {
         name = national_names.last.random() + ", " + national_names.female.random()
     }
     name += " (" + code_names.random() + ")";
-    document.getElementById("name").value = name;
+    return name;
 }
 
 
@@ -1228,13 +1269,14 @@ function random() {
     randomProfession();
     randomEmployer();
     randomNationality();
-    randomName();
+    let gender = randomGender();
+    randomName(gender);
     randomAge();
     randomEducation();
     randomStats();
     randomBonds();
     randomSkills();
-    randomDescription();
+    randomDescription(gender);
     randomSkillImprovements();
     randomGear();
     randomWeapons();
@@ -1242,22 +1284,33 @@ function random() {
 
 function randomEmployer() {
     let profession = document.getElementById("professions").getAttribute("name");
-    let employer = (profession_details.get(profession).employer.random().random());
-    if(cities.includes(employer)) {
+    document.getElementById("employer").value = generateRandomEmployer(profession)[0];
+}
+
+function generateRandomEmployer(profession) {
+    let raw_employer = (profession_details.get(profession).employer.random().random());
+    let prefix = raw_employer[1];
+    let employer = raw_employer[0];
+    if(cities.includes(raw_employer)) {
+        employer = raw_employer;
         if(profession === "firefighter") {
-            employer += " FD";
+            employer += " Fire Department";
+            prefix = "in the";
         }
         else if(profession === "lawyer") {
-            employer += " DA's Office"
+            employer += " DA's Office";
+            prefix = "in the";
         }
         else if(profession === "police-officer") {
-            employer += " PD";
+            employer += " Police Department";
+            prefix = "in the";
         }
         else if(profession === "media-specialist") {
-            employer += " " + newspaper_suffixes.random();
+            employer += " " + newspaper_suffixes.random()[0];
+            prefix = "at the";
         }
     }
-    document.getElementById("employer").value = employer;
+    return [employer, prefix];
 }
 
 function randomNationality() {
@@ -1274,21 +1327,29 @@ function randomAge() {
 }
 
 function randomProfession() {
+    let profession = generateRandomProfession();
+    professions.setAttribute("name", profession);
+    document.getElementById("profession").value = profession.replaceAll("-", " ").toTitleCase();
+}
+
+function generateRandomProfession() {
     let profList = [];
-    let professions = document.getElementById("professions");
-    let options = document.getElementsByClassName("profession-select")[0].getElementsByTagName("option");
-    for(let i = 0; i < options.length; i ++) {
-        profList.push(options[i].value)
-    }
-    professions.setAttribute("name", profList.random());
-    document.getElementById("profession").value = professions.getAttribute("name").replaceAll("-", " ").toTitleCase();
+    // let options = document.getElementsByClassName("profession-select")[0].getElementsByTagName("option");
+    // for(let i = 0; i < options.length; i ++) {
+    //     profList.push(options[i].value)
+    // }
+    profession_details.forEach((value, key) => {
+        profList.push(key);
+    });
+    console.log(profList);
+    return profList.random();
 }
 
 function randomEducation() {
     let profession = document.getElementById("professions").getAttribute("name");
     let education = profession_details.get(profession).education.random();
     if(education !== 'High School Diploma') {
-        education += " from " + universities.random();
+        education += " from " + universities.random()[0];
     }
     document.getElementById("education").value = education;
 }
@@ -1449,22 +1510,26 @@ function randomSkills() {
     })
 }
 
-function randomDescription() {
+function randomDescription(gender) {
+
+    document.getElementById("description").value = generateRandomDescription(gender);
+}
+
+function generateRandomDescription(gender) {
     let descriptionText = "";
     descriptionText += description.eye_description.random() + " " + description.eye_color.random() + " eyes, "
-        + description.hair_texture.random() + " " + description.hair_color.random() + " hair,";
-    console.log(document.getElementById("sex2").checked);
-    if(document.getElementById("sex2").checked && (Math.floor(Math.random()*2) === 1)) {
-        descriptionText += " " + description.beards.random() + ","
+        + description.hair_texture.random() + " " + description.hair_color.random() + " hair, " +
+        description.skin.random() + " skin,";
+    if(gender === "M" && (Math.floor(Math.random()*2) === 1)) {
+        descriptionText += " a " + description.beards.random() + ","
     }
-    console.log(Math.floor(Math.random()*3));
     if((Math.floor(Math.random()*4) === 1)) {
         descriptionText += " " + description.glasses.random() + " glasses,";
     }
-    descriptionText += " " + description.clothing.random() + " clothing, " + description.speech.random() + " speech, " +
-        description.demeanor.random() + " demeanor";
-
-    document.getElementById("description").value = descriptionText;
+    let demeanor = description.demeanor.random();
+    descriptionText += " " + description.clothing.random() + " clothing, " + description.speech.random()
+        + " speech, and " + getAOrAn(demeanor) + " " + demeanor + " demeanor";
+    return descriptionText;
 }
 
 function randomSkillImprovements() {
@@ -1474,6 +1539,13 @@ function randomSkillImprovements() {
         updateSkillIncreaseButtons();
         pluses = removeInvisiblePluses(document.getElementsByClassName("plus"));
     }
+}
+
+function getAOrAn(input) {
+    if (input.charAt(0).match(/[AEIOUaeiuo]/)) {
+        return  'an';
+    }
+    else return 'a';
 }
 
 function removeInvisiblePluses(pluses) {
@@ -1550,4 +1622,33 @@ function getStrBonusDamage() {
         return 2;
     }
 
+}
+
+function randomNPC() {
+    let nationality = nationalities.random().toTitleCase();
+    let gender = generateRandomGender();
+    let name = generateRandomName(nationality.toLowerCase(), gender);
+    let nameParts = name.split(" ");
+    let profession = generateRandomProfession();
+    let employer = generateRandomEmployer(profession);
+    let description = generateRandomDescription(gender);
+   return (nameParts[1] + " " + nameParts[0].replace(",", "")
+        + " is " + getAOrAn(nationality) + " " + nationality + " " + profession.replaceAll("-", " ") + " " + employer[1] + " " + employer[0]
+    + " and has " + description);
+}
+
+function setGenerateNPCListener() {
+    document.getElementById("generate-npcs").addEventListener("click", event => {
+        let numNPCs = parseInt(document.getElementById('num-npcs').value);
+        console.log(numNPCs);
+        let npcDiv = document.getElementById("npcs-div");
+        for(let i = 0; i < numNPCs; i ++) {
+            let div = document.createElement("div");
+            div.className =  "npc-div";
+            div.textContent = randomNPC();
+            npcDiv.appendChild(div);
+            npcDiv.appendChild(document.createElement("br"));
+
+        }
+    })
 }

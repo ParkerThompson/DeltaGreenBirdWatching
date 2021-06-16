@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NPC Generator</title>
+    <script type="text/javascript" src="js/CharacterSheet.js"></script>
+    <link rel="stylesheet" href="css/characterSheet.css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            parseNames();
+            setGenerateNPCListener();
+        });
+    </script>
+</head>
+<body>
+<div id="npcs-div" class="center"><input type="button" class="btn center" id="generate-npcs" value="Generate NPCS">
+<label for="num-npcs"></label> <select class="center" id="num-npcs">
+    <option value="1">1</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="100">100</option>
+</select>
+</div>
+</body>
+</html>
