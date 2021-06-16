@@ -1396,7 +1396,7 @@ function randomBonds() {
     }
     let bonds = generateRandomBonds(profession.bonds, lastName, nationality);
     for(let i = 0; i < bonds.length; i ++) {
-        bondNames[i].value = bonds[0] + " (" + bonds[1] + ")";
+        bondNames[i].value = bonds[i][0] + " (" + bonds[i][1] + ")";
         bondScores[i].value = chaScore;
     }
 }
