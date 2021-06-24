@@ -1,4 +1,4 @@
-const ROOT = "http://charactercreator:8099/";
+const ROOT = "http://dgbirdwatching.com:8099/";
 
 const skillRegex = /([\[\]{}"])/g;
 
