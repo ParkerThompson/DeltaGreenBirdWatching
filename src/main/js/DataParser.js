@@ -1,4 +1,4 @@
-const ROOT = "http://localhost:8099/";
+const ROOT = "charactercreator:8099/";
 
 const skillRegex = /([\[\]{}"])/g;
 
