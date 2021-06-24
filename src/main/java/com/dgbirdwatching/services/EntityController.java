@@ -22,37 +22,31 @@ public class EntityController {
     @Autowired
     private DatabaseService databaseService;
 
-    @CrossOrigin
     @RequestMapping("/skills")
     public List<Skill> getAllSkills() {
         return databaseService.getAllSkills();
     }
 
-    @CrossOrigin
     @RequestMapping("/weapons")
     public Map<String, Map<String, Weapon>> getAllWeapons() {
         return databaseService.getAllWeapons();
     }
 
-    @CrossOrigin
     @RequestMapping("/professions")
     public List<Profession> getAllProfessions() {
         return databaseService.getAllProfessions();
     }
 
-    @CrossOrigin
     @RequestMapping("/employers")
     public Set<Employer> getAllEmployers() {
         return databaseService.getAllEmployers();
     }
 
-    @CrossOrigin
     @RequestMapping("/bonds")
     public List<Bond> getAllBonds() {
         return databaseService.getAllBonds();
     }
 
-    @CrossOrigin
     @RequestMapping("/descriptions")
     public Map<String, List<String>> getAllDescriptions() {
         return databaseService.getAllDescriptions();
