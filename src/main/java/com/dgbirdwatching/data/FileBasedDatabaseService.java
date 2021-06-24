@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 @Service
 public class FileBasedDatabaseService implements DatabaseService{
     private Gson gson = new Gson();
-    private static final String BASE_DIR = "src/main/resources/";
+    private static final String BASE_DIR = "resources/";
     private static final String SKILLS_PATH = BASE_DIR + "skills.txt";
     private static final String EMPLOYER_PATH = BASE_DIR + "employers.txt";
     private static final String PROFESSION_PATH = BASE_DIR + "professions.txt";
