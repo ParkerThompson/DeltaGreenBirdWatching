@@ -17,6 +17,21 @@ public class Weapon {
     private String friendlyName;
     private String lethality;
 
+    public Weapon(Weapon weapon) {
+        this.ammoCapacity = weapon.ammoCapacity;
+        this.damage = weapon.damage;
+        this.killRadius = weapon.killRadius;
+        this.skill = weapon.skill;
+        this.range = weapon.range;
+        this.uses = weapon.uses;
+        this.armorPiercing = weapon.armorPiercing;
+        this.expense = weapon.expense;
+        this.radius = weapon.radius;
+        this.weaponName = weapon.weaponName;
+        this.friendlyName = weapon.friendlyName;
+        this.lethality = weapon.lethality;
+    }
+    
     public Weapon(String ammoCapacity, String damage, String killRadius, String skill, String range, String uses,
                   String armorPiercing, String expense, String radius, String weaponName, String friendlyName,
                   String lethality) {

@@ -71,9 +71,9 @@ public class FileBasedDatabaseService implements DatabaseService{
     }
 
     private Weapon parseWeapon(String name, String friendlyName) {
-        Weapon weapon =
+        Weapon weapon = new Weapon(
                 Objects.requireNonNull(weaponMap.values().stream().filter(stringWeaponMap -> stringWeaponMap.containsKey(name)).findAny()
-                .orElse(null)).get(name);
+                .orElse(null)).get(name));
             weapon.setWeaponName(name);
             weapon.setFriendlyName(friendlyName);
             return weapon;
