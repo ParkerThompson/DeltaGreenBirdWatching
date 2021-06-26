@@ -553,6 +553,7 @@ function setModalListener() {
             document.getElementById("profession").value = event.target.getAttribute("name").replaceAll("-", " ").toTitleCase();
             modal.style.display = "none";
             let skillMap = getAllModalSkills(event.srcElement.getAttribute("name"));
+            console.log("SKILLMAP: " + skillMap)
             skillMap.forEach(setSkill);
             updateSkillIncreaseButtons();
         }

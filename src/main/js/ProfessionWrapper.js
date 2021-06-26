@@ -12,6 +12,9 @@ function parseProfessions() {
         const wrapper = createProfessionWrapper(key, prof.skillText, prof.description, prof.stats, prof.bonds, prof.numOptionalSkills);
         const defaultSkills = wrapper.getElementsByClassName("default-skills")[0];
         prof.defaultSkills.forEach(skill => {
+            Object.keys(skill).forEach(key => {
+                console.log(key + " " + skill[key]);
+            })
             let skillChild = getSkillChild(skill.name, skill.value, false, key, wrapper);
             defaultSkills.appendChild(skillChild)
         });
@@ -133,12 +136,12 @@ function getSkillChild(skillString, value, opt, profName, wrapper) {
     }
     else if(skillString.includes("(")) {
         let skill = skillString.split(") ");
-        let friendlyName = (skill[0]+")").replace("-", " ").toTitleCase();
+        let friendlyName = (skill[0]).replace("-", " ").toTitleCase();
         if (opt) {
             return createOptionalSkill(profName, skill[0].replace(/\s\(.*/, ""), value, friendlyName, " " + value + "%")
         }
         else {
-            return createDefaultSkill(profName, skill[0], value, skill[0].replace("-", " ").toTitleCase() + ") " + value + "%")
+            return createDefaultSkill(profName, skill[0], value, skill[0].replace("-", " ").toTitleCase() + " " + value + "%")
         }
     }
 
@@ -277,6 +280,7 @@ function createDefaultSkill(professionName, skillName, baseValue, friendlyName) 
     skillDiv.className = professionName + " prof-modal skill-default";
     skillDiv.setAttribute("base", baseValue);
     if(friendlyName.includes("(")) {
+        console.log("SKILL WITH PARAN " + friendlyName)
         friendlyName = friendlyName.substring(0, friendlyName.indexOf("(")-1) + " "
             + baseValue + "%:\n" + friendlyName.substring(friendlyName.indexOf("("), friendlyName.length-3);
         skillDiv.setAttribute("name", friendlyName);
