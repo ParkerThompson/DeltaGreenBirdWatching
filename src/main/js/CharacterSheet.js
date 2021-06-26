@@ -119,69 +119,6 @@ Array.prototype.random = function () {
     return this[Math.floor((Math.random()*this.length))];
 };
 
-//let weapons = new Map([
-//    ['Hand-to-Hand Weapons', new Map([
-//        ['unarmed', {weapon_name: 'Unarmed Attack', skill: 'unarmed-combat', damage: '1D4-1', armor_piercing: 'N/A', expense: "None"}],
-//        ['brass_knuckles', {weapon_name: 'Brass knuckles, heavy flashlight, or steel-toe boots', skill: 'unarmed-combat', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['garotte', {weapon_name: 'Garotte', skill: 'unarmed-combat', damage: 'special', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['knife', {weapon_name: 'Knife', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['hatchet', {weapon_name: 'Hatchet', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['combat_dagger', {weapon_name: 'Large knife or combat dagger', skill: 'melee-weapons', damage: '1D6', armor_piercing: '3', expense: "Incidental"}],
-//        ['club', {weapon_name: 'Club, nightstick, baton,  or collapsible baton', skill: 'melee-weapons', damage: '1D6', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['sword', {weapon_name: 'Machete, tomahawk, or sword', skill: 'melee-weapons', damage: '1D8', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['bat', {weapon_name: 'Baseball bat or rifle butt', skill: 'melee-weapons', damage: '1D8', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['spear', {weapon_name: 'Spear or fixed bayonet', skill: 'melee-weapons', damage: '1D8', armor_piercing: '3', expense: "Incidental"}],
-//        ['axe', {weapon_name: 'Wood axe', skill: 'melee-weapons', damage: '1D10', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['large_sword', {weapon_name: 'Large sword', skill: 'melee-weapons', damage: '1D10', armor_piercing: 'N/A', expense: "Standard"}],
-//        ['two_handed_sword', {weapon_name: 'Two-handed sword', skill: 'melee-weapons', damage: '1D12', armor_piercing: 'N/A', expense: "Standard"}]])
-//    ],
-//    ['Non Lethal Weapons',new Map([
-//        ['pepper_spray_keychain', {weapon_name: 'Tear Gas and Pepper Spray', skill: 'dex', range: '1m', uses: '1', radius: '1 target', damage: '-20% penalty', expense: "Incidental"}],
-//        ['pepper_spray_can', {weapon_name: 'Tear Gas and Pepper Spray', skill: 'dex', range: '3m', uses: '12', radius: '2 targets', damage: '-20% penalty', expense: "Incidental"}],
-//        ['tear_gas', {weapon_name: 'Tear gas grenade (Thrown/Launched)', skill: 'athletics/heavy-weapons', range: '20m/50m', uses: '1', radius: '10 m', damage: '-40% penalty', expense: "Incidental"}],
-//        ['stun_grenade', {weapon_name: 'Stun Grenade (Thrown/Launched)', skill: 'athletics/heavy-weapons', range: '20m/50m', uses: '1', radius: '10 m', damage: '-40% penalty', expense: "Incidental"}],
-//        ['stun_gun', {weapon_name: 'Stun gun', skill: 'dex', range: '1m', uses: '10', damage: '-20% penalty', expense: "Incidental"}],
-//        ['shock_baton', {weapon_name: 'Shock baton', skill: 'dex', range: '1m', uses: '200', damage: '-20% penalty', expense: "Incidental"}],
-//        ['ced_pistol', {weapon_name: 'CED pistol', skill: 'firearms', range: '4m', uses: '4', damage: '-20% penalty', expense: "Standard"}]])
-//    ],
-//    ['Firearms',new Map([
-//        ['light_pistol', {weapon_name: 'Light pistol', skill: 'firearms', range: '10m', damage: '1D8', lethality: 'N/A', ammo_capacity: '7', armor_piercing: 'N/A', expense: "Standard"}],
-//        ['medium_pistol', {weapon_name: 'Medium pistol', skill: 'firearms', range: '15m', damage: '1D10', lethality: 'N/A', ammo_capacity: '15', armor_piercing: 'N/A', expense: "Standard"}],
-//        ['heavy_pistol', {weapon_name: 'Heavy pistol', skill: 'firearms', range: '20m', damage: '1D12', lethality: 'N/A', ammo_capacity: '10', armor_piercing: 'N/A', expense: "Standard"}],
-//        ['shotgun', {weapon_name: 'Shotgun (slug/shot/nonlethal)', skill: 'firearms', range: '75m/50m/10m', damage: '2D6/2D10/1D6 and stunned', lethality: 'N/A', ammo_capacity: '5', armor_piercing: 'N/A', expense: "Standard"}],
-//        ['light_rifle', {weapon_name: 'Light Rifle or Carbine', skill: 'firearms', range: '100m', damage: '1D12', lethality: '10%', ammo_capacity: '10 or 30', armor_piercing: '3', expense: "Standard"}],
-//        ['smg', {weapon_name: 'Submachine gun (SMG)', skill: 'firearms', range: '50m', damage: '1D10', lethality: '10%', ammo_capacity: '30', armor_piercing: 'N/A', expense: "Unusual"}],
-//        ['heavy_rifle', {weapon_name: 'Heavy Rifle', skill: 'firearms', range: '150m', damage: '1D12+2', lethality: '10%', ammo_capacity: '10 or 20', armor_piercing: '5', expense: "Unusual"}],
-//        ['very_heavy_rifle', {weapon_name: 'Very Heavy Rifle', skill: 'firearms', range: '250m', damage: 'N/A', lethality: '20%', ammo_capacity: '10', armor_piercing: '5', expense: "Major"}]])
-//    ],
-//    ['Heavy Weapons',new Map([
-//        ['hand_grenade', {weapon_name: 'Hand Grenade', skill: 'athletics', range: '20m', lethality: '15%', kill_radius: '10m', ammo_capacity: 'N/A', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['rpg', {weapon_name: 'Rocket-propelled grenade launcher (RPG)', skill: 'heavy-weapons', range: '10m', lethality: '30%', kill_radius: '10m', ammo_capacity: '1', armor_piercing: '20', expense: "Standard"}],
-//        ['flamethrower', {weapon_name: 'Handheld flamethrower', skill: 'heavy-weapons', range: '5m', lethality: '10%', kill_radius: '1m', ammo_capacity: '20', armor_piercing: 'N/A', expense: "Unusual"}],
-//        ['military_flamethrower', {weapon_name: 'Military flamethrower', skill: 'heavy-weapons', range: '10m', lethality: '10%', kill_radius: '2m', ammo_capacity: '5', armor_piercing: 'N/A', expense: "Unusual"}],
-//        ['machine_gun', {weapon_name: 'General-purpose machine gun (GPMP)', skill: 'heavy-weapons', range: '300m', lethality: '15%', kill_radius: 'per burst', ammo_capacity: '100', armor_piercing: 'N/A', expense: "Major"}],
-//        ['grenade_launcher', {weapon_name: 'Grenade launcher (GL)', skill: 'heavy-weapons', range: '150m', lethality: '15%', kill_radius: '10m', ammo_capacity: '1', armor_piercing: 'N/A', expense: "Major"}],
-//        ['grenade_machine_gun', {weapon_name: 'Grenade machine gun (GMG)', skill: 'heavy-weapons', range: '300m', lethality: '15%', kill_radius: '10m', ammo_capacity: '30', armor_piercing: 'N/A', expense: "Major"}],
-//        ['heavy_machine_gun', {weapon_name: 'Heavy machine gun (HMG)', skill: 'heavy-weapons', range: '400m', lethality: '20%', kill_radius: 'per burst', ammo_capacity: '100', armor_piercing: '5', expense: "Major"}],
-//        ['light_machine_gun', {weapon_name: 'Light machine gun (LMG)', skill: 'heavy-weapons', range: '200m', lethality: '10%', kill_radius: 'per burst', ammo_capacity: '100 or 200', armor_piercing: '3', expense: "Major"}],
-//        ['autocannon', {weapon_name: 'Autocannon', skill: 'heavy-weapons', range: '400m', lethality: '30%', kill_radius: '3m', ammo_capacity: '100', armor_piercing: '5', expense: "Extreme"}],
-//        ['minigun', {weapon_name: 'Minigun', skill: 'heavy-weapons', range: '300m', lethality: '20%', kill_radius: '3m (long spray only)', ammo_capacity: '4000', armor_piercing: '5', expense: "Extreme"}]])
-//    ],
-//    ['Demolitions',new Map([
-//        ['anfo_explosive', {weapon_name: 'ANFO explosive', skill: 'demolitions', lethality: '30%', kill_radius: '20m', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['c4', {weapon_name: 'C4 plastic explosive block', skill: 'demolitions', lethality: '30%', kill_radius: '2m', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['ied', {weapon_name: 'Improvised explosive device (IED)', skill: 'demolitions', lethality: '15%', kill_radius: '10m', armor_piercing: 'N/A', expense: "Incidental"}],
-//        ['large_ied', {weapon_name: 'Large IED', skill: 'demolitions', lethality: '60%', kill_radius: '75m', armor_piercing: 'N/A', expense: "Standard"}],
-//        ['mine', {weapon_name: 'Explosively-formed penetrator mine', skill: 'demolitions', lethality: '25%', kill_radius: '10m', armor_piercing: '20', expense: "Standard"}]])
-//    ],
-//    ['Artillery', new Map([
-//        ['bomb', {weapon_name: 'General-purpose bomb', skill: 'artillery', range: 'Air-dropped', lethality: '70%', kill_radius: '100m', ammo_capacity: 'N/A', armor_piercing: '10', expense: "Unusual"}],
-//        ['heavy_mortar', {weapon_name: 'Heavy mortar', skill: 'artillery', range: '4km', lethality: '35%', kill_radius: '50m', ammo_capacity: '1', armor_piercing: '5', expense: "Major"}],
-//        ['light_mortar', {weapon_name: 'Light mortar', skill: 'artillery', range: '2km', lethality: '20%', kill_radius: '25m', ammo_capacity: '1', armor_piercing: '10', expense: "Major"}],
-//        ['anti_tank_missle', {weapon_name: 'Anti-tank guided missile (ATGM)', range: '4km', skill: 'artillery', lethality: '35%', kill_radius: '50m', ammo_capacity: 'N/A', armor_piercing: '25', expense: "Unusual"}],
-//        ['artillery', {weapon_name: 'Artillery', skill: 'artillery', range: '5km', lethality: '50%', kill_radius: '100m', ammo_capacity: '1', armor_piercing: '10', expense: "Extreme"}],
-//        ['cruise_missile', {weapon_name: 'Cruise Missile', skill: 'artillery', range: '100km', lethality: '80%', kill_radius: '150m', ammo_capacity: 'N/A', armor_piercing: '15', expense: "Extreme"}]])
-//    ]]);
 let nationalities = ["albanian", "albanian-american", "algerian", "algerian-american", "american", "iraqi",
    "iraqi-american", "argentinian", "argentinian-american", "armenian", "armenian-american",
    "australian", "australian-american", "austrian", "austrian-american", "belarusian",
@@ -243,6 +180,65 @@ const description = {
 
 let weapons = new Map();
 let dataLoaded = false;
+let professionsFinished = false;
+
+function setup() {
+    waitForDataLoad();
+    let timeoutms = 2000;
+    new Promise((r, j)=>{
+        var check = () => {
+            console.warn('checking');
+            if(dataLoaded)
+                r();
+            else if((timeoutms -= 100) < 0)
+                j('timed out!');
+            else
+                setTimeout(check, 100)
+        };
+        setTimeout(check, 100)
+    }).then(value => {
+        createWeaponSelect(weapons);
+        console.log("createProfessionWrappers")
+        createProfessionWrappers();
+        new Promise((ra, ja)=>{
+            var check = () => {
+                console.warn('checking');
+                if(professionsFinished) {
+                    ra();
+                }
+                else if((timeoutms -= 100) < 0) {
+                    ja('timed out!');
+                }
+                else
+                    setTimeout(check, 100)
+            };
+            setTimeout(check, 100)
+        }).then( value1 => {
+            setScoreListeners();
+            setHPListener();
+            setPowListener();
+            setAdaptedListeners();
+            createPrintButton();
+            console.log("setModalListener")
+            setModalListener();
+            updateSkillIncreaseButtons();
+            setSkillListeners();
+            setPlusListeners();
+            setMinusListeners();
+            createNameListener();
+            parseNames();
+            setRandomListener();
+        });
+    });
+}
+
+function waitForDataLoad() {
+    $.getScript('js/DataParser.js', function () {
+        // skills = parseSkills();
+        weapons = getWeapons();
+        dataLoaded = true;
+    });
+}
 
 function createWeaponSelect(weapons){
     console.log(weapons['Hand-to-Hand Weapons']);
@@ -270,48 +266,6 @@ function createWeaponSelect(weapons){
         select.addEventListener("change", function (event) {
             weaponSelectListener(event.target);
         });
-    });
-}
-
-function setup() {
-    waitForDataLoad();
-    new Promise((r, j)=>{
-        var check = () => {
-            console.warn('checking');
-            if(dataLoaded)
-                r();
-            else if((timeoutms -= 100) < 0)
-                j('timed out!');
-            else
-                setTimeout(check, 100)
-        };
-        setTimeout(check, 100)
-    }).then(value => {
-        createWeaponSelect(weapons);
-        createProfessionWrappers();
-        setScoreListeners();
-        setHPListener();
-        setPowListener();
-        setAdaptedListeners();
-        createPrintButton();
-        setModalListener();
-        updateSkillIncreaseButtons();
-        setSkillListeners();
-        setPlusListeners();
-        setMinusListeners();
-        createNameListener();
-        parseNames();
-        setRandomListener();
-    });
-}
-
-function waitForDataLoad() {
-    $.getScript('js/DataParser.js', function () {
-        // skills = parseSkills();
-        // console.log(skills);
-        weapons = getWeapons();
-        dataLoaded = true;
-        // console.log(weapons);
     });
 }
 
@@ -581,6 +535,7 @@ function resetOtherSkills() {
 }
 
 function setModalListener() {
+    console.log("setModalListener")
     // Get the modal
     const modal = document.getElementById("myModal");
 
@@ -609,6 +564,7 @@ function setModalListener() {
         }
     };
     const professionSelect = document.getElementsByClassName("profession-select");
+    console.log(professionSelect.length);
     for (let i = 0; i < professionSelect.length; i++) {
         professionSelect[i].addEventListener("change", function (selChange) {
             setClassVisibility("skill-wrapper", "none");
@@ -616,6 +572,8 @@ function setModalListener() {
             wrapper.style.display = "block";
 
             const skillChecks = document.getElementsByClassName("skill-check");
+            console.log(skillChecks)
+            console.log(skillChecks.length)
             for (let i = 0; i < skillChecks.length; i++) {
                 skillChecks[i].checked = false;
             }
@@ -649,7 +607,10 @@ function setModalListener() {
         document.querySelector("#" + profSelect.getAttribute("name") + "-wrapper").style = "visible"
     });
 
-    var skillChecks = document.getElementsByClassName("skill-check");
+    let skillChecks = document.getElementsByClassName("skill-check");
+    // anthropologist skill-check
+    console.log(skillChecks.length + " SKILL CHECKS")
+    console.log(skillChecks)
     for (let i = 0; i < skillChecks.length; i++) {
         skillChecks[i].addEventListener("change", function (event) {
             let skill = event.target.getAttribute("name")
@@ -659,12 +620,15 @@ function setModalListener() {
             let profession = event.target.id.replace("-check", "")
                 .replace("-" + skill, "")
                 .replace(/\d/,"");
+            console.log("CLICKED CHECK MARK");
             updateSkills(profession, event.target.getAttribute("max"))
         });
     }
 
     let skillInputs = document.getElementsByClassName("skill-modal-input");
+    console.log(skillInputs.length)
     for (let i = 0; i < skillInputs.length; i++) {
+        console.log(skillInputs[i])
         skillInputs[i].addEventListener("change", function (event) {
             let skill = event.target.getAttribute("name")
                 .replace(/\s\d{1,2}%:/, "")
@@ -673,6 +637,7 @@ function setModalListener() {
             let profession = event.target.id.replace("-check", "")
                 .replace("-" + skill, "")
                 .replace(/\d/,"");
+            console.log("CLICKED " + event.target);
             updateSkills(profession, event.target.getAttribute("max"))
         });
     }
@@ -839,11 +804,23 @@ function populateProfessionSelect(profSelect) {
 
 function createProfessionWrappers() {
     const modal = document.querySelector("#modal-content");
-    const allProfs = parseProfessions();
-    for (let z = 0; z < allProfs.length; z++) {
-        modal.appendChild(allProfs[z])
-    }
-    modal.appendChild(createOtherProfModal());
+    let allProfs;
+    new Promise((r, j)=>{
+        var check = () => {
+            $.getScript('js/ProfessionWrapper.js', function () {
+                allProfs = parseProfessions();
+                r();
+            });
+        };
+        setTimeout(check, 100)
+    }).then(value => {
+        for (let z = 0; z < allProfs.length; z++) {
+            modal.appendChild(allProfs[z])
+        }
+        console.log("FINISHED createProfessionWrappers");
+        professionsFinished = true;
+        // modal.appendChild(createOtherProfModal());
+    });
 }
 
 function createOtherProfModal() {
@@ -1014,303 +991,6 @@ function parseNamesForNationality(nationality) {
     }
     names.set(nationality.toTitleCase(), {male: male_names, female: female_names, last: last_names});
 
-}
-
-function parseProfessions() {
-    const wrappers = [];
-    // const data = readFile("resources/professions.txt");
-    const data = JSON.parse(readFile("resources/professions.txt"));
-    Object.keys(data).forEach(key => {
-        let prof = data[key];
-        // vbonds: 4
-        // defaultSkills: (5) [{…}, {…}, {…}, {…}, {…}]
-        // description: "You study humanity. You’re concerned with the patterns that emerge over time, across land masses, cultures, and language groups. You might be a number cruncher, a field worker trudging through the jungle, a consultant in a war zone, or a think-tank analyst sifting myth from history in studies of the Tcho-Tcho peoples."
-        // education: (2) ["Masters in Anthropology", "PHD in Anthropology"]
-        // employers: (2) ["universities", "museums"]
-        // equipment: (2) ["Smartphone", "Laptop"]
-        // numOptionalSkills: 2
-        // optionalSkills: (7) [{…}, {…}, {…}, {…}, {…}, {…}, {…}]
-        // skillText: "Choose any two of these that you don’t already have:"
-        // stats: ["INT"]
-        // weapons: [Array(2)]
-        const wrapper = createProfessionWrapper(key, prof.skillText, prof.description, prof.stats, prof.bonds, prof.numOptionalSkills);
-        const defaultSkills = wrapper.getElementsByClassName("default-skills")[0];
-        prof.defaultSkills.forEach(skill => {
-            let skillChild = getSkillChild(skill.name, false, name, wrapper);
-            defaultSkills.appendChild(skillChild)
-        });
-        const optionalSkills = wrapper.getElementsByClassName("optional-skills")[0];
-        if(prof.optionalSkills !== undefined) {
-            prof.optionalSkills.forEach(skill => {
-                optionalSkills.appendChild(getSkillChild(skill.name, true, name, wrapper))
-            });
-        }
-        console.log(wrapper);
-        wrappers.push(wrapper);
-        maxChecked.set(name, prof.numOptionalSkills);
-    });
-    return wrappers
-}
-
-function getSkillChild(skillString, opt, profName, wrapper) {
-    if (skillString.includes(" or ")) {
-        const exclusiveSkills = (skillString.split(" or "));
-        const exclusiveSkillNames = [];
-        const exclusiveSkillValues = [];
-        const exclusiveSkillFriendlyNames = [];
-        let combinedName = profName;
-        for (let j = 0; j < exclusiveSkills.length; j++) {
-            let skill = exclusiveSkills[j].split(" ");
-            combinedName = combinedName + "-" + skill[0];
-            exclusiveSkillNames.push(skill[0]);
-            exclusiveSkillValues.push(skill[1]);
-            exclusiveSkillFriendlyNames.push(skill[0].replace("-", " ").toTitleCase() + " " + skill[1] + "%")
-        }
-        return createRadioSkills(profName, combinedName, exclusiveSkillNames, exclusiveSkillValues, exclusiveSkillFriendlyNames)
-    }
-    else if(skillString.includes("(")) {
-        let skill = skillString.split(") ");
-        let friendlyName = (skill[0]+")").replace("-", " ").toTitleCase();
-        if (opt) {
-            return createOptionalSkill(profName, skill[0].replace(/\s\(.*/, ""), skill[1], friendlyName, " " + skill[1] + "%")
-        }
-        else {
-            return createDefaultSkill(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase() + ") " + skill[1] + "%")
-        }
-    }
-
-    let skill = skillString.split(" ");
-    if (inputSkills.has(skill[0])) {
-        if (opt) {
-            return createOptionalSkillInput(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase(), " " + skill[1] + "%:")
-        } else {
-            return createSkillInput(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase() + " " + skill[1] + "%:", wrapper)
-        }
-    } else {
-        if (opt) {
-            return createOptionalSkill(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase(), " " + skill[1] + "%")
-        } else {
-            return createDefaultSkill(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase() + " " + skill[1] + "%")
-        }
-    }
-}
-
-function createOptionalSkillInput(professionName, skillName, baseValue, friendlyName) {
-    const skillDiv = document.createElement("div");
-    skillDiv.className = professionName + " prof-modal skill-check-div";
-
-    let input = document.createElement("input");
-    input.type = "checkbox";
-    input.className = professionName + " skill-check";
-    input.id = professionName + "-" + skillName + "-check";
-    input.value = skillName;
-    input.name = skillName;
-    input.setAttribute("base", baseValue);
-    skillDiv.appendChild(input);
-
-    const label = document.createElement("label");
-    label.setAttribute("for", professionName + "-" + skillName);
-    label.innerText = friendlyName;
-    skillDiv.appendChild(label);
-
-    input = document.createElement("input");
-    input.type = "text";
-    input.className = professionName + " fill skill-modal-input-opt";
-    input.id = professionName + "-" + skillName;
-    input.value = "(choose one)";
-    input.name = friendlyName;
-    input.setAttribute("base", baseValue);
-    input.setAttribute("base", baseValue);
-    skillDiv.appendChild(input);
-
-    return skillDiv
-}
-
-function createOptionalSkill(professionName, skillName, baseValue, friendlyName, friendlyValue) {
-    const skillDiv = document.createElement("div");
-    skillDiv.className = professionName + " prof-modal skill-check-div";
-
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.className = professionName + " skill-check";
-    input.id = professionName + "-" + skillName;
-    input.value = skillName;
-    if(inputSkills.has(skillName)) {
-        input.name = (skillName + friendlyValue + "\n" + friendlyName.substring(friendlyName.indexOf("(") - 1));
-    }
-    else {
-        input.name = skillName;
-    }
-    input.setAttribute("base", baseValue);
-    skillDiv.appendChild(input);
-
-    const label = document.createElement("label");
-    label.setAttribute("for", professionName + "-" + skillName);
-    label.innerText = friendlyName;
-    skillDiv.appendChild(label);
-
-    const span = document.createElement("span");
-    span.innerText = friendlyValue;
-    skillDiv.appendChild(span);
-
-    return skillDiv
-}
-
-function createSkillInput(professionName, skillName, baseValue, friendlyName, wrapper) {
-    const skillDiv = document.createElement("div");
-    skillDiv.className = professionName + " prof-modal " + skillName;
-
-    const label = document.createElement("label");
-    label.setAttribute("for", professionName + "-" + skillName);
-    label.innerText = friendlyName;
-    skillDiv.appendChild(label);
-
-    const input = document.createElement("input");
-    input.className = professionName + " fill skill-modal-input";
-    input.type = "text";
-    let otherElements = wrapper.getElementsByClassName(professionName + " prof-modal " + skillName);
-
-    input.id = professionName + "-" + skillName + (otherElements.length+1);
-    input.name = friendlyName;
-    input.value = "(choose one)";
-    input.setAttribute("base", baseValue);
-    skillDiv.appendChild(input);
-
-    return skillDiv;
-
-}
-
-function createRadioSkills(professionName, combinedSkillName, skillNames, baseValues, friendlyNames) {
-    const div = document.createElement("div");
-
-    for (let i = 0; i < skillNames.length; i++) {
-        const radioInput = document.createElement("input");
-        radioInput.type = "radio";
-        radioInput.className = professionName + " prof-modal skill-radio";
-        radioInput.id = professionName + "-" + skillNames[i] + "Opt";
-        radioInput.name = combinedSkillName;
-        radioInput.value = skillNames[i];
-        radioInput.setAttribute("base", baseValues[i]);
-
-        const label = document.createElement("label");
-        label.setAttribute("for", professionName + "-" + skillNames[i]);
-        label.innerText = friendlyNames[i];
-
-        div.appendChild(radioInput);
-        div.appendChild(label);
-
-        if (i < (skillNames.length - 1)) {
-            const span = document.createElement("span");
-            span.innerText = " or ";
-            div.appendChild(span)
-        }
-    }
-
-    return div
-}
-
-function createDefaultSkill(professionName, skillName, baseValue, friendlyName) {
-    const skillDiv = document.createElement("div");
-    skillDiv.className = professionName + " prof-modal skill-default";
-    skillDiv.setAttribute("base", baseValue);
-    if(friendlyName.includes("(")) {
-        friendlyName = friendlyName.substring(0, friendlyName.indexOf("(")-1) + " "
-            + baseValue + "%:\n" + friendlyName.substring(friendlyName.indexOf("("), friendlyName.length-3);
-        skillDiv.setAttribute("name", friendlyName);
-    }
-    else {
-        skillDiv.setAttribute("name", skillName);
-    }
-    skillDiv.innerText = friendlyName;
-    return skillDiv
-}
-
-function createProfessionWrapper(professionName, skillLabelText, descriptionText, statText, bondText, maxCheckedCount) {
-    const wrapper = document.createElement("table");
-    wrapper.className = "fill skill-wrapper";
-    wrapper.id = professionName + "-wrapper";
-    wrapper.style = "display: none;";
-
-    const tbody = document.createElement("tbody");
-    wrapper.appendChild(tbody);
-    const rowOne = document.createElement("tr");
-    tbody.appendChild(rowOne);
-    const professionSelectCell = document.createElement("td");
-    rowOne.appendChild(professionSelectCell);
-
-    const professionSpan = document.createElement("span");
-    professionSpan.className = "fill";
-    professionSelectCell.appendChild(professionSpan);
-
-    const professionSelect = document.createElement("select");
-    professionSelect.id = professionName + "-professions";
-    professionSelect.className = "profession-select";
-    populateProfessionSelect(professionSelect);
-    professionSpan.appendChild(professionSelect);
-
-    if(maxCheckedCount !== "0") {
-        const blankTd = document.createElement("td");
-        rowOne.appendChild(blankTd);
-    }
-
-    const rowTwo = document.createElement("tr");
-    rowTwo.className = "skill-modal";
-    tbody.appendChild(rowTwo);
-
-    const profDescriptionCell = document.createElement("td");
-    profDescriptionCell.className = professionName + " prof-modal third pad-right align-top";
-    rowTwo.appendChild(profDescriptionCell);
-
-    const profDescription = document.createElement("div");
-    profDescription.innerText = descriptionText + "\n\n" + statText + "\n" + bondText;
-    profDescriptionCell.appendChild(profDescription);
-
-    const defaultSkills = document.createElement("td");
-    defaultSkills.className = "default-skills align-top";
-    rowTwo.appendChild(defaultSkills);
-
-    const skillDiv = document.createElement("div");
-    skillDiv.innerText = "SKILLS";
-    defaultSkills.appendChild(skillDiv);
-
-    if (skillLabelText != null && skillLabelText !== "") {
-        const optionalSkills = document.createElement("td");
-        if (skillLabelText == null) {
-            skillLabel.style = "display: none;"
-        } else {
-            const skillLabelDiv = document.createElement("div");
-            skillLabelDiv.innerText = skillLabelText;
-            optionalSkills.appendChild(skillLabelDiv)
-        }
-        optionalSkills.className = "optional-skills align-top";
-        rowTwo.appendChild(optionalSkills)
-    }
-
-    const confirmTd = document.createElement("td");
-
-    const rowThree = document.createElement("tr");
-    rowThree.className = professionName + " prof-modal skill-modal align-top";
-    tbody.appendChild(rowThree);
-
-    const statAndBondsCell = document.createElement("td");
-    rowThree.appendChild(statAndBondsCell);
-
-    if(maxCheckedCount !== "0") {
-        const blankTdTwo = document.createElement("td");
-        rowThree.appendChild(blankTdTwo);
-    }
-
-    rowThree.appendChild(confirmTd);
-
-    const confirmInput = document.createElement("input");
-    confirmInput.type = "button";
-    confirmInput.name = professionName;
-    confirmInput.value = "Confirm";
-    confirmInput.className = "skillModalConfirm";
-    confirmInput.id = professionName + "Confirm";
-    confirmTd.appendChild(confirmInput);
-
-    return wrapper;
 }
 
 function updateSkillIncreaseButtons() {
