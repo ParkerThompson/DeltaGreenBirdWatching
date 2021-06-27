@@ -1,111 +1,109 @@
+// inputSkills = ["art", "craft", "military-science", "pilot", "science", "foreign-language"];
 const inputSkills = new Map([
-   ["art", ["Acting", "Creative Writing", "Dance", "Flute", "Forgery", "Guitar", "Painting", "Poetry", "Scriptwriting", "Sculpture", "Singing", "Violin"]],
-   ["craft", ["Architect", "Carpenter", "Electrician", "Gunsmith", "Locksmith", "Mechanic", "Microelectronics", "Plumber"]],
-   ["military-science", ["Land", "Air", "Sea"]],
-   ["pilot", ["Airplane", "Drone", "Helicopter", "Small Boat", "Ship"]],
-   ["science", ["Astronomy", "Biology", "Botany", "Chemistry", "Engineering", "Genetics", "Geology", "Mathematics",
-       "Meteorology", "Physics", "Planetology", "Zoology"]],
-   ["foreign-language", ["Spanish", "German", "Japanese", "Hindi", "Arabic", "Cantonese", "Mandarin", "Bengali",
-       "Portuguese","Vietnamese", "Urdu", "Korean", "Turkish", "Russian", "French", "Italian"]]
+    ["art", ["Acting", "Creative Writing", "Dance", "Flute", "Forgery", "Guitar", "Painting", "Poetry", "Scriptwriting", "Sculpture", "Singing", "Violin"]],
+    ["craft", ["Architect", "Carpenter", "Electrician", "Gunsmith", "Locksmith", "Mechanic", "Microelectronics", "Plumber"]],
+    ["military-science", ["Land", "Air", "Sea"]],
+    ["pilot", ["Airplane", "Drone", "Helicopter", "Small Boat", "Ship"]],
+    ["science", ["Astronomy", "Biology", "Botany", "Chemistry", "Engineering", "Genetics", "Geology", "Mathematics",
+        "Meteorology", "Physics", "Planetology", "Zoology"]],
+    ["foreign-language", ["Spanish", "German", "Japanese", "Hindi", "Arabic", "Cantonese", "Mandarin", "Bengali",
+        "Portuguese","Vietnamese", "Urdu", "Korean", "Turkish", "Russian", "French", "Italian"]]
 
 ]);
-let skills;
-let employers;
 let names = new Map();
 let code_names = [];
 let universities = [["Harvard", "at"], ["Standford", "at"], ["MIT", "at"], ["Brown", "at"], ["Columbia", "at"],
-   ["Cornell", "at"], ["Dartmouth", "at"], ["The University of Pennsylvania", "at"], ["Princeton", "at"], ["Yale", "at"],
-   ["Texas A&M", "at"]];
+    ["Cornell", "at"], ["Dartmouth", "at"], ["The University of Pennsylvania", "at"], ["Princeton", "at"], ["Yale", "at"],
+    ["Texas A&M", "at"]];
 let history_museums = [["The Smithsonian", "at"], ["The American Museum of Natural History", "at"], ["The British Museum", "at"]];
 let tech_companies = [["Facebook", "at"], ["Google", "at"], ["Apple", "at"], ["IBM", "at"], ["Amazon", "at"]];
 let federal_agencies = [["FBI", "in the"], ["DEA", "in the"], ["ATF", "in the"], ["Secret Service", "in the"],
-   ["US Marshals", "in the"]];
+    ["US Marshals", "in the"]];
 let hospitals = [["The Mayo Clinic", "at"], ["The Cleavland Clinic", "at"], ["Johns Hopkins", "at"], ["Massachusetts General", "at"],
-   ["Cedar Sinai", "at"]];
+    ["Cedar Sinai", "at"]];
 let science = [["The National Institute of Health", "at"], ["CDC", "at the"], ["FDA", "at the"], ["Los Alamos National Laboratory", "at"],
-   ["DARPA", "at"]];
+    ["DARPA", "at"]];
 let special_operator = [["Hostage Rescue Team", "in the"], ["Army Rangers", "in the"], ["USMC Raiders", "in the"],
-   ["CIA Special Operations Group", "in the"], ["Navy Seals", "in the"], ["Delta Force", "in the"]];
+    ["CIA Special Operations Group", "in the"], ["Navy Seals", "in the"], ["Delta Force", "in the"]];
 let criminal_orgs = [["self employed", "who is"], ["Italian Mafia", "in the"], ["Russian Mafia", "in the"], ["small crew", "with a"]];
 let cities = ["New York City", "Los Angeles", "Chicago", "Houston",
-   "Phoenix", "Philadelphia", "San Antonio", "San Diego",
-   "Dallas", "San Jose"];
-let foreign_service = [["US State Department", "at the"]];
+    "Phoenix", "Philadelphia", "San Antonio", "San Diego",
+    "Dallas", "San Jose"];
+let foriegn_service = [["US State Department", "at the"]];
 let intelligence_analysts = [["FBI", "in the"], ["NSA", "in the"], ["CIA", "in the"], ["Mossad", "at"], ["MI6", "in"]];
 let intelligence_agencies = [["CIA", "in the"], ["Mossad", "at"], ["MI6", "in"], ["Chinese Ministry of State Security", "in the"]];
 let law_firms = [["Baker-Mckenzie", "at"], ["Kirkland & Ellis", "at"], ["Latham & Watkins", "at"],
-   ["DLA Piper", "at"], ["Baker & McKenzie", "at"], ["Dentons", "at"], ["US Department of Justice", "in the"]];
+    ["DLA Piper", "at"], ["Baker & McKenzie", "at"], ["Dentons", "at"], ["US Department of Justice", "in the"]];
 let tv_news = [["Fox News", "at"], ["NBC News", "at"], ["CNN News", "at"]];
 let newspapers = [["The New York Times", "at"], ["The Washington Post", "at"], ["The Wall Street Journal", "at"],
-   ["The Boston Globe", "at"]];
+    ["The Boston Globe", "at"]];
 let newspaper_suffixes = [["Times", "at the"], ["Post", "at the"], ["Times-Picayune", "at the"],
-   ["Daily News", "at the"], ["Tribune", "at the"], ["Gazette", "at the"], ["News", "at the"]];
+    ["Daily News", "at the"], ["Tribune", "at the"], ["Gazette", "at the"], ["News", "at the"]];
 let blogs = [["The Huffington Post", "at"], ["Buzzfeed", "at"], ["The Daily Beast", "at"], ["Vice", "at"]];
 let pilot = [["American Airlines", "at"], ["US Airforce", "in the"], ["US Navy", "in the"], ["British Airways", "at"],
-   ["Fedex", "at"], ["NetJets", "at"], ["Delta Airlines", "at"]];
+    ["Fedex", "at"], ["NetJets", "at"], ["Delta Airlines", "at"]];
 let top_companies = [["Walmart", "at"], ["Amazon", "at"], ["Apple", "at"], ["CVS Health", "at"],
-   ["UnitedHealth Group", "at"], ["Berkshire Hathaway", "at"],
-   ["McKesson", "at"], ["AmerisourceBergen", "at"], ["Alphabet", "at"], ["Exxon Mobil", "at"], ["AT&T", "at"],
-   ["Costco Wholesale", "at"], ["Cigna", "at"],
-   ["Cardinal Health", "at"], ["Microsoft", "at"], ["Walgreens Boots Alliance"], ["Kroger", "at"], ["Home Depot", "at"],
-   ["JPMorgan Chase", "at"], ["Verizon Communications", "at"]];
+    ["UnitedHealth Group", "at"], ["Berkshire Hathaway", "at"],
+    ["McKesson", "at"], ["AmerisourceBergen", "at"], ["Alphabet", "at"], ["Exxon Mobil", "at"], ["AT&T", "at"],
+    ["Costco Wholesale", "at"], ["Cigna", "at"],
+    ["Cardinal Health", "at"], ["Microsoft", "at"], ["Walgreens Boots Alliance"], ["Kroger", "at"], ["Home Depot", "at"],
+    ["JPMorgan Chase", "at"], ["Verizon Communications", "at"]];
 let armed_forces = [["The US Marines", "in"], ["The US Army", "in"], ["The US Airforce", "in"], ["The US Navy", "in"]];
 
 let profession_details = new Map([
-   ["anthropologist", {'employer': [universities, history_museums],
-       'education': ["Masters in Anthropology", "PHD in Anthropology"], 'stats': ["INT"], 'bonds': 4,
-       'optional_skills': 2, 'weapons': [["pepper_spray_can", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'Laptop']}],
-   ["engineer", {'employer': [tech_companies, federal_agencies], 'education': ["Bachelors in Computer Science",
-           "Masters in Computer Science", "PHD in Computer Science"], 'stats': ["INT"], 'bonds': 3,
-       'optional_skills': 4, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
-   ["federal-agent", {'employer': [federal_agencies], 'education': ["Bachelors in Criminal Justice"],
-       'stats': ["CON","POW","CHA"], 'bonds': 3, 'optional_skills': 1,
-       'weapons': [["medium_pistol", "Glock 17"]], 'other_gear': ['Ear piece communicator', 'Smartphone', 'Laptop',
-           'Flexible Cuffs', "Tactical Light"]}],
-   ["special-operator", {'employer': [special_operator], 'education': ["High School Diploma"],
-       'stats': ["STR","CON","POW"], 'bonds':2, 'optional_skills': 0,
-       'weapons': [["medium_pistol", "Colt M1911"], ["combat_dagger", "KBAR Knife"]], 'other_gear': ['Smartphone', 'Ear piece communicator',
-           "Tactical Light", "Night Vision Goggles (Civilian)", "Sound Suppressor"]}],
-   ["physician", {'employer': [hospitals], 'education': ["MD"], 'stats': ["INT","POW","DEX"], 'bonds':3,
-       'optional_skills': 2, 'weapons': [["pepper_spray_can", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'First Aid Kit']}],
-   ["scientist", {'employer': [science], 'education': ["PHD in Chemistry", "PHD in Biology", "PHD in Physics"],
-       'stats': ["INT"], 'bonds':4, 'optional_skills': 3, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
-   ["firefighter", {'employer': [cities], 'education': ["High School Diploma"], 'stats': ["STR","DEX","CON"],
-       'bonds':3, 'optional_skills': 0, 'weapons': [["knife", "Knife"]], 'other_gear': ['Smartphone',
-           'First Responder Medical Kit', "Large Flashlight"]}],
-   ["foreign-service-officer", {'employer': [foreign_service], 'education': ["PHD in Foreign Affairs", "PHD in International Relations"],
-       'stats': ["INT","CHA"], 'bonds':3, 'optional_skills': 0,
-       'weapons': [["pepper_spray_can", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'Laptop']}],
-   ["criminal", {'employer': [criminal_orgs], 'education': ["High School Diploma"], 'stats': ["STR","DEX"],
-       'bonds':4, 'optional_skills': 2, 'weapons': [["light_pistol", ".38 Special"], ["knife", "Knife"]], 'other_gear': ['Burner Phone', 'Lockpick Kit']}],
-   ["intelligence-analyst", {'employer': [intelligence_analysts], 'education': ["Masters in Political Science", "Masters in International Relations"],
-       'stats': ["INT"], 'bonds': 3, 'optional_skills': 0, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
-   ["intelligence-case-officer", {'employer': [intelligence_agencies],
-       'education': ["Bachelors in Political Science"], stats: ["INT","POW","CHA"],
-       'bonds': 2, 'optional_skills': 0, 'weapons': [["medium_pistol", "Glock 17"]], 'other_gear': ['Smartphone', 'Laptop', 'Ear piece communicator']}],
-   ["lawyer", {'employer': [law_firms, cities], 'education': ["JD"], 'stats': ["INT","POW","CHA"],
-       'bonds':2, 'optional_skills': 4, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
-   ["media-specialist", {'employer': [tv_news, newspapers, blogs, cities],
-       'education': ["Bachelors in Media Studies"], 'stats': ["INT","CHA"],
-       'bonds': 4, 'optional_skills': 5,  'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop', 'Voice-activated recorder']}],
-   ["nurse", {'employer': [hospitals], 'education': ["Bachelors in Nursing", "Masters in Nursing"],
-       'stats': ["INT","POW","CHA"], 'bonds': 4, 'optional_skills': 2,
-       'weapons': [["pepper_spray", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'First Aid Kit']}],
-   ["pilot", {'employer': [pilot], 'education': ["High School Diploma", "Bachelors in Mechanical Engineering"],
-       'stats': ["DEX","INT"], 'bonds': 3, 'optional_skills': 2,
-       'weapons': [["pepper_spray", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'Laptop']}],
-   ["police-officer", {'employer': [cities], 'education': ["High School Diploma", "Associates in Criminal Justice"],
-       'stats': ["STR","CON","POW"], 'bonds': 3, 'optional_skills': 1,
-        'weapons': [["heavy_pistol", ".44 Magnum"]], 'other_gear': ['Smartphone', 'Laptop', "Handcuffs", "Large Flashlight"]}],
-   ["program-manager", {'employer': [top_companies], 'education': ["Masters in Business Administration"],
-       'stats': ["INT","CHA"], 'bonds': 4, 'optional_skills': 1, 'weapons': [["pepper_spray", "Pepper Spray Can"]],
-       'other_gear': ['Smartphone', 'Laptop']}],
-   ["soldier", {'employer': [armed_forces], 'education': ["High School Diploma"], 'stats': ["STR", "CON"], 'bonds': 4, 'optional_skills': 3,
-       'weapons': [["medium_pistol", "Beretta M9"], ["combat_dagger", "KBAR Knife"]], 'other_gear': ['Smartphone', "Tactical Light"]}]
+    ["anthropologist", {'employer': [universities, history_museums],
+        'education': ["Masters in Anthropology", "PHD in Anthropology"], 'stats': ["INT"], 'bonds': 4,
+        'optional_skills': 2, 'weapons': [["pepper_spray_can", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["engineer", {'employer': [tech_companies, federal_agencies], 'education': ["Bachelors in Computer Science",
+            "Masters in Computer Science", "PHD in Computer Science"], 'stats': ["INT"], 'bonds': 3,
+        'optional_skills': 4, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["federal-agent", {'employer': [federal_agencies], 'education': ["Bachelors in Criminal Justice"],
+        'stats': ["CON","POW","CHA"], 'bonds': 3, 'optional_skills': 1,
+        'weapons': [["medium_pistol", "Glock 17"]], 'other_gear': ['Ear piece communicator', 'Smartphone', 'Laptop',
+            'Flexible Cuffs', "Tactical Light"]}],
+    ["special-operator", {'employer': [special_operator], 'education': ["High School Diploma"],
+        'stats': ["STR","CON","POW"], 'bonds':2, 'optional_skills': 0,
+        'weapons': [["medium_pistol", "Colt M1911"], ["combat_dagger", "KBAR Knife"]], 'other_gear': ['Smartphone', 'Ear piece communicator',
+            "Tactical Light", "Night Vision Goggles (Civilian)", "Sound Suppressor"]}],
+    ["physician", {'employer': [hospitals], 'education': ["MD"], 'stats': ["INT","POW","DEX"], 'bonds':3,
+        'optional_skills': 2, 'weapons': [["pepper_spray_can", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'First Aid Kit']}],
+    ["scientist", {'employer': [science], 'education': ["PHD in Chemistry", "PHD in Biology", "PHD in Physics"],
+        'stats': ["INT"], 'bonds':4, 'optional_skills': 3, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["firefighter", {'employer': [cities], 'education': ["High School Diploma"], 'stats': ["STR","DEX","CON"],
+        'bonds':3, 'optional_skills': 0, 'weapons': [["knife", "Knife"]], 'other_gear': ['Smartphone',
+            'First Responder Medical Kit', "Large Flashlight"]}],
+    ["foreign-service-officer", {'employer': [foriegn_service], 'education': ["PHD in Foreign Affairs", "PHD in International Relations"],
+        'stats': ["INT","CHA"], 'bonds':3, 'optional_skills': 0,
+        'weapons': [["pepper_spray_can", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["criminal", {'employer': [criminal_orgs], 'education': ["High School Diploma"], 'stats': ["STR","DEX"],
+        'bonds':4, 'optional_skills': 2, 'weapons': [["light_pistol", ".38 Special"], ["knife", "Knife"]], 'other_gear': ['Burner Phone', 'Lockpick Kit']}],
+    ["intelligence-analyst", {'employer': [intelligence_analysts], 'education': ["Masters in Political Science", "Masters in International Relations"],
+        'stats': ["INT"], 'bonds': 3, 'optional_skills': 0, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["intelligence-case-officer", {'employer': [intelligence_agencies],
+        'education': ["Bachelors in Political Science"], stats: ["INT","POW","CHA"],
+        'bonds': 2, 'optional_skills': 0, 'weapons': [["medium_pistol", "Glock 17"]], 'other_gear': ['Smartphone', 'Laptop', 'Ear piece communicator']}],
+    ["lawyer", {'employer': [law_firms, cities], 'education': ["JD"], 'stats': ["INT","POW","CHA"],
+        'bonds':2, 'optional_skills': 4, 'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["media-specialist", {'employer': [tv_news, newspapers, blogs, cities],
+        'education': ["Bachelors in Media Studies"], 'stats': ["INT","CHA"],
+        'bonds': 4, 'optional_skills': 5,  'weapons': [["stun_gun", "Taser"]], 'other_gear': ['Smartphone', 'Laptop', 'Voice-activated recorder']}],
+    ["nurse", {'employer': [hospitals], 'education': ["Bachelors in Nursing", "Masters in Nursing"],
+        'stats': ["INT","POW","CHA"], 'bonds': 4, 'optional_skills': 2,
+        'weapons': [["pepper_spray", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'First Aid Kit']}],
+    ["pilot", {'employer': [pilot], 'education': ["High School Diploma", "Bachelors in Mechanical Engineering"],
+        'stats': ["DEX","INT"], 'bonds': 3, 'optional_skills': 2,
+        'weapons': [["pepper_spray", "Pepper Spray Can"]], 'other_gear': ['Smartphone', 'Laptop']}],
+    ["police-officer", {'employer': [cities], 'education': ["High School Diploma", "Associates in Criminal Justice"],
+        'stats': ["STR","CON","POW"], 'bonds': 3, 'optional_skills': 1,
+         'weapons': [["heavy_pistol", ".44 Magnum"]], 'other_gear': ['Smartphone', 'Laptop', "Handcuffs", "Large Flashlight"]}],
+    ["program-manager", {'employer': [top_companies], 'education': ["Masters in Business Administration"],
+        'stats': ["INT","CHA"], 'bonds': 4, 'optional_skills': 1, 'weapons': [["pepper_spray", "Pepper Spray Can"]],
+        'other_gear': ['Smartphone', 'Laptop']}],
+    ["soldier", {'employer': [armed_forces], 'education': ["High School Diploma"], 'stats': ["STR", "CON"], 'bonds': 4, 'optional_skills': 3,
+        'weapons': [["medium_pistol", "Beretta M9"], ["combat_dagger", "KBAR Knife"]], 'other_gear': ['Smartphone', "Tactical Light"]}]
 ]);
 
-let maxChecked = new Map();
-
+maxChecked = new Map();
 String.prototype.toTitleCase = function () {
     let s = this.replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -119,154 +117,150 @@ Array.prototype.random = function () {
     return this[Math.floor((Math.random()*this.length))];
 };
 
+weapons = new Map([
+    ['Hand-to-Hand Weapons', new Map([
+        ['unarmed', {weapon_name: 'Unarmed Attack', skill: 'unarmed-combat', damage: '1D4-1', armor_piercing: 'N/A', expense: "None"}],
+        ['brass_knuckles', {weapon_name: 'Brass knuckles, heavy flashlight, or steel-toe boots', skill: 'unarmed-combat', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['garotte', {weapon_name: 'Garotte', skill: 'unarmed-combat', damage: 'special', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['knife', {weapon_name: 'Knife', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['hatchet', {weapon_name: 'Hatchet', skill: 'melee-weapons', damage: '1D4', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['combat_dagger', {weapon_name: 'Large knife or combat dagger', skill: 'melee-weapons', damage: '1D6', armor_piercing: '3', expense: "Incidental"}],
+        ['club', {weapon_name: 'Club, nightstick, baton,  or collapsible baton', skill: 'melee-weapons', damage: '1D6', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['sword', {weapon_name: 'Machete, tomahawk, or sword', skill: 'melee-weapons', damage: '1D8', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['bat', {weapon_name: 'Baseball bat or rifle butt', skill: 'melee-weapons', damage: '1D8', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['spear', {weapon_name: 'Spear or fixed bayonet', skill: 'melee-weapons', damage: '1D8', armor_piercing: '3', expense: "Incidental"}],
+        ['axe', {weapon_name: 'Wood axe', skill: 'melee-weapons', damage: '1D10', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['large_sword', {weapon_name: 'Large sword', skill: 'melee-weapons', damage: '1D10', armor_piercing: 'N/A', expense: "Standard"}],
+        ['two_handed_sword', {weapon_name: 'Two-handed sword', skill: 'melee-weapons', damage: '1D12', armor_piercing: 'N/A', expense: "Standard"}]])
+    ],
+    ['Non Lethal Weapons',new Map([
+        ['pepper_spray_keychain', {weapon_name: 'Tear Gas and Pepper Spray', skill: 'dex', range: '1m', uses: '1', radius: '1 target', damage: '-20% penalty', expense: "Incidental"}],
+        ['pepper_spray_can', {weapon_name: 'Tear Gas and Pepper Spray', skill: 'dex', range: '3m', uses: '12', radius: '2 targets', damage: '-20% penalty', expense: "Incidental"}],
+        ['tear_gas', {weapon_name: 'Tear gas grenade (Thrown/Launched)', skill: 'athletics/heavy-weapons', range: '20m/50m', uses: '1', radius: '10 m', damage: '-40% penalty', expense: "Incidental"}],
+        ['stun_grenade', {weapon_name: 'Stun Grenade (Thrown/Launched)', skill: 'athletics/heavy-weapons', range: '20m/50m', uses: '1', radius: '10 m', damage: '-40% penalty', expense: "Incidental"}],
+        ['stun_gun', {weapon_name: 'Stun gun', skill: 'dex', range: '1m', uses: '10', damage: '-20% penalty', expense: "Incidental"}],
+        ['shock_baton', {weapon_name: 'Shock baton', skill: 'dex', range: '1m', uses: '200', damage: '-20% penalty', expense: "Incidental"}],
+        ['ced_pistol', {weapon_name: 'CED pistol', skill: 'firearms', range: '4m', uses: '4', damage: '-20% penalty', expense: "Standard"}]])
+    ],
+    ['Firearms',new Map([
+        ['light_pistol', {weapon_name: 'Light pistol', skill: 'firearms', range: '10m', damage: '1D8', lethality: 'N/A', ammo_capacity: '7', armor_piercing: 'N/A', expense: "Standard"}],
+        ['medium_pistol', {weapon_name: 'Medium pistol', skill: 'firearms', range: '15m', damage: '1D10', lethality: 'N/A', ammo_capacity: '15', armor_piercing: 'N/A', expense: "Standard"}],
+        ['heavy_pistol', {weapon_name: 'Heavy pistol', skill: 'firearms', range: '20m', damage: '1D12', lethality: 'N/A', ammo_capacity: '10', armor_piercing: 'N/A', expense: "Standard"}],
+        ['shotgun', {weapon_name: 'Shotgun (slug/shot/nonlethal)', skill: 'firearms', range: '75m/50m/10m', damage: '2D6/2D10/1D6 and stunned', lethality: 'N/A', ammo_capacity: '5', armor_piercing: 'N/A', expense: "Standard"}],
+        ['light_rifle', {weapon_name: 'Light Rifle or Carbine', skill: 'firearms', range: '100m', damage: '1D12', lethality: '10%', ammo_capacity: '10 or 30', armor_piercing: '3', expense: "Standard"}],
+        ['smg', {weapon_name: 'Submachine gun (SMG)', skill: 'firearms', range: '50m', damage: '1D10', lethality: '10%', ammo_capacity: '30', armor_piercing: 'N/A', expense: "Unusual"}],
+        ['heavy_rifle', {weapon_name: 'Heavy Rifle', skill: 'firearms', range: '150m', damage: '1D12+2', lethality: '10%', ammo_capacity: '10 or 20', armor_piercing: '5', expense: "Unusual"}],
+        ['very_heavy_rifle', {weapon_name: 'Very Heavy Rifle', skill: 'firearms', range: '250m', damage: 'N/A', lethality: '20%', ammo_capacity: '10', armor_piercing: '5', expense: "Major"}]])
+    ],
+    ['Heavy Weapons',new Map([
+        ['hand_grenade', {weapon_name: 'Hand Grenade', skill: 'athletics', range: '20m', lethality: '15%', kill_radius: '10m', ammo_capacity: 'N/A', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['rpg', {weapon_name: 'Rocket-propelled grenade launcher (RPG)', skill: 'heavy-weapons', range: '10m', lethality: '30%', kill_radius: '10m', ammo_capacity: '1', armor_piercing: '20', expense: "Standard"}],
+        ['flamethrower', {weapon_name: 'Handheld flamethrower', skill: 'heavy-weapons', range: '5m', lethality: '10%', kill_radius: '1m', ammo_capacity: '20', armor_piercing: 'N/A', expense: "Unusual"}],
+        ['military_flamethrower', {weapon_name: 'Military flamethrower', skill: 'heavy-weapons', range: '10m', lethality: '10%', kill_radius: '2m', ammo_capacity: '5', armor_piercing: 'N/A', expense: "Unusual"}],
+        ['machine_gun', {weapon_name: 'General-purpose machine gun (GPMP)', skill: 'heavy-weapons', range: '300m', lethality: '15%', kill_radius: 'per burst', ammo_capacity: '100', armor_piercing: 'N/A', expense: "Major"}],
+        ['grenade_launcher', {weapon_name: 'Grenade launcher (GL)', skill: 'heavy-weapons', range: '150m', lethality: '15%', kill_radius: '10m', ammo_capacity: '1', armor_piercing: 'N/A', expense: "Major"}],
+        ['grenade_machine_gun', {weapon_name: 'Grenade machine gun (GMG)', skill: 'heavy-weapons', range: '300m', lethality: '15%', kill_radius: '10m', ammo_capacity: '30', armor_piercing: 'N/A', expense: "Major"}],
+        ['heavy_machine_gun', {weapon_name: 'Heavy machine gun (HMG)', skill: 'heavy-weapons', range: '400m', lethality: '20%', kill_radius: 'per burst', ammo_capacity: '100', armor_piercing: '5', expense: "Major"}],
+        ['light_machine_gun', {weapon_name: 'Light machine gun (LMG)', skill: 'heavy-weapons', range: '200m', lethality: '10%', kill_radius: 'per burst', ammo_capacity: '100 or 200', armor_piercing: '3', expense: "Major"}],
+        ['autocannon', {weapon_name: 'Autocannon', skill: 'heavy-weapons', range: '400m', lethality: '30%', kill_radius: '3m', ammo_capacity: '100', armor_piercing: '5', expense: "Extreme"}],
+        ['minigun', {weapon_name: 'Minigun', skill: 'heavy-weapons', range: '300m', lethality: '20%', kill_radius: '3m (long spray only)', ammo_capacity: '4000', armor_piercing: '5', expense: "Extreme"}]])
+    ],
+    ['Demolitions',new Map([
+        ['anfo_explosive', {weapon_name: 'ANFO explosive', skill: 'demolitions', lethality: '30%', kill_radius: '20m', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['c4', {weapon_name: 'C4 plastic explosive block', skill: 'demolitions', lethality: '30%', kill_radius: '2m', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['ied', {weapon_name: 'Improvised explosive device (IED)', skill: 'demolitions', lethality: '15%', kill_radius: '10m', armor_piercing: 'N/A', expense: "Incidental"}],
+        ['large_ied', {weapon_name: 'Large IED', skill: 'demolitions', lethality: '60%', kill_radius: '75m', armor_piercing: 'N/A', expense: "Standard"}],
+        ['mine', {weapon_name: 'Explosively-formed penetrator mine', skill: 'demolitions', lethality: '25%', kill_radius: '10m', armor_piercing: '20', expense: "Standard"}]])
+    ],
+    ['Artillery', new Map([
+        ['bomb', {weapon_name: 'General-purpose bomb', skill: 'artillery', range: 'Air-dropped', lethality: '70%', kill_radius: '100m', ammo_capacity: 'N/A', armor_piercing: '10', expense: "Unusual"}],
+        ['heavy_mortar', {weapon_name: 'Heavy mortar', skill: 'artillery', range: '4km', lethality: '35%', kill_radius: '50m', ammo_capacity: '1', armor_piercing: '5', expense: "Major"}],
+        ['light_mortar', {weapon_name: 'Light mortar', skill: 'artillery', range: '2km', lethality: '20%', kill_radius: '25m', ammo_capacity: '1', armor_piercing: '10', expense: "Major"}],
+        ['anti_tank_missle', {weapon_name: 'Anti-tank guided missile (ATGM)', range: '4km', skill: 'artillery', lethality: '35%', kill_radius: '50m', ammo_capacity: 'N/A', armor_piercing: '25', expense: "Unusual"}],
+        ['artillery', {weapon_name: 'Artillery', skill: 'artillery', range: '5km', lethality: '50%', kill_radius: '100m', ammo_capacity: '1', armor_piercing: '10', expense: "Extreme"}],
+        ['cruise_missile', {weapon_name: 'Cruise Missile', skill: 'artillery', range: '100km', lethality: '80%', kill_radius: '150m', ammo_capacity: 'N/A', armor_piercing: '15', expense: "Extreme"}]])
+    ]]);
 let nationalities = ["albanian", "albanian-american", "algerian", "algerian-american", "american", "iraqi",
-   "iraqi-american", "argentinian", "argentinian-american", "armenian", "armenian-american",
-   "australian", "australian-american", "austrian", "austrian-american", "belarusian",
-   "belarusian-american", "belgian", "belgian-american", "brazilian", "brazilian-american",
-   "british", "british-american", "bulgarian", "bulgarian-american", "cameroonian", "cameroonian-american",
-   "canadian", "canadian-american", "chinese", "chinese-american", "croatian", "croatian-american",
-   "cypriot", "cypriot-american", "czech", "czech-american", "danish", "danish-american", "dutch",
-   "dutch-american", "egyptian", "egyptian-american", "estonian", "estonian-american", "ethiopian",
-   "ethiopian-american", "filipino", "filipino-american", "finnish", "finnish-american", "french",
-   "french-american", "german", "german-american", "greek", "greek-american", "haitian", "haitian-american",
-   "hungarian", "hungarian-american", "icelandic", "icelandic-american", "indian", "indian-american",
-   "iranian", "iranian-american", "irish", "irish-american", "italian", "italian-american", "jamaican",
-   "jamaican-american", "japanese", "japanese-american", "korean", "korean-american", "laotian",
-   "laotian-american", "latvian", "latvian-american", "lithuanian", "lithuanian-american", "malaysian",
-   "malaysian-american", "moldovan", "moldovan-american", "moroccan", "moroccan-american", "nepalese",
-   "nepalese-american", "norwegian", "norwegian-american", "pakistani", "pakistani-american", "polish",
-   "polish-american", "portuguese", "portuguese-american", "romanian", "romanian-american", "russian",
-   "russian-american", "samoan", "samoan-american", "scottish", "scottish-american", "serbian", "serbian-american",
-   "slovenian", "slovenian-american", "spanish", "spanish-american", "swedish", "swedish-american", "swiss",
-   "swiss-american", "thai", "thai-american", "turkish", "turkish-american", "ukrainian", "ukrainian-american",
-   "uzbek", "uzbek-american", "vietnamese", "vietnamese-american", "welsh", "welsh-american"];
+    "iraqi-american", "argentinian", "argentinian-american", "armenian", "armenian-american",
+    "australian", "australian-american", "austrian", "austrian-american", "belarusian",
+    "belarusian-american", "belgian", "belgian-american", "brazilian", "brazilian-american",
+    "british", "british-american", "bulgarian", "bulgarian-american", "cameroonian", "cameroonian-american",
+    "canadian", "canadian-american", "chinese", "chinese-american", "croatian", "croatian-american",
+    "cypriot", "cypriot-american", "czech", "czech-american", "danish", "danish-american", "dutch",
+    "dutch-american", "egyptian", "egyptian-american", "estonian", "estonian-american", "ethiopian",
+    "ethiopian-american", "filipino", "filipino-american", "finnish", "finnish-american", "french",
+    "french-american", "german", "german-american", "greek", "greek-american", "haitian", "haitian-american",
+    "hungarian", "hungarian-american", "icelandic", "icelandic-american", "indian", "indian-american",
+    "iranian", "iranian-american", "irish", "irish-american", "italian", "italian-american", "jamaican",
+    "jamaican-american", "japanese", "japanese-american", "korean", "korean-american", "laotian",
+    "laotian-american", "latvian", "latvian-american", "lithuanian", "lithuanian-american", "malaysian",
+    "malaysian-american", "moldovan", "moldovan-american", "moroccan", "moroccan-american", "nepalese",
+    "nepalese-american", "norwegian", "norwegian-american", "pakistani", "pakistani-american", "polish",
+    "polish-american", "portuguese", "portuguese-american", "romanian", "romanian-american", "russian",
+    "russian-american", "samoan", "samoan-american", "scottish", "scottish-american", "serbian", "serbian-american",
+    "slovenian", "slovenian-american", "spanish", "spanish-american", "swedish", "swedish-american", "swiss",
+    "swiss-american", "thai", "thai-american", "turkish", "turkish-american", "ukrainian", "ukrainian-american",
+    "uzbek", "uzbek-american", "vietnamese", "vietnamese-american", "welsh", "welsh-american"];
 
 let bonds = [["Mother", "F", "Family", "Older"], ["Father", "M", "Family", "Older"], ["Coworker", "FM", "Non-family"],
-   ["Friend", "FM", "Non-family"], ["Sister", "F", "Family", "Same"], ["Brother", "M", "Family", "Same"],
-   ["Mentor", "FM", "Non-family"], ["Boyfriend", "M", "Non-family"], ["Girlfriend", "F", "Non-family"],
-   ["Husband", "M", "Family", "Same"], ["Wife", "F", "Family", "Same"], ["Uncle", "M", "Family", "Older"],
-   ["Aunt", "F", "Family", "Older"], ["Grandmother", "F", "Family", "Older"], ["Grandfather", "M", "Family", "Older"],
-   ["Ex-wife", "F", "Non-family", "Same"], ["Ex-husband", "M", "Non-family", "Same"],
-   ["Daughter", "F", "Family", "Younger"], ["Son", "M", "Family", "Younger"],
-   ["Ex-boyfriend", "M", "Non-family", "Same"], ["Ex-girlfriend", "F", "Non-family", "Same"]];
+    ["Friend", "FM", "Non-family"], ["Sister", "F", "Family", "Same"], ["Brother", "M", "Family", "Same"],
+    ["Mentor", "FM", "Non-family"], ["Boyfriend", "M", "Non-family"], ["Girlfriend", "F", "Non-family"],
+    ["Husband", "M", "Family", "Same"], ["Wife", "F", "Family", "Same"], ["Uncle", "M", "Family", "Older"],
+    ["Aunt", "F", "Family", "Older"], ["Grandmother", "F", "Family", "Older"], ["Grandfather", "M", "Family", "Older"],
+    ["Ex-wife", "F", "Non-family", "Same"], ["Ex-husband", "M", "Non-family", "Same"],
+    ["Daughter", "F", "Family", "Younger"], ["Son", "M", "Family", "Younger"],
+    ["Ex-boyfriend", "M", "Non-family", "Same"], ["Ex-girlfriend", "F", "Non-family", "Same"]];
 
 const description = {
-   eye_description: ["exquisite", "iridescent", "luminous", "magnetic", "radiant", "angry", "anxious",
-       "appealing", "blank", "brooding", "candid", "cold", "commanding", "compassionate", "confused", "cruel",
-       "curious", "dazed", "dead", "discerning", "disdainful", "dull", "emotionless", "fearful", "fiery",
-       "genuine", "grave", "hollow", "honest", "hopeful", "imploring", "innocent", "intelligent", "intense",
-       "irritated", "jovial", "judgmental", "keen", "knowing", "melancholy", "mischievous", "mocking", "playful",
-       "reflective","restless", "resigned", "resolute", "sad", "sorrowful", "stern", "sympathetic", "thoughtful",
-       "trusting", "unreadable", "weary"],
-   eye_color: ["green", "blue", "brown", "grey", "black"],
-   hair_texture: ["frizzy", "balding", "thin", "thick", "long", "short", "messy", "straight", "curly", "greasy",
-       "slick", "fluffy", "luxurious", "silky", "wavy", "lush", "stringy", "flowing", "close cropped"],
-   hair_color: ["blond", "black", "grey", "white", "red", "brown"],
-   skin: ['dark brown', 'brown', 'light brown', 'tan', 'pale white'],
-   beards: ["bristly beard", "bristly moustache", "bushy beard", "bushy moustache", "clean-shaven", "close-trimmed beard",
-       "coarse beard", "curly moustache", "full beard", "scraggly beard", "scratchy beard", "short beard", "long beard",
-       "neat beard", "neatly trimmed beard", "pencil-thin moustache", "stubbly beard", "stylish beard", "thick beard",
-       "thick moustache", "thin beard", "thin moustache", "unkempt beard", "well-groomed beard", "wild beard"],
-   glasses: ["old-fashioned looking", "rectangular", "rimless", "oversized", "horn-rimmed", "big rimmed", "thick", "trendy", "thin"],
-   clothing: ["expensive looking", "casual looking", "stiff looking", "colorful", "ragged", "neat looking", "cheap looking",
-       "tattered looking", "gaudy looking", "rumpled", "dowdy looking", "loose", "ill-fitting"],
-   speech: ["articulate", "chatty", "conversational", "crisp", "eloquent", "flowery", "formal", "inarticulate",
-       "incoherent", "informal", "lyrical", "ponderous", "rambling", "succinct", "verbose", "wordy"],
-   demeanor: ["cool", "grave", "modest", "courteous", "mild-mannered", "quiet", "serious", "dainty", "icy", "lofty",
-       "somber", "indifferent", "solemn", "frantic", "furtive", "businesslike", "stern", "reckless", "courteous", "calm",
-       "intense", "casual", "frigid", "polite", "modest", "affable", "unpolished", "passive", "joyous", "humble", "severe",
-       "fierce", "professional", "uptight", "aloof"]
+    eye_description: ["exquisite", "iridescent", "luminous", "magnetic", "radiant", "angry", "anxious",
+        "appealing", "blank", "brooding", "candid", "cold", "commanding", "compassionate", "confused", "cruel",
+        "curious", "dazed", "dead", "discerning", "disdainful", "dull", "emotionless", "fearful", "fiery",
+        "genuine", "grave", "hollow", "honest", "hopeful", "imploring", "innocent", "intelligent", "intense",
+        "irritated", "jovial", "judgmental", "keen", "knowing", "melancholy", "mischievous", "mocking", "playful",
+        "reflective","restless", "resigned", "resolute", "sad", "sorrowful", "stern", "sympathetic", "thoughtful",
+        "trusting", "unreadable", "weary"],
+    eye_color: ["green", "blue", "brown", "grey", "black"],
+    hair_texture: ["frizzy", "balding", "thin", "thick", "long", "short", "messy", "straight", "curly", "greasy",
+        "slick", "fluffy", "luxurious", "silky", "wavy", "lush", "stringy", "flowing", "close cropped"],
+    hair_color: ["blond", "black", "grey", "white", "red", "brown"],
+    skin: ['dark brown', 'brown', 'light brown', 'tan', 'pale white'],
+    beards: ["bristly beard", "bristly moustache", "bushy beard", "bushy moustache", "clean-shaven", "close-trimmed beard",
+        "coarse beard", "curly moustache", "full beard", "scraggly beard", "scratchy beard", "short beard", "long beard",
+        "neat beard", "neatly trimmed beard", "pencil-thin moustache", "stubbly beard", "stylish beard", "thick beard",
+        "thick moustache", "thin beard", "thin moustache", "unkempt beard", "well-groomed beard", "wild beard"],
+    glasses: ["old-fashioned looking", "rectangular", "rimless", "oversized", "horn-rimmed", "big rimmed", "thick", "trendy", "thin"],
+    clothing: ["expensive looking", "casual looking", "stiff looking", "colorful", "ragged", "neat looking", "cheap looking",
+        "tattered looking", "gaudy looking", "rumpled", "dowdy looking", "loose", "ill-fitting"],
+    speech: ["articulate", "chatty", "conversational", "crisp", "eloquent", "flowery", "formal", "inarticulate",
+        "incoherent", "informal", "lyrical", "ponderous", "rambling", "succinct", "verbose", "wordy"],
+    demeanor: ["cool", "grave", "modest", "courteous", "mild-mannered", "quiet", "serious", "dainty", "icy", "lofty",
+        "somber", "indifferent", "solemn", "frantic", "furtive", "businesslike", "stern", "reckless", "courteous", "calm",
+        "intense", "casual", "frigid", "polite", "modest", "affable", "unpolished", "passive", "joyous", "humble", "severe",
+        "fierce", "professional", "uptight", "aloof"]
 };
 
-let weapons = new Map();
-let dataLoaded = false;
-let professionsFinished = false;
-
-function setup() {
-    waitForDataLoad();
-    let timeoutms = 2000;
-    new Promise((r, j)=>{
-        var check = () => {
-            console.warn('checking');
-            if(dataLoaded)
-                r();
-            else if((timeoutms -= 100) < 0)
-                j('timed out!');
-            else
-                setTimeout(check, 100)
-        };
-        setTimeout(check, 100)
-    }).then(value => {
-        createWeaponSelect(weapons);
-        console.log("createProfessionWrappers")
-        createProfessionWrappers();
-        new Promise((ra, ja)=>{
-            var check = () => {
-                console.warn('checking');
-                if(professionsFinished) {
-                    ra();
-                }
-                else if((timeoutms -= 100) < 0) {
-                    ja('timed out!');
-                }
-                else
-                    setTimeout(check, 100)
-            };
-            setTimeout(check, 100)
-        }).then( value1 => {
-            setScoreListeners();
-            setHPListener();
-            setPowListener();
-            setAdaptedListeners();
-            createPrintButton();
-            console.log("setModalListener")
-            setModalListener();
-            updateSkillIncreaseButtons();
-            setSkillListeners();
-            setPlusListeners();
-            setMinusListeners();
-            createNameListener();
-            parseNames();
-            setRandomListener();
-        });
-    });
-}
-
-function waitForDataLoad() {
-    $.getScript('js/DataParser.js', function () {
-        // skills = parseSkills();
-        weapons = getWeapons();
-        dataLoaded = true;
-    });
-}
-
-function createWeaponSelect(weapons){
-    console.log(weapons['Hand-to-Hand Weapons']);
+function createWeaponSelect(){
     document.getElementsByName("weapon-select").forEach(select => {
-
-        Object.keys(weapons).forEach(weaponType => {
-            let optgroup = document.createElement("optgroup");
-            optgroup.label = weaponType;
-
-            Object.keys(weapons[weaponType]).forEach((weaponKey) => {
-                let weapon = weapons[weaponType][weaponKey];
-                let option = document.createElement("option");
-                option.value = weaponKey;
-                option.innerText = weapon['friendlyName'];
-                optgroup.appendChild(option);
-                select.appendChild(optgroup);
-            });
+    for (let key of weapons.keys()) {
+        let optgroup = document.createElement("optgroup");
+        optgroup.label = key;
+        weapons.get(key).forEach((value, innerKey) => {
+            let option = document.createElement("option");
+            option.value = innerKey;
+            option.innerText = value.weapon_name;
+            optgroup.appendChild(option);
         });
-
-        let option = document.createElement("option");
-        option.value = "other";
-        option.innerText = "Other";
-        select.appendChild(option);
-        select.value = "other";
-        select.addEventListener("change", function (event) {
-            weaponSelectListener(event.target);
-        });
+        select.appendChild(optgroup)
+    }
+    let option = document.createElement("option");
+    option.value = "other";
+    option.innerText = "Other";
+    select.appendChild(option);
+    select.value = "other";
+    select.addEventListener("change", function (event) {
+        weaponSelectListener(event.target);
     });
+});
 }
 
 function weaponSelectListener(option) {
@@ -279,12 +273,10 @@ function weaponSelectListener(option) {
     row.getElementsByClassName("weapon-lethality")[0].value = "";
     row.getElementsByClassName("weapon-kill-radius")[0].value = "";
     row.getElementsByClassName("weapon-ammo")[0].value = "";
-    Object.keys(weapons).forEach((weaponType) => {
-        let weaponList = weapons[weaponType];
-        console.log(weaponList[option.value]);
-        if(weaponList[option.value] !== undefined) {
-            let weapon = weapons[weaponType][(option.value)];
-            row.getElementsByClassName("weapon-name")[0].value = weapon.friendlyName !== undefined ? weapon.friendlyName: "";
+    weapons.forEach((value) => {
+        if(value.has(option.value)) {
+            let weapon = value.get(option.value);
+            row.getElementsByClassName("weapon-name")[0].value = weapon.weapon_name !== undefined ? weapon.weapon_name: "";
             if(weapon.skill.includes("/")) {
                 let skills = weapon.skill.split("/");
                 let skill = document.getElementById(skills[0]).value;
@@ -335,10 +327,10 @@ function weaponSelectListener(option) {
                 console.log(baseDamage);
             }
             row.getElementsByClassName("weapon-damage")[0].value = baseDamage !== undefined ? baseDamage: "";
-            row.getElementsByClassName("weapon-piercing")[0].value = weapon.armorPiercing !== undefined ? weapon.armorPiercing: "";
+            row.getElementsByClassName("weapon-piercing")[0].value = weapon.armor_piercing !== undefined ? weapon.armor_piercing: "";
             row.getElementsByClassName("weapon-lethality")[0].value = weapon.lethality !== undefined ? weapon.lethality: "";
-            row.getElementsByClassName("weapon-kill-radius")[0].value =  weapon.killRadius !== undefined ? weapon.killRadius: "";
-            row.getElementsByClassName("weapon-ammo")[0].value = weapon.ammoCapacity !== undefined ? weapon.ammoCapacity: "";
+            row.getElementsByClassName("weapon-kill-radius")[0].value =  weapon.kill_radius !== undefined ? weapon.kill_radius: "";
+            row.getElementsByClassName("weapon-ammo")[0].value = weapon.ammo_capacity !== undefined ? weapon.ammo_capacity: "";
         }
     })
 }
@@ -369,7 +361,7 @@ function createPrintButton() {
 
 function setClassVisibility(className, visibility) {
     let elements = document.getElementsByClassName(className);
-    for (let i = 0; i < elements.length; i++) {
+    for (i = 0; i < elements.length; i++) {
         elements[i].style.display = visibility
     }
 }
@@ -431,7 +423,7 @@ function setHPListener() {
 
 function setSkillListeners() {
     let skills = document.getElementsByClassName("skill");
-    for (let i = 0; i < skills.length; i++) {
+    for (i = 0; i < skills.length; i++) {
         skills[i].addEventListener("change", function () {
             updateSkillIncreaseButtons();
         })
@@ -440,7 +432,7 @@ function setSkillListeners() {
 
 function setPlusListeners() {
     let pluses = document.getElementsByClassName("plus");
-    for (let i = 0; i < pluses.length; i++) {
+    for (i = 0; i < pluses.length; i++) {
         pluses[i].addEventListener("click", function (event) {
             addToSkill(event.target, 20);
             updateSkillIncreaseButtons();
@@ -480,7 +472,7 @@ function adaptedListener(checkType) {
 
 function setMinusListeners() {
     let minuses = document.getElementsByClassName("minus");
-    for (let i = 0; i < minuses.length; i++) {
+    for (i = 0; i < minuses.length; i++) {
         minuses[i].addEventListener("click", function (event) {
             addToSkill(event.target, -20);
             updateSkillIncreaseButtons();
@@ -490,7 +482,7 @@ function setMinusListeners() {
 
 function resetSkills() {
     const skills = document.getElementsByClassName("skill");
-    for (let i = 0; i < skills.length; i++) {
+    for (i = 0; i < skills.length; i++) {
         skills[i].value = skills[i].getAttribute("base");
         skills[i].setAttribute("prof-base", skills[i].getAttribute("base"))
     }
@@ -513,7 +505,7 @@ function setSkill(key, value) {
 function addOtherSkill(skillName, skillValue) {
     const skillNames = document.getElementsByClassName("other-skill-name");
     const skills = document.getElementsByClassName("other-skill");
-    for (let i = 0; i < skillNames.length; i++) {
+    for (i = 0; i < skillNames.length; i++) {
         if (skillNames[i].value === "") {
             skillNames[i].value = skillName.toTitleCase();
             skills[i].value = skillValue;
@@ -526,16 +518,15 @@ function addOtherSkill(skillName, skillValue) {
 function resetOtherSkills() {
     const skillNames = document.getElementsByClassName("other-skill-name");
     const skills = document.getElementsByClassName("other-skill");
-    for (let i = 0; i < skillNames.length; i++) {
+    for (i = 0; i < skillNames.length; i++) {
         skillNames[i].value = ""
     }
-    for (let i = 0; i < skills.length; i++) {
+    for (i = 0; i < skills.length; i++) {
         skills[i].value = ""
     }
 }
 
 function setModalListener() {
-    console.log("setModalListener")
     // Get the modal
     const modal = document.getElementById("myModal");
 
@@ -547,13 +538,12 @@ function setModalListener() {
     };
 
     const confirmButtons = document.getElementsByClassName("skillModalConfirm");
-    for (let i = 0; i < confirmButtons.length; i++) {
+    for (i = 0; i < confirmButtons.length; i++) {
         confirmButtons[i].onclick = function (event) {
             document.getElementById("professions").setAttribute("name", event.target.getAttribute("name"));
             document.getElementById("profession").value = event.target.getAttribute("name").replaceAll("-", " ").toTitleCase();
             modal.style.display = "none";
             let skillMap = getAllModalSkills(event.srcElement.getAttribute("name"));
-            console.log("SKILLMAP: " + skillMap)
             skillMap.forEach(setSkill);
             updateSkillIncreaseButtons();
         }
@@ -565,31 +555,24 @@ function setModalListener() {
         }
     };
     const professionSelect = document.getElementsByClassName("profession-select");
-    console.log(professionSelect.length);
-    for (let i = 0; i < professionSelect.length; i++) {
+    for (i = 0; i < professionSelect.length; i++) {
         professionSelect[i].addEventListener("change", function (selChange) {
             setClassVisibility("skill-wrapper", "none");
             const wrapper = document.getElementById(selChange.target.value + "-wrapper");
             wrapper.style.display = "block";
 
             const skillChecks = document.getElementsByClassName("skill-check");
-            console.log(skillChecks)
-            console.log(skillChecks.length)
-            for (let i = 0; i < skillChecks.length; i++) {
+            for (i = 0; i < skillChecks.length; i++) {
                 skillChecks[i].checked = false;
             }
             disableOrEnableUnchecked(false);
             const profSelect = document.querySelector("#professions");
             profSelect.setAttribute("name" ,selChange.target.value);
-            let professionSelects = document.getElementsByClassName("profession-select");
-            for(let i = 0; i < professionSelects.length; i ++) {
-                professionSelects[i].value = selChange.target.value;
-            }
         });
     }
 
     const radioButtons = document.getElementsByClassName("skill-radio");
-    for (let i = 0; i < radioButtons.length; i++) {
+    for (i = 0; i < radioButtons.length; i++) {
         radioButtons[i].addEventListener('click', function (event) {
             let skill = event.target.getAttribute("name")
                 .replace(/\s\d{1,2}%:/, "")
@@ -608,11 +591,8 @@ function setModalListener() {
         document.querySelector("#" + profSelect.getAttribute("name") + "-wrapper").style = "visible"
     });
 
-    let skillChecks = document.getElementsByClassName("skill-check");
-    // anthropologist skill-check
-    console.log(skillChecks.length + " SKILL CHECKS")
-    console.log(skillChecks)
-    for (let i = 0; i < skillChecks.length; i++) {
+    var skillChecks = document.getElementsByClassName("skill-check");
+    for (i = 0; i < skillChecks.length; i++) {
         skillChecks[i].addEventListener("change", function (event) {
             let skill = event.target.getAttribute("name")
                 .replace(/\s\d{1,2}%:/, "")
@@ -621,15 +601,12 @@ function setModalListener() {
             let profession = event.target.id.replace("-check", "")
                 .replace("-" + skill, "")
                 .replace(/\d/,"");
-            console.log("CLICKED CHECK MARK");
             updateSkills(profession, event.target.getAttribute("max"))
         });
     }
 
     let skillInputs = document.getElementsByClassName("skill-modal-input");
-    console.log(skillInputs.length)
     for (let i = 0; i < skillInputs.length; i++) {
-        console.log(skillInputs[i])
         skillInputs[i].addEventListener("change", function (event) {
             let skill = event.target.getAttribute("name")
                 .replace(/\s\d{1,2}%:/, "")
@@ -638,7 +615,6 @@ function setModalListener() {
             let profession = event.target.id.replace("-check", "")
                 .replace("-" + skill, "")
                 .replace(/\d/,"");
-            console.log("CLICKED " + event.target);
             updateSkills(profession, event.target.getAttribute("max"))
         });
     }
@@ -708,7 +684,7 @@ function checkForDisableOrEnableUnchecked(maxCheckedCount) {
 
 function disableOrEnableUnchecked(disable) {
     const skillChecks = document.getElementsByClassName("skill-check");
-    for (let i = 0; i < skillChecks.length; i++) {
+    for (i = 0; i < skillChecks.length; i++) {
         //Change the status if it's not checked and also doesn't have an exclusive that's checked
         if (!skillChecks[i].checked && (skillChecks[i].getAttribute("exclusive") == null || !document.querySelector("#" + skillChecks[i].getAttribute("exclusive")).checked)) {
             skillChecks[i].disabled = disable;
@@ -748,7 +724,7 @@ function getAllDefaultSkills(profession) {
         }
     }
     const skillsRadio = document.getElementsByClassName("skill-radio");
-    for (let i = 0; i < skillsRadio.length; i++) {
+    for (i = 0; i < skillsRadio.length; i++) {
         if (skillsRadio[i].checked) {
             if (skillsRadio[i].className.includes(profession)) {
                 skillMap.set(skillsRadio[i].value, skillsRadio[i].getAttribute("base"))
@@ -756,7 +732,7 @@ function getAllDefaultSkills(profession) {
         }
     }
     const skillsInput = document.getElementsByClassName("skill-modal-input");
-    for (let i = 0; i < skillsInput.length; i++) {
+    for (i = 0; i < skillsInput.length; i++) {
         if (skillsInput[i].className.includes(profession)) {
             skillMap.set((skillsInput[i].name + " (" + skillsInput[i].value + ")"), skillsInput[i].getAttribute("base"))
         }
@@ -797,7 +773,6 @@ function populateProfessionSelect(profSelect) {
     atypical.appendChild(createOption("police-officer", "Police Officer"));
     atypical.appendChild(createOption("program-manager", "Program Manager"));
     atypical.appendChild(createOption("soldier", "Soldier or Marine"));
-    atypical.appendChild(createOption("custom", "Custom"));
 
     profSelect.appendChild(typical);
     profSelect.appendChild(atypical)
@@ -805,166 +780,14 @@ function populateProfessionSelect(profSelect) {
 
 function createProfessionWrappers() {
     const modal = document.querySelector("#modal-content");
-    let allProfs;
-    new Promise((r, j)=>{
-        var check = () => {
-            $.getScript('js/ProfessionWrapper.js', function () {
-                allProfs = parseProfessions();
-                r();
-            });
-        };
-        setTimeout(check, 100)
-    }).then(value => {
-        for (let z = 0; z < allProfs.length; z++) {
-            modal.appendChild(allProfs[z])
-        }
-        console.log("FINISHED createProfessionWrappers");
-        professionsFinished = true;
-        // modal.appendChild(createOtherProfModal());
-    });
-}
-
-function createOtherProfModal() {
-    const wrapper = document.createElement("table");
-    wrapper.className = "fill skill-wrapper";
-    wrapper.id = "custom-wrapper";
-    wrapper.style = "display: none;";
-
-    const tbody = document.createElement("tbody");
-    wrapper.appendChild(tbody);
-
-    const rowOne = document.createElement("tr");
-    tbody.appendChild(rowOne);
-    const professionSelectCell = document.createElement("td");
-    professionSelectCell.className = "align-top";
-    rowOne.appendChild(professionSelectCell);
-
-    let skillTd = document.createElement("td");
-    skillTd.className = "center";
-    let skillTable = document.createElement("table");
-    let skillBody  = document.createElement("tbody");
-    skillTable.appendChild(skillBody);
-    skillBody.appendChild(createSkillRow("Accounting", 10));
-    skillBody.appendChild(createSkillRow("Alertness", 20));
-    skillBody.appendChild(createSkillRow("Anthropology", 0));
-    skillBody.appendChild(createSkillRow("Archeology", 0));
-    skillBody.appendChild(createSkillRow("Artillery", 0));
-    skillBody.appendChild(createSkillRow("Athletics", 30));
-    skillBody.appendChild(createSkillRow("Bureaucracy", 10));
-    skillBody.appendChild(createSkillRow("Computer Science", 0));
-    skillBody.appendChild(createSkillRow("Criminology", 10));
-    skillBody.appendChild(createSkillRow("Demolitions", 0));
-    skillBody.appendChild(createSkillRow("Disguise", 10));
-    skillBody.appendChild(createSkillRow("Dodge", 30));
-    skillBody.appendChild(createSkillRow("Drive", 10));
-    skillBody.appendChild(createSkillRow("Firearms", 20));
-    skillBody.appendChild(createSkillRow("First Aid", 10));
-    skillBody.appendChild(createSkillRow("Forensics", 0));
-    skillBody.appendChild(createSkillRow("Heavy Machinery", 10));
-    skillBody.appendChild(createSkillRow("Heavy Weapons", 0));
-    skillTd.appendChild(skillTable);
-    rowOne.appendChild(skillTd);
-
-    let skillTwoTd = document.createElement("td");
-    skillTwoTd.className = "center";
-    let skillTwoTable = document.createElement("table");
-    let skillTwoBody  = document.createElement("tbody");
-    skillTwoTd.appendChild(skillTwoTable);
-    skillTwoTable.appendChild(skillTwoBody);
-    skillTwoBody.appendChild(createSkillRow("Accounting", 10));
-    skillTwoBody.appendChild(createSkillRow("History", 10));
-    skillTwoBody.appendChild(createSkillRow("HUMINT", 10));
-    skillTwoBody.appendChild(createSkillRow("Law", 0));
-    skillTwoBody.appendChild(createSkillRow("Medicine", 0));
-    skillTwoBody.appendChild(createSkillRow("Melee Weapons", 30));
-    skillTwoBody.appendChild(createSkillRow("Navigate", 10));
-    skillTwoBody.appendChild(createSkillRow("Occult", 10));
-    skillTwoBody.appendChild(createSkillRow("Persuade", 20));
-    skillTwoBody.appendChild(createSkillRow("Pharmacy", 0));
-    skillTwoBody.appendChild(createSkillRow("Psychotherapy", 10));
-    skillTwoBody.appendChild(createSkillRow("Ride", 10));
-    skillTwoBody.appendChild(createSkillRow("Search", 20));
-    skillTwoBody.appendChild(createSkillRow("SIGINT", 0));
-    skillTwoBody.appendChild(createSkillRow("Stealth", 10));
-    skillTwoBody.appendChild(createSkillRow("Surgery", 0));
-    skillTwoBody.appendChild(createSkillRow("Survival", 10));
-    skillTwoBody.appendChild(createSkillRow("Swim", 20));
-    skillTwoBody.appendChild(createSkillRow("Unarmed Combat", 40));
-    rowOne.appendChild(skillTwoTd);
-
-
-    const professionSpan = document.createElement("span");
-    professionSpan.className = "fill";
-    professionSelectCell.appendChild(professionSpan);
-
-    const professionSelect = document.createElement("select");
-    professionSelect.id = "custom-professions";
-    professionSelect.className = "profession-select";
-    populateProfessionSelect(professionSelect);
-    professionSpan.appendChild(professionSelect);
-
-    const rowTwo = document.createElement("tr");
-    rowTwo.className = "skill-modal";
-
-    let nameTd = document.createElement("td");
-    rowTwo.appendChild(nameTd);
-
-    let explanationTextTd = document.createElement("td");
-    rowTwo.appendChild(explanationTextTd);
-
-
-    tbody.appendChild(rowTwo);
-
-    const confirmTd = document.createElement("td");
-    rowTwo.appendChild(confirmTd);
-
-    // const rowThree = document.createElement("tr");
-    // rowThree.className = "custom prof-modal skill-modal align-top";
-    // tbody.appendChild(rowThree);
-    //
-    // rowThree.appendChild(confirmTd);
-
-    const confirmInput = document.createElement("input");
-    confirmInput.type = "button";
-    confirmInput.name = "custom";
-    confirmInput.value = "Confirm";
-    confirmInput.className = "skillModalConfirm";
-    confirmInput.id = "customConfirm";
-    confirmTd.appendChild(confirmInput);
-    return wrapper;
-}
-
-function createSkillRow(skillName, baseValue) {
-    let row = document.createElement("tr");
-    row.className = "center";
-    let checkTd = document.createElement("td");
-    row.appendChild(checkTd);
-    let check = document.createElement("input");
-    check.type = "checkbox";
-    check.id = skillName + "-check";
-    check.className = skillName + " custom-checkbox";
-    checkTd.appendChild(check);
-
-    let nameTd = document.createElement("td");
-    nameTd.className = "pad";
-    row.appendChild(nameTd);
-    let span = document.createElement("span");
-    span.innerText = skillName;
-    nameTd.appendChild(span);
-
-    let inputTd = document.createElement("td");
-    row.appendChild(inputTd);
-    let input = document.createElement("input");
-    input.id = "custom-" + skillName;
-    input.setAttribute("base", baseValue);
-    inputTd.className = skillName + " custom-skill-input";
-    input.value = baseValue;
-    inputTd.appendChild(input);
-    return row;
+    const allProfs = parseProfessions();
+    for (z = 0; z < allProfs.length; z++) {
+        modal.appendChild(allProfs[z])
+    }
 }
 
 function parseNames() {
-    let data = readFile("resources/names/code-names.txt");
+    data = readFile("resources/names/code-names.txt");
     code_names = data.split(",");
     parseNamesForNationality('american');
     nationalities.forEach(nationality => {
@@ -992,6 +815,304 @@ function parseNamesForNationality(nationality) {
     }
     names.set(nationality.toTitleCase(), {male: male_names, female: female_names, last: last_names});
 
+}
+
+function parseProfessions() {
+    const wrappers = [];
+    const data = readFile("resources/professions.txt");
+    let allProfsArr = (data.split("\n"));
+    for (let y = 0; y < allProfsArr.length; y++) {
+        if(allProfsArr[y] !== "") {
+            const profArr = allProfsArr[y].split(";");
+            const name = profArr[0];
+            const description = profArr[1];
+            const optSkillText = profArr[2];
+            const maxCheckedNum = profArr[3];
+            const stats = profArr[4];
+            const bonds = profArr[5];
+            const wrapper = createProfessionWrapper(name, optSkillText, description, stats, bonds, maxCheckedNum);
+            const skillList = profArr[6].split(",");
+            let optSkillList = [];
+            if (profArr.length > 7) {
+                optSkillList = profArr[7].split(",");
+            }
+            const defaultSkills = wrapper.getElementsByClassName("default-skills")[0];
+            for (let k = 0; k < skillList.length; k++) {
+                let skillChild = getSkillChild(skillList[k], false, name, wrapper);
+                defaultSkills.appendChild(skillChild)
+            }
+            const optionalSkills = wrapper.getElementsByClassName("optional-skills")[0];
+            for (let n = 0; n < optSkillList.length; n++) {
+                if(optSkillList[n] !== "") {
+                    optionalSkills.appendChild(getSkillChild(optSkillList[n], true, name, wrapper))
+                }
+            }
+            wrappers.push(wrapper);
+            maxChecked.set(name, maxCheckedNum);
+        }
+    }
+    return wrappers
+}
+
+function getSkillChild(skillString, opt, profName, wrapper) {
+    if (skillString.includes(" or ")) {
+        const exclusiveSkills = (skillString.split(" or "));
+        const exclusiveSkillNames = [];
+        const exclusiveSkillValues = [];
+        const exclusiveSkillFriendlyNames = [];
+        let combinedName = profName;
+        for (j = 0; j < exclusiveSkills.length; j++) {
+            let skill = exclusiveSkills[j].split(" ");
+            combinedName = combinedName + "-" + skill[0];
+            exclusiveSkillNames.push(skill[0]);
+            exclusiveSkillValues.push(skill[1]);
+            exclusiveSkillFriendlyNames.push(skill[0].replace("-", " ").toTitleCase() + " " + skill[1] + "%")
+        }
+        return createRadioSkills(profName, combinedName, exclusiveSkillNames, exclusiveSkillValues, exclusiveSkillFriendlyNames)
+    }
+    else if(skillString.includes("(")) {
+        let skill = skillString.split(") ");
+        let friendlyName = (skill[0]+")").replace("-", " ").toTitleCase();
+        if (opt) {
+            return createOptionalSkill(profName, skill[0].replace(/\s\(.*/, ""), skill[1], friendlyName, " " + skill[1] + "%")
+        }
+        else {
+            return createDefaultSkill(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase() + ") " + skill[1] + "%")
+        }
+    }
+
+    let skill = skillString.split(" ");
+    if (inputSkills.has(skill[0])) {
+        if (opt) {
+            return createOptionalSkillInput(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase(), " " + skill[1] + "%:")
+        } else {
+            return createSkillInput(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase() + " " + skill[1] + "%:", wrapper)
+        }
+    } else {
+        if (opt) {
+            return createOptionalSkill(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase(), " " + skill[1] + "%")
+        } else {
+            return createDefaultSkill(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase() + " " + skill[1] + "%")
+        }
+    }
+}
+
+function createOptionalSkillInput(professionName, skillName, baseValue, friendlyName) {
+    const skillDiv = document.createElement("div");
+    skillDiv.className = professionName + " prof-modal skill-check-div";
+
+    let input = document.createElement("input");
+    input.type = "checkbox";
+    input.className = professionName + " skill-check";
+    input.id = professionName + "-" + skillName + "-check";
+    input.value = skillName;
+    input.name = skillName;
+    input.setAttribute("base", baseValue);
+    skillDiv.appendChild(input);
+
+    const label = document.createElement("label");
+    label.setAttribute("for", professionName + "-" + skillName);
+    label.innerText = friendlyName;
+    skillDiv.appendChild(label);
+
+    input = document.createElement("input");
+    input.type = "text";
+    input.className = professionName + " fill skill-modal-input-opt";
+    input.id = professionName + "-" + skillName;
+    input.value = "(choose one)";
+    input.name = friendlyName;
+    input.setAttribute("base", baseValue);
+    input.setAttribute("base", baseValue);
+    skillDiv.appendChild(input);
+
+    return skillDiv
+}
+
+function createOptionalSkill(professionName, skillName, baseValue, friendlyName, friendlyValue) {
+    const skillDiv = document.createElement("div");
+    skillDiv.className = professionName + " prof-modal skill-check-div";
+
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.className = professionName + " skill-check";
+    input.id = professionName + "-" + skillName;
+    input.value = skillName;
+    if(inputSkills.has(skillName)) {
+        input.name = (skillName + friendlyValue + "\n" + friendlyName.substring(friendlyName.indexOf("(") - 1));
+    }
+    else {
+        input.name = skillName;
+    }
+    input.setAttribute("base", baseValue);
+    skillDiv.appendChild(input);
+
+    const label = document.createElement("label");
+    label.setAttribute("for", professionName + "-" + skillName);
+    label.innerText = friendlyName;
+    skillDiv.appendChild(label);
+
+    const span = document.createElement("span");
+    span.innerText = friendlyValue;
+    skillDiv.appendChild(span);
+
+    return skillDiv
+}
+
+function createSkillInput(professionName, skillName, baseValue, friendlyName, wrapper) {
+    const skillDiv = document.createElement("div");
+    skillDiv.className = professionName + " prof-modal " + skillName;
+
+    const label = document.createElement("label");
+    label.setAttribute("for", professionName + "-" + skillName);
+    label.innerText = friendlyName;
+    skillDiv.appendChild(label);
+
+    const input = document.createElement("input");
+    input.className = professionName + " fill skill-modal-input";
+    input.type = "text";
+    let otherElements = wrapper.getElementsByClassName(professionName + " prof-modal " + skillName);
+
+    input.id = professionName + "-" + skillName + (otherElements.length+1);
+    input.name = friendlyName;
+    input.value = "(choose one)";
+    input.setAttribute("base", baseValue);
+    skillDiv.appendChild(input);
+
+    return skillDiv;
+
+}
+
+function createRadioSkills(professionName, combinedSkillName, skillNames, baseValues, friendlyNames) {
+    const div = document.createElement("div");
+
+    for (i = 0; i < skillNames.length; i++) {
+        const radioInput = document.createElement("input");
+        radioInput.type = "radio";
+        radioInput.className = professionName + " prof-modal skill-radio";
+        radioInput.id = professionName + "-" + skillNames[i] + "Opt";
+        radioInput.name = combinedSkillName;
+        radioInput.value = skillNames[i];
+        radioInput.setAttribute("base", baseValues[i]);
+
+        const label = document.createElement("label");
+        label.setAttribute("for", professionName + "-" + skillNames[i]);
+        label.innerText = friendlyNames[i];
+
+        div.appendChild(radioInput);
+        div.appendChild(label);
+
+        if (i < (skillNames.length - 1)) {
+            const span = document.createElement("span");
+            span.innerText = " or ";
+            div.appendChild(span)
+        }
+    }
+
+    return div
+}
+
+function createDefaultSkill(professionName, skillName, baseValue, friendlyName) {
+    const skillDiv = document.createElement("div");
+    skillDiv.className = professionName + " prof-modal skill-default";
+    skillDiv.setAttribute("base", baseValue);
+    if(friendlyName.includes("(")) {
+        friendlyName = friendlyName.substring(0, friendlyName.indexOf("(")-1) + " "
+            + baseValue + "%:\n" + friendlyName.substring(friendlyName.indexOf("("), friendlyName.length-3);
+        skillDiv.setAttribute("name", friendlyName);
+    }
+    else {
+        skillDiv.setAttribute("name", skillName);
+    }
+    skillDiv.innerText = friendlyName;
+    return skillDiv
+}
+
+function createProfessionWrapper(professionName, skillLabelText, descriptionText, statText, bondText, maxCheckedCount) {
+    const wrapper = document.createElement("table");
+    wrapper.className = "fill skill-wrapper";
+    wrapper.id = professionName + "-wrapper";
+    wrapper.style = "display: none;";
+
+    const tbody = document.createElement("tbody");
+    wrapper.appendChild(tbody);
+    const rowOne = document.createElement("tr");
+    tbody.appendChild(rowOne);
+    const professionSelectCell = document.createElement("td");
+    rowOne.appendChild(professionSelectCell);
+
+    const professionSpan = document.createElement("span");
+    professionSpan.className = "fill";
+    professionSelectCell.appendChild(professionSpan);
+
+    const professionSelect = document.createElement("select");
+    professionSelect.id = professionName + "-professions";
+    professionSelect.className = "profession-select";
+    populateProfessionSelect(professionSelect);
+    professionSpan.appendChild(professionSelect);
+
+    if(maxCheckedCount !== "0") {
+        const blankTd = document.createElement("td");
+        rowOne.appendChild(blankTd);
+    }
+
+    const rowTwo = document.createElement("tr");
+    rowTwo.className = "skill-modal";
+    tbody.appendChild(rowTwo);
+
+    const profDescriptionCell = document.createElement("td");
+    profDescriptionCell.className = professionName + " prof-modal third pad-right align-top";
+    rowTwo.appendChild(profDescriptionCell);
+
+    const profDescription = document.createElement("div");
+    profDescription.innerText = descriptionText + "\n\n" + statText + "\n" + bondText;
+    profDescriptionCell.appendChild(profDescription);
+
+    const defaultSkills = document.createElement("td");
+    defaultSkills.className = "default-skills align-top";
+    rowTwo.appendChild(defaultSkills);
+
+    const skillDiv = document.createElement("div");
+    skillDiv.innerText = "SKILLS";
+    defaultSkills.appendChild(skillDiv);
+
+    if (skillLabelText != null && skillLabelText !== "") {
+        const optionalSkills = document.createElement("td");
+        if (skillLabelText == null) {
+            skillLabel.style = "display: none;"
+        } else {
+            const skillLabelDiv = document.createElement("div");
+            skillLabelDiv.innerText = skillLabelText;
+            optionalSkills.appendChild(skillLabelDiv)
+        }
+        optionalSkills.className = "optional-skills align-top";
+        rowTwo.appendChild(optionalSkills)
+    }
+
+    const confirmTd = document.createElement("td");
+
+    const rowThree = document.createElement("tr");
+    rowThree.className = professionName + " prof-modal skill-modal align-top";
+    tbody.appendChild(rowThree);
+
+    const statAndBondsCell = document.createElement("td");
+    rowThree.appendChild(statAndBondsCell);
+
+    if(maxCheckedCount !== "0") {
+        const blankTdTwo = document.createElement("td");
+        rowThree.appendChild(blankTdTwo);
+    }
+
+    rowThree.appendChild(confirmTd);
+
+    const confirmInput = document.createElement("input");
+    confirmInput.type = "button";
+    confirmInput.name = professionName;
+    confirmInput.value = "Confirm";
+    confirmInput.className = "skillModalConfirm";
+    confirmInput.id = professionName + "Confirm";
+    confirmTd.appendChild(confirmInput);
+
+    return wrapper;
 }
 
 function updateSkillIncreaseButtons() {
@@ -1536,8 +1657,8 @@ function randomNPC() {
     for(let i = 1; i < nameParts.length; i ++) {
         out += nameParts[i].replace(",", "") + " ";
     }
-    out += lastName + " is " + getAOrAn(nationality) + " " + nationality + " " + profession.replaceAll("-", " ") + " " + employer[1] + " " + employer[0]
-        + " and has " + description + ". Their most important relationships are with ";
+   out += lastName + " is " + getAOrAn(nationality) + " " + nationality + " " + profession.replaceAll("-", " ") + " " + employer[1] + " " + employer[0]
+    + " and has " + description + ". Their most important relationships are with ";
     for(let i = 0; i < bonds.length-1; i ++) {
         out += " their " + bonds[i][1].toLowerCase() + " " + bonds[i][0] + ",";
     }

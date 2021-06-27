@@ -109,7 +109,7 @@ public class UITest {
     @Before
     public void setup() {
         driver = new ChromeDriver();
-        driver.get("https://dgbirdwatching.com/CharacterSheet.html");
+        driver.get("http://dgbirdwatching.com/CharacterSheet.html");
     }
 
     @After
