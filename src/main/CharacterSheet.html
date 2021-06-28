@@ -9,7 +9,10 @@
 
     <script type="text/javascript" src="https://unpkg.com/html2canvas@1.0.0-rc.7/dist/html2canvas.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/pdf-lib/dist/pdf-lib.js"></script>
     <script type="text/javascript" src="js/CharacterSheet.js"></script>
+    <script type="text/javascript" src="js/CharacterPDF.js"></script>
+    <script type="text/javascript" src="js/CharacterWeb.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             createProfessionWrappers();
@@ -415,7 +418,7 @@
                         <td colspan="2" class="right bottom">
                             <div title="Knowledge of the fundamental, mind rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating.">Unnatural (0%)</div>
                         </td>
-                        <td class="skill-td right bottom"><input type="text" class="skill" base="0" prof-base="0"
+                        <td class="skill-td right bottom"><input type="text" id="unnatural" class="skill" base="0" prof-base="0"
                                                                  value="0"/></td>
                     </tr>
                     <tr>
@@ -500,9 +503,10 @@
                                 </tbody>
                             </table>
                         </td>
+                        </td>wea
 
                         <td class="block bottom" rowspan="2"><input type="checkbox"></td>
-                        <td class="block right bottom" rowspan="2"><textarea rows="2"
+                        <td class="block right bottom" rowspan="2"><textarea rows="2" id="other-skill-name-1"
                                                                              class="other-skill-name"></textarea></td>
                         <td class="block right bottom skill-td" rowspan="2">
                             <table class="skill-table fill">
@@ -512,7 +516,9 @@
                                         <img alt="minus" class="minus dont-print" src="resources/minus.png">
                                     </td>
                                     <td class="skill-td-child">
-                                        <input class="other-skill" type="text"value=""/>
+                                        <input class="other-skill"
+                                               id="other-skill-value-1"
+                                               type="text"value=""/>
                                     </td>
                                     <td class="skill-td-child">
                                         <img alt="plus" class="plus dont-print" src="resources/plus.png">
@@ -605,9 +611,10 @@
                         </td>
 
                         <td class="block bottom" rowspan="2"><input type="checkbox"></td>
-                        <td class="block right bottom" rowspan="2"><textarea rows="2"
+                        <td class="block right bottom" rowspan="2"><textarea rows="2" id="other-skill-name-2"
                                                                              class="other-skill-name"></textarea></td>
-                        <td class="block right bottom skill-td" rowspan="2"><input class="other-skill" type="text"
+                        <td class="block right bottom skill-td" rowspan="2"><input class="other-skill" id="other-skill-value-2"
+                                                                                   type="text"
                                                                                    value=""/></td>
                     </tr>
 
@@ -692,9 +699,11 @@
                         </td>
 
                         <td class="block bottom" rowspan="2"><input type="checkbox"></td>
-                        <td class="block right bottom" rowspan="2"><textarea rows="2"
+                        <td class="block right bottom" rowspan="2"><textarea rows="2" id="other-skill-name-3"
                                                                              class="other-skill-name"></textarea></td>
-                        <td class="block right bottom skill-td" rowspan="2"><input class="other-skill" type="text"
+                        <td class="block right bottom skill-td" rowspan="2"><input class="other-skill"
+                                                                                   id="other-skill-value-3"
+                                                                                   type="text"
                                                                                    value=""/></td>
 
                     </tr>
@@ -784,10 +793,12 @@
                                 </tbody>
                             </table>
                         <td class="bottom" rowspan="2"><input type="checkbox"></td>
-                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                        <td class="right bottom" rowspan="2"><textarea rows="2" id="other-skill-name-4"
+
                                                                        class="other-skill-name"></textarea>
                         </td>
                         <td class="right bottom skill-td" rowspan="2"><input class="other-skill"
+                                                                             id="other-skill-value-4"
                                                                              type="text"
                                                                              value=""/></td>
                     </tr>
@@ -893,11 +904,12 @@
                         </td>
 
                         <td class="bottom" rowspan="2"><input type="checkbox"></td>
-                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                        <td class="right bottom" rowspan="2"><textarea rows="2" id="other-skill-name-5"
                                                                        class="other-skill-name"></textarea>
                         </td>
                         <td class="right bottom skill-td" rowspan="2"><input class="other-skill"
                                                                              type="text"
+                                                                             id="other-skill-value-5"
                                                                              value=""/></td>
 
                     </tr>
@@ -1001,10 +1013,11 @@
                         </td>
 
                         <td class="bottom" rowspan="2"><input type="checkbox"></td>
-                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                        <td class="right bottom" rowspan="2"><textarea rows="2" id="other-skill-name-6"
                                                                        class="other-skill-name"></textarea>
                         </td>
                         <td class="right bottom skill-td" rowspan="2"><input class="other-skill"
+                                                                             id="other-skill-value-6"
                                                                              type="text"
                                                                              value=""/></td>
 
@@ -1109,10 +1122,11 @@
                         </td>
 
                         <td class="bottom" rowspan="2"><input type="checkbox"></td>
-                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                        <td class="right bottom" rowspan="2"><textarea rows="2" id="other-skill-name-7"
                                                                        class="other-skill-name"></textarea>
                         </td>
                         <td class="right bottom skill-td" rowspan="2"><textarea rows="2"
+                                                                                id="other-skill-value-7"
                                                                                 class="other-skill"></textarea>
                         </td>
                     </tr>
@@ -1218,10 +1232,11 @@
                         </td>
 
                         <td class="bottom" rowspan="2"><input type="checkbox"></td>
-                        <td class="right bottom" rowspan="2"><textarea rows="2"
+                        <td class="right bottom" rowspan="2"><textarea rows="2" id="other-skill-name-8"
                                                                        class="other-skill-name"></textarea>
                         </td>
                         <td class="right bottom skill-td" rowspan="2"><input class="other-skill"
+                                                                             id="other-skill-value-8"
                                                                              type="text"
                                                                              value=""/></td>
                     </tr>
@@ -1376,92 +1391,92 @@
                                     <td class="weapon-select-row">
                                         <div>(a)<select class="weapon-select dont-print" name="weapon-select" id="weapon-a"></select></div>
                                     </td>
-                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-a-name" class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-a-skill" class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-a-range" class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-a-damage" class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-a-piercing" class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-a-lethality" class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-a-kill-radius" class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-a-ammo" class="weapon-ammo weapon-input" type="text" value=""/></td>
                                 </tr>
                                 <tr id="weapon-row-b" class="weapon-row">
                                     <td class="weapon-select-row">
                                         <div>(b)<select class="weapon-select dont-print" name="weapon-select" id="weapon-b"></select></div>
                                     </td>
-                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-b-name" class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-b-skill" class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-b-range" class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-b-damage" class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-b-piercing" class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-b-lethality" class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-b-kill-radius" class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-b-ammo" class="weapon-ammo weapon-input" type="text" value=""/></td>
                                 </tr>
                                 <tr id="weapon-row-c" class="weapon-row">
                                     <td class="weapon-select-row">
                                         <div>(c)<select class="weapon-select dont-print" name="weapon-select" id="weapon-c"></select></div>
                                     </td>
-                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-c-name" class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-c-skill" class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-c-range" class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-c-damage" class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-c-piercing" class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-c-lethality" class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-c-kill-radius" class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-c-ammo" class="weapon-ammo weapon-input" type="text" value=""/></td>
                                 </tr>
                                 <tr id="weapon-row-d" class="weapon-row">
                                     <td class="weapon-select-row">
                                         <div>(d)<select class="weapon-select dont-print" name="weapon-select" id="weapon-d"></select></div>
                                     </td>
-                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-d-name" class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-d-skill" class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-d-range" class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-d-damage" class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-d-piercing" class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-d-lethality" class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-d-kill-radius" class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-d-ammo" class="weapon-ammo weapon-input" type="text" value=""/></td>
                                 </tr>
                                 <tr id="weapon-row-e" class="weapon-row">
                                     <td class="weapon-select-row">
                                         <div>(e)<select class="weapon-select dont-print" name="weapon-select" id="weapon-e"></select></div>
                                     </td>
-                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-e-name" class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-e-skill" class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-e-range" class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-e-damage" class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-e-piercing" class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-e-lethality" class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-e-kill-radius" class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-e-ammo" class="weapon-ammo weapon-input" type="text" value=""/></td>
                                 </tr>
                                 <tr id="weapon-row-f" class="weapon-row">
                                     <td class="weapon-select-row">
                                         <div>(f)<select class="weapon-select dont-print" name="weapon-select" id="weapon-f"></select></div>
                                     </td>
-                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-f-name" class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-f-skill" class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-f-range" class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-f-damage" class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-f-piercing" class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-f-lethality" class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-f-kill-radius" class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-f-ammo" class="weapon-ammo weapon-input" type="text" value=""/></td>
                                 </tr>
                                 <tr id="weapon-row-g" class="weapon-row">
                                     <td class="weapon-select-row">
                                         <div>(g)<select class="weapon-select dont-print" name="weapon-select" id="weapon-g"></select></div>
                                     </td>
-                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-g-name" class="weapon-name weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-g-skill" class="weapon-skill weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-g-range" class="weapon-range weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-g-damage" class="weapon-damage weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-g-piercing" class="weapon-piercing weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-g-lethality" class="weapon-lethality weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-g-kill-radius" class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                                    <td><input id="weapon-g-ammo" class="weapon-ammo weapon-input" type="text" value=""/></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -1527,34 +1542,34 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="half right bottom top"><input class="fill" type="text"
+                                                <td class="half right bottom top"><input id="special-training-name-1" class="fill" type="text"
                                                                                          value=""/></td>
-                                                <td class="half bottom top"><input class="fill" type="text" value=""/>
+                                                <td class="half bottom top"><input id="special-training-skill-1" class="fill" type="text" value=""/>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="half right bottom"><input class="fill" type="text" value=""/>
+                                                <td class="half right bottom"><input id="special-training-name-2" class="fill" type="text" value=""/>
                                                 </td>
-                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>
+                                                <td class="half bottom"><input id="special-training-skill-2" class="fill" type="text" value=""/></td>
                                             </tr>
                                             <tr>
-                                                <td class="half right bottom"><input class="fill" type="text" value=""/>
+                                                <td class="half right bottom"><input id="special-training-name-3" class="fill" type="text" value=""/>
                                                 </td>
-                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>
+                                                <td class="half bottom"><input id="special-training-skill-3" class="fill" type="text" value=""/></td>
                                             </tr>
                                             <tr>
-                                                <td class="half right bottom"><input class="fill" type="text" value=""/>
+                                                <td class="half right bottom"><input id="special-training-name-4" class="fill" type="text" value=""/>
                                                 </td>
-                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>
+                                                <td class="half bottom"><input id="special-training-skill-4" class="fill" type="text" value=""/></td>
                                             </tr>
                                             <tr>
-                                                <td class="half right bottom"><input class="fill" type="text" value=""/>
+                                                <td class="half right bottom"><input id="special-training-name-5" class="fill" type="text" value=""/>
                                                 </td>
-                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>
+                                                <td class="half bottom"><input id="special-training-skill-5" class="fill" type="text" value=""/></td>
                                             </tr>
                                             <tr>
-                                                <td class="half right"><input class="fill" type="text" value=""/></td>
-                                                <td class="half"><input class="fill" type="text" value=""/></td>
+                                                <td class="half right"><input id="special-training-name-6" class="fill" type="text" value=""/></td>
+                                                <td class="half"><input id="special-training-skill-6" class="fill" type="text" value=""/></td>
                                             </tr>
                                             </tbody>
                                         </table>

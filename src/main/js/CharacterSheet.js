@@ -339,22 +339,23 @@ function createPrintButton() {
     let btn = $('#btnPrint');
     btn.text('download');
     btn.on('click', () => {
-        setClassVisibility('dont-print', 'none');
-        setClassVisibility('print', '');
-        html2canvas(document.body).then(function (canvas) {
-            const imgData = canvas.toDataURL("image/jpeg", 1);
-            const pdf = new jsPDF("p", "mm", "a4");
-            const pageWidth = pdf.internal.pageSize.width;
-            const pageHeight = pdf.internal.pageSize.height;
-            const imageWidth = canvas.width;
-            const imageHeight = canvas.height;
-            const ratio = imageWidth / imageHeight >= pageWidth / pageHeight ? pageWidth / imageWidth : pageHeight / imageHeight;
-
-            pdf.addImage(imgData, 'JPEG', 0, 0, imageWidth * ratio, imageHeight * ratio);
-            pdf.save("character-sheet.pdf");
-        });
-        setClassVisibility('dont-print', '');
-        setClassVisibility('print', 'none');
+        modifyPdf();
+        // setClassVisibility('dont-print', 'none');
+        // setClassVisibility('print', '');
+        // html2canvas(document.body).then(function (canvas) {
+        //     const imgData = canvas.toDataURL("image/jpeg", 1);
+        //     const pdf = new jsPDF("p", "mm", "a4");
+        //     const pageWidth = pdf.internal.pageSize.width;
+        //     const pageHeight = pdf.internal.pageSize.height;
+        //     const imageWidth = canvas.width;
+        //     const imageHeight = canvas.height;
+        //     const ratio = imageWidth / imageHeight >= pageWidth / pageHeight ? pageWidth / imageWidth : pageHeight / imageHeight;
+        //
+        //     pdf.addImage(imgData, 'JPEG', 0, 0, imageWidth * ratio, imageHeight * ratio);
+        //     pdf.save("character-sheet.pdf");
+        // });
+        // setClassVisibility('dont-print', '');
+        // setClassVisibility('print', 'none');
     });
 
 }
@@ -1681,3 +1682,424 @@ function setGenerateNPCListener() {
         }
     })
 }
+
+function getValue(id) {
+    return document.getElementById(id).value;
+}
+
+function  getName() {
+    return getValue("name")
+}
+
+function getEmployer() {
+    return getValue("employer")
+}
+
+function getNationality() {
+    return getValue("nationality")
+}
+
+function getAge() {
+    return getValue("age")
+}
+
+function getEducation() {
+    return getValue("education")
+}
+
+function getProfession() {
+    return getValue("profession")
+}
+
+function isChecked(id) {
+    return document.getElementById(id).checked;
+}
+
+function setPDFFields() {
+    /*
+    this.setName = function setName(name) {
+    this.setProfession = function setProfession(profession) {
+    this.setEmployer = function setEmployer(employer) {
+    this.setNationality = function setNationality(nationality) {
+    this.setFemale = function setFemale(isFemale) {
+    this.setMale = function setMale(isMale) {
+    this.setOtherGender = function setOtherGender(isOtherGender) {
+    this.setOtherGenderInput = function setOtherGenderInput(gender) {
+    this.setAge = function setAge(age) {
+    this.setEducation = function setName(education) {
+    this.setStr = function setStr (str) {
+    this.setStrFive = function setStrFive (strFive) {
+    this.setStrFeatures = function setStr (str) {
+    this.setDex = function setDex (dex) {
+    this.setDexFive = function setDexFive (dexFive) {
+    this.setDexFeatures = function setDex (dex) {
+    this.setCon = function setCon (con) {
+    this.setConFive = function setConFive (conFive) {
+    this.setConFeatures = function setCon (con) {
+    this.setInt = function setInt (int) {
+    this.setIntFive = function setIntFive (intFive) {
+    this.setIntFeatures = function setInt (int) {
+    this.setPow = function setPow (pow) {
+    this.setPowFive = function setPowFive (powFive) {
+    this.setPowFeatures = function setPow (pow) {
+    this.setCha = function setCha (cha) {
+    this.setChaFive = function setChaFive (chaFive) {
+    this.setChaFeatures = function setCha (cha) {
+    this.setBondOne = function setBondOne (bond) {
+    this.setBondOneScore = function setBondOneScore (bond) {
+    this.setMaxHp = function setMaxHp (maxHp) {
+    this.setCurrHp = function setCurrHp (currHp) {
+    this.setMaxWill = function setMaxWill (maxWill) {
+    this.setCurrWill = function setCurrWill (currWill) {
+    this.setMaxSan = function setMaxSan (maxSan) {
+    this.setCurrSan = function setCurrSan (currSan) {
+    this.setBreakingPoint = function setBreakingPoint (breakingPoint) {
+    this.setMotivations = function setMotivations (motivations) {
+    this.setDescriptions = function setDescriptions (descriptions) {
+    this.setViolenceOne = function setViolenceOne (violence) {
+    this.setViolenceTwo = function setViolenceTwo (violence) {
+    this.setViolenceThree = function setViolenceThree (violence) {
+    this.setHelplessnessOne = function setHelplessnessOne (helplessness) {
+    this.setHelplessnessTwo = function setHelplessnessTwo (helplessness) {
+    this.setHelplessnessThree = function setHelplessnessThree (helplessness) {
+    this.setAccounting = function setAccounting (accounting) {
+    this.setAlertness = function setAlertness (alertness) {
+    this.setAnthropology = function setAnthropology (anthropology) {
+    this.setArcheology = function setArcheology (archeology) {
+    this.setArtInput = function setArtInput (art) {
+    this.setArt = function setArt (art) {
+    this.setArtillery = function setArtillery (artillery) {
+    this.setAthletics = function setAthletics (athletics) {
+    this.setBureaucracy = function setBureaucracy (bureaucracy) {
+    this.setComputerScience = function setComputerScience (computerScience) {
+    this.setCraftInput = function setCraftInput (craft) {
+    this.setCraft = function setCraft (craft) {
+    this.setCriminology = function setCriminology (criminology) {
+    this.setDemolitions = function setDemolitions (demolitions) {
+    this.setDisguise = function setDisguise (disguise) {
+    this.setDodge = function setDodge (dodge) {
+    this.setDrive = function setDrive (drive) {
+    this.setFirearms = function setFirearms (firearms) {
+    this.setFirstAid = function setFirstAid (firstAid) {
+    this.setForensics = function setForensics (forensics) {
+    this.setHeavyMachinery = function setHeavyMachinery (heavyMachinery) {
+    this.setHeavyWeapons = function setHeavyWeapons (heavyWeapons) {
+    this.setHistory = function setHistory (history) {
+    this.setHumint = function setHumint (humint) {
+    this.setLaw = function setLaw (law) {
+    this.setMedicine = function setMedicine (medicine) {
+    this.setMeleeWeapons = function setMeleeWeapons (meleeWeapons) {
+    this.setMilitaryScienceInput = function setMilitaryScienceInput (militaryScience) {
+    this.setMilitaryScience = function setMilitaryScience (militaryScience) {
+    this.setNavigate = function setNavigate (navigate) {
+    this.setOccult = function setOccult (occult) {
+    this.setPersuade = function setPersuade (persuade) {
+    this.setPharmacy = function setPharmacy (pharmacy) {
+    this.setPilotInput = function setPilotInput (pilot) {
+    this.setPilot = function setPilot (pilot) {
+    this.setPsychotherapy = function setPsychotherapy (psychotherapy) {
+    this.setRide = function setRide (ride) {
+    this.setScienceInput = function setScienceInput (science) {
+    this.setScience = function setScience (science) {
+    this.setSearch = function setSearch (search) {
+    this.setSigint = function setSigint (sigint) {
+    this.setStealth = function setStealth (stealth) {
+    this.setSurgery = function setSurgery (surgery) {
+    this.setSurvival = function setSurvival (survival) {
+    this.setSwim = function setSwim (swim) {
+    this.setUnarmedCombat = function setUnarmedCombat (unarmedCombat) {
+    this.setUnnatural = function setUnnatural (unnatural) {
+    this.setOtherSkillsOne = function setOtherSkillsOne (otherSkill) {
+    this.setOtherSkillsOneScore = function setOtherSkillsOneScore (otherSkill) {
+    this.setWounds = function setWounds (wounds) {
+    this.setArmor = function setArmor (armor) {
+    this.setWeaponA = function setWeaponA (weapon) {
+    this.setWeaponASkill = function setWeaponASkill (skill) {
+    this.setWeaponABaseRange = function setWeaponABaseRange (range) {
+    this.setWeaponADamage = function setWeaponADamage (damage) {
+    this.setWeaponAPiercing = function setWeaponAPiercing (piercing) {
+    this.setWeaponAKillDamage = function setWeaponAKillDamage(damage) {
+    this.setWeaponARadius = function setWeaponARadius(radius) {
+    this.setWeaponAAmmo = function setWeaponAAmmo (ammo) {
+    this.setNotes = function setNotes (notes) {
+    this.setDevelopments = function setDevelopments (developments) {
+    this.setSpecialTrainingA = function setSpecialTrainingA (specialTraining) {
+    this.setSpecialTrainingASkill = function setSpecialTrainingASkill (specialTraining) {
+    this.setSpecialTrainingB = function setSpecialTrainingB (specialTraining) {
+    this.setSpecialTrainingBSkill = function setSpecialTrainingBSkill (specialTraining) {
+    this.setSpecialTrainingC = function setSpecialTrainingC (specialTraining) {
+    this.setSpecialTrainingCSkill = function setSpecialTrainingCSkill (specialTraining) {
+    this.setSpecialTrainingD = function setSpecialTrainingD (specialTraining) {
+    this.setSpecialTrainingDSkill = function setSpecialTrainingDSkill (specialTraining) {
+    this.setSpecialTrainingE = function setSpecialTrainingE (specialTraining) {
+    this.setSpecialTrainingESkill = function setSpecialTrainingESkill (specialTraining) {
+    this.setSpecialTrainingFSkill = function setSpecialTrainingFSkill (specialTraining) {
+    this.setSpecialTrainingF = function setSpecialTrainingF (specialTraining) {
+     */
+}
+
+async function modifyPdf() {
+    let dataLoaded = false;
+    let timeoutms = 1000;
+    console.log("modifyPdf")
+    // import("https://unpkg.com/pdf-lib/dist/pdf-lib.js")
+    //     .then(async (PDF) => {
+    const url = 'resources/Delta-Green-RPG-Character-Sheet.pdf'
+    const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
+    const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes)
+
+    let pdf = new CharacterPDF(pdfDoc)
+    pdf.loadDataFromWeb(new CharacterWeb());
+    pdf.download();
+    // pdf.download();
+    // // const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica)
+    //
+    // const form = pdfDoc.getForm()
+    // const fields = form.getFields()
+    // // fields.forEach(field => {
+    // //     const type = field.constructor.name
+    // //     const name = field.getName()
+    // //     console.log(`${type}: ${name}`)
+    // // });
+    // let name = getName();
+    // const nameField = form.getTextField('1 LAST NAME FIRST NAME MIDDLE INITIAL')
+    // nameField.setText(name)
+    //
+    // form.getTextField('2 PROFESSION RANK IF APPLICABLE').setText(getProfession())
+    // form.getTextField('3 EMPLOYER').setText(getEmployer())
+    // form.getTextField('4 NATIONALITY').setText(getNationality())
+    // let female = form.getCheckBox('Check Box7');
+    // let male = form.getCheckBox('Check Box8');
+    // let otherGender = form.getCheckBox('Check Box9');
+    // if(isChecked("sex1")) {
+    //     female.check();
+    // }
+    // else {
+    //     female.uncheck();
+    // }
+    // if(isChecked("sex2")) {
+    //     male.check();
+    // }
+    // else {
+    //     male.uncheck();
+    // }
+    // if(isChecked("sex3Check")) {
+    //     otherGender.check();
+    // }
+    // else {
+    //     otherGender.uncheck();
+    // }
+    // // console.log("Box7" + form.getCheckBox('Check Box7').isChecked())
+    // // console.log("Box8" + form.getCheckBox('Check Box8').isChecked())
+    // // console.lo
+    // const pdfBytes = await pdfDoc.save()
+    // // id = "profesclassName/>
+    // // id = "sex1"
+    // // id = "sex2"
+    // // id = "sex3Check"
+    // // " id=" sex3
+    //
+    // download(pdfBytes, name + ".pdf", "pdf");
+    // });
+    // CharacterSheet.js:1702 PDFCheckBox: Check Box7
+    // CharacterSheet.js:1702 PDFCheckBox: Check Box8
+    // CharacterSheet.js:1702 PDFCheckBox: Check Box9
+    // CharacterSheet.js:1702 PDFTextField: SEX
+    // CharacterSheet.js:1702 PDFTextField: 6 AGE AND DOB
+    // CharacterSheet.js:1702 PDFTextField: 7 EDUCATION AND OCCUPATION
+    // CharacterSheet.js:1702 PDFTextField: STR
+    // CharacterSheet.js:1702 PDFTextField: STRx5
+    // CharacterSheet.js:1702 PDFTextField: STR DISTINGUISHING FEATURES
+    // CharacterSheet.js:1702 PDFTextField: CON
+    // CharacterSheet.js:1702 PDFTextField: CONx5
+    // CharacterSheet.js:1702 PDFTextField: CON DISTINGUISHING FEATURES
+    // CharacterSheet.js:1702 PDFTextField: DEX
+    // CharacterSheet.js:1702 PDFTextField: DEXx5
+    // CharacterSheet.js:1702 PDFTextField: DEX DISTINGUISHING FEATURES
+    // CharacterSheet.js:1702 PDFTextField: INT
+    // CharacterSheet.js:1702 PDFTextField: INTx5
+    // CharacterSheet.js:1702 PDFTextField: INT DISTINGUISHING FEATURES
+    // CharacterSheet.js:1702 PDFTextField: POW
+    // CharacterSheet.js:1702 PDFTextField: POWx5
+    // CharacterSheet.js:1702 PDFTextField: POW DISTINGUISHING FEATURES
+    // CharacterSheet.js:1702 PDFTextField: CHA
+    // CharacterSheet.js:1702 PDFTextField: CHAx5
+    // CharacterSheet.js:1702 PDFTextField: CHA DISTINGUISHING FEATURES
+    // CharacterSheet.js:1702 PDFTextField: BOND 1
+    // CharacterSheet.js:1702 PDFTextField: BOND 1 SCORE
+    // CharacterSheet.js:1702 PDFTextField: BOND 2
+    // CharacterSheet.js:1702 PDFTextField: BOND 2 SCORE
+    // CharacterSheet.js:1702 PDFTextField: BOND 3
+    // CharacterSheet.js:1702 PDFTextField: BOND 3 SCORE
+    // CharacterSheet.js:1702 PDFTextField: BOND 4
+    // CharacterSheet.js:1702 PDFTextField: BOND 4 SCORE
+    // CharacterSheet.js:1702 PDFTextField: BOND 5
+    // CharacterSheet.js:1702 PDFTextField: BOND 5 SCORE
+    // CharacterSheet.js:1702 PDFTextField: BOND 6
+    // CharacterSheet.js:1702 PDFTextField: BOND 6 SCORE
+    // CharacterSheet.js:1702 PDFTextField: MAXIMUMHit Points HP
+    // CharacterSheet.js:1702 PDFTextField: CURRENTHit Points HP
+    // CharacterSheet.js:1702 PDFTextField: MAXIMUMWillpower Points WP
+    // CharacterSheet.js:1702 PDFTextField: CURRENTWillpower Points WP
+    // CharacterSheet.js:1702 PDFTextField: MAXIMUMSanity Points SAN
+    // CharacterSheet.js:1702 PDFTextField: CURRENTSanity Points SAN
+    // CharacterSheet.js:1702 PDFTextField: CURRENTBreaking Point BP
+    // CharacterSheet.js:1702 PDFTextField: 12 MOTIVATIONS AND MENTAL DISORDERSPSYCHOLOGICAL DATA
+    // CharacterSheet.js:1702 PDFTextField: 10 PHYSICAL DESCRIPTION
+    // CharacterSheet.js:1702 PDFCheckBox: Check Box1
+    // CharacterSheet.js:1702 PDFCheckBox: Check Box2
+    // CharacterSheet.js:1702 PDFCheckBox: Check Box3
+    // CharacterSheet.js:1702 PDFCheckBox: Check Box4
+    // CharacterSheet.js:1702 PDFCheckBox: Check Box5
+    // CharacterSheet.js:1702 PDFCheckBox: Check Box6
+    // CharacterSheet.js:1702 PDFTextField: Accounting 10
+    // CharacterSheet.js:1702 PDFTextField: Alertness 20
+    // CharacterSheet.js:1702 PDFTextField: Anthropology 0
+    // CharacterSheet.js:1702 PDFTextField: Archeology 0
+    // CharacterSheet.js:1702 PDFTextField: Art
+    // CharacterSheet.js:1702 PDFTextField: Art 0
+    // CharacterSheet.js:1702 PDFTextField: Artillery 0
+    // CharacterSheet.js:1702 PDFTextField: Athletics 30
+    // CharacterSheet.js:1702 PDFTextField: Bureaucracy 10
+    // CharacterSheet.js:1702 PDFTextField: Computer Science 0
+    // CharacterSheet.js:1702 PDFTextField: Craft
+    // CharacterSheet.js:1702 PDFTextField: Craft 0
+    // CharacterSheet.js:1702 PDFTextField: Criminology 10
+    // CharacterSheet.js:1702 PDFTextField: Demolitions 0
+    // CharacterSheet.js:1702 PDFTextField: Disguise 10
+    // CharacterSheet.js:1702 PDFTextField: Dodge 30
+    // CharacterSheet.js:1702 PDFTextField: Drive 20
+    // CharacterSheet.js:1702 PDFTextField: Firearms 20
+    // CharacterSheet.js:1702 PDFTextField: First Aid 10
+    // CharacterSheet.js:1702 PDFTextField: Forensics 0
+    // CharacterSheet.js:1702 PDFTextField: Heavy Machinery 10
+    // CharacterSheet.js:1702 PDFTextField: Heavy Weapons 0
+    // CharacterSheet.js:1702 PDFTextField: History 10
+    // CharacterSheet.js:1702 PDFTextField: HUMINT 10
+    // CharacterSheet.js:1702 PDFTextField: Law 0
+    // CharacterSheet.js:1702 PDFTextField: Medicine 0
+    // CharacterSheet.js:1702 PDFTextField: Melee Weapons 30
+    // CharacterSheet.js:1702 PDFTextField: Military Science
+    // CharacterSheet.js:1702 PDFTextField: Military Science 0
+    // CharacterSheet.js:1702 PDFTextField: Navigate 10
+    // CharacterSheet.js:1702 PDFTextField: Occult 10
+    // CharacterSheet.js:1702 PDFTextField: Persuade 20
+    // CharacterSheet.js:1702 PDFTextField: Pharmacy 0
+    // CharacterSheet.js:1702 PDFTextField: Pilot
+    // CharacterSheet.js:1702 PDFTextField: Pilot 0
+    // CharacterSheet.js:1702 PDFTextField: Psychotherapy 10
+    // CharacterSheet.js:1702 PDFTextField: Ride 10
+    // CharacterSheet.js:1702 PDFTextField: Science
+    // CharacterSheet.js:1702 PDFTextField: Science 0
+    // CharacterSheet.js:1702 PDFTextField: Search 20
+    // CharacterSheet.js:1702 PDFTextField: SIGINT 0
+    // CharacterSheet.js:1702 PDFTextField: Stealth 10
+    // CharacterSheet.js:1702 PDFTextField: Surgery 0
+    // CharacterSheet.js:1702 PDFTextField: Survival 10
+    // CharacterSheet.js:1702 PDFTextField: Swim 20
+    // CharacterSheet.js:1702 PDFTextField: Unarmed Combat 40
+    // CharacterSheet.js:1702 PDFTextField: Unnatural 0
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 1
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 1 Score
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 2
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 2 Score
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 3
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 3 Score
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 4
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 4 Score
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 5
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 5 Score
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 6
+    // CharacterSheet.js:1702 PDFTextField: Foreign Languages and Other Skills 6 Score
+    // CharacterSheet.js:1702 PDFTextField: 14 WOUNDS AND AILMENTS_2
+    // CharacterSheet.js:1702 PDFTextField: 15 ARMOR AND GEAR
+    // CharacterSheet.js:1702 PDFTextField: WEAPONa
+    // CharacterSheet.js:1702 PDFTextField: SKILL a
+    // CharacterSheet.js:1702 PDFTextField: BASE RANGEa
+    // CharacterSheet.js:1702 PDFTextField: DAMAGEa
+    // CharacterSheet.js:1702 PDFTextField: ARMOR PIERCINGa
+    // CharacterSheet.js:1702 PDFTextField: KILL DAMAGEa
+    // CharacterSheet.js:1702 PDFTextField: KILL RADIUSa
+    // CharacterSheet.js:1702 PDFTextField: AMMO a
+    // CharacterSheet.js:1702 PDFTextField: WEAPONb
+    // CharacterSheet.js:1702 PDFTextField: SKILL b
+    // CharacterSheet.js:1702 PDFTextField: BASE RANGEb
+    // CharacterSheet.js:1702 PDFTextField: DAMAGEb
+    // CharacterSheet.js:1702 PDFTextField: ARMOR PIERCINGb
+    // CharacterSheet.js:1702 PDFTextField: KILL DAMAGEb
+    // CharacterSheet.js:1702 PDFTextField: KILL RADIUSb
+    // CharacterSheet.js:1702 PDFTextField: AMMO b
+    // CharacterSheet.js:1702 PDFTextField: WEAPONc
+    // CharacterSheet.js:1702 PDFTextField: SKILL c
+    // CharacterSheet.js:1702 PDFTextField: BASE RANGEc
+    // CharacterSheet.js:1702 PDFTextField: DAMAGEc
+    // CharacterSheet.js:1702 PDFTextField: ARMOR PIERCINGc
+    // CharacterSheet.js:1702 PDFTextField: KILL DAMAGEc
+    // CharacterSheet.js:1702 PDFTextField: KILL RADIUSc
+    // CharacterSheet.js:1702 PDFTextField: AMMO c
+    // CharacterSheet.js:1702 PDFTextField: WEAPONd
+    // CharacterSheet.js:1702 PDFTextField: SKILL d
+    // CharacterSheet.js:1702 PDFTextField: BASE RANGEd
+    // CharacterSheet.js:1702 PDFTextField: DAMAGEd
+    // CharacterSheet.js:1702 PDFTextField: ARMOR PIERCINGd
+    // CharacterSheet.js:1702 PDFTextField: KILL DAMAGEd
+    // CharacterSheet.js:1702 PDFTextField: KILL RADIUSd
+    // CharacterSheet.js:1702 PDFTextField: AMMO d
+    // CharacterSheet.js:1702 PDFTextField: WEAPONe
+    // CharacterSheet.js:1702 PDFTextField: SKILL e
+    // CharacterSheet.js:1702 PDFTextField: BASE RANGEe
+    // CharacterSheet.js:1702 PDFTextField: DAMAGEe
+    // CharacterSheet.js:1702 PDFTextField: ARMOR PIERCINGe
+    // CharacterSheet.js:1702 PDFTextField: KILL DAMAGEe
+    // CharacterSheet.js:1702 PDFTextField: KILL RADIUSe
+    // CharacterSheet.js:1702 PDFTextField: AMMO e
+    // CharacterSheet.js:1702 PDFTextField: WEAPONf
+    // CharacterSheet.js:1702 PDFTextField: SKILL f
+    // CharacterSheet.js:1702 PDFTextField: BASE RANGEf
+    // CharacterSheet.js:1702 PDFTextField: DAMAGEf
+    // CharacterSheet.js:1702 PDFTextField: ARMOR PIERCINGf
+    // CharacterSheet.js:1702 PDFTextField: KILL DAMAGEf
+    // CharacterSheet.js:1702 PDFTextField: KILL RADIUSf
+    // CharacterSheet.js:1702 PDFTextField: AMMO f
+    // CharacterSheet.js:1702 PDFTextField: WEAPONg
+    // CharacterSheet.js:1702 PDFTextField: SKILL g
+    // CharacterSheet.js:1702 PDFTextField: BASE RANGEg
+    // CharacterSheet.js:1702 PDFTextField: DAMAGEg
+    // CharacterSheet.js:1702 PDFTextField: ARMOR PIERCINGg
+    // CharacterSheet.js:1702 PDFTextField: KILL DAMAGEg
+    // CharacterSheet.js:1702 PDFTextField: KILL RADIUSg
+    // CharacterSheet.js:1702 PDFTextField: AMMO g
+    // CharacterSheet.js:1702 PDFTextField: 17 PERSONAL DETAILS AND NOTES
+    // CharacterSheet.js:1702 PDFTextField: 18 DEVELOPMENTS WHICH AFFECT HOME AND FAMILY
+    // CharacterSheet.js:1702 PDFTextField: SPECIAL TRAININGa
+    // CharacterSheet.js:1702 PDFTextField: SKILL OR STATa
+    // CharacterSheet.js:1702 PDFTextField: SPECIAL TRAININGb
+    // CharacterSheet.js:1702 PDFTextField: SKILL OR STATb
+    // CharacterSheet.js:1702 PDFTextField: SPECIAL TRAININGc
+    // CharacterSheet.js:1702 PDFTextField: SKILL OR STATc
+    // CharacterSheet.js:1702 PDFTextField: SPECIAL TRAININGd
+    // CharacterSheet.js:1702 PDFTextField: SKILL OR STATd
+    // CharacterSheet.js:1702 PDFTextField: SPECIAL TRAININGe
+    // CharacterSheet.js:1702 PDFTextField: SKILL OR STATe
+    // CharacterSheet.js:1702 PDFTextField: SPECIAL TRAININGf
+    // CharacterSheet.js:1702 PDFTextField: SKILL OR STATf
+    // $.getScript('https://unpkg.com/pdf-lib/dist/pdf-lib.js', async function () {
+    //
+    // });
+    // new Promise((r, j)=>{
+    //     let check = () => {
+    //         console.warn('checking');
+    //         if(dataLoaded)
+    //             r();
+    //         else if((timeoutms -= 100) < 0)
+    //             j('timed out!');
+    //         else
+    //             setTimeout(check, 100)
+    //     };
+    //     setTimeout(check, 100)
+    // })
+
+}
+
+
+
