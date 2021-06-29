@@ -44,7 +44,11 @@ span {
 }
 
 .pad-right {
-    padding-right: 20px;
+    padding-right: 10px;
+}
+
+.pad-left {
+    padding-left: 10px;
 }
 
 .big-font {
@@ -93,8 +97,34 @@ span {
 .center {
     text-align: center;
     margin: auto;
-    width: 50%;
-    padding: 10px;
+    /*width: 50%;*/
+    /*padding: 10px;*/
+}
+.two-rows {
+    grid-row: span 2;
+}
+
+.row {
+    flex: 1;
+    display: flex;
+}
+
+.row:first-of-type {
+    flex-flow: wrap;
+}
+
+.row .rowspan2 {
+    flex: 1 1 100%;
+}
+
+.row div {
+    border: solid;
+    padding: 1em;
+    flex: 1;
+}
+
+.border {
+    border: solid;
 }
 
 .banner {
@@ -174,11 +204,11 @@ tr.row td:last-child {
 }
 
 .third {
-    width: 33%;
+    flex: 33%;
 }
 
 .half {
-    width: 50%;
+    flex: 50%;
 }
 
 .three-fourths {
@@ -186,7 +216,7 @@ tr.row td:last-child {
 }
 
 .two-thirds {
-    width: 66%;
+    flex: 66%;
 }
 
 * {
@@ -197,7 +227,7 @@ tr.row td:last-child {
 
 .label {
     display: grid;
-    grid-template-columns: 1fr 19fr;
+    /*grid-template-columns: 1fr 19fr;*/
     border-spacing:0;
 }
 
@@ -214,6 +244,11 @@ tr.row td:last-child {
     justify-content: center;
     background: black;
     color: white;
+    flex: 1%;
+}
+
+.forty-five {
+    flex: 45;
 }
 
 .pad {
@@ -228,6 +263,14 @@ tr.row td:last-child {
 tbody {
     grid-area: table;
 }
+.cards {
+    display: flex;
+    justify-content: left;
+}
+
+.card {
+    flex: 0 1 24%;
+}
 
 .dont-print {
 }
@@ -239,6 +282,10 @@ tbody {
 
 .align-top {
     vertical-align: text-top;
+}
+
+.align-left {
+    text-align:left;
 }
 
 
@@ -311,6 +358,9 @@ tbody {
 .skill-table {
     table-layout:auto;
 }
+.width-auto {
+    width:auto;
+}
 
 .skill-td-child {
     width: 33%;
@@ -339,4 +389,135 @@ tbody {
 
 .npc-div {
     font-size: 16px;
+}
+
+.flex-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.flex-container-vert {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.flex-item:nth-child(1) {
+    flex-direction: column;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+}
+
+.flex-item:nth-child(2) {
+    flex-direction: column;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+}
+
+.flex-item:nth-child(3) {
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+}
+
+.flex-item:nth-child(4) {
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    /*flex-wrap: nowrap;*/
+}
+
+.flex-hundred {
+    flex:99%;
+}
+
+.flex-fifty {
+    flex:50%;
+}
+
+.flex-content {
+    flex:fit-content;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.no-wrap {
+    /*flex-wrap: nowrap;*/
+    white-space: nowrap;
+}
+
+.personal-details-content {
+    white-space: nowrap;
+    text-align:left;
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
 }
