@@ -10,6 +10,8 @@ body {
     font-family: Garamond, serif;
     background-image : url(../resources/background.png);
     font-size: 13px;
+    border-spacing: 0px;
+    border-collapse: collapse;
 }
 
 input {
@@ -45,6 +47,10 @@ span {
 
 .pad-right {
     padding-right: 10px;
+}
+
+.double-pad-right {
+    padding-right: 20px;
 }
 
 .pad-left {
@@ -245,6 +251,7 @@ tr.row td:last-child {
     background: black;
     color: white;
     flex: 1%;
+    max-width: 40px;
 }
 
 .forty-five {
@@ -485,7 +492,7 @@ tbody {
 .container {
     display: flex;
     flex-direction: column;
-    padding-right: 20px;
+    /*padding-right: 20px;*/
 }
 
 .flex-row {
@@ -506,6 +513,10 @@ tbody {
     flex:fit-content;
 }
 
+.fit-content {
+    width:fit-content;
+}
+
 .flex-wrap {
     flex-wrap: wrap;
 }
@@ -520,4 +531,44 @@ tbody {
     display: flex;
     flex-direction: column;
     padding-right: 20px;
+}
+
+#statistical-data tr td div {
+    width: 1%;
+    white-space: nowrap;
+}
+
+.labeled-section {
+    text-align:left;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+}
+
+.label-container {
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid black;
+    /*border-right: 2px solid black;*/
+    /*border-bottom: 2px solid black;*/
+
+}
+
+.content-container {
+    flex:99%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.column-content {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.text-input {
+    width: 100%;
 }

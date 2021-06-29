@@ -41,210 +41,265 @@
 </div>
 <div class="container ninety center">
     <div id="button-div" class="flex-row">
-        <input type="button" value="Download PDF"id="btnPrint" class="dont-print btn align-left pad-right"/>
+        <input type="button" value="Download PDF"id="btnPrint" class="btn align-left pad-right"/>
         <div class="pad-right pad-left"></div>
         <!--    <div class="flex-row">-->
-        <input type="button" value="Randomize" id="btnRandom" class="dont-print btn align-left"/>
+        <input type="button" value="Randomize" id="btnRandom" class="btn align-left"/>
         <!--    </div>-->
     </div>
     <div id="button-spacer" class="pad"></div>
     <div id="top-banner" class="banner">
         <img class="banner-img" src="resources/dglogo.png" alt="Delta Green" width="1290" height="84">
     </div>
-    <div id="personal-details-div" class="container">
-        <div class="flex-row">
+    <div id="personal-details-div" class="labeled-section">
+        <div class="label-container">
             <div class="label-background">
                 <p class="label-text">Personal Data</p>
             </div>
-            <div class="flex-hundred flex-row top bottom right flex-wrap">
-                <div class="flex-row flex-wrap fill">
-                    <div id="name-div" class="container half right no-wrap top right">
-                        <div class="personal-details-content">1. LAST NAME, FIRST NAME (AND ALIAS OR CODENAME IF APPLICABLE)</div>
-                        <div class="personal-details-content"><input type="text" id="name" value=""/></div>
+            <div class="content-container">
+                <div id="name-div" class="half column-content">
+                    <div>1. LAST NAME, FIRST NAME (AND ALIAS OR CODENAME IF APPLICABLE)</div>
+                    <div><input class="text-input" type="text" id="name" value=""/></div>
+                </div>
+                <div id="profession-div" class="column-content half">
+                    <div>2. PROFESSION (RANK IF APPLICABLE)</div>
+                    <div id="profession-value" class="flex-row align-left">
+                        <input type="button" class="professionBtn align-left" id="professions" name="anthropologist" value="Choose Profession"/>
+                        <input type="text" class="half bottom pad-right" id="profession"/>
                     </div>
-                    <div id="profession-div" class="container half no-wrap top right">
-                        <div class="personal-details-content">2. PROFESSION (RANK IF APPLICABLE)</div>
-                        <div id="profession-value" class="flex-row align-left">
-                            <input type="button" class="professionBtn align-left" id="professions" name="anthropologist" value="Choose Profession"/>
-                            <input type="text" class="print half bottom" id="profession"/>
-                        </div>
+                </div>
+                <div id="employer-div" class="column-content half">
+                    <span>3. EMPLOYER</span>
+                    <span><input class="text-input" type="text" id="employer" value=""/></span>
+                </div>
+                <div id="nationality-div" class="column-content half">
+                    <div>4. NATIONALITY</div>
+                    <div><input class="text-input" type="text" id="nationality" value=""/></div>
+                </div>
+                <div id="sex-div" class="column-content third">
+                    <div>5. SEX</div>
+                    <div class="flex-row">
+                        <input type="checkbox" id="sex1" name="sex" value="F"><label for="sex1">F</label>
+                        <input type="checkbox" id="sex2" name="sex" value="M"><label for="sex2">M</label>
+                        <input type="checkbox" id="sex3Check" name="sex">
+                        <input class="three-fourths bottom" type="text" id="sex3" name="sex">
                     </div>
-                    <div id="employer-div" class="container half left no-wrap top right">
-                        <span class="personal-details-content">3. EMPLOYER</span>
-                        <span><input class="personal-details-content" type="text" id="employer" value=""/></span>
-                    </div>
-                    <div id="nationality-div" class="container half no-wrap top right">
-                        <div class="personal-details-content">4. NATIONALITY</div>
-                        <div><input class="personal-details-content" type="text" id="nationality" value=""/></div>
-                    </div>
-                    <div id="sex-div" class="container third no-wrap top right">
-                        <div class="personal-details-content">5. SEX</div>
-                        <div class="flex-row">
-                            <input type="checkbox" id="sex1" name="sex" value="F"><label for="sex1">F</label>
-                            <input type="checkbox" id="sex2" name="sex" value="M"><label for="sex2">M</label>
-                            <input type="checkbox" id="sex3Check" name="sex"><input class="bottom three-fourths" type="text" id="sex3" name="sex">
-                        </div>
-                    </div>
-                    <div id="age-div" class="container third no-wrap top right">
-                        <div class="personal-details-content">6. AGE AND D.O.B.</div>
-                        <div><input class="personal-details-content" type="text" id="age" value=""/></div>
-                    </div>
-                    <div id="education-div" class="container third no-wrap top right">
-                        <div class="personal-details-content">7. EDUCATION AND OCCUPATIONAL HISTORY</div>
-                        <div><input class="personal-details-content" type="text" id="education" value=""/></div>
-                    </div>
+                </div>
+                <div id="age-div" class="column-content third">
+                    <div>6. AGE AND D.O.B.</div>
+                    <div><input class="text-input" type="text" id="age" value=""/></div>
+                </div>
+                <div id="education-div" class="column-content third">
+                    <div>7. EDUCATION AND OCCUPATIONAL HISTORY</div>
+                    <div><input class="text-input" type="text" id="education" value=""/></div>
                 </div>
             </div></div>
     </div>
-<!--    <div id="statistics-div" class="container pad">-->
-<!--        <div class="flex-row">-->
-<!--            <div class="label-background">-->
-<!--                <p class="label-text">Statistical Data</p>-->
-<!--            </div>-->
-<!--            <div class="flex-hundred flex-row top bottom right flex-wrap">-->
-<!--                <div class="flex-row flex-wrap fill">-->
-<!--&lt;!&ndash;                    <div id="name-div" class="container half right no-wrap top right">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="personal-details-content">1. LAST NAME, FIRST NAME (AND ALIAS OR CODENAME IF APPLICABLE)</div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="personal-details-content"><input type="text" id="name" value=""/></div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--    <tr id="stats-row" class="double-pad">-->
-<!--        <td>-->
-<!--            <div id="stat-div" class="label fill">-->
-<!--                <div class="label-background">-->
-<!--                    <p class="label-text">Statistical Data</p>-->
-<!--                </div>-->
-<!--                <div class="table fill">-->
-<!--                    <table id="statistical-data" class="GeneratedTable top fill">-->
-<!--                        <tbody>-->
-<!--                        <tr>-->
-<!--                            <td>-->
-<!--                                <table class="fill">-->
-<!--                                    <tbody>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div>8. STATISTICS</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom center">-->
-<!--                                            <div>SCORE</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom center">-->
-<!--                                            <div class="pad-right">×5</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom center">-->
-<!--                                            <div>DISTINGUISHING FEATURES</div>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div>Strength (STR)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><input type="text" id="str-score" value=""/>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="str-x5"></span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="str-feature" value=""/>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div>Constitution (CON)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><input type="text" id="con-score" value=""/>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="con-x5"></span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="con-feature" value=""/>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div>Dexterity (DEX)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><input type="text" id="dex-score" value=""/>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="dex-x5"></span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="dex-feature" value=""/>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div>Intelligence (INT)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><input type="text" id="int-score" value=""/>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="int-x5"></span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="int-feature" value=""/>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div>Power (POW)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><input type="text" id="pow-score" value=""/>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="pow-x5"></span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="pow-feature" value=""/>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div>Charisma (CHA)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><input type="text" id="cha-score" value=""/>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="cha-x5"></span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="cha-feature" value=""/>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    </tbody>-->
-<!--                                </table>-->
-<!--                                <table class="fill">-->
-<!--                                    <tbody>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div>9. DERIVED ATTRIBUTES</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom center">-->
-<!--                                            <div>MAXIMUM</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom center">-->
-<!--                                            <div>CURRENT</div>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div id="hp">Hit Points (HP)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="hp-max"></span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="hp-curr" value=""/></td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div id="wp">Willpower Points (WP)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="wp-max"></span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="wp-curr" value=""/></td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div id="san">Sanity Points (SAN)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="san-max">99</span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="san-curr" value=""/>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td class="right bottom">-->
-<!--                                            <div id="bp">Breaking Point (BP)</div>-->
-<!--                                        </td>-->
-<!--                                        <td class="right bottom"><span id="bp-max"></span></td>-->
-<!--                                        <td class="right bottom"><input type="text" id="bp-curr" value=""/></td>-->
-<!--                                    </tr>-->
-<!--                                    </tbody>-->
-<!--                                </table>-->
+    <div id="statistics-div" class="labeled-section">
+        <div class="label-container">
+            <div class="label-background">
+                <p class="label-text">Statistical Data</p>
+            </div>
+            <div class="content-container">
+                <table id="statistical-data" class="GeneratedTable fill right">
+                    <tbody>
+                    <tr>
+                        <td class="right bottom">
+                            <div>8. STATISTICS</div>
+                        </td>
+                        <td class="right bottom center">
+                            <div>SCORE</div>
+                        </td>
+                        <td class="right bottom center">
+                            <div class="pad-right">×5</div>
+                        </td>
+                        <td class="bottom center">
+                            <div>DISTINGUISHING FEATURES</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom">
+                            <div>Strength (STR)</div>
+                        </td>
+                        <td class="right bottom"><input class="text-input" type="text" id="str-score" value=""/>
+                        </td>
+                        <td class="right bottom"><span id="str-x5"></span></td>
+                        <td class="bottom"><input class="text-input" type="text" id="str-feature" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom">
+                            <div>Constitution (CON)</div>
+                        </td>
+                        <td class="right bottom"><input class="text-input" type="text" id="con-score" value=""/>
+                        </td>
+                        <td class="right bottom"><span id="con-x5"></span></td>
+                        <td class="bottom"><input class="text-input" type="text" id="con-feature" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom">
+                            <div>Dexterity (DEX)</div>
+                        </td>
+                        <td class="right bottom"><input class="text-input" type="text" id="dex-score" value=""/>
+                        </td>
+                        <td class="right bottom"><span id="dex-x5"></span></td>
+                        <td class="bottom"><input class="text-input" type="text" id="dex-feature" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom">
+                            <div>Intelligence (INT)</div>
+                        </td>
+                        <td class="right bottom"><input class="text-input" type="text" id="int-score" value=""/>
+                        </td>
+                        <td class="right bottom"><span id="int-x5"></span></td>
+                        <td class="bottom"><input class="text-input" type="text" id="int-feature" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom">
+                            <div>Power (POW)</div>
+                        </td>
+                        <td class="right bottom"><input class="text-input" type="text" id="pow-score" value=""/>
+                        </td>
+                        <td class="right bottom"><span id="pow-x5"></span></td>
+                        <td class="bottom"><input class="text-input" type="text" id="pow-feature" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right">
+                            <div>Charisma (CHA)</div>
+                        </td>
+                        <td class="right"><input class="text-input" type="text" id="cha-score" value=""/>
+                        </td>
+                        <td class="right"><span id="cha-x5"></span></td>
+                        <td><input class="text-input" type="text" id="cha-feature" value=""/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table id="derived-attributes" class="top fill">
+                    <tbody>
+                    <tr>
+                        <td class="right bottom">
+                            <div>9. DERIVED ATTRIBUTES</div>
+                        </td>
+                        <td class="right bottom center">
+                            <div>MAXIMUM</div>
+                        </td>
+                        <td class="right bottom center">
+                            <div>CURRENT</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom">
+                            <div id="hp">Hit Points (HP)</div>
+                        </td>
+                        <td class="right bottom"><span id="hp-max"></span></td>
+                        <td class="right bottom"><input class="text-input" type="text" id="hp-curr" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom">
+                            <div id="wp">Willpower Points (WP)</div>
+                        </td>
+                        <td class="right bottom"><span id="wp-max"></span></td>
+                        <td class="right bottom"><input class="text-input" type="text" id="wp-curr" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom">
+                            <div id="san">Sanity Points (SAN)</div>
+                        </td>
+                        <td class="right bottom"><span id="san-max">99</span></td>
+                        <td class="right bottom"><input class="text-input" type="text" id="san-curr" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right bottom">
+                            <div id="bp">Breaking Point (BP)</div>
+                        </td>
+                        <td class="right bottom"><span id="bp-max"></span></td>
+                        <td class="right bottom"><input class="text-input" type="text" id="bp-curr" value=""/></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div id="physical-description-div" class="container half right no-wrap bottom right">
+                    <div>10. PHYSICAL DESCRIPTION</div>
+                    <div><textarea id="description" class="description" name="description"
+                                   rows="18" cols="6000"></textarea></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="psych-div" class="labeled-section fill">
+        <div class="label-container">
+            <div class="label-background">
+                <p class="label-text">Psychological Data</p>
+            </div>
+            <div class="content-container">
+                <div class="container fill">
+                    <table id="bonds" class="GeneratedTable fill right">
+                        <tbody>
+                        <tr>
+                            <th class="bottom right">11. BONDS</th>
+                            <th class="bottom">SCORE</th>
+                        </tr>
+                        <tr>
+                            <td class="right bottom"><input class="fill bond" type="text" id="bond-1"
+                                                            value=""/></td>
+                            <td class="bottom"><input type="text" class="bond-score" id="bond-1-score" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td class="right bottom"><input class="fill bond" type="text" id="bond-2"
+                                                            value=""/></td>
+                            <td class="bottom"><input type="text" class="bond-score" id="bond-2-score" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td class="right bottom"><input class="fill bond" type="text" id="bond-3"
+                                                            value=""/></td>
+                            <td class="bottom"><input type="text" class="bond-score" id="bond-3-score" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td class="right bottom"><input class="fill bond" type="text" id="bond-4"
+                                                            value=""/></td>
+                            <td class="bottom"><input type="text" class="bond-score" id="bond-4-score" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td class="right bottom"><input class="fillbond " type="text" id="bond-5"
+                                                            value=""/></td>
+                            <td class="bottom"><input type="text" class="bond-score" id="bond-5-score" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td class="right bottom"><input class="fill bond" type="text" id="bond-6"
+                                                            value=""/></td>
+                            <td class="bottom"><input type="text" class="bond-score" id="bond-6-score" value=""/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="right bottom">12. MOTIVATIONS AND MENTAL DISORDERS</div>
+                    <div class="right">
+                        <textarea id="motivations" name="motivations" rows="22" cols="75"
+                                  class="fill"></textarea>
+                    </div>
+                    <div class="top bottom right">13. INCIDENTS OF SAN LOSS WITHOUT GOING INSANE</div>
+                    <div class="right bottom">
+                        <span>Violence</span>
+                        <input type="checkbox" id="violence-1" name="violence-1" class="violence-check">
+                        <input type="checkbox" id="violence-2" name="violence-2" class="violence-check">
+                        <input type="checkbox" id="violence-3" name="violence-3" class="violence-check">
+                        <span id="violence-adapted" class="adapted" style="visibility: hidden;">ADAPTED</span>
+                        <span>Helplessness</span>
+                        <input type="checkbox" id="helplessness-1" name="helplessness-1" class="helplessness-check">
+                        <input type="checkbox" id="helplessness-2" name="helplessness-2" class="helplessness-check">
+                        <input type="checkbox" id="helplessness-3" name="helplessness-3" class="helplessness-check">
+                        <span id="helplessness-adapted" class="adapted" style="visibility: hidden;">ADAPTED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 <!--                                <table class="fill right bottom">-->
 <!--                                    <tbody>-->
 <!--                                    <tr>-->
@@ -266,105 +321,6 @@
 <!--            </div>-->
 <!--        </td>-->
 <!--    </tr>-->
-<!--    <tr id="psyc-and-stats" class="double-pad">-->
-<!--        <td>-->
-<!--                        <div class="label fill">-->
-<!--                            <div class="label-background">-->
-<!--                                <p class="label-text">Psychological Data</p>-->
-<!--                            </div>-->
-<!--                            <div class="table top right bottom">-->
-<!--                                <table id="psychological-data" class="GeneratedTable fill">-->
-<!--                                    <tbody>-->
-<!--                                    <tr>-->
-<!--                                        <td>-->
-<!--                                            <table id="bonds" class="GeneratedTable fill">-->
-<!--                                                <tbody>-->
-<!--                                                <tr>-->
-<!--                                                <tr>-->
-<!--                                                    <td class="right bottom" style="width: 325%;">-->
-<!--                                                        <div>11. BONDS</div>-->
-<!--                                                    </td>-->
-<!--                                                    <td class="bottom" style="width: 25%">-->
-<!--                                                        <div>SCORE</div>-->
-<!--                                                    </td>-->
-<!--                                                </tr>-->
-<!--                                                <tr>-->
-<!--                                                    <td class="right bottom"><input class="fill bond" type="text" id="bond-1"-->
-<!--                                                                                    value=""/></td>-->
-<!--                                                    <td class="bottom"><input type="text" class="bond-score" id="bond-1-score" value=""/></td>-->
-<!--                                                </tr>-->
-<!--                                                <tr>-->
-<!--                                                    <td class="right bottom"><input class="fill bond" type="text" id="bond-2"-->
-<!--                                                                                    value=""/></td>-->
-<!--                                                    <td class="bottom"><input type="text" class="bond-score" id="bond-2-score" value=""/></td>-->
-<!--                                                </tr>-->
-<!--                                                <tr>-->
-<!--                                                    <td class="right bottom"><input class="fill bond" type="text" id="bond-3"-->
-<!--                                                                                    value=""/></td>-->
-<!--                                                    <td class="bottom"><input type="text" class="bond-score" id="bond-3-score" value=""/></td>-->
-<!--                                                </tr>-->
-<!--                                                <tr>-->
-<!--                                                    <td class="right bottom"><input class="fill bond" type="text" id="bond-4"-->
-<!--                                                                                    value=""/></td>-->
-<!--                                                    <td class="bottom"><input type="text" class="bond-score" id="bond-4-score" value=""/></td>-->
-<!--                                                </tr>-->
-<!--                                                <tr>-->
-<!--                                                    <td class="right bottom"><input class="fillbond " type="text" id="bond-5"-->
-<!--                                                                                    value=""/></td>-->
-<!--                                                    <td class="bottom"><input type="text" class="bond-score" id="bond-5-score" value=""/></td>-->
-<!--                                                </tr>-->
-<!--                                                <tr>-->
-<!--                                                    <td class="right bottom"><input class="fill bond" type="text" id="bond-6"-->
-<!--                                                                                    value=""/></td>-->
-<!--                                                    <td class="bottom"><input type="text" class="bond-score" id="bond-6-score" value=""/></td>-->
-<!--                                                </tr>-->
-<!--                                                </tbody>-->
-<!--                                            </table>-->
-<!--                                            <table id="disorders" class="bottom fill">-->
-<!--                                                <tbody>-->
-<!--                                                <tr>-->
-<!--                                                    <td class="bottom">-->
-<!--                                                        <div>12. MOTIVATIONS AND MENTAL DISORDERS</div>-->
-<!--                                                    </td>-->
-<!--                                                </tr>-->
-<!--                                                <tr>-->
-<!--                                                    <td><textarea id="motivations" name="motivations" rows="22" cols="75"-->
-<!--                                                                  class="fill"></textarea></td>-->
-<!--                                                </tr>-->
-<!--                                                </tbody>-->
-<!--                                            </table>-->
-<!--                                            <table id="san-loss" class="fill">-->
-<!--                                                <tbody>-->
-<!--                                                <tr>-->
-<!--                                                    <td class="bottom fill">-->
-<!--                                                        <div>13. INCIDENTS OF SAN LOSS WITHOUT GOING INSANE</div>-->
-<!--                                                    </td>-->
-<!--                                                </tr>-->
-<!--                                                <tr>-->
-<!--                                                    <td>-->
-<!--                                                        <span>Violence</span>-->
-<!--                                                        <input type="checkbox" id="violence-1" name="violence-1" class="violence-check">-->
-<!--                                                        <input type="checkbox" id="violence-2" name="violence-2" class="violence-check">-->
-<!--                                                        <input type="checkbox" id="violence-3" name="violence-3" class="violence-check">-->
-<!--                                                        <span id="violence-adapted" class="adapted" style="visibility: hidden;">ADAPTED</span>-->
-<!--                                                        <span>Helplessness</span>-->
-<!--                                                        <input type="checkbox" id="helplessness-1" name="helplessness-1" class="helplessness-check">-->
-<!--                                                        <input type="checkbox" id="helplessness-2" name="helplessness-2" class="helplessness-check">-->
-<!--                                                        <input type="checkbox" id="helplessness-3" name="helplessness-3" class="helplessness-check">-->
-<!--                                                        <span id="helplessness-adapted" class="adapted" style="visibility: hidden;">ADAPTED</span>-->
-<!--                                                    </td>-->
-<!--                                                </tr>-->
-<!--                                                </tbody>-->
-<!--                                            </table>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    </tbody>-->
-<!--                                </table>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </td>-->
-<!--        </td>-->
-<!--    </tr>-->
 <!--    <tr id="skills-row"><td>-->
 <!--        <div id="skills" class="label double-pad">-->
 <!--            <div class="label-background">-->
@@ -382,12 +338,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="accounting" class="skill" base="10" prof-base="10"-->
 <!--                                               value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -399,12 +355,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="history" class="skill" base="10" prof-base="10"-->
 <!--                                               value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -425,12 +381,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="alertness" class="skill" base="20" prof-base="20"-->
 <!--                                               value="20"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -444,12 +400,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="humint" class="skill" base="10" prof-base="10"-->
 <!--                                               value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -470,12 +426,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="anthropology" class="skill" base="0" prof-base="0"-->
 <!--                                               value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -489,11 +445,11 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="law" class="skill" base="0" prof-base="0" value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -507,13 +463,13 @@
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
 <!--                                    <td class="skill-td-child">-->
-<!--                                        <img alt="minus" class="minus dont-print" src="resources/minus.png">-->
+<!--                                        <img alt="minus" class="minus" src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input class="other-skill" type="text"value=""/>-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
-<!--                                        <img alt="plus" class="plus dont-print" src="resources/plus.png">-->
+<!--                                        <img alt="plus" class="plus" src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
@@ -531,12 +487,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="archeology" class="skill" base="0" prof-base="0"-->
 <!--                                               value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -550,12 +506,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="medicine" class="skill" base="0" prof-base="0"-->
 <!--                                               value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -572,12 +528,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="artillery" class="skill" base="0" prof-base="0"-->
 <!--                                               value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -591,12 +547,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="melee-weapons" class="skill" base="30" prof-base="30"-->
 <!--                                               value="30"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -618,12 +574,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="athletics" class="skill" base="30" prof-base="30"-->
 <!--                                               value="30"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -637,12 +593,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="navigate" class="skill" base="10" prof-base="10"-->
 <!--                                               value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -659,12 +615,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="bureaucracy" class="skill" base="10" prof-base="10"-->
 <!--                                               value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -678,12 +634,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="occult" class="skill" base="10" prof-base="10"-->
 <!--                                               value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -706,12 +662,12 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="computer-science" class="skill" base="0" prof-base="0"-->
 <!--                                               value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -725,11 +681,11 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print" src="resources/minus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus" src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="persuade" class="skill" base="20" prof-base="20"-->
 <!--                                               value="20"/></td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print" src="resources/plus.png"></td>-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus" src="resources/plus.png"></td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
 <!--                            </table>-->
@@ -746,14 +702,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png"></td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="criminology" class="skill" base="10"-->
 <!--                                               prof-base="10" value="10"/>-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
-<!--                                        <img alt="plus" class="plus dont-print" src="resources/plus.png">-->
+<!--                                        <img alt="plus" class="plus" src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
@@ -769,14 +725,14 @@
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
 <!--                                    <td class="skill-td-child">-->
-<!--                                        <img alt="minus" class="minus dont-print" src="resources/minus.png">-->
+<!--                                        <img alt="minus" class="minus" src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="pharmacy" class="skill" base="0"-->
 <!--                                               prof-base="0" value="0"/>-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
-<!--                                        <img alt="plus" class="plus dont-print" src="resources/plus.png">-->
+<!--                                        <img alt="plus" class="plus" src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
@@ -800,7 +756,7 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
@@ -808,7 +764,7 @@
 <!--                                               base="0" prof-base="0" value="0"/>-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
-<!--                                        <img alt="plus" class="plus dont-print" src="resources/plus.png">-->
+<!--                                        <img alt="plus" class="plus" src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
 <!--                                </tbody>-->
@@ -824,14 +780,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="psychotherapy" class="skill"-->
 <!--                                               base="10" prof-base="10" value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -851,14 +807,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="disguise" class="skill" base="10"-->
 <!--                                               prof-base="10" value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -875,14 +831,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="ride" class="skill" base="10"-->
 <!--                                               prof-base="10" value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -910,13 +866,13 @@
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
 <!--                                    <td class="skill-td-child">-->
-<!--                                        <img alt="minus" class="minus dont-print" src="resources/minus.png">-->
+<!--                                        <img alt="minus" class="minus" src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="dodge" class="skill" base="30"-->
 <!--                                               prof-base="30" value="30"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -933,14 +889,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="search" class="skill" base="20"-->
 <!--                                               prof-base="20" value="20"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -959,14 +915,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="drive" class="skill" base="10"-->
 <!--                                               prof-base="10" value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -983,14 +939,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="sigint" class="skill" base="0"-->
 <!--                                               prof-base="0" value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1017,14 +973,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="firearms" class="skill" base="20"-->
 <!--                                               prof-base="20" value="20"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1041,14 +997,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="stealth" class="skill" base="10"-->
 <!--                                               prof-base="10" value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1067,14 +1023,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="first-aid" class="skill"-->
 <!--                                               base="10" prof-base="10" value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1091,14 +1047,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="surgery" class="skill" base="0"-->
 <!--                                               prof-base="0" value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1125,14 +1081,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="forensics" class="skill" base="0"-->
 <!--                                               prof-base="0" value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1149,14 +1105,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="survival" class="skill" base="10"-->
 <!--                                               prof-base="10" value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1176,14 +1132,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="heavy-machinery" class="skill"-->
 <!--                                               base="10" prof-base="10" value="10"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1200,14 +1156,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="swim" class="skill" base="20"-->
 <!--                                               prof-base="20" value="20"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1233,14 +1189,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="heavy-weapons" class="skill"-->
 <!--                                               base="0" prof-base="0" value="0"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1257,14 +1213,14 @@
 <!--                            <table class="skill-table fill">-->
 <!--                                <tbody>-->
 <!--                                <tr class="skill-tr">-->
-<!--                                    <td class="skill-td-child"><img alt="minus" class="minus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="minus" class="minus"-->
 <!--                                                                    src="resources/minus.png">-->
 <!--                                    </td>-->
 <!--                                    <td class="skill-td-child">-->
 <!--                                        <input type="text" id="unarmed-combat" class="skill" base="40"-->
 <!--                                               prof-base="40" value="40"/>-->
 <!--                                    </td>-->
-<!--                                    <td class="skill-td-child"><img alt="plus" class="plus dont-print"-->
+<!--                                    <td class="skill-td-child"><img alt="plus" class="plus"-->
 <!--                                                                    src="resources/plus.png">-->
 <!--                                    </td>-->
 <!--                                </tr>-->
@@ -1278,7 +1234,7 @@
 <!--                </table>-->
 <!--            </div>-->
 <!--        </div>-->
-<!--        <div class="large-font dont-print red"><span id="numIncrease">8</span> skill increases remaining</div>-->
+<!--        <div class="large-font red"><span id="numIncrease">8</span> skill increases remaining</div>-->
 <!--        <div>Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill-->
 <!--            and erase all checks.-->
 <!--        </div>-->
@@ -1378,7 +1334,7 @@
 <!--                                </tr>-->
 <!--                                <tr id="weapon-row-a" class="weapon-row">-->
 <!--                                    <td class="weapon-select-row">-->
-<!--                                        <div>(a)<select class="weapon-select dont-print" name="weapon-select" id="weapon-a"></select></div>-->
+<!--                                        <div>(a)<select class="weapon-select" name="weapon-select" id="weapon-a"></select></div>-->
 <!--                                    </td>-->
 <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
 <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
@@ -1391,7 +1347,7 @@
 <!--                                </tr>-->
 <!--                                <tr id="weapon-row-b" class="weapon-row">-->
 <!--                                    <td class="weapon-select-row">-->
-<!--                                        <div>(b)<select class="weapon-select dont-print" name="weapon-select" id="weapon-b"></select></div>-->
+<!--                                        <div>(b)<select class="weapon-select" name="weapon-select" id="weapon-b"></select></div>-->
 <!--                                    </td>-->
 <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
 <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
@@ -1404,7 +1360,7 @@
 <!--                                </tr>-->
 <!--                                <tr id="weapon-row-c" class="weapon-row">-->
 <!--                                    <td class="weapon-select-row">-->
-<!--                                        <div>(c)<select class="weapon-select dont-print" name="weapon-select" id="weapon-c"></select></div>-->
+<!--                                        <div>(c)<select class="weapon-select" name="weapon-select" id="weapon-c"></select></div>-->
 <!--                                    </td>-->
 <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
 <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
@@ -1417,7 +1373,7 @@
 <!--                                </tr>-->
 <!--                                <tr id="weapon-row-d" class="weapon-row">-->
 <!--                                    <td class="weapon-select-row">-->
-<!--                                        <div>(d)<select class="weapon-select dont-print" name="weapon-select" id="weapon-d"></select></div>-->
+<!--                                        <div>(d)<select class="weapon-select" name="weapon-select" id="weapon-d"></select></div>-->
 <!--                                    </td>-->
 <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
 <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
@@ -1430,7 +1386,7 @@
 <!--                                </tr>-->
 <!--                                <tr id="weapon-row-e" class="weapon-row">-->
 <!--                                    <td class="weapon-select-row">-->
-<!--                                        <div>(e)<select class="weapon-select dont-print" name="weapon-select" id="weapon-e"></select></div>-->
+<!--                                        <div>(e)<select class="weapon-select" name="weapon-select" id="weapon-e"></select></div>-->
 <!--                                    </td>-->
 <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
 <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
@@ -1443,7 +1399,7 @@
 <!--                                </tr>-->
 <!--                                <tr id="weapon-row-f" class="weapon-row">-->
 <!--                                    <td class="weapon-select-row">-->
-<!--                                        <div>(f)<select class="weapon-select dont-print" name="weapon-select" id="weapon-f"></select></div>-->
+<!--                                        <div>(f)<select class="weapon-select" name="weapon-select" id="weapon-f"></select></div>-->
 <!--                                    </td>-->
 <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
 <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
@@ -1456,7 +1412,7 @@
 <!--                                </tr>-->
 <!--                                <tr id="weapon-row-g" class="weapon-row">-->
 <!--                                    <td class="weapon-select-row">-->
-<!--                                        <div>(g)<select class="weapon-select dont-print" name="weapon-select" id="weapon-g"></select></div>-->
+<!--                                        <div>(g)<select class="weapon-select" name="weapon-select" id="weapon-g"></select></div>-->
 <!--                                    </td>-->
 <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
 <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
