@@ -503,9 +503,12 @@ function setSkill(key, value) {
 }
 
 function addOtherSkill(skillName, skillValue) {
+    console.log(skillName + ": " + skillValue)
     const skillNames = document.getElementsByClassName("other-skill-name");
     const skills = document.getElementsByClassName("other-skill");
-    for (i = 0; i < skillNames.length; i++) {
+    console.log(skillNames.length);
+    for (let i = 0; i < skillNames.length; i++) {
+        console.log("skillNames[i].value: " + skillNames[i].value)
         if (skillNames[i].value === "") {
             skillNames[i].value = skillName.toTitleCase();
             skills[i].value = skillValue;
@@ -1116,29 +1119,29 @@ function createProfessionWrapper(professionName, skillLabelText, descriptionText
 }
 
 function updateSkillIncreaseButtons() {
-    let skillTrs = document.getElementsByClassName("skill-tr");
+    let skillDivs = document.getElementsByClassName("skill-container");
     let numIncreases = 0;
-    for(let i =0; i < skillTrs.length; i ++) {
-        let skills = skillTrs[i].getElementsByClassName("skill");
+    for(let i =0; i < skillDivs.length; i ++) {
+        let skills = skillDivs[i].getElementsByClassName("skill");
         let skill;
         if(skills.length === 0) {
-            skill = skillTrs[i].getElementsByClassName("other-skill")[0];
+            skill = skillDivs[i].getElementsByClassName("other-skill")[0];
         }
         else {
             skill = skills[0]
         }
-        let minus = skillTrs[i].getElementsByClassName("minus")[0];
-        let plus = skillTrs[i].getElementsByClassName("plus")[0];
+        let minus = skillDivs[i].getElementsByClassName("minus")[0];
+        let plus = skillDivs[i].getElementsByClassName("plus")[0];
         let value = parseInt(skill.value);
         let base = parseInt(skill.getAttribute("prof-base"));
 
         if(skill.value === "") {
-            minus.style = "display: none;";
-            plus.style = "display: none;";
+            minus.style = "visibility: hidden;";
+            plus.style = "visibility: hidden;";
             continue;
         }
         if(value === base) {
-            minus.style = "display: none;"
+            minus.style = "visibility: hidden;"
         }
         else  {
             minus.style = "";
@@ -1146,7 +1149,7 @@ function updateSkillIncreaseButtons() {
         }
         //No skill can be greater than 80 so disable the 'add 20 points' button if it's above 60
         if(value > 60) {
-            plus.style = "display: none;"
+            plus.style = "visibility: hidden;"
         }
         else {
             plus.style = "";
@@ -1155,7 +1158,7 @@ function updateSkillIncreaseButtons() {
     if(numIncreases >= 8) {
         let pluses = document.getElementsByClassName("plus");
         for(let i =0; i < pluses.length; i ++) {
-            pluses[i].style = "display: none;"
+            pluses[i].style = "visibility: hidden;"
         }
     }
     document.getElementById("numIncrease").innerText = (8-numIncreases) + "";
@@ -1191,6 +1194,7 @@ function addToSkill(skill, change) {
     let skillInputs = parent.getElementsByClassName("skill");
     console.log(parent);
     console.log(skillInputs);
+    console.log(parent.getElementsByClassName("flex-row"));
     let skillInput;
     if(skillInputs.length > 0) {
         skillInput = skillInputs[0]
@@ -1202,11 +1206,6 @@ function addToSkill(skill, change) {
     skillInput.value = parseInt(skillInput.value) + change;
 }
 
-function createNameListener() {
-    document.getElementById("random-name").addEventListener("click", function() {
-        randomName();
-    })
-}
 
 function setNames(nationality) {
     if(names.has(nationality)) {
@@ -1565,8 +1564,12 @@ function getAOrAn(input) {
 function removeInvisiblePluses(pluses) {
     let visiblePluses = [];
     for(let i = 0; i < pluses.length; i ++) {
+        let plus = pluses[i];
+        let style = pluses[i].style;
         console.log("Plus " + pluses[i]);
-        if(pluses[i].style.display === "none") {
+        console.log("Plus style " + pluses[i].style.visibility);
+        console.log(pluses[i].style.display === "");
+        if(pluses[i].style.visibility === "hidden") {
             console.log("Remove plus");
         }
         else {

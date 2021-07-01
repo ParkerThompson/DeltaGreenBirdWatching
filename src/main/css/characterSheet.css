@@ -214,6 +214,11 @@ tr.row td:last-child {
 }
 
 .half {
+    width: 50%;
+}
+
+
+.flex-half {
     flex: 50%;
 }
 
@@ -389,6 +394,7 @@ tbody {
 
 .weapon-select {
     width: 100%;
+    min-width: 100px;
 }
 
 .ninety {
@@ -586,7 +592,7 @@ tbody {
     min-width: 140px;
 }
 
-.other-skill-name {
+.other-skill-div {
     /*max-width: 200px;*/
     flex-grow: 3;
     width: 50%;
@@ -623,4 +629,8 @@ tbody {
     max-height: 400px;
     flex-wrap: wrap;
     width: 100%;
+}
+
+#home-and-special-training {
+    min-height: 200px;
 }

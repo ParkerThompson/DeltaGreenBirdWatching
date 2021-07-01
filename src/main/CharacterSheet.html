@@ -3,32 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Delta Green Character Creator</title>
-    <link rel="stylesheet" href="css/characterSheet.css"/>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<link rel="stylesheet" href="css/characterSheet.css"/>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
 
-    <script type="text/javascript" src="https://unpkg.com/html2canvas@1.0.0-rc.7/dist/html2canvas.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script type="text/javascript" src="js/CharacterSheet.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            createProfessionWrappers();
-            setScoreListeners();
-            setHPListener();
-            setPowListener();
-            setAdaptedListeners();
-            createPrintButton();
-            setModalListener();
-            updateSkillIncreaseButtons();
-            setSkillListeners();
-            setPlusListeners();
-            setMinusListeners();
-            createWeaponSelect();
-            createNameListener();
-            parseNames();
-            setRandomListener();
-        });
-    </script>
+<script type="text/javascript" src="https://unpkg.com/html2canvas@1.0.0-rc.7/dist/html2canvas.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script type="text/javascript" src="js/CharacterSheet.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        createProfessionWrappers();
+        setScoreListeners();
+        setHPListener();
+        setPowListener();
+        setAdaptedListeners();
+        createPrintButton();
+        setModalListener();
+        updateSkillIncreaseButtons();
+        setSkillListeners();
+        setPlusListeners();
+        setMinusListeners();
+        createWeaponSelect();
+        parseNames();
+        setRandomListener();
+    });
+</script>
 </head>
 <body>
 <!-- The Modal -->
@@ -57,22 +56,22 @@
                 <p class="label-text">Personal Data</p>
             </div>
             <div class="content-container">
-                <div id="name-div" class="half column-content">
+                <div id="name-div" class="flex-half column-content">
                     <div>1. LAST NAME, FIRST NAME (AND ALIAS OR CODENAME IF APPLICABLE)</div>
                     <div><input class="text-input" type="text" id="name" value=""/></div>
                 </div>
-                <div id="profession-div" class="column-content half">
+                <div id="profession-div" class="column-content flex-half">
                     <div>2. PROFESSION (RANK IF APPLICABLE)</div>
                     <div id="profession-value" class="flex-row align-left">
                         <input type="button" class="professionBtn align-left" id="professions" name="anthropologist" value="Choose Profession"/>
-                        <input type="text" class="half bottom pad-right" id="profession"/>
+                        <input type="text" class="flex-half bottom pad-right" id="profession"/>
                     </div>
                 </div>
-                <div id="employer-div" class="column-content half">
+                <div id="employer-div" class="column-content flex-half">
                     <span>3. EMPLOYER</span>
                     <span><input class="text-input" type="text" id="employer" value=""/></span>
                 </div>
-                <div id="nationality-div" class="column-content half">
+                <div id="nationality-div" class="column-content flex-half">
                     <div>4. NATIONALITY</div>
                     <div><input class="text-input" type="text" id="nationality" value=""/></div>
                 </div>
@@ -223,7 +222,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <div id="physical-description-div" class="container half right no-wrap bottom right">
+                <div id="physical-description-div" class="container flex-half right no-wrap bottom right">
                     <div>10. PHYSICAL DESCRIPTION</div>
                     <div><textarea id="description" class="description" name="description"
                                    rows="18" cols="6000"></textarea></div>
@@ -307,65 +306,91 @@
                 <div class="column-content skills">
                     <div class="skill-container">
                         <div class="flex-row">
-                            <input type="checkbox" id="accounting-check" name="accounting-check">
+                            <input
+                                    title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="accounting-check" name="accounting-check"/>
                         </div>
-                        <div class="flex-row skill-name" title="The study of finance and business. Use it to sift through financial records for anomalies, such as a hidden bank account or money laundering.">Accounting (10%)</div>
+                        <input class="flex-row skill-name" type="text"
+                               title="The study of finance and business. Use it to sift through financial records for anomalies, such as a hidden bank account or money laundering." value="Accounting (10%)"/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="accounting" class="skill" base="10" prof-base="10" value="10"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="alertness-check" name="alertness"></div>
-                        <div class="flex-row skill-name" title="Alertness detects danger. Use it to hear a safety being switched off, to understand the mumbling on the other side of a wall, to spot the bulge of a pistol hidden under a jacket, or to catch someone who is trying to escape notice using Stealth.">Alertness (20%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="alertness-check" name="alertness"/>
+                        </div>
+                        <input class="flex-row skill-name" type="text" value="Alertness (20%)"
+                               title="Alertness detects danger. Use it to hear a safety being switched off, to understand the mumbling on the other side of a wall, to spot the bulge of a pistol hidden under a jacket, or to catch someone who is trying to escape notice using Stealth."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="alertness" class="skill" base="20" prof-base="20" value="20"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="anthropology-check" name="anthropology"></div>
-                        <div class="flex-row skill-name" title="The study of living human cultures. Use it to understand morals, religious beliefs, customs, and mores, and to identify (but not translate) obscure languages. Where History is about the distant past and Archeology studies physical remains, Anthropology is about the behaviors of living cultures and how they relate to each other and the past.">Anthropology (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="anthropology-check" name="anthropology">
+                        </div>
+                        <input class="flex-row skill-name" type="text" value="Anthropology (0%)"
+                               title="The study of living human cultures. Use it to understand morals, religious beliefs, customs, and mores, and to identify (but not translate) obscure languages. Where History is about the distant past and Archeology studies physical remains, Anthropology is about the behaviors of living cultures and how they relate to each other and the past."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="anthropology" class="skill" base="0" prof-base="0" value="0"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="archeology-check" name="archeology"></div>
-                        <div class="flex-row skill-name" title="The study of the physical remains of human cultures. Use it to analyze the way of life of a people from ruins, to determine the age of an artifact, to tell a genuine artifact from a fake, and to identify (but not translate) human languages. Where Anthropology is about living cultures and History is a broad study of the past, Archeology discerns meaning from the remains of peoples long dead.">Archeology (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="archeology-check" name="archeology"/>
+                        </div>
+                        <input class="flex-row skill-name" type="text" value="Archeology (0%)"
+                               title="The study of the physical remains of human cultures. Use it to analyze the way of life of a people from ruins, to determine the age of an artifact, to tell a genuine artifact from a fake, and to identify (but not translate) human languages. Where Anthropology is about living cultures and History is a broad study of the past, Archeology discerns meaning from the remains of peoples long dead."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="archeology" class="skill" base="0" prof-base="0" value="0"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="artillery-check" name="artillery"></div>
-                        <div class="flex-row skill-name" title="Safe and accurate use of mortars, missiles, howitzers, tank cannons, and other heavy gunnery. Use it to destroy troops or a hard target in battle.">Artillery (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="artillery-check" name="artillery"/>
+                        </div>
+                        <input class="flex-row skill-name" type="text"
+                               title="Safe and accurate use of mortars, missiles, howitzers, tank cannons, and other heavy gunnery. Use it to destroy troops or a hard target in battle." value="Artillery (0%)"/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="artillery" class="skill" base="0" prof-base="0" value="0"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="athletics-check" name="athletics"></div>
-                        <div class="flex-row skill-name" title="Your Agent trains to get the most out of his or her strength and agility. Strength and Dexterity cover raw physical power and manual dexterity; the Athletics skill represents long practice doing things like running, jumping, climbing, and throwing. Use Athletics to:» Outrun someone. » Jump an intimidating gap.» Climb in a crisis. » Land safely in a fall of up to three meters.» Hit a target with a thrown knife or put a grenade exactly on target. » Catch something without warning, such as intercepting a thrown grenade.">Athletics (30%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="athletics-check" name="athletics">
+                        </div>
+                        <input class="flex-row skill-name" type="text" value="Athletics (30%)"
+                               title="Your Agent trains to get the most out of his or her strength and agility. Strength and Dexterity cover raw physical power and manual dexterity; the Athletics skill represents long practice doing things like running, jumping, climbing, and throwing. Use Athletics to:» Outrun someone. » Jump an intimidating gap.» Climb in a crisis. » Land safely in a fall of up to three meters.» Hit a target with a thrown knife or put a grenade exactly on target. » Catch something without warning, such as intercepting a thrown grenade."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="athletics" class="skill" base="30" prof-base="30" value="30"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="bureaucracy-check" name="accounting"></div>
-                        <div class="flex-row skill-name" title="Manipulating the rules and personalities that govern an organization. Use it to locate and borrow supplies, convince an official to provide information or resources, gain credentials for access to a restricted area, or keep the hospital from delving too deeply into the source of your injuries.">Bureaucracy (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="bureaucracy-check" name="accounting"/>
+                        </div>
+                        <input class="flex-row skill-name" type="text" value="Bureaucracy (10%)"
+                               title="Manipulating the rules and personalities that govern an organization. Use it to locate and borrow supplies, convince an official to provide information or resources, gain credentials for access to a restricted area, or keep the hospital from delving too deeply into the source of your injuries."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="bureaucracy" class="skill" base="10" prof-base="10" value="10"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="computer-science-check" name="computer-science"></div>
-                        <div class="flex-row skill-name" title="Deep knowledge of computers, computer systems, and the programs that run them. Use it to recover erased or encrypted data, protect documents from easy access, implant software to hijack a computer system, clone a phone’s SIM card, identify flaws in a security system, impersonate users, or falsify data. It is often complemented by Craft skills like Electrician and Microelectronics.">Computer Science (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="computer-science-check" name="computer-science"/>
+                        </div>
+                        <input class="flex-row skill-name" type="text" value="Computer Science (0%)"
+                               title="Deep knowledge of computers, computer systems, and the programs that run them. Use it to recover erased or encrypted data, protect documents from easy access, implant software to hijack a computer system, clone a phone’s SIM card, identify flaws in a security system, impersonate users, or falsify data. It is often complemented by Craft skills like Electrician and Microelectronics."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="computer-science" class="skill" base="0" prof-base="0" value="0"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="criminology-check" name="criminology"></div>
-                        <div class="flex-row skill-name" title="Knowledge of criminal and conspiratorial behavior. Use it to identify and predict criminal behavior, deduce relationships between members of a conspiracy, analyze criminal activity, examine witness statements, or know whom to talk to in the criminal underground.">Criminology (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="criminology-check" name="criminology"/>
+                        </div>
+                        <input class="flex-row skill-name" type="text" value="Criminology (10%)"
+                               title="Knowledge of criminal and conspiratorial behavior. Use it to identify and predict criminal behavior, deduce relationships between members of a conspiracy, analyze criminal activity, examine witness statements, or know whom to talk to in the criminal underground."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="criminology" class="skill" base="10"
@@ -373,9 +398,12 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="demolitions-check"
-                                                     name="demolitions"></div>
-                        <div class="flex-row skill-name" title="Safe handling of explosives in a crisis. Use it to disarm a bomb, set a charge to destroy a target remotely, jury rig an explosive from supplies at the hardware store, or analyze a blast to determine exactly what caused it. Failure when handling a bomb means your Agent needs more time. If it’s a crisis that requires a roll, a fumble means an accidental explosion.">Demolitions (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="demolitions-check"
+                                name="demolitions"/>
+                            <input class="flex-row skill-name" type = "text" value="Demolitions (0%)"
+                                   title="Safe handling of explosives in a crisis. Use it to disarm a bomb, set a charge to destroy a target remotely, jury rig an explosive from supplies at the hardware store, or analyze a blast to determine exactly what caused it. Failure when handling a bomb means your Agent needs more time. If it’s a crisis that requires a roll, a fumble means an accidental explosion."/>
+                        </div>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="demolitions" class="skill"
@@ -383,15 +411,19 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="disguise-check" name="disguise"></div>
-                        <div  class="flex-row skill-name" title="Alter your Agent’s appearance, voice, posture, body language, and mannerisms to avoid recognition with out drawing attention.">Disguise (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="disguise-check" name="disguise"></div>
+                        <input class="flex-row skill-name" type = "text" value="Disguise (10%)"
+                               title="Alter your Agent’s appearance, voice, posture, body language, and mannerisms to avoid recognition with out drawing attention."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="disguise" class="skill" base="10" prof-base="10" value="10"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="dodge-check" name="dodge"></div>
-                        <div class="flex-row skill-name" title="Evading danger through instinct and reflexes. Use Dodge to avoid an attack. Against firearms and explosives, Dodge is only useful to get to cover.">Dodge (30%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="dodge-check" name="dodge"></div>
+                        <input class="flex-row skill-name" type = "text" value="Dodge (30%)"
+                               title="Evading danger through instinct and reflexes. Use Dodge to avoid an attack. Against firearms and explosives, Dodge is only useful to get to cover."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="dodge" class="skill" base="30"
                                prof-base="30" value="30"/>
@@ -399,8 +431,10 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="drive-check" name="drive"></div>
-                        <div class="flex-row skill-name" title="Handling an automobile or a motorcycle safely in a crisis. Unless the Handler says otherwise, every Agent has a driver’s license and can drive a car safely in normal conditions. Use this skill to keep a vehicle safe in a high speed pursuit or on dangerous terrain.">Drive (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="drive-check" name="drive"></div>
+                        <input class="flex-row skill-name" type = "text" value="Drive (10%)"
+                               title="Handling an automobile or a motorcycle safely in a crisis. Unless the Handler says otherwise, every Agent has a driver’s license and can drive a car safely in normal conditions. Use this skill to keep a vehicle safe in a high speed pursuit or on dangerous terrain."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="drive" class="skill" base="10"
@@ -409,9 +443,11 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="firearms-check"
-                                                     name="firearms"></div>
-                        <div class="flex-row skill-name" title="Safe and accurate shooting with small arms in combat. Use it to hit a target despite the adrenaline, panic, and shock of violence interfering with hand eye coordination.">Firearms (20%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="firearms-check"
+                                name="firearms"></div>
+                        <input class="flex-row skill-name" type = "text" value="Firearms (20%)"
+                               title="Safe and accurate shooting with small arms in combat. Use it to hit a target despite the adrenaline, panic, and shock of violence interfering with hand eye coordination."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="firearms" class="skill" base="20"
@@ -420,9 +456,11 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="first-aid-check"
-                                                     name="first-aid"></div>
-                        <div class="flex-row skill-name" title="The initial treatment and stabilization of of injuries. Use it to help a character recover lost Hit Points. By comparison, Surgery corrects a severe wound and Medicine ensures longterm recovery.">First Aid (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="first-aid-check"
+                                name="first-aid"></div>
+                        <input class="flex-row skill-name" type = "text" value="First Aid (10%)"
+                               title="The initial treatment and stabilization of of injuries. Use it to help a character recover lost Hit Points. By comparison, Surgery corrects a severe wound and Medicine ensures longterm recovery."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="first-aid" class="skill"
@@ -431,9 +469,11 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="forensics-check"
-                                                     name="forensics"></div>
-                        <div class="flex-row skill-name" title="Gathering detailed information and evidence using forensic equipment. Use it to record biometric data, determine details about a weapon used or the accelerant that started a fire, discern crucial clues that an ordinary searcher wouldn’t recognize, clean a scene of incriminating evidence, or collect, analyze, and compare fingerprints and DNA samples.">Forensics (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="forensics-check"
+                                name="forensics"></div>
+                        <input class="flex-row skill-name" type = "text" value="Forensics (0%)"
+                               title="Gathering detailed information and evidence using forensic equipment. Use it to record biometric data, determine details about a weapon used or the accelerant that started a fire, discern crucial clues that an ordinary searcher wouldn’t recognize, clean a scene of incriminating evidence, or collect, analyze, and compare fingerprints and DNA samples."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="forensics" class="skill" base="0"
@@ -442,9 +482,11 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="heavy-machinery-check"
-                                                     name="heavy-machinery"></div>
-                        <div class="flex-row skill-name" title="Safe operation of a tractor, crane, bulldozer, tank, heavy truck, or other big machine in a crisis">Heavy Machinery (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="heavy-machinery-check"
+                                name="heavy-machinery"></div>
+                        <input class="flex-row skill-name" type = "text" value="Heavy Machinery (10%)"
+                               title="Safe operation of a tractor, crane, bulldozer, tank, heavy truck, or other big machine in a crisis"/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="heavy-machinery" class="skill"
@@ -453,9 +495,11 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="heavy-weapons-check"
-                                                     name="heavy-weapons"></div>
-                        <div class="flex-row skill-name" title="Safe and accurate use of man portable heavy ordnance such as machine guns and rocket launchers. Use Heavy Weapons to suppress enemies, or destroy a vehicle in combat.">Heavy Weapons (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="heavy-weapons-check"
+                                name="heavy-weapons"></div>
+                        <input class="flex-row skill-name" type = "text" value="Heavy Weapons (0%)"
+                               title="Safe and accurate use of man portable heavy ordnance such as machine guns and rocket launchers. Use Heavy Weapons to suppress enemies, or destroy a vehicle in combat."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="heavy-weapons" class="skill"
@@ -464,85 +508,101 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="history-check" name="history"></div>
-                        <div class="flex-row skill-name" title="Uncovering facts and theories about human antiquity. Use it to remember or find a key fact about the distant past, recognize an obscure reference, or comb a database or library for information that nobody without your deep education could find. While Anthropology is about living cultures and Archeology studies the meaning of ancient relics, History is a broad study of humanity.">History (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="history-check" name="history"></div>
+                        <input class="flex-row skill-name" type = "text" value="History (10%)"
+                               title="Uncovering facts and theories about human antiquity. Use it to remember or find a key fact about the distant past, recognize an obscure reference, or comb a database or library for information that nobody without your deep education could find. While Anthropology is about living cultures and Archeology studies the meaning of ancient relics, History is a broad study of humanity."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="history" class="skill" base="10" prof-base="10" value="10"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="humint-check" name="humint"></div>
-                        <div class="flex-row skill-name" title="Human intelligence. This obtains information about a subject—especially information the subject would rather conceal—through observation, conversation, or examining patterns of behavior and relationships. Use HUMINT to recognize signs of dishonesty from verbal cues and body language, gauge attitude and intentions, cultivate sources of information about a subject, determine what it would take to get a subject to cooperate, or recognize clues of what a subject wants to conceal. HUMINT can notice signs of mental illness, but Psychotherapy would be needed to diagnose and treat a specific malady. If your Agent also has Criminology, HUMINT can be used to compile a psychological profile to help find a subject. A subject who deliberately tries to deceive your Agent can attempt a Persuade test to oppose your Agent’s HUMINT.">HUMINT (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="humint-check" name="humint"></div>
+                        <input class="flex-row skill-name" type = "text" value="HUMINT (10%)"
+                               title="Human intelligence. This obtains information about a subject—especially information the subject would rather conceal—through observation, conversation, or examining patterns of behavior and relationships. Use HUMINT to recognize signs of dishonesty from verbal cues and body language, gauge attitude and intentions, cultivate sources of information about a subject, determine what it would take to get a subject to cooperate, or recognize clues of what a subject wants to conceal. HUMINT can notice signs of mental illness, but Psychotherapy would be needed to diagnose and treat a specific malady. If your Agent also has Criminology, HUMINT can be used to compile a psychological profile to help find a subject. A subject who deliberately tries to deceive your Agent can attempt a Persuade test to oppose your Agent’s HUMINT."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="humint" class="skill" base="10" prof-base="10" value="10"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="law-check" name="law"></div>
-                        <div class="flex-row skill-name" title="Using laws and courts to your Agent’s advantage. Use it to get your Agent’s way in court, to determine the correct procedures for handling evidence in a prosecution or a civil case (and how to undermine them), to bullshit your Agent’s way out of legal trouble, or to minimize legal risks. The Law skill applies to your Agent’s native country; using it with another country’s laws requires special training.">Law (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="law-check" name="law"></div>
+                        <input class="flex-row skill-name" type = "text" value="Law (0%)"
+                               title="Using laws and courts to your Agent’s advantage. Use it to get your Agent’s way in court, to determine the correct procedures for handling evidence in a prosecution or a civil case (and how to undermine them), to bullshit your Agent’s way out of legal trouble, or to minimize legal risks. The Law skill applies to your Agent’s native country; using it with another country’s laws requires special training."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="law" class="skill" base="0" prof-base="0" value="0"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="medicine-check" name="medicine"></div>
-                        <div class="flex-row skill-name" title="The study and treatment of injury and illness. Use it to diagnose the cause of an injury, disease, or poisoning, identify abnormalities such as toxins or diseases, identify the cause and approximate time of death, identify the type of weapon used to kill a victim, identify a dead person’s last meal, or prescribe proper long term care. By comparison, First Aid keeps a patient alive until surgery is possible and Surgery corrects a severe wound.">Medicine (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="medicine-check" name="medicine"></div>
+                        <input class="flex-row skill-name" type = "text" value="Medicine (0%)"
+                               title="The study and treatment of injury and illness. Use it to diagnose the cause of an injury, disease, or poisoning, identify abnormalities such as toxins or diseases, identify the cause and approximate time of death, identify the type of weapon used to kill a victim, identify a dead person’s last meal, or prescribe proper long term care. By comparison, First Aid keeps a patient alive until surgery is possible and Surgery corrects a severe wound."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="medicine" class="skill" base="0" prof-base="0" value="0"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="melee-weapons-check" name="accounting"></div>
-                        <div class="flex-row skill-name" title="Lethal use of melee weapons in combat. Use it to hurt or kill an opponent with a knife, axe, club, or other weapon.">Melee Weapons (30%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="melee-weapons-check" name="accounting"></div>
+                        <input class="flex-row skill-name" type = "text" value="Melee Weapons (30%)"
+                               title="Lethal use of melee weapons in combat. Use it to hurt or kill an opponent with a knife, axe, club, or other weapon."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="melee-weapons" class="skill" base="30" prof-base="30" value="30"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="navigate-check" name="pharmacy"></div>
-                        <div class="flex-row skill-name" title="Finding your way quickly with maps, charts and tables, orienteering, instruments, or dead reckoning">Navigate (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="navigate-check" name="pharmacy"></div>
+                        <input class="flex-row skill-name" type = "text" value="Navigate (10%)"
+                               title="Finding your way quickly with maps, charts and tables, orienteering, instruments, or dead reckoning"/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="navigate" class="skill" base="10" prof-base="10" value="10"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="occult-check" name="psychotherapy"></div>
-                        <div class="flex-row skill-name" title="The study of the supernatural as understood by human traditions, including things like conspiracy theories, fringe science, and cryptozoology. Use Occult to examine and deduce the intent of a ritual, or to identify occult traditions, groups, grimoires, tools, symbols, or legends. Occult can never tell an Agent what’s genuinely unnatural and what’s just superstition or mythology. That’s the province of the Unnatural skill.">Occult (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="occult-check" name="psychotherapy"></div>
+                        <input class="flex-row skill-name" type = "text" value="Occult (10%)"
+                               title="The study of the supernatural as understood by human traditions, including things like conspiracy theories, fringe science, and cryptozoology. Use Occult to examine and deduce the intent of a ritual, or to identify occult traditions, groups, grimoires, tools, symbols, or legends. Occult can never tell an Agent what’s genuinely unnatural and what’s just superstition or mythology. That’s the province of the Unnatural skill."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="occult" class="skill" base="10" prof-base="10" value="10"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="persuade-check" name="persuade"></div>
-                        <div class="flex-row skill-name" title="Changing another’s deeply held decision or desire. Use Persuade to get your Agent’s way when the subject is so stubborn, what your Agent wants is so valuable, or the deception is so flagrant that Charisma isn’t enough. With Persuade, your Agent might convince a witness that what she saw was innocuous and not unnatural, talk a detective into helping you cover up evidence for the greater good, or draw useful intelligence out of an unwilling subject. This skill also allows your Agent to resist persuasion and interrogation in opposed Persuade rolls.">Persuade (20%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="persuade-check" name="persuade"></div>
+                        <input class="flex-row skill-name" type = "text" value="Persuade (20%)"
+                               title="Changing another’s deeply held decision or desire. Use Persuade to get your Agent’s way when the subject is so stubborn, what your Agent wants is so valuable, or the deception is so flagrant that Charisma isn’t enough. With Persuade, your Agent might convince a witness that what she saw was innocuous and not unnatural, talk a detective into helping you cover up evidence for the greater good, or draw useful intelligence out of an unwilling subject. This skill also allows your Agent to resist persuasion and interrogation in opposed Persuade rolls."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="persuade" class="skill" base="20" prof-base="20" value="20"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="pharmacy-check" name="pharmacy"></div>
-                        <div class="flex-row skill-name" title="Knowledge of drugs, from their ingredients and creation, to their effects, uses, and misuses. Use it to identify and produce medicines and antidotes—as well as poisons. Identifying a drug requires at least 20% skill. Preparing a particularly powerful drug safely, such as one with psychoactive effects, requires at least 40% skill or a successful roll. Misusing Pharmacy is a quick way to kill a patient.">Pharmacy (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="pharmacy-check" name="pharmacy"></div>
+                        <input class="flex-row skill-name" type = "text" value="Pharmacy (0%)"
+                               title="Knowledge of drugs, from their ingredients and creation, to their effects, uses, and misuses. Use it to identify and produce medicines and antidotes—as well as poisons. Identifying a drug requires at least 20% skill. Preparing a particularly powerful drug safely, such as one with psychoactive effects, requires at least 40% skill or a successful roll. Misusing Pharmacy is a quick way to kill a patient."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="pharmacy" class="skill" base="0"
                                prof-base="0" value="0"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="psychotherapy-check" name="psychotherapy"></div>
-                        <div class="flex-row skill-name" title="The diagnosis and treatment of mental illness. Use it to identify a mental disorder, help a patient recover, talk someone down when a disorder begins to take over, and treat mental illness in the long term. You cannot use Psychotherapy on yourself. Using Psychotherapy to aid someone who suffered exposure to Unnatural forces might cost the therapist SAN.">Psychotherapy (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="psychotherapy-check" name="psychotherapy"></div>
+                        <input class="flex-row skill-name" type = "text" value="Psychotherapy (10%)"
+                               title="The diagnosis and treatment of mental illness. Use it to identify a mental disorder, help a patient recover, talk someone down when a disorder begins to take over, and treat mental illness in the long term. You cannot use Psychotherapy on yourself. Using Psychotherapy to aid someone who suffered exposure to Unnatural forces might cost the therapist SAN."/>
                         <div class="flex-row"><img alt="minus" class="minus" src="resources/minus.png"></div>
                         <input type="text" id="psychotherapy" class="skill" base="10" prof-base="10" value="10"/>
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="ride-check" name="ride"></div>
-                        <div class="flex-row skill-name" title="Handling, training, and riding an animal—horses, donkeys, camels, whatever. Exotic mounts may need special training (see page 30). Use it to keep safe on an animal in a crisis and to keep riding animals safe, calm, and healthy.">Ride (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="ride-check" name="ride"></div>
+                        <input class="flex-row skill-name" type = "text" value="Ride (10%)"
+                               title="Handling, training, and riding an animal—horses, donkeys, camels, whatever. Exotic mounts may need special training (see page 30). Use it to keep safe on an animal in a crisis and to keep riding animals safe, calm, and healthy."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="ride" class="skill" base="10"
@@ -550,11 +610,12 @@
                         <div class="flex-row"><img alt="plus" class="plus"
                                                    src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="search-check"
-                                                     name="search"></div>
-                        <div class="flex-row skill-name" title="Concealing your presence or activities. Use it to hide a pistol, camouflage a position, conceal a microphone, leave an envelope at a dead drop unobserved, pick a pocket, move silently, follow without being seen, or blend into a crowd. An Agent attempting Stealth can be detected only by an opposing Alertness or Search skill.">Search (20%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="search-check"
+                                name="search"></div>
+                        <input class="flex-row skill-name" type = "text" value="Search (20%)"
+                               title="Concealing your presence or activities. Use it to hide a pistol, camouflage a position, conceal a microphone, leave an envelope at a dead drop unobserved, pick a pocket, move silently, follow without being seen, or blend into a crowd. An Agent attempting Stealth can be detected only by an opposing Alertness or Search skill."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="search" class="skill" base="20"
@@ -562,11 +623,12 @@
                         <div class="flex-row"><img alt="plus" class="plus"
                                                    src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="sigint-check"
-                                                     name="sigint"></div>
-                        <div class="flex-row skill-name" title="Signals intelligence. It encompasses encryption, communications intelligence, electronic intelligence, surveillance of radio and digital communications, and the making and breaking of codes. It is often used in conjunction with Computer Science for hacking, and with Craft (Electrician) for installing bugs and wiretaps">SIGINT (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="sigint-check"
+                                name="sigint"></div>
+                        <input class="flex-row skill-name" type = "text" value="SIGINT (0%)"
+                               title="Signals intelligence. It encompasses encryption, communications intelligence, electronic intelligence, surveillance of radio and digital communications, and the making and breaking of codes. It is often used in conjunction with Computer Science for hacking, and with Craft (Electrician) for installing bugs and wiretaps"/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="sigint" class="skill" base="0"
@@ -574,11 +636,12 @@
                         <div class="flex-row"><img alt="plus" class="plus"
                                                    src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="stealth-check"
-                                                     name="accounting"></div>
-                        <div class="flex-row skill-name" title="Concealing your presence or activities. Use it to hide a pistol, camouflage a position, conceal a microphone, leave an envelope at a dead drop unobserved, pick a pocket, move silently, follow without being seen, or blend into a crowd. An Agent attempting Stealth can be detected only by an opposing Alertness or Search skill.">Stealth (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="stealth-check"
+                                name="accounting"></div>
+                        <input class="flex-row skill-name" type = "text" value="Stealth (10%)"
+                               title="Concealing your presence or activities. Use it to hide a pistol, camouflage a position, conceal a microphone, leave an envelope at a dead drop unobserved, pick a pocket, move silently, follow without being seen, or blend into a crowd. An Agent attempting Stealth can be detected only by an opposing Alertness or Search skill."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="stealth" class="skill" base="10"
@@ -586,11 +649,12 @@
                         <div class="flex-row"><img alt="plus" class="plus"
                                                    src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="surgery-check"
-                                                     name="surgery"></div>
-                        <div class="flex-row skill-name" title="The treatment of an injury or abnormality by invasive means. By comparison, First Aid keeps a patient alive until surgery is possible and Medicine ensures longterm recovery.">Surgery (0%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="surgery-check"
+                                name="surgery"></div>
+                        <input class="flex-row skill-name" type = "text" value="Surgery (0%)"
+                               title="The treatment of an injury or abnormality by invasive means. By comparison, First Aid keeps a patient alive until surgery is possible and Medicine ensures longterm recovery."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="surgery" class="skill" base="0"
@@ -598,11 +662,12 @@
                         <div class="flex-row"><img alt="plus" class="plus"
                                                    src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="survival-check"
-                                                     name="accounting"></div>
-                        <div class="flex-row skill-name" title="Knowledge of the natural world. Use it to find tracks and trails, plan an expedition, predict weather, recognize when fauna or flora are unusual, use the environment to gather other information, or find food, water, and shelter">Survival (10%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="survival-check"
+                                name="accounting"></div>
+                        <input class="flex-row skill-name" type = "text" value="Survival (10%)"
+                               title="Knowledge of the natural world. Use it to find tracks and trails, plan an expedition, predict weather, recognize when fauna or flora are unusual, use the environment to gather other information, or find food, water, and shelter"/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="survival" class="skill" base="10"
@@ -611,9 +676,11 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="swim-check"
-                                                     name="accounting"></div>
-                        <div class="flex-row skill-name" title="Most Agents can swim for leisure. Use the Swim skill in a dangerous crisis: going a long distance in choppy water, keeping a friend from drowning, or getting to a boat before the tentacled thing below grabs you.">Swim (20%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="swim-check"
+                                name="accounting"></div>
+                        <input class="flex-row skill-name" type = "text" value="Swim (20%)"
+                               title="Most Agents can swim for leisure. Use the Swim skill in a dangerous crisis: going a long distance in choppy water, keeping a friend from drowning, or getting to a boat before the tentacled thing below grabs you."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="swim" class="skill" base="20"
@@ -621,11 +688,12 @@
                         <div class="flex-row"><img alt="plus" class="plus"
                                                    src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input type="checkbox" id="unarmed-combat-check"
-                                                     name="unarmed-combat"></div>
-                        <div class="flex-row skill-name" title="Knowledge of the fundamental, mind rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating.">Unarmed Combat (40%)</div>
+                        <div class="flex-row"><input
+                                title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="unarmed-combat-check"
+                                name="unarmed-combat"></div>
+                        <input class="flex-row skill-name" type = "text" value="Unarmed Combat (40%)"
+                               title="Knowledge of the fundamental, mind rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="unarmed-combat" class="skill" base="40"
@@ -633,1388 +701,304 @@
                         <div class="flex-row"><img alt="plus" class="plus"
                                                    src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container">
-                        <div class="flex-row"><input style="visibility: hidden" type="checkbox" id="unnatural-check"></div>
-                        <div class="flex-row skill-name" title="Knowledge of the fundamental, mind rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating.">Unnatural (0%)</div>
+                        <div class="flex-row"><input style="visibility: hidden"
+                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="unnatural-check"></div>
+                        <input class="flex-row skill-name" type = "text" value="Unnatural (0%)"
+                               title="Knowledge of the fundamental, mind rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating."/>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
                         <div class="flex-row"><input type="text" id="unnatural" class="skill center" base="0" prof-base="0" value="0"/></div>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
-
                     <div class="skill-container-label bottom">
                         <div class="flex-row">Foreign Languages and Other Skills:</div>
                     </div>
-
                     <div class="other-skill-container">
-                        <div class="flex-row"><input style="visibility: hidden" type="checkbox" id="other-skill-1-check"></div>
-                        <div class="flex-row other-skill-name"><textarea rows="2" id="other-skill-name-1"></textarea></div>
+                        <div class="flex-row"><input style="visibility: hidden"
+                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-1-check"></div>
+                        <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-1"></textarea></div>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
-                        <input type="text" id="other-skill-value-1" class="skill" base="0" prof-base="0"/>
+                        <input type="text" id="other-skill-value-1" class="skill other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="other-skill-container">
-                        <div class="flex-row"><input style="visibility: hidden" type="checkbox" id="other-skill-2-check"></div>
-                        <div class="flex-row other-skill-name"><textarea rows="2" id="other-skill-name-2"></textarea></div>
+                        <div class="flex-row"><input style="visibility: hidden"
+                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-2-check"></div>
+                        <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-2"></textarea></div>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
-                        <input type="text" id="other-skill-value-2" class="skill" base="0" prof-base="0"/>
+                        <input type="text" id="other-skill-value-2" class="skill other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="other-skill-container">
-                        <div class="flex-row"><input style="visibility: hidden" type="checkbox" id="other-skill-3-check"></div>
-                        <div class="flex-row other-skill-name"><textarea rows="2" id="other-skill-name-3"></textarea></div>
+                        <div class="flex-row"><input style="visibility: hidden"
+                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-3-check"></div>
+                        <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-3"></textarea></div>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
-                        <input type="text" id="other-skill-value-3" class="skill" base="0" prof-base="0"/>
+                        <input type="text" id="other-skill-value-3" class="skill other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="other-skill-container">
-                        <div class="flex-row"><input style="visibility: hidden" type="checkbox" id="other-skill-4-check"></div>
-                        <div class="flex-row other-skill-name"><textarea rows="2" id="other-skill-name-4"></textarea></div>
+                        <div class="flex-row"><input style="visibility: hidden"
+                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-4-check"></div>
+                        <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-4"></textarea></div>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
-                        <input type="text" id="other-skill-value-4" class="skill" base="0" prof-base="0"/>
+                        <input type="text" id="other-skill-value-4" class="skill other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="other-skill-container">
-                        <div class="flex-row"><input style="visibility: hidden" type="checkbox" id="other-skill-5-check"></div>
-                        <div class="flex-row other-skill-name"><textarea rows="2" id="other-skill-name-5"></textarea></div>
+                        <div class="flex-row"><input style="visibility: hidden"
+                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-5-check"></div>
+                        <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-5"></textarea></div>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
-                        <input type="text" id="other-skill-value-5" class="skill" base="0" prof-base="0"/>
+                        <input type="text" id="other-skill-value-5" class="skill other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="other-skill-container">
-                        <div class="flex-row"><input style="visibility: hidden" type="checkbox" id="other-skill-6-check"></div>
-                        <div class="flex-row other-skill-name"><textarea rows="2" id="other-skill-name-6"></textarea></div>
+                        <div class="flex-row"><input style="visibility: hidden"
+                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-6-check"></div>
+                        <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-6"></textarea></div>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
-                        <input type="text" id="other-skill-value-6" class="skill" base="0" prof-base="0"/>
+                        <input type="text" id="other-skill-value-6" class="skill other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="other-skill-container">
-                        <div class="flex-row"><input style="visibility: hidden" type="checkbox" id="other-skill-7-check"></div>
-                        <div class="flex-row other-skill-name"><textarea rows="2" id="other-skill-name-7"></textarea></div>
+                        <div class="flex-row"><input style="visibility: hidden"
+                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-7-check"></div>
+                        <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-7"></textarea></div>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
-                        <input type="text" id="other-skill-value-7" class="skill" base="0" prof-base="0"/>
+                        <input type="text" id="other-skill-value-7" class="skill other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
-
                     <div class="other-skill-container">
-                        <div class="flex-row"><input style="visibility: hidden" type="checkbox" id="other-skill-8-check"></div>
-                        <div class="flex-row other-skill-name fill"><textarea rows="2" id="other-skill-name-8"></textarea></div>
+                        <div class="flex-row"><input style="visibility: hidden"
+                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-8-check"></div>
+                        <div class="flex-row other-skill-div fill"><textarea class="other-skill-name" rows="2" id="other-skill-name-8"></textarea></div>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
-                        <input type="text" id="other-skill-value-8" class="skill" base="0" prof-base="0"/>
+                        <input type="text" id="other-skill-value-8" class="skill other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="large-font red align-left"><span id="numIncrease">8</span> skill increases remaining</div>
+    <div class="align-left">Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill
+        and erase all checks.
+    </div>
+    <div id="injuries-div" class="labeled-section fill">
+        <div class="label-container">
+            <div class="label-background">
+                <p class="label-text">Injuries</p>
+            </div>
+            <div class="content-container right bottom">
+                <div>14. WOUNDS AND AILMENTS</div>
+                <textarea class="bottom" id="wounds" name="wounds" rows="5" cols="50"></textarea>
+                <div>
+                    <span>Has First Aid been attempted since the last injury?</span>
+                    <input type="checkbox">
+                    <span>yes: only Medicine, Surgery, or long-term rest can help further</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="gear-div" class="labeled-section fill">
+        <div class="label-container">
+            <div class="label-background">
+                <p class="label-text">Equipment</p>
+            </div>
+            <div class="content-container">
+                <div class="right fill align-left">15. ARMOR AND GEAR</div>
+                <textarea class="fill right" id="gear" name="gear" rows="20" cols="50"></textarea>
+                <div class="top bottom right fill">
+                    Body armor reduces the damage of all attacks except Called Shots and successful Lethality rolls.
+                </div>
+                <table class="fill">
+                    <tbody class="bottom-children right-children">
+                    <tr>
+                        <td>
+                            <div>16.</div>
+                        </td>
+                        <td>
+                            <div>WEAPONS</div>
+                        </td>
+                        <td>
+                            <div>SKILL %</div>
+                        </td>
+                        <td>
+                            <div>BASE RANGE</div>
+                        </td>
+                        <td>
+                            <div>DAMAGE</div>
+                        </td>
+                        <td>
+                            <div>ARMOR PIERCING</div>
+                        </td>
+                        <td>
+                            <div>LETHALITY %</div>
+                        </td>
+                        <td>
+                            <div>KILL RADIUS</div>
+                        </td>
+                        <td>
+                            <div>AMMO</div>
+                        </td>
+                    </tr>
+                    <tr id="weapon-row-a" class="weapon-row">
+                        <td class="weapon-select-row">
+                            <div>(a)<select class="weapon-select" name="weapon-select" id="weapon-a"></select></div>
+                        </td>
+                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                    </tr>
+                    <tr id="weapon-row-b" class="weapon-row">
+                        <td class="weapon-select-row">
+                            <div>(b)<select class="weapon-select" name="weapon-select" id="weapon-b"></select></div>
+                        </td>
+                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                    </tr>
+                    <tr id="weapon-row-c" class="weapon-row">
+                        <td class="weapon-select-row">
+                            <div>(c)<select class="weapon-select" name="weapon-select" id="weapon-c"></select></div>
+                        </td>
+                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                    </tr>
+                    <tr id="weapon-row-d" class="weapon-row">
+                        <td class="weapon-select-row">
+                            <div>(d)<select class="weapon-select" name="weapon-select" id="weapon-d"></select></div>
+                        </td>
+                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                    </tr>
+                    <tr id="weapon-row-e" class="weapon-row">
+                        <td class="weapon-select-row">
+                            <div>(e)<select class="weapon-select" name="weapon-select" id="weapon-e"></select></div>
+                        </td>
+                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                    </tr>
+                    <tr id="weapon-row-f" class="weapon-row">
+                        <td class="weapon-select-row">
+                            <div>(f)<select class="weapon-select" name="weapon-select" id="weapon-f"></select></div>
+                        </td>
+                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                    </tr>
+                    <tr id="weapon-row-g" class="weapon-row">
+                        <td class="weapon-select-row">
+                            <div>(g)<select class="weapon-select" name="weapon-select" id="weapon-g"></select></div>
+                        </td>
+                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-    <!--<div class="flex-row skill-name" title="Knowledge of the fundamental, mind rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating.">Unnatural (0%)</div>-->
+    <div id="remarks-div" class="labeled-section fill">
+        <div class="label-container">
+            <div class="label-background">
+                <p class="label-text">Remarks</p>
+            </div>
+            <div class="content-container right bottom">
+                <div class="bottom fill">
+                    <div>17. PERSONAL DETAILS AND NOTES</div>
+                    <textarea id="notes" name="notes" rows="23" cols="75"></textarea>
+                </div>
+                <div class="fill">
+                    <div>18. DEVELOPMENTS WHICH AFFECT HOME AND FAMILY</div>
+                    <textarea id="home" name="home" rows="15" cols="75"></textarea>
+                </div>
+                <div id="home-and-special-training" class="fill">
+                    <table class="fill-height fill">
+                        <tbody>
+                        <tr class="fill">
+                            <th class="bottom top right">19. SPECIAL TRAINING</th>
+                            <th class="bottom top">SKILL OR STAT USED</th>
+                        </tr>
+                        <tr class="fill">
+                            <td class="bottom right"><input class="fill" id="special-training-name-1" type="text"/></td>
+                            <td class="bottom"><input class="fill" id="special-training-value-1" type="text"/></td>
+                        </tr>
+                        <tr class="fill">
+                            <td class="bottom right"><input class="fill" id="special-training-name-2" type="text"/></td>
+                            <td class="bottom"><input class="fill" id="special-training-value-2" type="text"/></td>
+                        </tr>
+                        <tr class="fill">
+                            <td class="bottom right"><input class="fill" id="special-training-name-3" type="text"/></td>
+                            <td class="bottom"><input class="fill" id="special-training-value-3" type="text"/></td>
+                        </tr>
+                        <tr class="fill">
+                            <td class="bottom right"><input class="fill" id="special-training-name-4" type="text"/></td>
+                            <td class="bottom"><input class="fill" id="special-training-value-4" type="text"/></td>
+                        </tr>
+                        <tr class="fill">
+                            <td class="bottom right"><input class="fill" id="special-training-name-5" type="text"/></td>
+                            <td class="bottom"><input class="fill" id="special-training-value-5" type="text"/></td>
+                        </tr>
+                        <tr class="fill">
+                            <td class="bottom right"><input class="fill" id="special-training-name-6" type="text"/></td>
+                            <td class="bottom"><input class="fill" id="special-training-value-6" type="text"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fill"><span class="half">Please indicate why this agent was recruited and why the agent agreed to
+                    be recruited.</span>
+                    <input class="half" id="reason-for-recruitment" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bottom-banner" class="bottom-banner">
+        <img src="resources/char-sheet-bottom.png" alt="Delta Green" width="1290" height="84">
+    </div>
+</div>
 
-
-
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="accounting-check" name="accounting-check">-->
-    <!--                        -->
-    <!--                            <div title="The study of finance and business. Use it to sift through financial records for anomalies, such as a hidden bank account or money laundering.">Accounting (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="accounting" class="skill" base="10" prof-base="10"-->
-    <!--                                               value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="history-check" name="history">-->
-    <!--                        -->
-    <!--                            <div title="Uncovering facts and theories about human antiquity. Use it to remember or find a key fact about the distant past, recognize an obscure reference, or comb a database or library for information that nobody without your deep education could find. While Anthropology is about living cultures and Archeology studies the meaning of ancient relics, History is a broad study of humanity.">History (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="history" class="skill" base="10" prof-base="10"-->
-    <!--                                               value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                        -->
-    <!--                            <div title="Knowledge of the fundamental, mind rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating.">Unnatural (0%)</div>-->
-    <!--                        -->
-    <!--                        <input type="text" class="skill" base="0" prof-base="0"-->
-    <!--                                                                 value="0"/>-->
-    <!--                    -->
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="alertness-check" name="alertness">-->
-    <!--                        -->
-    <!--                            <div title="Alertness detects danger. Use it to hear a safety being switched off, to understand the mumbling on the other side of a wall, to spot the bulge of a pistol hidden under a jacket, or to catch someone who is trying to escape notice using Stealth.">Alertness (20%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="alertness" class="skill" base="20" prof-base="20"-->
-    <!--                                               value="20"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="humint-check" name="humint">-->
-    <!--                        -->
-    <!--                            <div title="Human intelligence. This obtains information about a subject—especially information the subject would rather conceal—through observation, conversation, or examining patterns of behavior and relationships. Use HUMINT to recognize signs of dishonesty from verbal cues and body language, gauge attitude and intentions, cultivate sources of information about a subject, determine what it would take to get a subject to cooperate, or recognize clues of what a subject wants to conceal. HUMINT can notice signs of mental illness, but Psychotherapy would be needed to diagnose and treat a specific malady. If your Agent also has Criminology, HUMINT can be used to compile a psychological profile to help find a subject. A subject who deliberately tries to deceive your Agent can attempt a Persuade test to oppose your Agent’s HUMINT.">HUMINT (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="humint" class="skill" base="10" prof-base="10"-->
-    <!--                                               value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                        -->
-    <!--                            <div>Foreign Languages and Other Skills:</div>-->
-    <!--                        -->
-    <!--                    -->
-    <!--                    -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="anthropology-check" name="anthropology">-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            <div title="The study of living human cultures. Use it to understand morals, religious beliefs, customs, and mores, and to identify (but not translate) obscure languages. Where History is about the distant past and Archeology studies physical remains, Anthropology is about the behaviors of living cultures and how they relate to each other and the past.">Anthropology (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="anthropology" class="skill" base="0" prof-base="0"-->
-    <!--                                               value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="law-check" name="law">-->
-    <!--                        -->
-    <!--                            <div title="Using laws and courts to your Agent’s advantage. Use it to get your Agent’s way in court, to determine the correct procedures for handling evidence in a prosecution  or a civil case (and how to undermine them), to bullshit your Agent’s way out of legal  trouble, or to minimize legal risks. The Law skill applies to your Agent’s native  country; using it with another country’s laws requires special training.">Law (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="law" class="skill" base="0" prof-base="0" value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox">-->
-    <!--                        <textarea rows="2" class="other-skill-name"></textarea>-->
-    <!--                        -->
-    <!--                                        <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input class="other-skill" type="text"value=""/>-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-    <!--                    -->
-
-    <!--                    -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="archeology-check" name="archeology">-->
-    <!--                        -->
-    <!--                            <div title="The study of the physical remains of human cultures. Use it to analyze the way of life of a people from ruins, to determine the age of an artifact, to tell a genuine artifact from a fake, and to identify (but not translate) human languages. Where Anthropology is about living cultures and History is a broad study of the past, Archeology discerns meaning from the remains of peoples long dead.">Archeology (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="archeology" class="skill" base="0" prof-base="0"-->
-    <!--                                               value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="medicine-check" name="medicine">-->
-    <!--                        -->
-    <!--                            <div title="The study and treatment of injury and illness. Use it to diagnose the cause of an injury, disease, or poisoning, identify abnormalities such as toxins or diseases, identify the cause and approximate time of death, identify the type of weapon used to kill a victim, identify a dead person’s last meal, or prescribe proper long term care. By comparison, First Aid keeps a patient alive until surgery is possible and Surgery corrects a severe wound.">Medicine (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="medicine" class="skill" base="0" prof-base="0"-->
-    <!--                                               value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                    -->
-    <!--                    -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="artillery-check" name="artillery">-->
-    <!--                        -->
-    <!--                            <div title="Safe and accurate use of mortars, missiles, howitzers, tank cannons, and other heavy gunnery. Use it to destroy troops or a hard target in battle.">Artillery (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="artillery" class="skill" base="0" prof-base="0"-->
-    <!--                                               value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="melee-weapons-check" name="accounting">-->
-    <!--                        -->
-    <!--                            <div title="Lethal use of melee weapons in combat. Use it to hurt or kill an opponent with a knife, axe, club, or other weapon.">Melee Weapons (30%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="melee-weapons" class="skill" base="30" prof-base="30"-->
-    <!--                                               value="30"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox">-->
-    <!--                        <textarea rows="2"-->
-    <!--                                                                             class="other-skill-name"></textarea>-->
-    <!--                        <input class="other-skill" type="text"-->
-    <!--                                                                                   value=""/>-->
-    <!--                    -->
-
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="athletics-check" name="athletics">-->
-    <!--                        -->
-    <!--                            <div title="Your Agent trains to get the most out of his or her strength and agility. Strength and Dexterity cover raw physical power and manual dexterity; the Athletics  skill represents long practice doing things like running, jumping, climbing, and throwing.  Use Athletics to:»  Outrun someone.  » Jump an intimidating gap.»  Climb in a crisis. »  Land safely in a fall of up to  three meters.»  Hit a target with a thrown knife or put a grenade exactly on target.  »  Catch something without warning, such as intercepting a thrown grenade.">Athletics (30%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="athletics" class="skill" base="30" prof-base="30"-->
-    <!--                                               value="30"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="navigate-check" name="pharmacy">-->
-    <!--                        -->
-    <!--                            <div title="Finding your way quickly with maps, charts and tables, orienteering, instruments, or dead reckoning">Navigate (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="navigate" class="skill" base="10" prof-base="10"-->
-    <!--                                               value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                    -->
-    <!--                    -->
-
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="occult-check" name="psychotherapy">-->
-    <!--                        -->
-    <!--                            <div title="The study of the supernatural as understood by human traditions, including things like conspiracy theories, fringe science, and cryptozoology. Use Occult to   examine and deduce the intent of a ritual, or to identify occult traditions, groups,   grimoires, tools, symbols, or legends. Occult can never tell an Agent what’s genuinely   unnatural and what’s just superstition or mythology.   That’s the province of the Unnatural skill.">Occult (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="occult" class="skill" base="10" prof-base="10"-->
-    <!--                                               value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox">-->
-    <!--                        <textarea rows="2"-->
-    <!--                                                                             class="other-skill-name"></textarea>-->
-    <!--                        <input class="other-skill" type="text"-->
-    <!--                                                                                   value=""/>-->
-
-    <!--                    -->
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="computer-science-check" name="computer-science">-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            <div title="Deep knowledge of computers, computer systems, and the programs that run them. Use it to recover erased or encrypted data, protect documents from easy access, implant software to hijack a computer system, clone a phone’s SIM card, identify flaws in a security system, impersonate users, or falsify data. It is often complemented by Craft skills like Electrician and Microelectronics.">Computer Science (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="computer-science" class="skill" base="0" prof-base="0"-->
-    <!--                                               value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="persuade-check" name="persuade">-->
-    <!--                        -->
-    <!--                            <div title="Changing another’s deeply held decision or desire. Use Persuade to get your Agent’s way when the subject is so stubborn, what your Agent wants is so valuable, or the deception is so flagrant that Charisma isn’t enough. With Persuade, your Agent might convince a witness that what she saw was innocuous and not unnatural, talk a detective into helping you cover up evidence for the greater good, or draw useful intelligence out of an unwilling subject. This skill also allows your Agent to resist persuasion and interrogation in opposed Persuade rolls.">Persuade (20%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="persuade" class="skill" base="20" prof-base="20"-->
-    <!--                                               value="20"/>-->
-    <!--                                    <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-    <!--                    -->
-    <!--                    -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="criminology-check" name="criminology">-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            <div title="Knowledge of criminal and conspiratorial behavior. Use it to identify and predict criminal behavior, deduce relationships between members of a conspiracy, analyze criminal activity, examine witness statements, or know whom to talk to in the criminal underground.">Criminology (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                        <input type="text" id="criminology" class="skill" base="10"-->
-    <!--                                               prof-base="10" value="10"/>-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="pharmacy-check" name="pharmacy">-->
-    <!--                        -->
-    <!--                            <div title="Knowledge of drugs, from their ingredients and creation, to their effects, uses, and misuses. Use it to identify and produce medicines and antidotes—as well as poisons. Identifying a drug requires at least 20% skill. Preparing a particularly powerful drug safely, such as one with psychoactive effects, requires at least 40% skill or a successful roll. Misusing Pharmacy is a quick way to kill a patient.">Pharmacy (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    -->
-    <!--                                        <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="pharmacy" class="skill" base="0"-->
-    <!--                                               prof-base="0" value="0"/>-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox">-->
-    <!--                        <textarea rows="2"-->
-    <!--                                                                       class="other-skill-name"></textarea>-->
-    <!--                        -->
-    <!--                        <input class="other-skill"-->
-    <!--                                                                             type="text"-->
-    <!--                                                                             value=""/>-->
-    <!--                    -->
-    <!--                    -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="demolitions-check"-->
-    <!--                                                  name="demolitions">-->
-    <!--                        -->
-    <!--                            <div title="Safe handling of explosives in a crisis. Use it to disarm a bomb, set a charge to destroy a target remotely, jury rig an explosive from supplies at the hardware store, or analyze a blast to determine exactly what caused it. Failure when handling a bomb means your Agent needs more time. If it’s a crisis that requires a roll, a fumble means an accidental explosion.">Demolitions (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="demolitions" class="skill"-->
-    <!--                                               base="0" prof-base="0" value="0"/>-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <img alt="plus" class="plus" src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="psychotherapy-check"-->
-    <!--                                                  name="psychotherapy">-->
-    <!--                        -->
-    <!--                            <div title="The diagnosis and treatment of mental illness. Use it to identify a mental disorder, help a patient recover, talk someone down when a disorder begins to take over, and treat mental illness in the long term. You cannot use Psychotherapy on yourself. Using Psychotherapy to aid someone who suffered exposure to Unnatural forces might cost the therapist SAN.">Psychotherapy (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="psychotherapy" class="skill"-->
-    <!--                                               base="10" prof-base="10" value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                    -->
-
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="disguise-check"-->
-    <!--                                                  name="disguise">-->
-    <!--                        -->
-    <!--                            <div  title="Alter your Agent’s appearance, voice, posture, body language, and mannerisms to avoid recognition with out drawing attention.">Disguise (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="disguise" class="skill" base="10"-->
-    <!--                                               prof-base="10" value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="ride-check" name="ride">-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            <div title="Handling, training, and riding an animal—horses, donkeys, camels, whatever. Exotic mounts may need special training (see page 30). Use it to keep safe on an animal in a crisis and to keep riding animals safe, calm, and healthy.">Ride (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="ride" class="skill" base="10"-->
-    <!--                                               prof-base="10" value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox">-->
-    <!--                        <textarea rows="2"-->
-    <!--                                                                       class="other-skill-name"></textarea>-->
-    <!--                        -->
-    <!--                        <input class="other-skill"-->
-    <!--                                                                             type="text"-->
-    <!--                                                                             value=""/>-->
-
-    <!--                    -->
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="dodge-check" name="dodge">-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            <div title="Evading danger through instinct and reflexes. Use Dodge to avoid an attack. Against firearms and explosives, Dodge is only useful to get to cover.">Dodge (30%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    -->
-    <!--                                        <img alt="minus" class="minus" src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="dodge" class="skill" base="30"-->
-    <!--                                               prof-base="30" value="30"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="search-check"-->
-    <!--                                                  name="search">-->
-    <!--                        -->
-    <!--                            <div title="Concealing your presence or activities. Use it to hide a pistol, camouflage a position, conceal a microphone, leave an envelope at a dead drop unobserved, pick a pocket, move silently, follow without being seen, or blend into a crowd. An Agent attempting Stealth can be detected only by an opposing Alertness or Search skill.">Search (20%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="search" class="skill" base="20"-->
-    <!--                                               prof-base="20" value="20"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                    -->
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="drive-check" name="drive">-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            <div title="Handling an automobile or a motorcycle safely in a crisis. Unless the Handler says otherwise, every Agent has a driver’s license and can drive a car safely in normal conditions. Use this skill to keep a vehicle safe in a high speed pursuit or on dangerous terrain.">Drive (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="drive" class="skill" base="10"-->
-    <!--                                               prof-base="10" value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="sigint-check"-->
-    <!--                                                  name="sigint">-->
-    <!--                        -->
-    <!--                            <div title="Signals intelligence. It encompasses encryption, communications intelligence, electronic intelligence, surveillance of radio and digital communications, and the making and breaking of codes. It is often used in conjunction with Computer Science for hacking, and with Craft (Electrician) for installing bugs and wiretaps">SIGINT (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="sigint" class="skill" base="0"-->
-    <!--                                               prof-base="0" value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox">-->
-    <!--                        <textarea rows="2"-->
-    <!--                                                                       class="other-skill-name"></textarea>-->
-    <!--                        -->
-    <!--                        <input class="other-skill"-->
-    <!--                                                                             type="text"-->
-    <!--                                                                             value=""/>-->
-
-    <!--                    -->
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="firearms-check"-->
-    <!--                                                  name="firearms">-->
-    <!--                        -->
-    <!--                            <div title="Safe and accurate shooting with small arms in combat. Use it to hit a target despite the adrenaline, panic, and shock of violence interfering with hand eye coordination.">Firearms (20%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="firearms" class="skill" base="20"-->
-    <!--                                               prof-base="20" value="20"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="stealth-check"-->
-    <!--                                                  name="accounting">-->
-    <!--                        -->
-    <!--                            <div title="Concealing your presence or activities. Use it to hide a pistol, camouflage a position, conceal a microphone, leave an envelope at a dead drop unobserved, pick a pocket, move silently, follow without being seen, or blend into a crowd. An Agent attempting Stealth can be detected only by an opposing Alertness or Search skill.">Stealth (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="stealth" class="skill" base="10"-->
-    <!--                                               prof-base="10" value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                    -->
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="first-aid-check"-->
-    <!--                                                  name="first-aid">-->
-    <!--                        -->
-    <!--                            <div title="The initial treatment and stabilization of of injuries. Use it to help a character recover lost Hit Points. By comparison, Surgery corrects a severe wound and Medicine ensures longterm recovery.">First Aid (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="first-aid" class="skill"-->
-    <!--                                               base="10" prof-base="10" value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="surgery-check"-->
-    <!--                                                  name="surgery">-->
-    <!--                        -->
-    <!--                            <div title="The treatment of an injury or abnormality by invasive means. By comparison, First Aid keeps a patient alive until surgery is possible and Medicine ensures longterm recovery.">Surgery (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="surgery" class="skill" base="0"-->
-    <!--                                               prof-base="0" value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox">-->
-    <!--                        <textarea rows="2"-->
-    <!--                                                                       class="other-skill-name"></textarea>-->
-    <!--                        -->
-    <!--                        <textarea rows="2"-->
-    <!--                                                                                class="other-skill"></textarea>-->
-    <!--                        -->
-    <!--                    -->
-
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="forensics-check"-->
-    <!--                                                  name="forensics">-->
-    <!--                        -->
-    <!--                            <div title="Gathering detailed information and evidence using forensic equipment. Use it to record biometric data, determine details about a weapon used or the accelerant that started a fire, discern crucial clues that an ordinary searcher wouldn’t recognize, clean a scene of incriminating evidence, or collect, analyze, and compare fingerprints and DNA samples.">Forensics (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="forensics" class="skill" base="0"-->
-    <!--                                               prof-base="0" value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="survival-check"-->
-    <!--                                                  name="accounting">-->
-    <!--                        -->
-    <!--                            <div title="Knowledge of the natural world. Use it to find tracks and trails, plan an expedition, predict weather, recognize when fauna or flora are unusual, use the environment to gather other information, or find food, water, and shelter">Survival (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="survival" class="skill" base="10"-->
-    <!--                                               prof-base="10" value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                    -->
-
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="heavy-machinery-check"-->
-    <!--                                                  name="heavy-machinery">-->
-    <!--                        -->
-    <!--                            <div title="Safe operation of a tractor, crane, bulldozer, tank, heavy truck, or other big machine in a crisis">Heavy Machinery (10%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="heavy-machinery" class="skill"-->
-    <!--                                               base="10" prof-base="10" value="10"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="swim-check"-->
-    <!--                                                  name="accounting">-->
-    <!--                        -->
-    <!--                            <div title="Most Agents can swim for leisure. Use the Swim skill in a dangerous crisis: going a long distance in choppy water, keeping a friend from drowning, or getting to a boat before the tentacled thing below grabs you.">Swim (20%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="swim" class="skill" base="20"-->
-    <!--                                               prof-base="20" value="20"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox">-->
-    <!--                        <textarea rows="2"-->
-    <!--                                                                       class="other-skill-name"></textarea>-->
-    <!--                        -->
-    <!--                        <input class="other-skill"-->
-    <!--                                                                             type="text"-->
-    <!--                                                                             value=""/>-->
-    <!--                    -->
-    <!--                    -->
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="heavy-weapons-check"-->
-    <!--                                                  name="heavy-weapons">-->
-    <!--                        -->
-    <!--                            <div title="Safe and accurate use of man portable heavy ordnance such as machine guns and rocket launchers. Use Heavy Weapons to suppress enemies, or destroy a vehicle in combat.">Heavy Weapons (0%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="heavy-weapons" class="skill"-->
-    <!--                                               base="0" prof-base="0" value="0"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                                            <div class="skill-container">
-                            <div class="flex-row">
-    <input type="checkbox" id="unarmed-combat-check"-->
-    <!--                                                  name="unarmed-combat">-->
-    <!--                        -->
-    <!--                            <div title="Knowledge of the fundamental, mind rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating.">Unarmed Combat (40%)</div>-->
-    <!--                        -->
-    <!--                        -->
-    <!--                            -->
-    <!--                                -->
-    <!--                                -->
-    <!--                                    <img alt="minus" class="minus"-->
-    <!--                                                                    src="resources/minus.png">-->
-    <!--                                    -->
-    <!--                                    -->
-    <!--                                        <input type="text" id="unarmed-combat" class="skill" base="40"-->
-    <!--                                               prof-base="40" value="40"/>-->
-    <!--                                    -->
-    <!--                                    <img alt="plus" class="plus"-->
-    <!--                                                                    src="resources/plus.png">-->
-    <!--                                    -->
-    <!--                                -->
-    <!--                                -->
-    <!--                            -->
-    <!--                        -->
-
-    <!--                    -->
-
-    <!--                    -->
-    <!--                -->
-    <!--            </div>-->
-    <!--        </div>-->
-
-
-    <!--        <div class="large-font red"><span id="numIncrease">8</span> skill increases remaining</div>-->
-    <!--        <div>Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill-->
-    <!--            and erase all checks.-->
-    <!--        </div>-->
-    <!--    </td>-->
-    <!--    </tr>-->
-    <!--    <tr id="injuries-row"><td>-->
-    <!--        <div id="injuries" class="label pad">-->
-    <!--            <div class="label-background">-->
-    <!--                <p class="label-text">Injuries</p>-->
-    <!--            </div>-->
-    <!--            <div class="table">-->
-    <!--                <table class="GeneratedTable top right fill">-->
-    <!--                    <tbody>-->
-    <!--                    <tr>-->
-    <!--                        <td>-->
-    <!--                            <div>14. WOUNDS AND AILMENTS</div>-->
-    <!--                        </td>-->
-    <!--                    </tr>-->
-    <!--                    <tr>-->
-    <!--                        <td>-->
-    <!--                             <textarea id="wounds" name="wounds" rows="5" cols="50">-->
-    <!--                                            </textarea>-->
-    <!--                        </td>-->
-    <!--                    </tr>-->
-    <!--                    <tr>-->
-    <!--                        <td class="top">-->
-    <!--                            <span>Has First Aid been attempted since the last injury?</span>-->
-    <!--                            <input type="checkbox">-->
-    <!--                            <span>yes: only Medicine, Surgery, or long-term rest can help further</span>-->
-    <!--                        </td>-->
-    <!--                    </tr>-->
-    <!--                    </tbody>-->
-    <!--                </table>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </td>-->
-    <!--    </tr>-->
-    <!--    <tr id="equipment-row"><td>-->
-    <!--        <div id="equipment" class="label top pad">-->
-    <!--            <div class="label-background">-->
-    <!--                <p class="label-text">Equipment</p>-->
-    <!--            </div>-->
-    <!--            <div class="table">-->
-    <!--                <table class="GeneratedTable top fill">-->
-    <!--                    <tbody>-->
-    <!--                    <tr>-->
-    <!--                        <td>-->
-    <!--                            <table class="fill right">-->
-    <!--                                <tbody>-->
-    <!--                                <tr>-->
-    <!--                                    <td class="fill">-->
-    <!--                                        <div>15. ARMOR AND GEAR</div>-->
-    <!--                                    </td>-->
-    <!--                                </tr>-->
-    <!--                                <tr>-->
-    <!--                                    <td class="fill"><textarea class="fill" id="gear" name="gear" rows="20"-->
-    <!--                                                               cols="50"></textarea></td>-->
-    <!--                                </tr>-->
-    <!--                                </tbody>-->
-    <!--                            </table>-->
-    <!--                            <div class="top bottom right">Body armor reduces the damage of all attacks except Called-->
-    <!--                                Shots and successful Lethality rolls.-->
-    <!--                            </div>-->
-    <!--                        </td>-->
-    <!--                    <tr>-->
-    <!--                        <td>-->
-    <!--                            <table class="fill">-->
-    <!--                                <tbody class="bottom-children right-children">-->
-    <!--                                <tr>-->
-    <!--                                    <td>-->
-    <!--                                        <div>16.</div>-->
-    <!--                                    </td>-->
-    <!--                                    <td>-->
-    <!--                                        <div>WEAPONS</div>-->
-    <!--                                    </td>-->
-    <!--                                    <td>-->
-    <!--                                        <div>SKILL %</div>-->
-    <!--                                    </td>-->
-    <!--                                    <td>-->
-    <!--                                        <div>BASE RANGE</div>-->
-    <!--                                    </td>-->
-    <!--                                    <td>-->
-    <!--                                        <div>DAMAGE</div>-->
-    <!--                                    </td>-->
-    <!--                                    <td>-->
-    <!--                                        <div>ARMOR PIERCING</div>-->
-    <!--                                    </td>-->
-    <!--                                    <td>-->
-    <!--                                        <div>LETHALITY %</div>-->
-    <!--                                    </td>-->
-    <!--                                    <td>-->
-    <!--                                        <div>KILL RADIUS</div>-->
-    <!--                                    </td>-->
-    <!--                                    <td>-->
-    <!--                                        <div>AMMO</div>-->
-    <!--                                    </td>-->
-    <!--                                </tr>-->
-    <!--                                <tr id="weapon-row-a" class="weapon-row">-->
-    <!--                                    <td class="weapon-select-row">-->
-    <!--                                        <div>(a)<select class="weapon-select" name="weapon-select" id="weapon-a"></select></div>-->
-    <!--                                    </td>-->
-    <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>-->
-    <!--                                </tr>-->
-    <!--                                <tr id="weapon-row-b" class="weapon-row">-->
-    <!--                                    <td class="weapon-select-row">-->
-    <!--                                        <div>(b)<select class="weapon-select" name="weapon-select" id="weapon-b"></select></div>-->
-    <!--                                    </td>-->
-    <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>-->
-    <!--                                </tr>-->
-    <!--                                <tr id="weapon-row-c" class="weapon-row">-->
-    <!--                                    <td class="weapon-select-row">-->
-    <!--                                        <div>(c)<select class="weapon-select" name="weapon-select" id="weapon-c"></select></div>-->
-    <!--                                    </td>-->
-    <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>-->
-    <!--                                </tr>-->
-    <!--                                <tr id="weapon-row-d" class="weapon-row">-->
-    <!--                                    <td class="weapon-select-row">-->
-    <!--                                        <div>(d)<select class="weapon-select" name="weapon-select" id="weapon-d"></select></div>-->
-    <!--                                    </td>-->
-    <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>-->
-    <!--                                </tr>-->
-    <!--                                <tr id="weapon-row-e" class="weapon-row">-->
-    <!--                                    <td class="weapon-select-row">-->
-    <!--                                        <div>(e)<select class="weapon-select" name="weapon-select" id="weapon-e"></select></div>-->
-    <!--                                    </td>-->
-    <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>-->
-    <!--                                </tr>-->
-    <!--                                <tr id="weapon-row-f" class="weapon-row">-->
-    <!--                                    <td class="weapon-select-row">-->
-    <!--                                        <div>(f)<select class="weapon-select" name="weapon-select" id="weapon-f"></select></div>-->
-    <!--                                    </td>-->
-    <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>-->
-    <!--                                </tr>-->
-    <!--                                <tr id="weapon-row-g" class="weapon-row">-->
-    <!--                                    <td class="weapon-select-row">-->
-    <!--                                        <div>(g)<select class="weapon-select" name="weapon-select" id="weapon-g"></select></div>-->
-    <!--                                    </td>-->
-    <!--                                    <td><input class="weapon-name weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-skill weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-range weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-damage weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>-->
-    <!--                                    <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>-->
-    <!--                                </tr>-->
-    <!--                                </tbody>-->
-    <!--                            </table>-->
-    <!--                        </td>-->
-    <!--                    </tr>-->
-    <!--                    </tbody>-->
-    <!--                </table>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </td>-->
-    <!--    </tr>-->
-    <!--    <tr id="remarks-row"><td>-->
-    <!--        <div id="remarks" class="label pad">-->
-    <!--            <div class="label-background">-->
-    <!--                <p class="label-text">Remarks</p>-->
-    <!--            </div>-->
-    <!--            <div class="table">-->
-    <!--                <table class="GeneratedTable fill top">-->
-    <!--                    <tbody>-->
-    <!--                    <tr>-->
-    <!--                        <td class="half right">-->
-    <!--                            <table>-->
-    <!--                                <tbody>-->
-    <!--                                <tr>-->
-    <!--                                    <td>-->
-    <!--                                        <div>17. PERSONAL DETAILS AND NOTES</div>-->
-    <!--                                    </td>-->
-    <!--                                </tr>-->
-    <!--                                <tr>-->
-    <!--                                    <td>-->
-    <!--                                        <textarea id="notes" name="notes" rows="23" cols="75"></textarea>-->
-    <!--                                    </td>-->
-    <!--                                </tr>-->
-    <!--                                </tbody>-->
-    <!--                            </table>-->
-    <!--                        </td>-->
-    <!--                        <td class="fill-height right" id="home-and-special-training">-->
-    <!--                            <table class="fill-height fill">-->
-    <!--                                <tbody>-->
-    <!--                                <tr>-->
-    <!--                                    <td>-->
-    <!--                                        <table class="fill">-->
-    <!--                                            <tbody>-->
-    <!--                                            <tr>-->
-    <!--                                                <td>-->
-    <!--                                                    <div>18. DEVELOPMENTS WHICH AFFECT HOME AND FAMILY</div>-->
-    <!--                                                </td>-->
-    <!--                                            </tr>-->
-    <!--                                            <tr>-->
-    <!--                                                <td><textarea id="home" name="home" rows="15" cols="75"></textarea></td>-->
-    <!--                                            </tr>-->
-    <!--                                            </tbody>-->
-    <!--                                        </table>-->
-    <!--                                    </td>-->
-    <!--                                </tr>-->
-    <!--                                <tr>-->
-    <!--                                    <td class="fill">-->
-    <!--                                        <table class="fill top">-->
-    <!--                                            <tbody>-->
-    <!--                                            <tr>-->
-    <!--                                                <td class="right">-->
-    <!--                                                    <div>19. SPECIAL TRAINING</div>-->
-    <!--                                                </td>-->
-    <!--                                                <td>-->
-    <!--                                                    <div>SKILL OR STAT USED</div>-->
-    <!--                                                </td>-->
-    <!--                                            </tr>-->
-    <!--                                            <tr>-->
-    <!--                                                <td class="half right bottom top"><input class="fill" type="text"-->
-    <!--                                                                                         value=""/></td>-->
-    <!--                                                <td class="half bottom top"><input class="fill" type="text" value=""/>-->
-    <!--                                                </td>-->
-    <!--                                            </tr>-->
-    <!--                                            <tr>-->
-    <!--                                                <td class="half right bottom"><input class="fill" type="text" value=""/>-->
-    <!--                                                </td>-->
-    <!--                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>-->
-    <!--                                            </tr>-->
-    <!--                                            <tr>-->
-    <!--                                                <td class="half right bottom"><input class="fill" type="text" value=""/>-->
-    <!--                                                </td>-->
-    <!--                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>-->
-    <!--                                            </tr>-->
-    <!--                                            <tr>-->
-    <!--                                                <td class="half right bottom"><input class="fill" type="text" value=""/>-->
-    <!--                                                </td>-->
-    <!--                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>-->
-    <!--                                            </tr>-->
-    <!--                                            <tr>-->
-    <!--                                                <td class="half right bottom"><input class="fill" type="text" value=""/>-->
-    <!--                                                </td>-->
-    <!--                                                <td class="half bottom"><input class="fill" type="text" value=""/></td>-->
-    <!--                                            </tr>-->
-    <!--                                            <tr>-->
-    <!--                                                <td class="half right"><input class="fill" type="text" value=""/></td>-->
-    <!--                                                <td class="half"><input class="fill" type="text" value=""/></td>-->
-    <!--                                            </tr>-->
-    <!--                                            </tbody>-->
-    <!--                                        </table>-->
-    <!--                                    </td>-->
-    <!--                                </tr>-->
-    <!--                                </tbody>-->
-    <!--                            </table>-->
-    <!--                        </td>-->
-    <!--                    </tr>-->
-    <!--                    <tr class="fill">-->
-    <!--                        <td colspan="2" class="fill top bottom right">-->
-    <!--                            <div class="fill">Please indicate why this agent was recruited and why the agent agreed to-->
-    <!--                                be recruited.-->
-    <!--                            </div>-->
-    <!--                        </td>-->
-    <!--                    </tr>-->
-    <!--                    </tbody>-->
-    <!--                </table>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </td>-->
-    <!--    </tr>-->
-    <!--    <tr id="signature-row"><td>-->
-    <!--        <table class="fill pad">-->
-    <!--            <tbody>-->
-    <!--            <tr>-->
-    <!--                <td class="top right left half">-->
-    <!--                    <div>20. AUTHORIZING OFFICER</div>-->
-    <!--                </td>-->
-    <!--                <td class="top right half">-->
-    <!--                    <div>21. AGENT SIGNATURE</div>-->
-    <!--                </td>-->
-    <!--            </tr>-->
-    <!--            <tr>-->
-    <!--            <tr>-->
-    <!--                <td class="top right left bottom half fill"><input class="fill" type="text" value=""/></td>-->
-    <!--                <td class="top right bottom half fill"><input class="fill" type="text" value=""/></td>-->
-    <!--            </tr>-->
-    <!--            </tbody>-->
-    <!--        </table>-->
-    <!--    </td>-->
-    <!--    </tr>-->
-    <!--    <tr id="bottom-banner-row"><td>-->
-    <!--        <div id="bottom-banner" class="bottom-banner">-->
-    <!--            <img src="resources/char-sheet-bottom.png" alt="Delta Green" width="1290" height="84">-->
-    <!--        </div>-->
-    <!--    </td>-->
-    <!--    </tr>-->
-    <!--    </tbody>-->
-    <!--</table>-->
 </body>
 </html>
