@@ -302,7 +302,8 @@ tbody {
 
 
 .other-skill{
-    text-align:center
+    text-align:center;
+    width: 30%;
 }
 
 /* The Modal (background) */
