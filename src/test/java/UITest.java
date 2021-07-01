@@ -109,7 +109,7 @@ public class UITest {
     @Before
     public void setup() {
         driver = new ChromeDriver();
-        driver.get("https://dgbirdwatching.com/CharacterSheet.html");
+        driver.get("https://dgbirdwatching.com/test/CharacterSheet.html");
     }
 
     @After
@@ -283,7 +283,7 @@ public class UITest {
                 HUMINT, "50");
         checkAllSkillValues(skillMap);
         assertOtherSkill(0, "Foreign Language 40%\n(Spanish)", "40");
-        assertOtherSkill(0, "Foreign Language 50%\n(German)", "50");
+        assertOtherSkill(1, "Foreign Language 50%\n(German)", "50");
     }
 
     private String selectWeapon(WebElement selectElement, String value) {
@@ -319,12 +319,12 @@ public class UITest {
 
         click(ANTHROPOLOGIST + "Confirm");
 
-        Map<String, String> skillMap = Map.of(ARCHEOLOGY, "50", HISTORY, "40", OCCULT,
+        Map<String, String> skillMap = Map.of(ARCHEOLOGY, "50",BUREAUCRACY, "40", HISTORY, "40", OCCULT,
                 "40", PERSUADE, "40", NAVIGATE, "50", RIDE, "50");
         checkAllSkillValues(skillMap);
 
         assertEquals(driver.findElements(By.className("other-skill-name")).get(0).getAttribute("value"), "Foreign Language 40%\n(Spanish)");
-        assertOtherSkill(0, "Foreign Language 50%\n(German)", "50");
+        assertOtherSkill(1, "Foreign Language 50%\n(German)", "50");
         assertEquals(driver.findElements(By.className("other-skill")).get(0).getAttribute("value"), "40");
     }
 
@@ -348,12 +348,12 @@ public class UITest {
 
         click(ANTHROPOLOGIST + "Confirm");
 
-        Map<String, String> skillMap = Map.of(ARCHEOLOGY, "50", HISTORY, "40", OCCULT,
+        Map<String, String> skillMap = Map.of(ARCHEOLOGY, "50",BUREAUCRACY, "40", HISTORY, "40", OCCULT,
                 "40", PERSUADE, "40", SEARCH, "60", SURVIVAL, "50");
         checkAllSkillValues(skillMap);
 
         assertEquals(driver.findElements(By.className("other-skill-name")).get(0).getAttribute("value"), "Foreign Language 40%\n(Spanish)");
-        assertOtherSkill(0, "Foreign Language 50%\n(German)", "50");
+        assertOtherSkill(1, "Foreign Language 50%\n(German)", "50");
         assertEquals(driver.findElements(By.className("other-skill")).get(0).getAttribute("value"), "40");
     }
 
@@ -2527,10 +2527,11 @@ public class UITest {
             assertThat(skills).doesNotHaveDuplicates();
             switch (profession) {
                 case "Anthropologist":
-                    List<String> defaultSkills = Arrays.asList(HISTORY, OCCULT, PERSUADE);
+                    List<String> defaultSkills = Arrays.asList(BUREAUCRACY, HISTORY, OCCULT, PERSUADE);
                     List<String> optionalSkills = Arrays.asList(ANTHROPOLOGY, ARCHEOLOGY, HUMINT, NAVIGATE, RIDE, SEARCH, SURVIVAL);
-                    List<String> inputSkills = Collections.singletonList(WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)");
-                    int expectedSize = 7;
+                    String foreignLanguage = WordUtils.capitalizeFully(FOREIGN_LANGUAGE.replaceAll("-", " ")) + " \\(\\w*\\)";
+                    List<String> inputSkills = Arrays.asList(foreignLanguage, foreignLanguage);
+                    int expectedSize = 9;
                     List<String> noSkills = new ArrayList<>(ALL_SKILLS);
                     noSkills.removeAll(defaultSkills);
                     noSkills.removeAll(optionalSkills);
