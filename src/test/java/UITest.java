@@ -247,6 +247,7 @@ public class UITest {
         openProfessionModal();
         click(ANTHROPOLOGIST + "-" + ANTHROPOLOGY + "Opt");
         inputText(getSkillString(ANTHROPOLOGIST, FOREIGN_LANGUAGE) + "1", "Spanish");
+        inputText(getSkillString(ANTHROPOLOGIST, FOREIGN_LANGUAGE) + "2", "German");
 
         checkAllEnabled(Arrays.asList(
                 getSkillString(ANTHROPOLOGIST, ARCHEOLOGY),
@@ -255,9 +256,9 @@ public class UITest {
                 getSkillString(ANTHROPOLOGIST, RIDE),
                 getSkillString(ANTHROPOLOGIST, SEARCH),
                 getSkillString(ANTHROPOLOGIST, SURVIVAL),
-                getSkillString(ANTHROPOLOGIST, FOREIGN_LANGUAGE) + "1"),
+                getSkillString(ANTHROPOLOGIST, FOREIGN_LANGUAGE) + "1",
+                getSkillString(ANTHROPOLOGIST, FOREIGN_LANGUAGE) + "2"),
                 Collections.emptyList());
-
         click(getSkillString(ANTHROPOLOGIST, ARCHEOLOGY));
         click(getSkillString(ANTHROPOLOGIST, HUMINT));
 
@@ -274,14 +275,15 @@ public class UITest {
 
         Map<String, String> skillMap = Map.of(
                 ANTHROPOLOGY, "50",
+                BUREAUCRACY, "40",
                 HISTORY, "40",
                 OCCULT, "40",
                 PERSUADE, "40",
                 ARCHEOLOGY, "50",
                 HUMINT, "50");
         checkAllSkillValues(skillMap);
-
         assertOtherSkill(0, "Foreign Language 40%\n(Spanish)", "40");
+        assertOtherSkill(0, "Foreign Language 50%\n(German)", "50");
     }
 
     private String selectWeapon(WebElement selectElement, String value) {
@@ -297,7 +299,7 @@ public class UITest {
         openProfessionModal();
         click(getSkillString(ANTHROPOLOGIST, ARCHEOLOGY) + "Opt");
         inputText(getSkillString(ANTHROPOLOGIST, FOREIGN_LANGUAGE) + "1", "Spanish");
-
+        inputText(getSkillString(ANTHROPOLOGIST, FOREIGN_LANGUAGE) + "2", "German");
         checkAllEnabled(
                 Arrays.asList(
                         getSkillString(ANTHROPOLOGIST, ANTHROPOLOGY),
@@ -322,6 +324,7 @@ public class UITest {
         checkAllSkillValues(skillMap);
 
         assertEquals(driver.findElements(By.className("other-skill-name")).get(0).getAttribute("value"), "Foreign Language 40%\n(Spanish)");
+        assertOtherSkill(0, "Foreign Language 50%\n(German)", "50");
         assertEquals(driver.findElements(By.className("other-skill")).get(0).getAttribute("value"), "40");
     }
 
@@ -330,7 +333,7 @@ public class UITest {
         openProfessionModal();
         click(getSkillString(ANTHROPOLOGIST, ARCHEOLOGY) + "Opt");
         inputText(getSkillString(ANTHROPOLOGIST, FOREIGN_LANGUAGE) + "1", "Spanish");
-
+        inputText(getSkillString(ANTHROPOLOGIST, FOREIGN_LANGUAGE) + "2", "German");
         checkAllEnabled(Arrays.asList(getSkillString(ANTHROPOLOGIST, ANTHROPOLOGY), getSkillString(ANTHROPOLOGIST, HUMINT), getSkillString(ANTHROPOLOGIST, NAVIGATE),
                 getSkillString(ANTHROPOLOGIST, RIDE), getSkillString(ANTHROPOLOGIST, SEARCH), getSkillString(ANTHROPOLOGIST, SURVIVAL)),
                 Collections.singletonList(getSkillString(ANTHROPOLOGIST, ARCHEOLOGY)));
@@ -350,6 +353,7 @@ public class UITest {
         checkAllSkillValues(skillMap);
 
         assertEquals(driver.findElements(By.className("other-skill-name")).get(0).getAttribute("value"), "Foreign Language 40%\n(Spanish)");
+        assertOtherSkill(0, "Foreign Language 50%\n(German)", "50");
         assertEquals(driver.findElements(By.className("other-skill")).get(0).getAttribute("value"), "40");
     }
 
