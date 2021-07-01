@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Delta Green Character Creator</title>
-<link rel="stylesheet" href="css/characterSheet.css"/>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <link rel="stylesheet" href="css/characterSheet.css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
 
-<script type="text/javascript" src="https://unpkg.com/html2canvas@1.0.0-rc.7/dist/html2canvas.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-<script type="text/javascript" src="js/CharacterSheet.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        createProfessionWrappers();
-        setScoreListeners();
-        setHPListener();
-        setPowListener();
-        setAdaptedListeners();
-        createPrintButton();
-        setModalListener();
-        updateSkillIncreaseButtons();
-        setSkillListeners();
-        setPlusListeners();
-        setMinusListeners();
-        createWeaponSelect();
-        parseNames();
-        setRandomListener();
-    });
-</script>
+    <script type="text/javascript" src="https://unpkg.com/html2canvas@1.0.0-rc.7/dist/html2canvas.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script type="text/javascript" src="js/CharacterSheet.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            createProfessionWrappers();
+            setScoreListeners();
+            setHPListener();
+            setPowListener();
+            setAdaptedListeners();
+            createPrintButton();
+            setModalListener();
+            updateSkillIncreaseButtons();
+            setSkillListeners();
+            setPlusListeners();
+            setMinusListeners();
+            createWeaponSelect();
+            parseNames();
+            setRandomListener();
+        });
+    </script>
 </head>
 <body>
 <!-- The Modal -->
@@ -305,9 +305,10 @@
             <div class="content-container">
                 <div class="column-content skills">
                     <div class="skill-container">
-                        <div class="flex-row">
+                        <div class="flex-row skill-check">
                             <input
-                                    title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="accounting-check" name="accounting-check"/>
+                                    title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks."
+                                    type="checkbox" id="accounting-check" name="accounting-check"/>
                         </div>
                         <input class="flex-row skill-name" type="text"
                                title="The study of finance and business. Use it to sift through financial records for anomalies, such as a hidden bank account or money laundering." value="Accounting (10%)"/>
@@ -316,7 +317,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="alertness-check" name="alertness"/>
                         </div>
                         <input class="flex-row skill-name" type="text" value="Alertness (20%)"
@@ -326,7 +327,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="anthropology-check" name="anthropology">
                         </div>
                         <input class="flex-row skill-name" type="text" value="Anthropology (0%)"
@@ -336,7 +337,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="archeology-check" name="archeology"/>
                         </div>
                         <input class="flex-row skill-name" type="text" value="Archeology (0%)"
@@ -346,7 +347,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="artillery-check" name="artillery"/>
                         </div>
                         <input class="flex-row skill-name" type="text"
@@ -356,7 +357,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="athletics-check" name="athletics">
                         </div>
                         <input class="flex-row skill-name" type="text" value="Athletics (30%)"
@@ -366,7 +367,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="bureaucracy-check" name="accounting"/>
                         </div>
                         <input class="flex-row skill-name" type="text" value="Bureaucracy (10%)"
@@ -376,7 +377,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="computer-science-check" name="computer-science"/>
                         </div>
                         <input class="flex-row skill-name" type="text" value="Computer Science (0%)"
@@ -386,7 +387,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="criminology-check" name="criminology"/>
                         </div>
                         <input class="flex-row skill-name" type="text" value="Criminology (10%)"
@@ -398,12 +399,12 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="demolitions-check"
                                 name="demolitions"/>
-                            <input class="flex-row skill-name" type = "text" value="Demolitions (0%)"
-                                   title="Safe handling of explosives in a crisis. Use it to disarm a bomb, set a charge to destroy a target remotely, jury rig an explosive from supplies at the hardware store, or analyze a blast to determine exactly what caused it. Failure when handling a bomb means your Agent needs more time. If it’s a crisis that requires a roll, a fumble means an accidental explosion."/>
                         </div>
+                        <input class="flex-row skill-name" type = "text" value="Demolitions (0%)"
+                               title="Safe handling of explosives in a crisis. Use it to disarm a bomb, set a charge to destroy a target remotely, jury rig an explosive from supplies at the hardware store, or analyze a blast to determine exactly what caused it. Failure when handling a bomb means your Agent needs more time. If it’s a crisis that requires a roll, a fumble means an accidental explosion."/>
                         <div class="flex-row"><img alt="minus" class="minus"
                                                    src="resources/minus.png"></div>
                         <input type="text" id="demolitions" class="skill"
@@ -411,7 +412,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="disguise-check" name="disguise"></div>
                         <input class="flex-row skill-name" type = "text" value="Disguise (10%)"
                                title="Alter your Agent’s appearance, voice, posture, body language, and mannerisms to avoid recognition with out drawing attention."/>
@@ -420,7 +421,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="dodge-check" name="dodge"></div>
                         <input class="flex-row skill-name" type = "text" value="Dodge (30%)"
                                title="Evading danger through instinct and reflexes. Use Dodge to avoid an attack. Against firearms and explosives, Dodge is only useful to get to cover."/>
@@ -431,7 +432,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="drive-check" name="drive"></div>
                         <input class="flex-row skill-name" type = "text" value="Drive (10%)"
                                title="Handling an automobile or a motorcycle safely in a crisis. Unless the Handler says otherwise, every Agent has a driver’s license and can drive a car safely in normal conditions. Use this skill to keep a vehicle safe in a high speed pursuit or on dangerous terrain."/>
@@ -443,7 +444,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="firearms-check"
                                 name="firearms"></div>
                         <input class="flex-row skill-name" type = "text" value="Firearms (20%)"
@@ -456,7 +457,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="first-aid-check"
                                 name="first-aid"></div>
                         <input class="flex-row skill-name" type = "text" value="First Aid (10%)"
@@ -469,7 +470,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="forensics-check"
                                 name="forensics"></div>
                         <input class="flex-row skill-name" type = "text" value="Forensics (0%)"
@@ -482,7 +483,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="heavy-machinery-check"
                                 name="heavy-machinery"></div>
                         <input class="flex-row skill-name" type = "text" value="Heavy Machinery (10%)"
@@ -495,7 +496,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="heavy-weapons-check"
                                 name="heavy-weapons"></div>
                         <input class="flex-row skill-name" type = "text" value="Heavy Weapons (0%)"
@@ -508,7 +509,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="history-check" name="history"></div>
                         <input class="flex-row skill-name" type = "text" value="History (10%)"
                                title="Uncovering facts and theories about human antiquity. Use it to remember or find a key fact about the distant past, recognize an obscure reference, or comb a database or library for information that nobody without your deep education could find. While Anthropology is about living cultures and Archeology studies the meaning of ancient relics, History is a broad study of humanity."/>
@@ -517,7 +518,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="humint-check" name="humint"></div>
                         <input class="flex-row skill-name" type = "text" value="HUMINT (10%)"
                                title="Human intelligence. This obtains information about a subject—especially information the subject would rather conceal—through observation, conversation, or examining patterns of behavior and relationships. Use HUMINT to recognize signs of dishonesty from verbal cues and body language, gauge attitude and intentions, cultivate sources of information about a subject, determine what it would take to get a subject to cooperate, or recognize clues of what a subject wants to conceal. HUMINT can notice signs of mental illness, but Psychotherapy would be needed to diagnose and treat a specific malady. If your Agent also has Criminology, HUMINT can be used to compile a psychological profile to help find a subject. A subject who deliberately tries to deceive your Agent can attempt a Persuade test to oppose your Agent’s HUMINT."/>
@@ -526,7 +527,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="law-check" name="law"></div>
                         <input class="flex-row skill-name" type = "text" value="Law (0%)"
                                title="Using laws and courts to your Agent’s advantage. Use it to get your Agent’s way in court, to determine the correct procedures for handling evidence in a prosecution or a civil case (and how to undermine them), to bullshit your Agent’s way out of legal trouble, or to minimize legal risks. The Law skill applies to your Agent’s native country; using it with another country’s laws requires special training."/>
@@ -535,7 +536,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="medicine-check" name="medicine"></div>
                         <input class="flex-row skill-name" type = "text" value="Medicine (0%)"
                                title="The study and treatment of injury and illness. Use it to diagnose the cause of an injury, disease, or poisoning, identify abnormalities such as toxins or diseases, identify the cause and approximate time of death, identify the type of weapon used to kill a victim, identify a dead person’s last meal, or prescribe proper long term care. By comparison, First Aid keeps a patient alive until surgery is possible and Surgery corrects a severe wound."/>
@@ -544,7 +545,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="melee-weapons-check" name="accounting"></div>
                         <input class="flex-row skill-name" type = "text" value="Melee Weapons (30%)"
                                title="Lethal use of melee weapons in combat. Use it to hurt or kill an opponent with a knife, axe, club, or other weapon."/>
@@ -553,7 +554,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="navigate-check" name="pharmacy"></div>
                         <input class="flex-row skill-name" type = "text" value="Navigate (10%)"
                                title="Finding your way quickly with maps, charts and tables, orienteering, instruments, or dead reckoning"/>
@@ -562,7 +563,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="occult-check" name="psychotherapy"></div>
                         <input class="flex-row skill-name" type = "text" value="Occult (10%)"
                                title="The study of the supernatural as understood by human traditions, including things like conspiracy theories, fringe science, and cryptozoology. Use Occult to examine and deduce the intent of a ritual, or to identify occult traditions, groups, grimoires, tools, symbols, or legends. Occult can never tell an Agent what’s genuinely unnatural and what’s just superstition or mythology. That’s the province of the Unnatural skill."/>
@@ -571,7 +572,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="persuade-check" name="persuade"></div>
                         <input class="flex-row skill-name" type = "text" value="Persuade (20%)"
                                title="Changing another’s deeply held decision or desire. Use Persuade to get your Agent’s way when the subject is so stubborn, what your Agent wants is so valuable, or the deception is so flagrant that Charisma isn’t enough. With Persuade, your Agent might convince a witness that what she saw was innocuous and not unnatural, talk a detective into helping you cover up evidence for the greater good, or draw useful intelligence out of an unwilling subject. This skill also allows your Agent to resist persuasion and interrogation in opposed Persuade rolls."/>
@@ -580,7 +581,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="pharmacy-check" name="pharmacy"></div>
                         <input class="flex-row skill-name" type = "text" value="Pharmacy (0%)"
                                title="Knowledge of drugs, from their ingredients and creation, to their effects, uses, and misuses. Use it to identify and produce medicines and antidotes—as well as poisons. Identifying a drug requires at least 20% skill. Preparing a particularly powerful drug safely, such as one with psychoactive effects, requires at least 40% skill or a successful roll. Misusing Pharmacy is a quick way to kill a patient."/>
@@ -590,7 +591,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="psychotherapy-check" name="psychotherapy"></div>
                         <input class="flex-row skill-name" type = "text" value="Psychotherapy (10%)"
                                title="The diagnosis and treatment of mental illness. Use it to identify a mental disorder, help a patient recover, talk someone down when a disorder begins to take over, and treat mental illness in the long term. You cannot use Psychotherapy on yourself. Using Psychotherapy to aid someone who suffered exposure to Unnatural forces might cost the therapist SAN."/>
@@ -599,7 +600,7 @@
                         <div class="flex-row"><img alt="plus" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="ride-check" name="ride"></div>
                         <input class="flex-row skill-name" type = "text" value="Ride (10%)"
                                title="Handling, training, and riding an animal—horses, donkeys, camels, whatever. Exotic mounts may need special training (see page 30). Use it to keep safe on an animal in a crisis and to keep riding animals safe, calm, and healthy."/>
@@ -611,7 +612,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="search-check"
                                 name="search"></div>
                         <input class="flex-row skill-name" type = "text" value="Search (20%)"
@@ -624,7 +625,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="sigint-check"
                                 name="sigint"></div>
                         <input class="flex-row skill-name" type = "text" value="SIGINT (0%)"
@@ -637,7 +638,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="stealth-check"
                                 name="accounting"></div>
                         <input class="flex-row skill-name" type = "text" value="Stealth (10%)"
@@ -650,7 +651,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="surgery-check"
                                 name="surgery"></div>
                         <input class="flex-row skill-name" type = "text" value="Surgery (0%)"
@@ -663,7 +664,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="survival-check"
                                 name="accounting"></div>
                         <input class="flex-row skill-name" type = "text" value="Survival (10%)"
@@ -676,7 +677,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="swim-check"
                                 name="accounting"></div>
                         <input class="flex-row skill-name" type = "text" value="Swim (20%)"
@@ -689,7 +690,7 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input
+                        <div class="flex-row skill-check"><input
                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="unarmed-combat-check"
                                 name="unarmed-combat"></div>
                         <input class="flex-row skill-name" type = "text" value="Unarmed Combat (40%)"
@@ -702,18 +703,19 @@
                                                    src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container">
-                        <div class="flex-row"><input style="visibility: hidden"
-                                                     title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="unnatural-check"></div>
+                        <div class="flex-row skill-check"><input style="visibility: hidden"
+                                                                 title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="unnatural-check"/>
+                        </div>
                         <input class="flex-row skill-name" type = "text" value="Unnatural (0%)"
                                title="Knowledge of the fundamental, mind rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating."/>
                         <div class="flex-row"><img alt="minus" style="visibility: hidden" class="minus" src="resources/minus.png"></div>
-                        <div class="flex-row"><input type="text" id="unnatural" class="skill center" base="0" prof-base="0" value="0"/></div>
+                        <input type="text" id="unnatural" class="skill center" base="0" prof-base="0" value="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
                     <div class="skill-container-label bottom">
                         <div class="flex-row">Foreign Languages and Other Skills:</div>
                     </div>
-                    <div class="other-skill-container">
+                    <div class="other-skill-container bottom">
                         <div class="flex-row"><input style="visibility: hidden"
                                                      title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-1-check"></div>
                         <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-1"></textarea></div>
@@ -721,7 +723,7 @@
                         <input type="text" id="other-skill-value-1" class="other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
-                    <div class="other-skill-container">
+                    <div class="other-skill-container bottom">
                         <div class="flex-row"><input style="visibility: hidden"
                                                      title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-2-check"></div>
                         <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-2"></textarea></div>
@@ -729,7 +731,7 @@
                         <input type="text" id="other-skill-value-2" class="other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
-                    <div class="other-skill-container">
+                    <div class="other-skill-container bottom">
                         <div class="flex-row"><input style="visibility: hidden"
                                                      title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-3-check"></div>
                         <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-3"></textarea></div>
@@ -737,7 +739,7 @@
                         <input type="text" id="other-skill-value-3" class="other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
-                    <div class="other-skill-container">
+                    <div class="other-skill-container bottom">
                         <div class="flex-row"><input style="visibility: hidden"
                                                      title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-4-check"></div>
                         <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-4"></textarea></div>
@@ -745,7 +747,7 @@
                         <input type="text" id="other-skill-value-4" class="other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
-                    <div class="other-skill-container">
+                    <div class="other-skill-container bottom">
                         <div class="flex-row"><input style="visibility: hidden"
                                                      title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-5-check"></div>
                         <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-5"></textarea></div>
@@ -753,7 +755,7 @@
                         <input type="text" id="other-skill-value-5" class="other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
-                    <div class="other-skill-container">
+                    <div class="other-skill-container bottom">
                         <div class="flex-row"><input style="visibility: hidden"
                                                      title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-6-check"></div>
                         <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-6"></textarea></div>
@@ -761,7 +763,7 @@
                         <input type="text" id="other-skill-value-6" class="other-skill" base="0" prof-base="0"/>
                         <div class="flex-row"><img alt="plus" style="visibility: hidden" class="plus" src="resources/plus.png"></div>
                     </div>
-                    <div class="other-skill-container">
+                    <div class="other-skill-container bottom">
                         <div class="flex-row"><input style="visibility: hidden"
                                                      title="Check a box when you attempt to use a skill and fail. After the session, add 1D4 to each checked skill and erase all checks." type="checkbox" id="other-skill-7-check"></div>
                         <div class="flex-row other-skill-div"><textarea class="other-skill-name" rows="2" id="other-skill-name-7"></textarea></div>
@@ -807,139 +809,142 @@
                 <p class="label-text">Equipment</p>
             </div>
             <div class="content-container">
-                <div class="right fill align-left">15. ARMOR AND GEAR</div>
-                <textarea class="fill right" id="gear" name="gear" rows="20" cols="50"></textarea>
-                <div class="top bottom right fill">
+                <div class="fill align-left right">15. ARMOR AND GEAR</div>
+                <div class="fill right">
+                    <textarea class="fill" id="gear" name="gear" rows="20"></textarea>
+                </div>
+                <div class="top bottom fill right">
                     Body armor reduces the damage of all attacks except Called Shots and successful Lethality rolls.
                 </div>
-                <table class="fill">
-                    <tbody class="bottom-children right-children">
-                    <tr>
-                        <td>
-                            <div>16.</div>
-                        </td>
-                        <td>
-                            <div>WEAPONS</div>
-                        </td>
-                        <td>
-                            <div>SKILL %</div>
-                        </td>
-                        <td>
-                            <div>BASE RANGE</div>
-                        </td>
-                        <td>
-                            <div>DAMAGE</div>
-                        </td>
-                        <td>
-                            <div>ARMOR PIERCING</div>
-                        </td>
-                        <td>
-                            <div>LETHALITY %</div>
-                        </td>
-                        <td>
-                            <div>KILL RADIUS</div>
-                        </td>
-                        <td>
-                            <div>AMMO</div>
-                        </td>
-                    </tr>
-                    <tr id="weapon-row-a" class="weapon-row">
-                        <td class="weapon-select-row">
-                            <div>(a)<select class="weapon-select" name="weapon-select" id="weapon-a"></select></div>
-                        </td>
-                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
-                    </tr>
-                    <tr id="weapon-row-b" class="weapon-row">
-                        <td class="weapon-select-row">
-                            <div>(b)<select class="weapon-select" name="weapon-select" id="weapon-b"></select></div>
-                        </td>
-                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
-                    </tr>
-                    <tr id="weapon-row-c" class="weapon-row">
-                        <td class="weapon-select-row">
-                            <div>(c)<select class="weapon-select" name="weapon-select" id="weapon-c"></select></div>
-                        </td>
-                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
-                    </tr>
-                    <tr id="weapon-row-d" class="weapon-row">
-                        <td class="weapon-select-row">
-                            <div>(d)<select class="weapon-select" name="weapon-select" id="weapon-d"></select></div>
-                        </td>
-                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
-                    </tr>
-                    <tr id="weapon-row-e" class="weapon-row">
-                        <td class="weapon-select-row">
-                            <div>(e)<select class="weapon-select" name="weapon-select" id="weapon-e"></select></div>
-                        </td>
-                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
-                    </tr>
-                    <tr id="weapon-row-f" class="weapon-row">
-                        <td class="weapon-select-row">
-                            <div>(f)<select class="weapon-select" name="weapon-select" id="weapon-f"></select></div>
-                        </td>
-                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
-                    </tr>
-                    <tr id="weapon-row-g" class="weapon-row">
-                        <td class="weapon-select-row">
-                            <div>(g)<select class="weapon-select" name="weapon-select" id="weapon-g"></select></div>
-                        </td>
-                        <td><input class="weapon-name weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-skill weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-range weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-damage weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-piercing weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-lethality weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
-                        <td><input class="weapon-ammo weapon-input" type="text" value=""/></td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="column-content fill">
+                    <table class="fill weapon-table">
+                        <tbody class="right-children weapon-row">
+                        <tr class="weapon-row bottom">
+                            <td class="weapon-cell right bottom">
+                                <div>16.</div>
+                            </td>
+                            <td class="weapon-cell right bottom">
+                                <div>WEAPONS</div>
+                            </td>
+                            <td class="weapon-cell right bottom">
+                                <div>SKILL %</div>
+                            </td>
+                            <td class="weapon-cell right bottom">
+                                <div>BASE RANGE</div>
+                            </td>
+                            <td class="weapon-cell right bottom">
+                                <div>DAMAGE</div>
+                            </td>
+                            <td class="weapon-cell right bottom">
+                                <div>ARMOR PIERCING</div>
+                            </td>
+                            <td class="weapon-cell right bottom">
+                                <div>LETHALITY %</div>
+                            </td>
+                            <td class="weapon-cell right bottom">
+                                <div>KILL RADIUS</div>
+                            </td>
+                            <td class="weapon-cell bottom">
+                                <div>AMMO</div>
+                            </td>
+                        </tr>
+                        <tr id="weapon-row-a" class="weapon-row">
+                            <td class="weapon-select-row right bottom">
+                                <div>(a)<select class="weapon-select" name="weapon-select" id="weapon-a"></select></div>
+                            </td>
+                            <td class="weapon-cell right bottom"><input class="weapon-name weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-range weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell bottom"><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                        </tr>
+                        <tr id="weapon-row-b" class="weapon-row">
+                            <td class="weapon-select-row right bottom">
+                                <div>(b)<select class="weapon-select" name="weapon-select" id="weapon-b"></select></div>
+                            </td>
+                            <td class="weapon-cell right bottom"><input class="weapon-name weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-range weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell bottom"><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                        </tr>
+                        <tr id="weapon-row-c" class="weapon-row">
+                            <td class="weapon-select-row right bottom">
+                                <div>(c)<select class="weapon-select" name="weapon-select" id="weapon-c"></select></div>
+                            </td>
+                            <td class="weapon-cell right bottom"><input class="weapon-name weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-range weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell bottom"><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                        </tr>
+                        <tr id="weapon-row-d" class="weapon-row">
+                            <td class="weapon-select-row right bottom">
+                                <div>(d)<select class="weapon-select" name="weapon-select" id="weapon-d"></select></div>
+                            </td>
+                            <td class="weapon-cell right bottom"><input class="weapon-name weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-range weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell bottom"><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                        </tr>
+                        <tr id="weapon-row-e" class="weapon-row">
+                            <td class="weapon-select-row right bottom">
+                                <div>(e)<select class="weapon-select" name="weapon-select" id="weapon-e"></select></div>
+                            </td>
+                            <td class="weapon-cell right bottom"><input class="weapon-name weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-range weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell bottom"><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                        </tr>
+                        <tr id="weapon-row-f" class="weapon-row">
+                            <td class="weapon-select-row right bottom">
+                                <div>(f)<select class="weapon-select" name="weapon-select" id="weapon-f"></select></div>
+                            </td>
+                            <td class="weapon-cell right bottom"><input class="weapon-name weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-range weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right bottom"><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell bottom"><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                        </tr>
+                        <tr id="weapon-row-g" class="weapon-row">
+                            <td class="weapon-select-row right">
+                                <div>(g)<select class="weapon-select" name="weapon-select" id="weapon-g"></select></div>
+                            </td>
+                            <td class="weapon-cell right"><input class="weapon-name weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right"><input class="weapon-skill weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right"><input class="weapon-range weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right"><input class="weapon-damage weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right"><input class="weapon-piercing weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right"><input class="weapon-lethality weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell right"><input class="weapon-kill-radius weapon-input" type="text" value=""/></td>
+                            <td class="weapon-cell"><input class="weapon-ammo weapon-input" type="text" value=""/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-
     <div id="remarks-div" class="labeled-section fill">
         <div class="label-container">
             <div class="label-background">

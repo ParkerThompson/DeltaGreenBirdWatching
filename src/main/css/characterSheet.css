@@ -1,3 +1,17 @@
+/* For Mobile */
+@media screen and (max-width: 540px) {
+    body {
+        font-size: 8px;
+    }
+}
+
+/* For Tablets */
+@media screen and (min-width: 540px) and (max-width: 780px) {
+    body {
+        font-size: 10px;
+    }
+}
+
 .banner-img {
     background-color:black;
     width: 294px;
@@ -139,14 +153,12 @@ span {
     height: 82px;
     text-align: center;
     border-bottom: 5px solid white;
-!important;
 }
 
 .bottom-banner {
     width: 100%;
     text-align: center;
     border-bottom: 5px solid white;
-!important;
 }
 
 #form1 {
@@ -189,17 +201,17 @@ span {
     border-right: 2px solid black;
 }
 
-.right-children td {
-    border-right: 2px solid black;
-}
+/*.right-children td {*/
+/*    border-right: 2px solid black;*/
+/*}*/
 
-tr.row td:first-child {
-    border-left: 2px solid black;
-}
+/*tr.row td:first-child {*/
+/*    border-left: 2px solid black;*/
+/*}*/
 
-tr.row td:last-child {
-    border-left: 2px solid black;
-}
+/*tr.row td:last-child {*/
+/*    border-left: 2px solid black;*/
+/*}*/
 
 .bottom-row {
     border-right: 2px solid black;
@@ -290,6 +302,10 @@ tbody {
 .skill {
     text-align:center;
     width: 30%;
+    flex: 1;
+}
+.skill-check {
+    flex: 1;
 }
 
 .align-top {
@@ -385,17 +401,20 @@ tbody {
 }
 
 .weapon-input {
-    text-align:center;
-    overflow-wrap: break-word;
+    text-align:left;
+    align-content: flex-start;
+    /*overflow-wrap: break-word;*/
+    /*border-right: solid 2px black;*/
+    width: 75%;
 }
 
 .weapon-select-row {
-    width: 100%;
+    /*width: 100%;*/
 }
 
 .weapon-select {
-    width: 100%;
-    min-width: 100px;
+    /*width: 100%;*/
+    max-width: 100px;
 }
 
 .ninety {
@@ -572,7 +591,8 @@ tbody {
 .column-content {
     display: flex;
     flex-direction: column;
-    white-space: nowrap;
+    flex-wrap: wrap;
+    /*white-space: nowrap;*/
     border-right: 2px solid black;
     border-bottom: 2px solid black;
 }
@@ -584,13 +604,14 @@ tbody {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    border-right: 2px solid black;
+    /*border-right: 2px solid black;*/
     border-bottom: 2px solid black;
 }
 
 .skill-name {
     border-right: 2px solid black;
     min-width: 140px;
+    flex: 8;
 }
 
 .other-skill-div {
@@ -611,10 +632,7 @@ tbody {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    border-bottom: 2px solid black;
-    /*max-width: 155px;*/
     min-height: 44px;
-    border-right: 2px solid black;
 }
 
 .skill-container-label {
@@ -622,12 +640,11 @@ tbody {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    border-right: 2px solid black;
     border-bottom: 2px solid black;
 }
 
 .skills {
-    max-height: 400px;
+    /*max-height: 400px;*/
     flex-wrap: wrap;
     width: 100%;
 }
@@ -635,3 +652,16 @@ tbody {
 #home-and-special-training {
     min-height: 200px;
 }
+
+.weapon-cell {
+    width: 1%;
+}
+
+.weapon-table {
+    max-width:100%;
+    white-space: nowrap;
+}
+
+/*.weapon-row {*/
+/*    width: auto;*/
+/*}*/
