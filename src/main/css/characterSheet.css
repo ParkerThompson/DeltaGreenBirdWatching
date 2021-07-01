@@ -6,11 +6,11 @@
 /*}*/
 
 /* For Tablets */
-@media screen and (min-width: 540px) and (max-width: 780px) {
-    body {
-        font-size: 10px;
-    }
-}
+/*@media screen and (min-width: 540px) and (max-width: 780px) {*/
+/*    body {*/
+/*        font-size: 10px;*/
+/*    }*/
+/*}*/
 
 .banner-img {
     background-color:black;
