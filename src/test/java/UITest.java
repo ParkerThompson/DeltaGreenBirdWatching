@@ -921,12 +921,13 @@ public class UITest {
 
         Map<String, String> skillMap = ImmutableMap.<String, String>builder()
                 .put(ALERTNESS, "50")
+                .put(ATHLETICS, "50")
                 .put(CRIMINOLOGY, "60")
                 .put(DEMOLITIONS, "40")
                 .put(DODGE, "40")
                 .put(DRIVE, "50")
                 .put(FIREARMS, "40")
-                .put(LAW, "40")
+                .put(LAW, "20")
                 .put(MELEE_WEAPONS, "40")
                 .put(PERSUADE, "50")
                 .put(STEALTH, "50")
@@ -1216,7 +1217,7 @@ public class UITest {
     }
 
     @Test
-    public void testIntelligenceAnalyist() {
+    public void testIntelligenceAnalyst() {
         String profession = INTELLIGENCE_ANALYST;
         openProfessionModal();
 
@@ -1426,24 +1427,6 @@ public class UITest {
         assertOtherSkill(1, "Art 40%:\n(Macreme) ", "40");
     }
 
-
-    //    Art 60%
-//    History 40%
-//    HUMINT 40%
-//    Persuade 50%
-//    Choose five from:
-//
-//    Anthropology 40%
-//    Archeology 40%
-//    Art (choose one) 40%
-//    Bureaucracy 50%
-//    Computer Science 40%
-
-    //    Criminology 50%
-//    Foreign Language (choose one) 40%
-//    Law 40%
-//    Military Science (choose one) 40%
-//    Occult 50%
     @Test
     public void testMediaSpecialistCriminologyOccult() {
         String profession = MEDIA_SPECIALIST;
@@ -1585,7 +1568,6 @@ public class UITest {
 
         click(getSkillString(profession, DRIVE));
         click(getSkillString(profession, FORENSICS));
-
         checkAllEnabled(
                 ImmutableMap.<String, Boolean>builder()
                         .put(getSkillString(profession, DRIVE), Boolean.TRUE)
@@ -1609,6 +1591,7 @@ public class UITest {
                 .put(DRIVE, "60")
                 .build();
         checkAllSkillValues(skillMap);
+        assertOtherSkill(0, "Science 40%:\n(Biology) ", "40");
     }
 
     @Test
@@ -1653,6 +1636,7 @@ public class UITest {
                 .put(PSYCHOTHERAPY, "50")
                 .build();
         checkAllSkillValues(skillMap);
+        assertOtherSkill(0, "Science 40%:\n(Biology) ", "40");
     }
 
     @Test
@@ -1697,6 +1681,7 @@ public class UITest {
                 .put(SEARCH, "60")
                 .build();
         checkAllSkillValues(skillMap);
+        assertOtherSkill(0, "Science 40%:\n(Biology) ", "40");
     }
 
     @Test
