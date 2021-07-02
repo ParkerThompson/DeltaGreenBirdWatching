@@ -109,7 +109,7 @@ public class UITest {
     @Before
     public void setup() {
         driver = new ChromeDriver();
-        driver.get("https://dgbirdwatching.com/test/CharacterSheet.html");
+        driver.get("https://dgbirdwatching.com/CharacterSheet.html");
     }
 
     @After
@@ -978,12 +978,13 @@ public class UITest {
 
         Map<String, String> skillMap = ImmutableMap.<String, String>builder()
                 .put(ALERTNESS, "50")
+                .put(ATHLETICS, "50")
                 .put(CRIMINOLOGY, "60")
                 .put(DISGUISE, "50")
                 .put(DODGE, "40")
                 .put(DRIVE, "50")
                 .put(FIREARMS, "40")
-                .put(LAW, "40")
+                .put(LAW, "20")
                 .put(MELEE_WEAPONS, "40")
                 .put(PERSUADE, "50")
                 .put(STEALTH, "50")
@@ -1034,13 +1035,14 @@ public class UITest {
 
         Map<String, String> skillMap = ImmutableMap.<String, String>builder()
                 .put(ALERTNESS, "50")
+                .put(ATHLETICS, "50")
                 .put(CRIMINOLOGY, "60")
                 .put(FORENSICS, "40")
                 .put(HUMINT, "50")
                 .put(DODGE, "40")
                 .put(DRIVE, "50")
                 .put(FIREARMS, "40")
-                .put(LAW, "40")
+                .put(LAW, "20")
                 .put(MELEE_WEAPONS, "40")
                 .put(PERSUADE, "50")
                 .put(STEALTH, "50")
@@ -1090,13 +1092,14 @@ public class UITest {
 
         Map<String, String> skillMap = ImmutableMap.<String, String>builder()
                 .put(ALERTNESS, "50")
+                .put(ATHLETICS, "50")
                 .put(CRIMINOLOGY, "60")
                 .put(NAVIGATE, "50")
                 .put(OCCULT, "50")
                 .put(DODGE, "40")
                 .put(DRIVE, "50")
                 .put(FIREARMS, "40")
-                .put(LAW, "40")
+                .put(LAW, "20")
                 .put(MELEE_WEAPONS, "40")
                 .put(PERSUADE, "50")
                 .put(STEALTH, "50")
@@ -1146,13 +1149,14 @@ public class UITest {
 
         Map<String, String> skillMap = ImmutableMap.<String, String>builder()
                 .put(ALERTNESS, "50")
+                .put(ATHLETICS, "50")
                 .put(CRIMINOLOGY, "60")
                 .put(OCCULT, "50")
                 .put(PHARMACY, "40")
                 .put(DODGE, "40")
                 .put(DRIVE, "50")
                 .put(FIREARMS, "40")
-                .put(LAW, "40")
+                .put(LAW, "20")
                 .put(MELEE_WEAPONS, "40")
                 .put(PERSUADE, "50")
                 .put(STEALTH, "50")
@@ -2623,10 +2627,10 @@ public class UITest {
                     assertThat(listContainsOtherSkillsByRegex(otherSkills, skills)).isTrue();
                     break;
                 case "Criminal":
-                    defaultSkills = Arrays.asList(ALERTNESS, CRIMINOLOGY, DODGE, DRIVE,
+                    defaultSkills = Arrays.asList(ALERTNESS, ATHLETICS, CRIMINOLOGY, DODGE, DRIVE,
                             FIREARMS, LAW, MELEE_WEAPONS, PERSUADE, STEALTH, UNARMED_COMBAT);
                     optionalSkills = Arrays.asList(DEMOLITIONS, DISGUISE, FORENSICS, HUMINT, NAVIGATE, OCCULT, PHARMACY);
-                    expectedSize = 12;
+                    expectedSize = 13;
                     noSkills = new ArrayList<>(ALL_SKILLS);
                     noSkills.removeAll(defaultSkills);
                     noSkills.removeAll(optionalSkills);
