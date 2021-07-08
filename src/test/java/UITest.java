@@ -5,15 +5,22 @@ import org.apache.commons.text.WordUtils;
 import org.assertj.core.data.MapEntry;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testcontainers.containers.BindMode;
+import org.testcontainers.containers.NginxContainer;
+import org.testcontainers.containers.wait.strategy.HttpWaitStrategy;
+import org.testcontainers.utility.MountableFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -106,10 +113,23 @@ public class UITest {
             OCCULT, COMPUTER_SCIENCE, PERSUADE, CRIMINOLOGY, PHARMACY, DEMOLITIONS, PSYCHOTHERAPY, DISGUISE, RIDE,
             DODGE, SEARCH, DRIVE, SIGINT, FIREARMS, STEALTH, FIRST_AID, SURGERY, FORENSICS, SURVIVAL, HEAVY_MACHINERY,
             SWIM, HEAVY_WEAPONS, UNARMED_COMBAT, CRAFT, SCIENCE, MILITARY_SCIENCE, ART, PILOT_SKILL, FOREIGN_LANGUAGE);
+    @Rule
+    public NginxContainer<?> nginx = new NginxContainer<>("nginx:latest")
+            .withFileSystemBind("/Users/pthompson/repos/deltagreen/charactercreator/src/main/nginx/", "/etc/nginx", BindMode.READ_ONLY)
+            .withCopyFileToContainer(MountableFile.forHostPath("/Users/pthompson/repos/deltagreen/charactercreator/src/main/", MountableFile.DEFAULT_DIR_MODE), "/usr/share/nginx/html/")
+            .withExposedPorts(80)
+            .waitingFor(new HttpWaitStrategy());
+
     @Before
     public void setup() {
         driver = new ChromeDriver();
-        driver.get("https://dgbirdwatching.com/CharacterSheet.html");
+        URL baseUrl = null;
+        try {
+            baseUrl = nginx.getBaseUrl("http", 80);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        driver.get(baseUrl.toString() + "/CharacterSheet.html");
     }
 
     @After
