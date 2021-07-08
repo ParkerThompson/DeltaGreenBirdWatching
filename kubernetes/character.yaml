@@ -1,0 +1,215 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-1
+  managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: { }
+            'f:app': { }
+        'f:spec':
+          'f:progressDeadlineSeconds': { }
+          'f:replicas': { }
+          'f:revisionHistoryLimit': { }
+          'f:selector':
+            'f:matchLabels':
+              .: { }
+              'f:app': { }
+          'f:strategy':
+            'f:rollingUpdate':
+              .: { }
+              'f:maxSurge': { }
+              'f:maxUnavailable': { }
+            'f:type': { }
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: { }
+                'f:app': { }
+            'f:spec':
+              'f:containers':
+                'k:{"name":"deltagreencharactercreator-1"}':
+                  .: { }
+                  'f:image': { }
+                  'f:imagePullPolicy': { }
+                  'f:name': { }
+                  'f:resources': { }
+                  'f:terminationMessagePath': { }
+                  'f:terminationMessagePolicy': { }
+              'f:dnsPolicy': { }
+              'f:restartPolicy': { }
+              'f:schedulerName': { }
+              'f:securityContext': { }
+              'f:terminationGracePeriodSeconds': { }
+      manager: GoogleCloudConsole
+      operation: Update
+      time: '2021-07-08T15:27:10Z'
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: { }
+            'f:deployment.kubernetes.io/revision': { }
+        'f:status':
+          'f:availableReplicas': { }
+          'f:conditions':
+            .: { }
+            'k:{"type":"Available"}':
+              .: { }
+              'f:lastTransitionTime': { }
+              'f:lastUpdateTime': { }
+              'f:message': { }
+              'f:reason': { }
+              'f:status': { }
+              'f:type': { }
+            'k:{"type":"Progressing"}':
+              .: { }
+              'f:lastTransitionTime': { }
+              'f:lastUpdateTime': { }
+              'f:message': { }
+              'f:reason': { }
+              'f:status': { }
+              'f:type': { }
+          'f:observedGeneration': { }
+          'f:readyReplicas': { }
+          'f:replicas': { }
+          'f:updatedReplicas': { }
+      manager: kube-controller-manager
+      operation: Update
+      time: '2021-07-08T15:27:13Z'
+  name: nginx-1
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nginx-1
+    spec:
+      containers:
+        - image: >-
+            gcr.io/excellent-range-307103/github.com/parkerthompson/deltagreencharactercreator
+          imagePullPolicy: IfNotPresent
+          name: deltagreencharactercreator-1
+  ---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: nginx-1
+  managedFields:
+    - apiVersion: autoscaling/v2beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: { }
+            'f:app': { }
+        'f:spec':
+          'f:maxReplicas': { }
+          'f:metrics': { }
+          'f:minReplicas': { }
+          'f:scaleTargetRef':
+            'f:apiVersion': { }
+            'f:kind': { }
+            'f:name': { }
+      manager: GoogleCloudConsole
+      operation: Update
+      time: '2021-07-08T15:27:10Z'
+    - apiVersion: autoscaling/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: { }
+            'f:autoscaling.alpha.kubernetes.io/conditions': { }
+        'f:status':
+          'f:currentReplicas': { }
+      manager: vpa-recommender
+      operation: Update
+      time: '2021-07-08T15:27:26Z'
+  name: nginx-1-hpa-3a82
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nginx-1
+  ---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+    cloud.google.com/neg-status: >-
+      {"network_endpoint_groups":{"80":"k8s1-672ad80b-default-nginx-1-service-80-90893956"},"zones":["us-central1-a"]}
+  labels:
+    app: nginx-1
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: { }
+            'f:app': { }
+        'f:spec':
+          'f:externalTrafficPolicy': { }
+          'f:ports':
+            .: { }
+            'k:{"port":80,"protocol":"TCP"}':
+              .: { }
+              'f:port': { }
+              'f:protocol': { }
+              'f:targetPort': { }
+          'f:selector':
+            .: { }
+            'f:app': { }
+          'f:sessionAffinity': { }
+          'f:type': { }
+      manager: GoogleCloudConsole
+      operation: Update
+      time: '2021-07-08T15:28:17Z'
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:cloud.google.com/neg-status': { }
+      manager: glbc
+      operation: Update
+      time: '2021-07-08T15:29:42Z'
+  name: nginx-1-service
+  namespace: default
+spec:
+  clusterIP: 10.72.15.247
+  externalTrafficPolicy: Cluster
+  ports:
+    - nodePort: 31119
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: nginx-1
+  sessionAffinity: None
+  type: NodePort
