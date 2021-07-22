@@ -493,7 +493,7 @@ function resetSkills() {
 function setSkill(key, value) {
     console.log(value + ": " + key);
     if (value.includes(" ")) {
-        addOtherSkill(value.replaceAll(": ", "\n"), key)
+        addOtherSkill(value.replaceAll(": ", ":\n").replaceAll(") ", ")"), key)
     } else {
         const skill = document.querySelector("#" + value.toLowerCase());
         if (skill != null) {
@@ -595,17 +595,10 @@ function setModalListener() {
         document.querySelector("#" + profSelect.getAttribute("name") + "-wrapper").style = "visible"
     });
 
-    var skillChecks = document.getElementsByClassName("skill-check");
-    for (i = 0; i < skillChecks.length; i++) {
+    let skillChecks = document.getElementsByClassName("skill-check");
+    for (let i = 0; i < skillChecks.length; i++) {
         skillChecks[i].addEventListener("change", function (event) {
-            let skill = event.target.getAttribute("name")
-                .replace(/\s\d{1,2}%:/, "")
-                .replace(" ", "-")
-                .toLowerCase();
-            let profession = event.target.id.replace("-check", "")
-                .replace("-" + skill, "")
-                .replace(/\d/,"");
-            updateSkills(profession, event.target.getAttribute("max"))
+            skillCheckListener(event);
         });
     }
 
@@ -622,6 +615,17 @@ function setModalListener() {
             updateSkills(profession, event.target.getAttribute("max"))
         });
     }
+}
+
+function skillCheckListener(event) {
+    let skill = event.target.getAttribute("name")
+        .replace(/\s\d{1,2}%:/, "")
+        .replace(" ", "-")
+        .toLowerCase();
+    let profession = event.target.id.replace("-check", "")
+        .replace("-" + skill, "")
+        .replace(/\d/,"");
+    updateSkills(profession, event.target.getAttribute("max"))
 }
 
 function readFile(path) {
@@ -670,7 +674,8 @@ function updateSkills(profession) {
 }
 
 function countChecked() {
-    const skillChecks = document.getElementsByClassName("skill-check");
+    let skillChecks = document.getElementsByClassName("skill-check");
+
     let checkedCount = 0;
     for (let i = 0; i < skillChecks.length; i++) {
         if (skillChecks[i].checked) {
@@ -888,7 +893,7 @@ function getSkillChild(skillString, opt, profName, wrapper) {
     let skill = skillString.split(" ");
     if (inputSkills.has(skill[0])) {
         if (opt) {
-            return createOptionalSkillInput(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase(), " " + skill[1] + "%:")
+            return createOptionalSkillInput(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase() + " " + skill[1] + "%:")
         } else {
             return createSkillInput(profName, skill[0], skill[1], skill[0].replace("-", " ").toTitleCase() + " " + skill[1] + "%:", wrapper)
         }
@@ -907,7 +912,7 @@ function createOptionalSkillInput(professionName, skillName, baseValue, friendly
 
     let input = document.createElement("input");
     input.type = "checkbox";
-    input.className = professionName + " skill-check";
+    input.className = professionName + " skill-check skill-check-input";
     input.id = professionName + "-" + skillName + "-check";
     input.value = skillName;
     input.name = skillName;
@@ -938,11 +943,13 @@ function createOptionalSkill(professionName, skillName, baseValue, friendlyName,
 
     const input = document.createElement("input");
     input.type = "checkbox";
-    input.className = professionName + " skill-check";
+    input.className = professionName + " skill-check skill-check-name";
     input.id = professionName + "-" + skillName;
     input.value = skillName;
     if(inputSkills.has(skillName)) {
-        input.name = (skillName + friendlyValue + "\n" + friendlyName.substring(friendlyName.indexOf("(") - 1));
+        friendlyName = (skillName.toTitleCase() + friendlyValue + ":\n" + friendlyName.substring(friendlyName.indexOf("(")))
+        friendlyValue = "";
+        input.name = friendlyName;
     }
     else {
         input.name = skillName;
@@ -964,7 +971,7 @@ function createOptionalSkill(professionName, skillName, baseValue, friendlyName,
 
 function createSkillInput(professionName, skillName, baseValue, friendlyName, wrapper) {
     const skillDiv = document.createElement("div");
-    skillDiv.className = professionName + " prof-modal " + skillName;
+    skillDiv.className = professionName + " prof-modal default-skill-input " + skillName;
 
     const label = document.createElement("label");
     label.setAttribute("for", professionName + "-" + skillName);
@@ -988,7 +995,7 @@ function createSkillInput(professionName, skillName, baseValue, friendlyName, wr
 
 function createRadioSkills(professionName, combinedSkillName, skillNames, baseValues, friendlyNames) {
     const div = document.createElement("div");
-
+    div.className = "skill-radio-div";
     for (i = 0; i < skillNames.length; i++) {
         const radioInput = document.createElement("input");
         radioInput.type = "radio";
