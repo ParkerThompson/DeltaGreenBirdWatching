@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Getting Started - Leaflet js Map interactive library</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+</head>
+<body>
+<h1><div id="neighborhood"></div></h1>
+<div id="map" style="width: 1000px; height: 600px;"></div>
+<script>
+var newMap = L.map('map').setView([41.88422245714392,-87.64640103306091], 13);
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <a href=”http://osm.org/copyright”>OpenStreetMap</a> contributors'
+}).addTo(newMap);
+// loading GeoJSON file - Here my html and usa_adm.geojson file resides in same folder
+$.getJSON("neighborhoods.geojson",function(data){
+// L.geoJson function is used to parse geojson file and load on to map
+L.geoJson(data).addTo(newMap);
+L.geoJSON(data, {
+  onEachFeature: function (feature, layer) {
+
+var poly = turf.polygon(feature.geometry.coordinates[0]);
+  newMap.locate({setView : true, maxZoom: 16})
+  .on('locationfound', function(e){
+        if(turf.booleanPointInPolygon(turf.point([e.longitude, e.latitude]), feature)) {
+            document.getElementById("neighborhood").innerText= "You are in " + feature.properties.pri_neigh
+        }
+        });
+
+  }});
+});
+</script>
+</body>
+</html>
