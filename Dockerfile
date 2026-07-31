@@ -1,4 +1,5 @@
 FROM nginx:latest
+EXPOSE 8080/tcp
 EXPOSE 80/tcp
 EXPOSE 443/tcp
 COPY src/main /usr/share/nginx/html
