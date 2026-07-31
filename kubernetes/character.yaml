@@ -1,38 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
+  name: nginx-pod
   labels:
-    app: nginx-1
-  managedFields:
-    - apiVersion: apps/v1
-      fieldsType: FieldsV1
-      manager: GoogleCloudConsole
-      operation: Update
-      time: '2021-07-08T15:27:10Z'
-    - apiVersion: apps/v1
-      fieldsType: FieldsV1
-      manager: kube-controller-manager
-      operation: Update
-      time: '2021-07-08T15:27:13Z'
-  name: nginx-1
-  namespace: default
+    app: nginx
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx-1
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
-  template:
-    metadata:
-      labels:
-        app: nginx-1
-    spec:
-      containers:
-        - image: >-
-            gcr.io/excellent-range-307103/github.com/parkerthompson/deltagreencharactercreator
-          imagePullPolicy: IfNotPresent
-          name: deltagreencharactercreator-1
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80
