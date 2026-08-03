@@ -2,10 +2,6 @@ body {
    background-image: url("../resources/impossibleLandscaping.png");
 }
 
-img {
-    padding-left: 25%;
-}
-
 .btn {
     border-radius: 8px;
     background-color: black;
